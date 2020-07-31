@@ -44,13 +44,15 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+
 highlight:
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace: ''
-  wrap: true
-  hljs: false
+  enable: false
+
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'tomorrow'
+  line_number: false   # default false
+  custom_css:
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -101,3 +103,8 @@ deploy:
   type: git
   repo: git@github.com:linxuesong/linxuesong.github.io.git
   branch: master
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000  

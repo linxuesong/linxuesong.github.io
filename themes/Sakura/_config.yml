@@ -15,9 +15,9 @@ notice: hexo-Sakura主题已经开源，目前正在开发中...
 lazyloadImg: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg
 
 menus:
-  首页: { path: /, fa: fa-fort-awesome faa-shake }
-  归档: { path: /archives, fa: fa-archive faa-shake, submenus: { 
-    技术: {path: /categories/技术/, fa: fa-code }, 
+  首页: { path: /, fa: fa-fort-awesome faa-shake }   #只需要修改fa-XXX  XXX就可以了
+  归档: { path: /archives, fa: fa-archive faa-shake, submenus: { #图标和图标名 对比地址http://www.fontawesome.com.cn/faicons/
+    技术: {path: /categories/技术/, fa: fa-rocket }, #图标css非本地，引用网址上的css文件https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
     生活: {path: /categories/生活/, fa: fa-file-text-o }, 
     资源: {path: /categories/资源/, fa: fa-cloud-download }, 
     随想: {path: /categories/随想/, fa: fa-commenting-o },
@@ -73,12 +73,12 @@ siteBuildingTime: 07/17/2018
 #social  url, img PC端配置
 social:
   github: {url: http://github.com/linxuesong, img: /img/social/github.png}
-  csdn: {url: http://weibo.com/mashirozx?is_all=1, img: /img/social/csdn.png}
-  cnblog: {url: http://weibo.com/mashirozx?is_all=1, img: /img/social/cnblog.jpg}
-  wuzhi: {url: http://weibo.com/mashirozx?is_all=1, img: /img/social/wuzhi.png}
-  bilibili: {url: http://weibo.com/mashirozx?is_all=1, img: /img/social/bilibili.png}
-  qq: {url: http://weibo.com/mashirozx?is_all=1, img: /img/social/qq.png}
-  wechat: {url: /#, qrcode: /img/custom/wechat.jpg, img: /img/social/wechat.png}
+  csdn: {url: https://blog.csdn.net/lsxa123, img: /img/social/csdn.png}
+  cnblog: {url: https://www.cnblogs.com/linxuesong/, img: /img/social/cnblog.jpg}
+  wuzhi: {url: https://wuzhi.me/, img: /img/social/wuzhi.png}
+  bilibili: {url: https://space.bilibili.com/396134239/video, img: /img/social/bilibili.png}
+  qq: {url: https://photo.weibo.com/6504280642/wbphotos/large/mid/4519020298017277/pid/0076biwily1gg2bf3v9wvj30f00kk75n, img: /img/social/qq.png}
+  wechat: {url: https://photo.weibo.com/6504280642/wbphotos/large/mid/4519020298017277/pid/0076biwily1gg2bf3v9wvj30f00kk75n, img: /img/social/wechat.png}
 
 #social  url, img 移动端配置
 msocial:
@@ -110,8 +110,59 @@ aplayer:
   volume: 0.7
   mutex: true
 
+
 # Valine
 valine: true
 v_appId: GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz
 v_appKey: mgOpfzbkHYqU92CV4IDlAUHQ
 
+
+
+# Local search
+# Dependencies: https://github.com/flashlab/hexo-generator-search
+local_search:
+  enable: true
+  # if auto, trigger search by changing input
+  # if manual, trigger search by pressing enter key or search button
+  trigger: auto
+  # show top n results per article, show all results by setting to -1
+  top_n_per_article: 1
+ 
+ # Whether to activate the copyright information of the blog and author when copying the post content.
+# minCharNumber: Approve copyright information by copying at least how many characters.
+# 是否激活复制文章时追加博客和作者的版权信息.
+copyright:
+  enable: false
+  minCharNumber: 120 # 至少复制多少个字符就追加版权信息.
+  description: 本文章著作权归作者所有，任何形式的转载都请注明出处。
+
+# 代码块相关
+code:
+  lang: true # 代码块是否显示名称
+  copy: true # 代码块是否可复制
+  shrink: true # 代码块是否可以收缩
+  break: true # 代码是否折行
+
+# 查看大图
+fancybox:
+  enable: true
+
+# 外链转知乎卡片形式 
+linkcard:
+  enable: true 
+
+# 是否开启字数统计 (可以在formatton设置no_word_count: true)
+#不需要使用，直接设置值为false，或注释掉
+post_wordcount:
+  item_text: true
+  wordcount: true
+  min2read: true
+  totalcount: true
+  separated_meta: true   
+ 
+# busuanzi(http://busuanzi.ibruce.info/) website statistics
+# 不蒜子(http://busuanzi.ibruce.info/) 网站统计
+busuanziStatistics:
+  enable: true
+  totalTraffic: true # 总访问量
+  totalNumberOfvisitors: true # 总人次

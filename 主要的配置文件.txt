@@ -1,0 +1,3 @@
+./_config.yml
+./themes/Sakura/_config.yml
+./layout.edjs
