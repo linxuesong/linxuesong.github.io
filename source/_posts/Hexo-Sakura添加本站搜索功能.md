@@ -11,7 +11,7 @@ date: 2020-07-28 14:12:50
 tags:
 keywords:
 description:
-photos:
+photos: 'https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(1).jpg.webp'
 ---
 # hexo-sakura添加本站搜索功能
 

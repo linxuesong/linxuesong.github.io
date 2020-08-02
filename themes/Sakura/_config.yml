@@ -17,7 +17,7 @@ lazyloadImg: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progre
 menus:
   首页: { path: /, fa: fa-fort-awesome faa-shake }   #只需要修改fa-XXX  XXX就可以了
   归档: { path: /archives, fa: fa-archive faa-shake, submenus: { #图标和图标名 对比地址http://www.fontawesome.com.cn/faicons/
-    技术: {path: /categories/技术/, fa: fa-rocket }, #图标css非本地，引用网址上的css文件https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
+    技术: {path: /categories/技术/, fa: fa-laptop }, #图标css非本地，引用网址上的css文件https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
     生活: {path: /categories/生活/, fa: fa-file-text-o }, 
     资源: {path: /categories/资源/, fa: fa-cloud-download }, 
     随想: {path: /categories/随想/, fa: fa-commenting-o },

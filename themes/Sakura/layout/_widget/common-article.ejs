@@ -23,28 +23,31 @@
         <%= date(post.date, 'YYYY-M-D') %><span class="bull">
         ·</span>
       
-	  
-	  
-	  		   <!-- 浏览数显示 -->
+         	  
+	        <!-- 安装插件npm install hexo-wordcount --save -->
+			<!--本篇文章浏览访客人数统计 -->   
             <span class="post-meta-item" <% if (post.encrypt == true) { %>style="display:none" <% } %>>
-              <span class="post-meta-item-icon">
-                <i class="iconfont icon-attention"></i>
-              </span>
-              <span class="post-meta-item-text"> 本文共<span id="busuanzi_value_page_pv"> 次阅读</span>
-              </span>
-            </span>
-            <span class="bull">
-              ·</span>
+                <span class="post-meta-item-icon">
+                    <i class="iconfont icon-attention"></i>
+                </span>
+                <span class="post-meta-item-text">访问人数=</span>
+			        <span id="busuanzi_value_page_pv"></span>
+				<span class="post-meta-item-text">次</span>	
+			
+            <span class="bull">·</span>
+			
+			<!--本篇文章文字数统计 -->
             <span class="post-time">
               <span class="post-meta-item-icon">
                 <i class="fa fa-book"></i>
-                <span class="post-meta-item-text">字数统计: </span>
-                <!-- 安装插件npm install hexo-wordcount --save -->
+                <span class="post-meta-item-text">本文字数=</span>
                 <span class="post-count"><%= wordcount(post.content) %>字</span>
               </span>
             </span>
-            <span class="bull">
-              ·</span>
+            
+			<span class="bull">·</span>
+            
+            <!-本篇文章预计阅读时间-->			
             <span class="post-time">
               <span class="post-meta-item-icon">
                 <i class="fa fa-coffee"></i>
@@ -52,7 +55,7 @@
                 <span class="post-count"><%= min2read(post.content) %>分钟</span>
               </span>
             </span>
-            <span class="valine-comment-count" data-xid="post.path"></span>
+            
 		 
 			
 			

@@ -11,7 +11,7 @@ date: 2020-07-28 14:11:26
 tags:
 keywords:
 description:
-photos:
+photos: 'https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.0.9/img/cover/(0).jpg.webp'
 ---
 主题优化：jsDelivr + Github 搭建免费CDN（生成自己资源的url）
 
