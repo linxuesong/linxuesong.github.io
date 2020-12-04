@@ -113,9 +113,23 @@ aplayer:
 
 
 # Valine
-valine: true
-v_appId: GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz
-v_appKey: mgOpfzbkHYqU92CV4IDlAUHQ
+# You can get your appid and appkey from https://leancloud.cn
+# More info available at https://valine.js.org
+valine: 
+    enable: truetrue
+    appId: RmgA0rMeKIWWIkhSTpqhV4oG-gzGzoHsz
+    appKey: iwivlkfT6bGJRQS74SaKYjal
+    notify: false # Mail notifier. See: https://github.com/xCss/Valine/wiki # 邮件提醒
+    verify: false # Verification code 
+    placeholder: 欢迎畅所欲言 # Comment box placeholder
+    avatar: mm # Gravatar style #默认头像设置
+    guest_info: nick,mail,link # Custom comment header
+    pageSize: 10 # Pagination size
+    language: zh-cn # Language, available values: en, zh-cn # 语言，设为zh-cn
+    # 是否开启当前文章阅读量统计
+    visitor: false # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors' for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
+    comment_count: true # If false, comment count will only be displayed in post page, not in home page
+    
 
 
 
