@@ -55,4 +55,6 @@ npm i -S hexo-prism-plugin
 
 如何选用hexo-prism-plugin的代码块样式主题，可以本站搜索
 
-3.
+3.添加RSS订阅的网站
+
+https://blog.csdn.net/cungudafa/article/details/104320396
