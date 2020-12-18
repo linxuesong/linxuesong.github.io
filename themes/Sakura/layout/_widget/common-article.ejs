@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+﻿<link rel="stylesheet" type="text/css" href="/css/sharejs.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
 <% if (post.photos && post.photos.length){ %>
@@ -94,14 +94,35 @@
         <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
         <footer class="post-footer">
           <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
           <div class="post-share">
             <div class="social-share sharehidden share-component"></div>
             <i class="iconfont show-share icon-forward"></i>
           </div>
         </footer><!-- .entry-footer -->
       </article>
+
+<!--对于每一篇发布文章添加标签统计展示-->
+          <div class="post-tags">
+
+
+	<div class="tag-cloud">
+                  <div class="tag-cloud-title">
+                  </div>
+                  <div class="tag-cloud-tags">
+                  <%- tagcloud({
+                    min_font: 10,
+                    max_font: 20,
+                    amount: 200,
+                    color: true,
+                    start_color: '#F38181',
+                    end_color: '#95E1D3'
+                    }) %>
+                  </div>
+
+                </div>
+
+          </div>
+<!--对于每一篇发布文章添加标签统计展示-->
       <!-- #post-## -->
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">

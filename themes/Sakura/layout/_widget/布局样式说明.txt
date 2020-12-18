@@ -1,0 +1,9 @@
+category-cloud   分类云 /归档/分类 新加的
+category-iteam   分类每一项  主题自带的
+category-radar   分类雷达图
+common-article   一般文章样式
+common-article  一般网页样式
+index-items
+post-calendar     文章贡献日历
+tag-cloud   标签云
+tag-wordcloud 标签按字大小展示

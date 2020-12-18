@@ -11,7 +11,7 @@ date: 2020-07-28 14:12:50
 tags:
 keywords:
 description:
-photos: 'https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(1).jpg.webp'
+photos: 'https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/动漫女/1P421143I2-2-1200.jpg'
 ---
 # hexo-sakura添加本站搜索功能
 

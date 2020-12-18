@@ -16,19 +16,25 @@ lazyloadImg: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progre
 
 menus:
   首页: { path: /, fa: fa-fort-awesome faa-shake }   #只需要修改fa-XXX  XXX就可以了
-  归档: { path: /archives, fa: fa-archive faa-shake, submenus: { #图标和图标名 对比地址http://www.fontawesome.com.cn/faicons/
+  归档: { path: javascript:;, fa: fa-archive faa-shake, submenus: { #图标和图标名 对比地址http://www.fontawesome.com.cn/faicons/
     技术: {path: /categories/技术/, fa: fa-laptop }, #图标css非本地，引用网址上的css文件https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
     生活: {path: /categories/生活/, fa: fa-file-text-o }, 
     资源: {path: /categories/资源/, fa: fa-cloud-download }, 
     随想: {path: /categories/随想/, fa: fa-commenting-o },
     转载: {path: /categories/转载/, fa: fa-book }
   } }
+  文章统计: { path: javascript:;, fa: fa-area-chart faa-vertical, submenus: {
+    日历: {path: /archives, fa: fa-calendar}, 
+    标签: {path: /tags/, fa: fa-tag },
+    分类: {path: /categories, fa: fa-bookmark }
+  } }
+  
   清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
-    标签: {path: /tags, fa: fa-tag },
-    书单: {path: /tags/悦读/, fa: fa-th-list faa-bounce }, 
+    书单: {path: /books/, fa: fa-th-list faa-bounce }, 
     番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
     歌单: {path: /music/, fa: fa-headphones },
-    图集: {path: /tags/图集/, fa: fa-photo }
+    图集: {path: /tags/图集/, fa: fa-photo },
+    娱乐: {path: /dinoswords, fa: fa-gamepad }
   } }
   留言板: { path: /comment/, fa: fa-pencil-square-o faa-tada }
   友人帐: { path: /links/, fa: fa-link faa-shake }
@@ -37,8 +43,8 @@ menus:
     我？: {path: /about/, fa: fa-meetup}, 
     主题: {path: /theme-sakura/, fa: iconfont icon-sakura },
     Lab: {path: /lab/, fa: fa-cogs },
+    客户端: { path: /client/, fa: fa-android faa-vertical }
   } }
-  客户端: { path: /client/, fa: fa-android faa-vertical }
   RSS: { path: /atom.xml, fa: fa-rss faa-pulse }
 
 
@@ -100,17 +106,22 @@ movies:
   name: Unbroken.mp4
 
 #网易云音乐
-aplayer: 
-  id: 2660651585
-  server: netease
-  type: playlist
-  fixed: true
-  autoplay: false
-  loop: all
-  order: random
-  preload: auto
-  volume: 0.7
-  mutex: true
+#以在sakura\layout\layout.ejs中用明月浩空播放器代替
+#aplayer: 
+#  id: 2660651585
+#  server: netease
+#  type: playlist
+#  fixed: true
+#  autoplay: false
+#  loop: all
+#  order: random
+#  preload: auto
+# volume: 0.7
+#  mutex: true
+#
+  
+  
+  
 
 
 # Valine
@@ -171,4 +182,13 @@ busuanziStatistics:
   
 # rss地址
 rss: /atom.xml
-  
+# Online contact ##在线聊天 https://www.daovoice.io/
+daovoice:
+  enable: true
+  daovoice_app_id: 7e5676fe ##这里替换成你DaoVoice上的appid
+
+# Whether to display post-calender in the `archive` page
+# 设置在归档页面achive中是否显示'文章日历'控件
+postCalendar: true 
+
+

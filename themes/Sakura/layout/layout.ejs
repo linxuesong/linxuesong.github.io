@@ -29,7 +29,9 @@
   <!-- 这条在sakura中已有，可不添加 -->
   <script src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/live2d_qianduan/live2d-widget-master/autoload.js"></script>
   <!--2.樱花飘落背景-->
+  <!--
   <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>  
+  -->
   <!--3.鼠标移动特效（暂时关闭）-->
   <!--
   <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/xuehua.js"></script>
@@ -43,5 +45,13 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/js/鼠标特效/鼠标点击爆炸烟花特效JS/fireworks.js"></script> 
   <!--6.明月浩空音乐播放器插件   下面是盗版(歌单比较全)    还有  正版体验版(只有一个歌单加广告)  也可以用注册版(有后台查看系统) 已绑定qq账号1011572950-->
   <script src="https://player.lmih.cn/player/js/player.js" id="myhk" key="demo" m="1"></script>
+  <!-- 7.主题背景换肤功能 -->
+  <%- partial('_partial/skin-list') %> 
+  <%- partial('_partial/skin-btn', null, {cache: !config.relative_link}) %>
+  <%- partial('_partial/mheader', null, {cache: !config.relative_link}) %>
+  <%- partial('_partial/aplayer', null, {cache: !config.relative_link}) %> 
+</body>
+</html>
+
 </body>
 </html>

@@ -11,7 +11,7 @@ date: 2020-12-04 12:12:05
 tags:
 keywords:
 description:
-photos:Hexo
+photos: https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/动漫女/1P421143I2-8-1200.jpg
 ---
 
 # Hexo增加RSS订阅
@@ -49,7 +49,7 @@ feed:
   icon: #icon.png
 ````
 
-3.themes\sakura\_config.yml
+### 3.themes\sakura\_config.yml
 
 ````
 # 简易信息聚合,站点共享

@@ -1,0 +1,2 @@
+skin-btn.ejs    切换主题按钮
+skin-list.ejs     主题资源

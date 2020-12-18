@@ -2,7 +2,7 @@
 title: {{ title }}
 date: {{ date }}
 author: linxuesong
-avatar: https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg
+avatar: https://linxuesong.github.io/img/avatar.jpg
 authorLink: linxuesong.github.io
 authorAbout: 一个好奇的人
 authorDesc: 一个好奇的人
@@ -11,5 +11,6 @@ comments: true
 tags: 
 keywords: 
 description: 
-photos: 
+photos: https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/鬼刃/200929110029-3-1200.jpg
 ---
+

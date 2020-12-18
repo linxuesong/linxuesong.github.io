@@ -11,7 +11,7 @@ date: 2020-07-28 14:13:54
 tags: 主题美化
 keywords: Hexo
 description: md文件插入图片
-photos: 'https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.0.9/img/cover/(0).jpg.webp'
+photos: https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/动漫女/1P421143I2-3-1200.jpg
 ---
 # Typora插入Base64图片
 

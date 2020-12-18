@@ -8,12 +8,12 @@ subtitle: ''
 description: ''
 keywords:
 author: John Doe
-language: en
+language: zh-CN
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://linxuesong.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -110,7 +110,6 @@ ignore:
    icon: #icon.png
 ## Themes: https://hexo.io/themes/
 theme: Sakura
-
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
