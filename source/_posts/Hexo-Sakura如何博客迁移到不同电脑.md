@@ -13,7 +13,7 @@ tags:
 keywords: LeetCode
 date: 2020-08-11 20:10:14
 description:
-photos:
+photos: https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/犬夜叉/201204113622-8-1200.jpg
 ---
 # Hexo-Sakura博客迁移前期准备
 
@@ -58,3 +58,16 @@ npm i -S hexo-prism-plugin
 3.添加RSS订阅的网站
 
 https://blog.csdn.net/cungudafa/article/details/104320396
+
+4.添加豆瓣hexo-douban插件生成书单、电影等页面
+
+```
+npm install hexo-douban --save    
+```
+
+然后在博客站点目录下的`node_modules`文件夹下找到`hexo-douban/lib`，文件夹下有三个js文件，分别为：`books-generator.js` 、`games-generator.js` 、`movies-generator.js`，用文本编辑器打开这三个文件，并将其文件内容末尾的代码修改为一下内容：
+
+```js
+/* 原文件内容为 layout: [`page`, `post`] ，将其修改为下面的内容*/
+layout: [`douban`]
+```

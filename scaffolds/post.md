@@ -2,7 +2,7 @@
 title: {{ title }}
 date: {{ date }}
 author: linxuesong
-avatar: https://linxuesong.github.io/img/avatar.jpg
+avatar: https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/avatar.jpg
 authorLink: linxuesong.github.io
 authorAbout: 一个好奇的人
 authorDesc: 一个好奇的人

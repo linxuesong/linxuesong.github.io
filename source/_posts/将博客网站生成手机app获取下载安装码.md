@@ -8,10 +8,10 @@ authorDesc: 一个好奇的人
 categories: 技术
 comments: true
 date: 2020-12-17 16:15:26
-tags:
+tags: 黑科技
 keywords:
 description:
-photos:
+photos: https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/动漫女/1P421143I2-2-1200.jpg
 ---
 
 一门App网站   https://www.yimenapp.com/

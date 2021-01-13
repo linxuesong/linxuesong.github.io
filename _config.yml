@@ -29,7 +29,10 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
+#不需要渲染的页面
+#任务清单页面
 skip_render:
+- "todolist/**" 
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -121,3 +124,36 @@ search:
   field: post
   format: html
   limit: 10000  
+  
+  
+  #豆瓣账号绑定
+douban:
+#你的豆瓣 ID
+  user: 228541605
+#是否将生成页面的功能嵌入 hexo s 和 hexo g 中 为false的话要在启动hexo过程中用hexo douban -bgm
+  builtin: true
+  # /books为该页面
+  book:
+  #该页面的标题
+    title: 我的书单
+    #写在页面开头的一段话，支持 html 语法
+    quote: 一个爱书的人，他必定不至于缺少一个忠实的朋友，一个良好的老师，一个可爱的伴侣，一个温情的安慰者。
+  movie:
+    title: '我的电影'
+    quote: '我有喜欢的人，又温暖，又温柔，希望她可以是世界上最幸福的人。为了你，牺牲生命也不足惜。
+    <br/>就是这个念头，才能让我忍受痛苦到今天。
+    <br/>忍受...
+    <br/>忍受到现在。
+    <br/>所以我不允许你否定我。
+    <br/>“你骗人！”
+    <br/>我的的确确有一个喜欢的人，真的有。
+    <br/>你以为我是为了谁，又是谁害的。
+    <br/>既然都要死，不如就...
+    <br/>-------fate/zero雁夜'
+  game:
+    title: 'This is my game title'
+    quote: 'This is my game quote'
+  timeout: 10000  
+  
+  
+  

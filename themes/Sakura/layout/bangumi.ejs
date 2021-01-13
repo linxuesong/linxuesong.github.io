@@ -22,8 +22,14 @@
                 <ul class="skill-list">
                   <li class="skill">
                     <div>
-                    <%- bangumi.status %></div>
-                    <progress class="skill-1" max="100" value="<%- bangumi.progress %>">
+                    	<!--判断是否追完剧-->
+						<% if (bangumi.process > bangumi.episode) { %>
+							已追完
+						<%} else { %>
+							看番进度:<%- bangumi.progress %>/<%- bangumi.episode %>
+						<% } %>
+					</div>
+                    <progress class="skill-1" max="<%- bangumi.episode %>" value="<%- bangumi.progress %>">
                     </progress>
                   </li>
                 </ul>
@@ -36,13 +42,31 @@
                   <%- bangumi.jp %><br>
                 </span>
                 <span>
-                  放送时间: <%- bangumi.time %><span>
-                    <p><%- bangumi.desc %></p>
+                  放送时间: <%- bangumi.time %>
+				  <br/>
+				  追番时间: <%- bangumi.begin %> ~ <%- bangumi.end %>
+				  <br/>
+				  <span>
+                    <p> 简介：<br/>
+					    <%- bangumi.desc %>
+					</p>
+					<br/>
+					<p> 观后感: <br/>
+					    <%- bangumi.impressions %>
+					
+					</p>
                     <ul class="skill-list">
                       <li class="skill">
                         <div>
-                        <%- bangumi.status %></div>
-                        <progress class="skill-1" max="100" value="<%- bangumi.progress %>">
+						<!--判断是否追完剧-->
+						<% if (bangumi.process > bangumi.episode) { %>
+							已追完
+						<%} else { %>
+							看番进度:<%- bangumi.progress %>/<%- bangumi.episode %>
+						<% } %>
+						
+						</div>
+                        <progress class="skill-1" max="<%- bangumi.episode %>" value="<%- bangumi.progress %>">
                         </progress>
                       </li>
                     </ul>

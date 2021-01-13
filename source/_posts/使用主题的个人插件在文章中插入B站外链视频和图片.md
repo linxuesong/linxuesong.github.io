@@ -1,7 +1,7 @@
 ---
 title: 使用主题的个人插件在文章中插入B站外链视频和图片
 author: linxuesong
-avatar: 'https://linxuesong.github.io/img/avatar.jpg'
+avatar: 'https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/avatar.jpg'
 authorLink: linxuesong.github.io
 authorAbout: 一个好奇的人
 authorDesc: 一个好奇的人

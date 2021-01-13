@@ -11,7 +11,7 @@ pjax: 1
 # 1开启
 mathjax: 0
 
-notice: hexo-Sakura主题已经开源，目前正在开发中...
+notice: 博客主题基本确定，接下来时一边写文章一边美化博客了，打算再增加一个记录网站美化记录的页面
 lazyloadImg: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg
 
 menus:
@@ -24,25 +24,30 @@ menus:
     转载: {path: /categories/转载/, fa: fa-book }
   } }
   文章统计: { path: javascript:;, fa: fa-area-chart faa-vertical, submenus: {
-    日历: {path: /archives, fa: fa-calendar}, 
+    统计: {path: /analytics/, fa: fa-area-chart},
+    日历: {path: /archives/, fa: fa-calendar}, 
     标签: {path: /tags/, fa: fa-tag },
-    分类: {path: /categories, fa: fa-bookmark }
+    分类: {path: /categories/, fa: fa-bookmark },
+    建站日志: {path: /sitelog/, fa: fa-bookmark }
   } }
   
   清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
     书单: {path: /books/, fa: fa-th-list faa-bounce }, 
     番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
     歌单: {path: /music/, fa: fa-headphones },
+    电影: {path: /movies/, fa: fa-video-camera },
+    游戏: {path: /games/, fa: fa-gamepad },
     图集: {path: /tags/图集/, fa: fa-photo },
-    娱乐: {path: /dinoswords, fa: fa-gamepad }
   } }
   留言板: { path: /comment/, fa: fa-pencil-square-o faa-tada }
   友人帐: { path: /links/, fa: fa-link faa-shake }
   赞赏: { path: /donate/, fa: fa-heart faa-pulse }
   关于: { path: /, fa: fa-leaf faa-wrench , submenus: { 
+    任务清单: {path: /todolist, fa: fa-meetup},
     我？: {path: /about/, fa: fa-meetup}, 
     主题: {path: /theme-sakura/, fa: iconfont icon-sakura },
     Lab: {path: /lab/, fa: fa-cogs },
+    娱乐: {path: /dinoswords, fa: fa-coffee },
     客户端: { path: /client/, fa: fa-android faa-vertical }
   } }
   RSS: { path: /atom.xml, fa: fa-rss faa-pulse }
@@ -75,7 +80,7 @@ startdash:
 
 
 # your site build time or founded date
-siteBuildingTime: 07/17/2018
+siteBuildingTime: 12/12/2018
 
 #social  url, img PC端配置
 social:
@@ -95,15 +100,17 @@ msocial:
 
 donate:
   paypal: https://www.paypal.me/hojuncn
-  alipay: /img/custom/donate/AliPayQR.jpg
-  wechat: /img/custom/donate/WeChanQR.jpg
-  wechatSQ: /img/custom/donate/WeChanSQ.jpg
+  alipay: /img/donate/AliPayQR.jpg
+  wechat: /img/donate/WeChanQR.jpg
+  wechatSQ: /img/donate/WeChanSQ.jpg
 
 # 视频地址为https://cdn.jsdelivr.net/gh/honjun/hojun@1.2/Unbroken.mp4，配置如下
 movies:
   url: https://cdn.jsdelivr.net/gh/honjun/hojun@1.2
   # 多个视频用逗号隔开，随机获取。支持的格式目前已知MP4,Flv。其他的可以试下，不保证有用
   name: Unbroken.mp4
+  
+
 
 #网易云音乐
 #以在sakura\layout\layout.ejs中用明月浩空播放器代替
@@ -191,4 +198,41 @@ daovoice:
 # 设置在归档页面achive中是否显示'文章日历'控件
 postCalendar: true 
 
-
+#------------------------CDN,非必要--------------------------
+libs:
+  css:
+    googlefonts: https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC
+    style: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/style.css #/css/style.css # 
+    lib: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/lib.min.css
+    font: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/font.css
+    insight: /css/insight.css
+    tags: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/tags.css
+    fancybox: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/jquery.fancybox.min.css
+    sharejs: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/sharejs.css
+    tocbot: https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css
+    live2d_widget: https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css
+    logo:
+      enable: true # 自定义logo
+      logo: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/logo.css
+      logo_fonts: https://cdn.jsdelivr.net/gh/cungudafa/cdn/fonts/LOGO/logo.css
+  js:
+    jquery: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+    linkcard: /js/linkcard.js
+    lib: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/lib.min.js
+    clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
+    InsightSearch: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/InsightSearch.js
+    sakura_app: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/sakura-app.js  #/js/sakura-app.js
+    busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js 
+    fancybox: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/jquery.fancybox.min.js
+    echarts: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/echarts.min.js
+    valine: https://unpkg.com/valine/dist/Valine.min.js
+    sakura_petal: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js #other
+    hititle: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js 
+    KeyBlock: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/noSomeKey.js #按键屏蔽,不能F12调试和查看源代码
+    sakura_petals: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js  #仅在首页花瓣飘落（大内存）
+    snow_petals: https://cdn.jsdelivr.net/gh/Yafine/cdn@2.5/source/js/snow1.js
+    piao: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/piao.js #飘动彩带
+    live2d_widget: https://cdn.jsdelivr.net/gh/cungudafa/cdn/live2d-widget/autoload.js
+    word: https://cdn.jsdelivr.net/gh/wallleap/cdn/js/shehuizhuyi.js #点击出现字效
+    love: https://cdn.jsdelivr.net/gh/wallleap/cdn/js/love.js #点击出现爱心
+    cursor: https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.1.2/js/cursor.js # 星星跟随坠落(大内存)

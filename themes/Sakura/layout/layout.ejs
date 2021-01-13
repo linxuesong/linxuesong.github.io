@@ -44,14 +44,147 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/js/鼠标特效/鼠标点击爆炸烟花特效JS/anime.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/js/鼠标特效/鼠标点击爆炸烟花特效JS/fireworks.js"></script> 
   <!--6.明月浩空音乐播放器插件   下面是盗版(歌单比较全)    还有  正版体验版(只有一个歌单加广告)  也可以用注册版(有后台查看系统) 已绑定qq账号1011572950-->
-  <script src="https://player.lmih.cn/player/js/player.js" id="myhk" key="demo" m="1"></script>
+  <!--这个是盗版的-->
+  <!--<script src="https://player.lmih.cn/player/js/player.js" id="myhk" key="demo" m="1"></script>-->
+  <!--这个是正版的-->
+  <script src="https://myhkw.cn/player/js/player.js" id="myhk" key="160897544983" m="1"></script>
   <!-- 7.主题背景换肤功能 -->
   <%- partial('_partial/skin-list') %> 
   <%- partial('_partial/skin-btn', null, {cache: !config.relative_link}) %>
   <%- partial('_partial/mheader', null, {cache: !config.relative_link}) %>
   <%- partial('_partial/aplayer', null, {cache: !config.relative_link}) %> 
-</body>
-</html>
+  <!-- 8.增加红灯笼按钮-->
+       <!--深夜模式按钮-->
+  <a onclick="switchNightMode()" id="sma"> 
+	<i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> 
+  </a>
+       <!--圣诞模式按钮-->  
+	   <script>
+    if (localStorage.getItem('themechris') === '1') {
+    document.body.classList.add('themechris');
+    }
+    else if (matchMedia('(prefers-color-scheme: themechris)').matches) {
+    document.body.classList.add('themechris');
+    }
+	</script>
+  <a onclick="switchChrisThemes()" id="switchchristmas">
+    <img class="theme-buttonchrismas" src="https://hesifan.top/medias/christmas-img/ball.jpg" title="圣诞模式">
+  </a>
+       <!--春节模式按钮-->  
+	   <script>
+    if (localStorage.getItem('themespring') === '1') {
+    document.body.classList.add('themespring');
+    }
+    else if (matchMedia('(prefers-color-scheme: themespring)').matches) {
+    document.body.classList.add('themespring');
+    }
+</script>
+  <div onclick="switchSpringThemes()" id="switchspring">
+    <img class="theme-button" src="https://hesifan.top/medias/spring-img/denglong.png" title="春节模式">
+  </div>
+  <!--春节主题的大红灯笼-->
+      <div class="denglong">
+        <div class="deng-box">
+            <div class="deng">
+                <div class="xian"></div>
+                <div class="deng-a">
+                    <div class="deng-b"><div class="deng-t">喜迎</div></div>
+                </div>
+                <div class="shui shui-a"><div class="shui-c"></div><div class="shui-b"></div></div>
+            </div>
+        </div>
+        <div class="deng-box1">
+            <div class="deng">
+                <div class="xian"></div>
+                <div class="deng-a">
+                    <div class="deng-b"><div class="deng-t">元旦</div></div>
+                </div>
+                <div class="shui shui-a"><div class="shui-c"></div><div class="shui-b"></div></div>
+            </div>
+        </div>
+    </div>
+  <!--春节主题大红灯笼-->
+  
+  
+  <!--可以在你想要展示小挂件的地方加上这个挂件，还没有完善等之后再进行吧-->
+  <!--圣诞主题小挂件-->
+	<div class="caishendengsd">        
+		<div class="caishenxiansd">
+			<img class="caishenpicsd" src="https://hesifan.top/medias/christmas-img/2.png">
+		</div>              
+	</div>
+  <!-圣诞主题小挂件结束-->
+ <!--春节主题小挂件-->
+<div class="caishendeng">        
+	<div class="caishenxianleft">
+		<img class="caishenpic fudai" src="https://hesifan.top/medias/spring-img/3.png">
+	</div>              
+</div>
+  <!-春节主题小挂件结束-->
 
+  
+  
+  
+       <script>
+	   // 切换深色模式JS
+	   function switchNightMode() {
+			var body = document.body; 
+			if(body.classList.contains('dark')){ 
+				document.body.classList.remove('dark'); 
+				localStorage.setItem('dark','0'); 
+				$('#nightMode').removeClass("fa-lightbulb-o").addClass("fa-moon-o"); 
+				return; 
+			} else {
+				document.body.classList.add('dark'); 
+				localStorage.setItem('dark','1'); 
+				$('#nightMode').removeClass("fa-moon-o").addClass("fa-lightbulb-o"); 
+				return; 
+			} 
+	   }
+	       // 中国节日按钮切换
+	
+    function switchSpringThemes() {
+        var body = document.body;
+        if(body.classList.contains('themechris')){
+            document.body.classList.remove('themechris');
+            localStorage.setItem('themechris','0');
+            document.body.classList.add('themespring');
+            localStorage.setItem('themespring','1');
+            return;
+        }
+        if(body.classList.contains('themespring')){
+        document.body.classList.remove('themespring');
+        localStorage.setItem('themespring','0');
+        return;
+        } else {
+        document.body.classList.add('themespring');
+        localStorage.setItem('themespring','1');
+		
+        return;
+        }
+    };
+
+    // 圣诞节按钮切换
+    function switchChrisThemes() {
+        var body = document.body;
+        if(body.classList.contains('themespring')){
+            document.body.classList.remove('themespring');
+            localStorage.setItem('themespring','0');
+            document.body.classList.add('themechris');
+            localStorage.setItem('themechris','1');
+            return;
+        }
+        if(body.classList.contains('themechris')){
+        document.body.classList.remove('themechris');
+        localStorage.setItem('themechris','0');
+        return;
+        } else {
+        document.body.classList.add('themechris');
+        localStorage.setItem('themechris','1');
+        return;
+        }
+    };
+	</script>
+	
 </body>
 </html>
