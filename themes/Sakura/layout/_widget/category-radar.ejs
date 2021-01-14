@@ -14,7 +14,7 @@
  
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/echarts.min.js"></script>
 <script type="text/javascript">
-    let radarChart = echarts.init(document.getElementById('category-radar'));
+    var radarChart = echarts.init(document.getElementById('category-radar'));
  
     <%
         var categories = site.categories;
@@ -37,7 +37,7 @@
         var radarValueData = JSON.stringify(radarValueArr);
     %>
  
-    let option = {
+    var option = {
         title: {
             left: 'center',
             text: '文章分类雷达图',

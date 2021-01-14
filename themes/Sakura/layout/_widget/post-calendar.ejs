@@ -14,8 +14,7 @@
 </style>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/echarts.min.js"></script>
 <script type="text/javascript">
-    let myChart = echarts.init(document.getElementById('post-calendar'));
-
+    var myChart = echarts.init(document.getElementById('post-calendar'));
     <%
     // calculate range.
     var startDate = moment().subtract(1, 'years');
@@ -42,7 +41,7 @@
     }
     datePosts += ']'; %>
 
-    let option = {
+    var option = {
         title: {
             top: 0,
             text: '文章日历',
@@ -114,6 +113,5 @@
         }]
 
     };
-
     myChart.setOption(option);
 </script>

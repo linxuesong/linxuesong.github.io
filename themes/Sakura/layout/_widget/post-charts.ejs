@@ -29,9 +29,9 @@
 
 <script type="text/javascript" src="<%= theme.libs.js.echarts %>"></script>
 <script>
-    let postsChart = echarts.init(document.getElementById('posts-chart'));
-    let categoriesChart = echarts.init(document.getElementById('categories-chart'));
-    let tagsChart = echarts.init(document.getElementById('tags-chart'));
+    var postsChart = echarts.init(document.getElementById('posts-chart'));
+    var categoriesChart = echarts.init(document.getElementById('categories-chart'));
+    var tagsChart = echarts.init(document.getElementById('tags-chart'));
 
     <%
     /* calculate postsOption data. */
@@ -59,7 +59,7 @@
     var monthArr = JSON.stringify([...monthMap.keys()]);
     var monthValueArr = JSON.stringify([...monthMap.values()]); %>
 
-    let postsOption = {
+    var postsOption = {
         title: {
             text: '文章发布统计图',
             top: 0,
@@ -121,7 +121,7 @@
 
     var categoryArrJson = JSON.stringify(categoryArr); %>
 
-    let categoriesOption = {
+    var categoriesOption = {
         title: {
             text: '文章分类统计图',
             top: 1,
@@ -174,7 +174,7 @@
     var tagNameArrJson = JSON.stringify(tagNameArr);
     var tagCountArrJson = JSON.stringify(tagCountArr); %>
 
-    let tagsOption = {
+    var tagsOption = {
         title: {
             text: 'Top10标签统计图 ',
             top: 2,

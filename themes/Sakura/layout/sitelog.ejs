@@ -438,22 +438,7 @@
         }
 </style>	
 	
-	
-	
-	
-	
-	
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-      
+
         <section class="author-profile">
           <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             <a href="/about/" class="profile gravatar"><img src="<%- (theme.cdn || '') + theme.avatar%>" itemprop="image" alt="hojun" height="70" width="70"></a>
@@ -465,24 +450,8 @@
             </div>
           </div>
           <hr>
-          <p id="showStr"></p>
+          <p id="showStr">小poor站的成长日记,让我们一起努力变好吧！</p>
         </section>
-        <!-- 一言 -->
-        <script type="text/javascript" src="https://api.imjad.cn/hitokoto/?cat=&charset=utf-8&length=&encode=js&fun=sync&source="></script>
-        <div style="display:none" id="hitokoto"><script>hitokoto()</script>
-        </div>
-        <script>
-            var index = 0;
-            var str = document.getElementById("hitokoto").innerText;
-            str = str.substring(10, str.length)//裁剪hitokoto()字样
-            function type() {
-              if(index == str.length) {
-                  index = 0;
-                }
-                document.getElementById("showStr").innerText = str.substring(0, index++);
-            }
-            setInterval(type, 200); //通过定时器来让文字逐步显示
-        </script>
       </div>   
   </div>
 </div>

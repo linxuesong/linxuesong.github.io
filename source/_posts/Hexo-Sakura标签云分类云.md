@@ -102,25 +102,8 @@ description:
               </h3>
             </div>
           </div>
-          <hr>
           <p id="showStr"></p>
         </section>
-        <!-- 一言 -->
-        <script type="text/javascript" src="https://api.imjad.cn/hitokoto/?cat=&charset=utf-8&length=&encode=js&fun=sync&source="></script>
-        <div style="display:none" id="hitokoto"><script>hitokoto()</script>
-        </div>
-        <script>
-            var index = 0;
-            var str = document.getElementById("hitokoto").innerText;
-            str = str.substring(10, str.length)//裁剪hitokoto()字样
-            function type() {
-              if(index == str.length) {
-                  index = 0;
-                }
-                document.getElementById("showStr").innerText = str.substring(0, index++);
-            }
-            setInterval(type, 200); //通过定时器来让文字逐步显示
-        </script>
       </div>   
   </div>
 </div>
@@ -289,7 +272,7 @@ _widget/tag-wordcloud.ejs
 <script type="text/javascript" src="https://blinkfox.github.io/libs/jqcloud/jqcloud-1.0.4.min.js"></script>
 <script type="text/javascript">
     <%
-    let tagWordArr = [];
+    var tagWordArr = [];
     site.tags.map(function (tag) {
         tagWordArr.push({
             'text': tag.name,
@@ -298,7 +281,7 @@ _widget/tag-wordcloud.ejs
         });
     });
 
-    let tagWords = JSON.stringify(tagWordArr); 
+    var tagWords = JSON.stringify(tagWordArr); 
     %>
 
     $('#tag-wordcloud').jQCloud( <%- tagWords %>, {
@@ -557,7 +540,7 @@ _widget\category-radar.ejs
  
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/echarts.min.js"></script>
 <script type="text/javascript">
-    let radarChart = echarts.init(document.getElementById('category-radar'));
+    var radarChart = echarts.init(document.getElementById('category-radar'));
  
     <%
         var categories = site.categories;
@@ -580,9 +563,9 @@ _widget\category-radar.ejs
         var radarValueData = JSON.stringify(radarValueArr);
     %>
  
-    let option = {
+    var option = {
         title: {
-            left: 'center',
+            left: 'center',var
             text: '文章分类雷达图',
             textStyle: {
                 fontWeight: 500,
@@ -678,7 +661,20 @@ EJS是一个JavaScript模板库，用来从JSON数据中生成HTML字符串。
 
 
 
+------------------------------------------------------------------------------------------------------------
 
+2021.01.14日
+
+## 问题处理
+
+之所以出现刷新界面不显示雷达的问题是因为在同一节点第二次点击时会雷达样式文件中的那个let定义的变量会再次定义
+
+所以我们要把let改为var避免报错js中的变量重复定义的问题。
+我已经把上面的js代码中的let改为var了，应该可以正常使用，只是我没验证过
+
+如果出现问题的话，可以按照问题范围查找一下
+
+于2021.01.14日记录
 
 
 

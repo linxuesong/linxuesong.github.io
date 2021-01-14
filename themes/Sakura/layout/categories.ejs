@@ -46,25 +46,7 @@
               </h3>
             </div>
           </div>
-          <hr>
-          <p id="showStr"></p>
+          <p id="showStr">随机打开一个，也许有你感兴趣的呦!</p>
         </section>
-        <!-- 一言 -->
-        <script type="text/javascript" src="https://api.imjad.cn/hitokoto/?cat=&charset=utf-8&length=&encode=js&fun=sync&source="></script>
-        <div style="display:none" id="hitokoto"><script>hitokoto()</script>
-        </div>
-        <script>
-            var index = 0;
-            var str = document.getElementById("hitokoto").innerText;
-            str = str.substring(10, str.length)//裁剪hitokoto()字样
-            function type() {
-              if(index == str.length) {
-                  index = 0;
-                }
-                document.getElementById("showStr").innerText = str.substring(0, index++);
-            }
-            setInterval(type, 200); //通过定时器来让文字逐步显示
-        </script>
-      </div>   
   </div>
 </div>
