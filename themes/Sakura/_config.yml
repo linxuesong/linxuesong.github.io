@@ -11,7 +11,7 @@ pjax: 1
 # 1开启
 mathjax: 0
 
-notice: 博客主题基本确定，接下来时一边写文章一边美化博客了，打算再增加一个记录网站美化记录的页面
+notice: 博客主题基本确定，接下来时一边写文章一边美化博客了，打算再增加一个记录网站美化记录的页面<br/>评论需要自定义头像的小伙伴请参考https://valine.js.org/avatar.html
 lazyloadImg: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg
 
 menus:
@@ -37,7 +37,7 @@ menus:
     歌单: {path: /music/, fa: fa-headphones },
     电影: {path: /movies/, fa: fa-video-camera },
     游戏: {path: /games/, fa: fa-gamepad },
-    图集: {path: /tags/图集/, fa: fa-photo },
+    图集: {path: /gallery/, fa: fa-photo },
   } }
   留言板: { path: /comment/, fa: fa-pencil-square-o faa-tada }
   友人帐: { path: /links/, fa: fa-link faa-shake }
@@ -198,9 +198,22 @@ daovoice:
 # 设置在归档页面achive中是否显示'文章日历'控件
 postCalendar: true 
 
+
+# 增加了相册页面 
+gallery: 
+  title: 光影流年 #标题 
+  icon: fa #这个显示相册页面的图标 
+  icon2: fa #这个显示自己的具体相册里面的相册的图标
+PhotoVerifyPassword: 
+  enable: true 
+  promptMessage: 该相册已加密，请输入密码访问 
+  errorMessage: 密码错误，将返回主页！
+
+
 #------------------------CDN,非必要--------------------------
 libs:
   css:
+    baguetteBoxCss: https://nekodeng.gitee.io/libs/MyGallery/css/baguetteBox.css
     googlefonts: https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC
     style: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/style.css #/css/style.css # 
     lib: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/lib.min.css
@@ -236,3 +249,4 @@ libs:
     word: https://cdn.jsdelivr.net/gh/wallleap/cdn/js/shehuizhuyi.js #点击出现字效
     love: https://cdn.jsdelivr.net/gh/wallleap/cdn/js/love.js #点击出现爱心
     cursor: https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.1.2/js/cursor.js # 星星跟随坠落(大内存)
+    baguetteBoxJs: https://nekodeng.gitee.io/libs/MyGallery/js/baguetteBox.js
