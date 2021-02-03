@@ -45,6 +45,7 @@ menus:
   关于: { path: /, fa: fa-leaf faa-wrench , submenus: { 
     任务清单: {path: /todolist, fa: fa-meetup},
     我？: {path: /about/, fa: fa-meetup}, 
+    友链检测: {path: /friendlink_status/, fa: fa-meetup}, 
     主题: {path: /theme-sakura/, fa: iconfont icon-sakura },
     Lab: {path: /lab/, fa: fa-cogs },
     娱乐: {path: /dinoswords, fa: fa-coffee },

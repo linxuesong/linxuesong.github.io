@@ -1,4 +1,4 @@
-﻿<div class="blank" style="padding-top: 75px;">
+﻿﻿<div class="blank" style="padding-top: 75px;">
 </div>
 <div class="pattern-center ">
   <div class="pattern-attachment-img">
@@ -35,130 +35,38 @@
 						<div class="min">
 							<div class="line"></div>
 							<div class="vas">
-												<div class="list">
-												<div class="caishendeng">        
-						<div class="caishenxian">
-							<img class="caishenpic fudai" src="https://hesifan.top//medias/spring-img/3.png">
-						</div>              
+
+    <% if (page.sitelog) { %>
+        <% (page.sitelog||[]).forEach(function (sitelog, index) { %>
+			<div class="list">
+				<!--挂件装饰开始-->
+				<div class="caishendeng">
+					<div class="caishenxian">
+						<img class="caishenpic fudai" src="https://hesifan.top//medias/spring-img/3.png">
 					</div>
-											
-													<div class="dian"></div>
-													<div class="list_box">
-														<div class="hx"></div>
-														<div class="list_nr">
-															<p class="date">2020-12-22 15:23:00</p>
-															<div class="nr_tit">
-																<a href="/status"># 建站日志界面</a>
-															</div>
-															<div class="nr_nr">
-																增加任务清单页面、元旦灯笼插件、图片清单页面</div>
-														</div>
-													</div>
-												</div>
-												<div class="list">
-													<div class="dian"></div>
-													<div class="list_box">
-														<div class="hx"></div>
-														<div class="list_nr">
-															<p class="date">2020-12-22 15:23:00</p>
-															<div class="nr_tit">
-																<a href="/status"># 建站日志界面</a>
-															</div>
-															<div class="nr_nr">
-																增加建站日志界面</div>
-														</div>
-													</div>
-												</div> 
-												<div class="list">
-													<div class="dian"></div>
-													<div class="list_box">
-														<div class="hx"></div>
-														<div class="list_nr">
-															<p class="date">2020-12-18 09:58:00</p>
-															<div class="nr_tit">
-																<a href="/time"># 书单</a>
-															</div>
-															<div class="nr_nr">
-																清单下面的书单页面进行修复	</div>
-														</div>
-													</div>
-												</div> 
-												<div class="list">
-													<div class="dian"></div>
-													<div class="list_box">
-														<div class="hx"></div>
-														<div class="list_nr">
-															<p class="date">2020-12-11 14:32:00</p>
-															<div class="nr_tit">
-																<a href="/contact"># 增加文章贡献日历及标签云样式</a>
-															</div>
-															<div class="nr_nr">
-																增加文章贡献日历及标签云样式
-																</div>
-														</div>
-													</div>
-												</div> 
-												<div class="list">
-													<div class="dian"></div>
-													<div class="list_box">
-														<div class="hx"></div>
-														<div class="list_nr">
-															<p class="date">2020-12-04 07:59:00</p>
-															<div class="nr_tit">
-																<a href=""># 博客评论系统</a>
-															</div>
-															<div class="nr_nr">
-																hexo+valine搭建博客评论系统<br/>增加RSS功能</div>
-														</div>
-													</div>
-												</div> 
-												<div class="list">
-													<div class="dian"></div>
-													<div class="list_box">
-														<div class="hx"></div>
-														<div class="list_nr">
-															<p class="date">2020-07-28 09:48:00</p>
-															<div class="nr_tit">
-																<a href=""># 优化资源存储</a>
-															</div>
-															<div class="nr_nr">
-																使用github作为资源存放地址，jsDelivr+github搭建CDN存放资源文件
-															</div>
-														</div>
-													</div>
-												</div> 
-												<div class="list">
-													<div class="dian"></div>
-													<div class="list_box">
-														<div class="hx"></div>
-														<div class="list_nr">
-															<p class="date">2018-12-15 08:25:00</p>
-															<div class="nr_tit">
-																<a href=""># 备案</a>
-															</div>
-															<div class="nr_nr">
-																选择sakura主题，进行初步自定义的配置</div>
-														</div>
-													</div>
-												</div> 
-												<div class="list">
-													<div class="dian"></div>
-													<div class="list_box">
-														<div class="hx"></div>
-														<div class="list_nr">
-															<p class="date">2018-12-12 19:38:00</p>
-															<div class="nr_tit">
-																<a href=""># 基础</a>
-															</div>
-															<div class="nr_nr">
-																完成github+hexo的网站配置</div>
-														</div>
-													</div>
-												</div> 
-												
-				 
-				
-				
+				</div>
+				<div class="caishendeng">
+					<div class="caishenxian">
+						<img class="caishenpic fudai" src="https://hesifan.top//medias/spring-img/3.png">
+					</div>
+				</div>
+				<!--挂件装饰结束-->
+				<div class="dian"></div>
+					<div class="list_box">
+						<div class="hx"></div>
+						<div class="list_nr">
+							<!--网站变动日期-->
+							<p class="date"><%- sitelog.date %></p>
+							<!--网站变动内容标题及跳转地址-->
+							<div class="nr_tit">
+								<a href=<%- sitelog.anchor_point %>>#<%- sitelog.title %> </a></div>
+							<!--网站变动内容详情-->
+							<div class="nr_nr"><%- sitelog.detail %></div>
+						</div>
+					</div>
+				</div>
+        <% }) %>
+    <% } %>	
 					<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 					<script src="../src/tiao_c.js"></script>
 					<script>

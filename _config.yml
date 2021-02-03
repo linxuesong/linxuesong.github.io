@@ -33,6 +33,7 @@ i18n_dir: :lang
 #任务清单页面
 skip_render:
 - "todolist/**" 
+- "friendlink_status/**"
 
 # Writing
 new_post_name: :title.md # File name of new posts
