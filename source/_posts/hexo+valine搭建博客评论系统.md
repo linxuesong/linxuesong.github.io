@@ -32,3 +32,5 @@ v_appKey: mgOpfzbkHYqU92CV4IDlAUHQ
 PS:valine还可以美化评论背景样式、增加评论邮件通知等等的功能
 
 参考博客:https://blog.csdn.net/cungudafa/article/details/104281764
+
+PS:可以在https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了
