@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>楓の葉小窝</title>
+  
+  
+  <link href="http://linxuesong.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://linxuesong.github.io/"/>
+  <updated>2021-04-09T07:41:01.083Z</updated>
+  <id>http://linxuesong.github.io/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java中祖先类Object提供的基础方法</title>
+    <link href="http://linxuesong.github.io/2021/04/09/Java%E4%B8%AD%E7%A5%96%E5%85%88%E7%B1%BBObject%E6%8F%90%E4%BE%9B%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/"/>
+    <id>http://linxuesong.github.io/2021/04/09/Java%E4%B8%AD%E7%A5%96%E5%85%88%E7%B1%BBObject%E6%8F%90%E4%BE%9B%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/</id>
+    <published>2021-04-09T07:28:30.000Z</published>
+    <updated>2021-04-09T07:41:01.083Z</updated>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>函数声明</th><th>Object中作用</th><th>子类重写作用</th></tr></thead><tbody><tr><td>boolean <strong>equals</strong> (Object other)</td><td>两个对象的引用是否相等，而非其实例域</td><td>比较子类的两个对象其内容是否相等</td></tr><tr><td>String hashCode()</td><td>由对象导出的散列码</td><td></td></tr><tr><td>String <strong>toString</strong> ()</td><td>返回对象类名和散列码</td><td>方便打印对象变量的实际内容，在JAVA语句中+x或x可以自动转为x.toString()</td></tr><tr><td>Class getClass ()</td><td>返回包含对象信息的类对象</td><td></td></tr><tr><td>String getName()</td><td>获取类名字</td><td></td></tr></tbody></table>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;函数声明&lt;/th&gt;
+&lt;th&gt;Object中作用&lt;/th&gt;
+&lt;th&gt;子类重写作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;boolean &lt;strong&gt;equals&lt;/strong&gt; (Object</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JAVA" scheme="http://linxuesong.github.io/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java重写完美的equals方法</title>
+    <link href="http://linxuesong.github.io/2021/04/09/Java%E9%87%8D%E5%86%99%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95/"/>
+    <id>http://linxuesong.github.io/2021/04/09/Java%E9%87%8D%E5%86%99%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95/</id>
+    <published>2021-04-09T07:08:57.000Z</published>
+    <updated>2021-04-09T07:10:05.084Z</updated>
+    
+    <content type="html"><![CDATA[<p>示例代码：</p><pre><code>    @Override    public boolean equals(Object otherObject) {        // 1.判断是否引用自身，小优化可以提前避免后面的实例比较        if(this == otherObject) {            return true;        }        // 2.比较this和otherObject是否为同一个类,此处有两种选择：        //   a. this.getClass()==otherObject.getClass(),各个子类中的语义不一致        //   b. otherObject instanceof ClassName,各个子类中的语义一致        if (this.getClass() != otherObject.getClass()) {            return false;        }        // 如果步骤2中按b分支，既比较双方可以转为通用父类，则多下面一步转换        // 按照a分支则无需此步骤        // ClassName other = (ClassName) otherObject;        Father other = (Father) otherObject;        // 3.比较this，other的内部实例, 基本类型用==，其他类型用Objects.equals(a,b)        return Objects.equals(this.a, other.a) &amp;&amp; this.b == other.b;    }</code></pre>]]></content>
+    
+    
+    <summary type="html">如何编写java类中equals方法</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JAVA" scheme="http://linxuesong.github.io/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JAVA中数组的常见操作</title>
+    <link href="http://linxuesong.github.io/2021/04/08/JAVA%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/"/>
+    <id>http://linxuesong.github.io/2021/04/08/JAVA%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/</id>
+    <published>2021-04-08T08:34:03.000Z</published>
+    <updated>2021-04-09T08:56:28.657Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、普通数组int"><a href="#一、普通数组int" class="headerlink" title="一、普通数组int[]"></a>一、普通数组int[]</h1><h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>类似C++中的数组指针，使用等号赋值只是浅拷贝，深拷贝需要用Arrays类的如下方法</p><pre><code>Static type copyOf(type a[], int length) // 深拷贝出一个新的数组Static type copyOfRange(type a[], int start, int end)</code></pre><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><pre><code>int[] a = new int[1000];Arrays.sort(a); // 使用优化后的快速排序方法对数组进行排序</code></pre><h2 id="判断是否相等"><a href="#判断是否相等" class="headerlink" title="判断是否相等"></a>判断是否相等</h2><p>直接用等号判断是判断引用是否为同一处，如果要判断具体值要用Arrays类的如下方法</p><pre><code>static boolean equals(type[] a, type[] b)</code></pre><h1 id="二、泛型数组列表ArrayList-lt-type-gt"><a href="#二、泛型数组列表ArrayList-lt-type-gt" class="headerlink" title="二、泛型数组列表ArrayList&lt;type&gt;"></a>二、泛型数组列表ArrayList&lt;type&gt;</h1><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 构建</span>ArrayList<span class="token operator">&lt;</span>Empolyee<span class="token operator">></span> staff <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>Employee<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 声明并构造</span><span class="token comment" spellcheck="true">// 增删改查</span>staff<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Emplyee</span><span class="token punctuation">(</span><span class="token string">"xxx"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 尾部添加元素,也可以指定位置</span>Employee e <span class="token operator">=</span> staff<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 删除下标为index的元素，之后所有元素前一</span>staff<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 将index位置元素赋值</span>Employee e <span class="token operator">=</span> staff<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 取指定位置元素</span><span class="token comment" spellcheck="true">// 遍历</span><span class="token keyword">for</span><span class="token punctuation">(</span>Employee e <span class="token operator">:</span> staff<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre><p>使用ArrayList存放基本类型数据需要装箱和拆箱</p><pre><code>ArrayList&lt;Integer&gt; lst = new ArrayList&lt;Integer&gt;();lst.add(3); //等价于Integer.valueOf(3)int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
+    
+    
+    <summary type="html">包含JAVA中的数组、Array、List等常用操作</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JAVA" scheme="http://linxuesong.github.io/tags/JAVA/"/>
+    
+    <category term="数组" scheme="http://linxuesong.github.io/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JAVA String和StringBuilder常用方法</title>
+    <link href="http://linxuesong.github.io/2021/04/08/JAVA-String%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    <id>http://linxuesong.github.io/2021/04/08/JAVA-String%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</id>
+    <published>2021-04-08T08:02:34.000Z</published>
+    <updated>2021-04-08T08:20:02.110Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、String不可变字符串"><a href="#一、String不可变字符串" class="headerlink" title="一、String不可变字符串"></a>一、String不可变字符串</h1><h2 id="1-int-compareTo-String-other-比较两字符串大小"><a href="#1-int-compareTo-String-other-比较两字符串大小" class="headerlink" title="1.int compareTo(String other) 比较两字符串大小"></a>1.int compareTo(String other) 比较两字符串大小</h2><h2 id="2-boolean-equals-Object-object-比较两字符串是否其内容一致"><a href="#2-boolean-equals-Object-object-比较两字符串是否其内容一致" class="headerlink" title="2.boolean equals(Object object)比较两字符串是否其内容一致"></a>2.boolean equals(Object object)比较两字符串是否其内容一致</h2><p>==比较运算符比较的是引用位置是否相等，而非其内容</p><h2 id="3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true"><a href="#3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true" class="headerlink" title="3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true"></a>3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true</h2><h2 id="4-int-indexOf-String-str-返回与指定字符串匹配的首个位置"><a href="#4-int-indexOf-String-str-返回与指定字符串匹配的首个位置" class="headerlink" title="4.int indexOf(String str)返回与指定字符串匹配的首个位置"></a>4.int indexOf(String str)返回与指定字符串匹配的首个位置</h2><p>如果还要其他要求，是有函数重载的</p><h2 id="5-int-length-字符串长度"><a href="#5-int-length-字符串长度" class="headerlink" title="5.int length()字符串长度"></a>5.int length()字符串长度</h2><h2 id="6-String-toLowerCase-和String-toUpperCase-大小写转换"><a href="#6-String-toLowerCase-和String-toUpperCase-大小写转换" class="headerlink" title="6.String toLowerCase()和String toUpperCase()大小写转换"></a>6.String toLowerCase()和String toUpperCase()大小写转换</h2><h2 id="7-String-trim-删除原始字符串头部和尾部的空格"><a href="#7-String-trim-删除原始字符串头部和尾部的空格" class="headerlink" title="7.String trim()删除原始字符串头部和尾部的空格"></a>7.String trim()删除原始字符串头部和尾部的空格</h2><p>更多方法可以参考Java的官网api文档</p><h1 id="二、StringBuilder"><a href="#二、StringBuilder" class="headerlink" title="二、StringBuilder"></a>二、StringBuilder</h1><p>string问题是每次做字符串拼接都会产生一个新的String对象，这样既耗时又费空间</p><p>使用StringBuilder则可以避免这个问题发生</p><h2 id="1-String-toString-转为字符串"><a href="#1-String-toString-转为字符串" class="headerlink" title="1.String toString()转为字符串"></a>1.String toString()转为字符串</h2><h2 id="2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传"><a href="#2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传" class="headerlink" title="2.StringBuilder insert(int offset， String str) 指定位置插入自负传"></a>2.StringBuilder insert(int offset， String str) 指定位置插入自负传</h2><h2 id="3-void-setCharAt-int-i，-char-c-设置指定位置字符"><a href="#3-void-setCharAt-int-i，-char-c-设置指定位置字符" class="headerlink" title="3.void setCharAt(int i， char c)设置指定位置字符"></a>3.void setCharAt(int i， char c)设置指定位置字符</h2><h2 id="4-StringBuilder-append（String-str）追加字符串在尾部"><a href="#4-StringBuilder-append（String-str）追加字符串在尾部" class="headerlink" title="4.StringBuilder append（String str）追加字符串在尾部"></a>4.StringBuilder append（String str）追加字符串在尾部</h2>]]></content>
+    
+    
+    <summary type="html">介绍JAVA不可变字符串常用方法</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="JAVA" scheme="http://linxuesong.github.io/tags/JAVA/"/>
+    
+    <category term="String" scheme="http://linxuesong.github.io/tags/String/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis常用命令整理</title>
+    <link href="http://linxuesong.github.io/2021/04/01/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/"/>
+    <id>http://linxuesong.github.io/2021/04/01/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</id>
+    <published>2021-04-01T06:59:02.000Z</published>
+    <updated>2021-04-01T07:27:00.342Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="0-前言及Redis的链接"><a href="#0-前言及Redis的链接" class="headerlink" title="0.前言及Redis的链接"></a>0.前言及Redis的链接</h1><p>redis缓存数据库，主要存放key-value键值对，其中key为字符串，value可为多种类型<strong>字符串</strong>、<strong>列表</strong>、<strong>集合</strong>、<strong>字典</strong></p><h1 id="1-设置字符串"><a href="#1-设置字符串" class="headerlink" title="1.设置字符串"></a>1.设置字符串</h1><pre><code>set key valueget key value</code></pre><h1 id="2-设置列表"><a href="#2-设置列表" class="headerlink" title="2.设置列表"></a>2.设置列表</h1><pre><code>lpsuh key childElement // 头部插入lpop  key // 头部删除lrang key 0 10 // 从头部开始查询到10// 注：尾部操作则将lpush替换成rpush// 头部插入的下表说明，头部入A、B、C下标:  0、  1、   2元素:  A、  B、   C下标:  -3、 -2、  -1</code></pre><h1 id="3-设置集合"><a href="#3-设置集合" class="headerlink" title="3.设置集合"></a>3.设置集合</h1><p>集合分为无序集合和有序集合(元素含权重)，集合元素个数为2的32次方-1个</p><p>无序集合</p><pre><code>sadd key member  // 添加元素smemebers key    // 查询所有元素scard key        // 获取集合中元素个数sdiff key1 key2  // 差集sinter key1 key2 // 集合的交集运算sunion key1 key2 // 集合的补集</code></pre><p>有序集合（元素含权重）</p><pre><code>将sadd改为zadd极为有序集合zadd key score member // 添加元素，score为元素权重</code></pre><h1 id="4-key的其他操作（移除、过期时间、检测）"><a href="#4-key的其他操作（移除、过期时间、检测）" class="headerlink" title="4.key的其他操作（移除、过期时间、检测）"></a>4.key的其他操作（移除、过期时间、检测）</h1><pre><code>del key   // 删除keyexist key // 检测key是否存在type key // 查看key类型expire   // 设置过期时间persist key // 持久化key，移除key过期时间ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和订阅"><a href="#5-Redis发布和订阅" class="headerlink" title="5.Redis发布和订阅"></a>5.Redis发布和订阅</h1><h1 id="6-Redis事务"><a href="#6-Redis事务" class="headerlink" title="6.Redis事务"></a>6.Redis事务</h1><h1 id="7-Redis脚本"><a href="#7-Redis脚本" class="headerlink" title="7.Redis脚本"></a>7.Redis脚本</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;0-前言及Redis的链接&quot;&gt;&lt;a href=&quot;#0-前言及Redis的链接&quot; class=&quot;headerlink&quot; title=&quot;0.前言及Redis的链接&quot;&gt;&lt;/a&gt;0.前言及Redis的链接&lt;/h1&gt;&lt;p&gt;redis缓存数据库，主要存放key-value键值</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="Reids" scheme="http://linxuesong.github.io/tags/Reids/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang包管理工具介绍</title>
+    <link href="http://linxuesong.github.io/2021/03/31/golang%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://linxuesong.github.io/2021/03/31/golang%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D/</id>
+    <published>2021-03-31T11:34:09.000Z</published>
+    <updated>2021-03-31T11:37:27.626Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考博客</p><p>Go管理工具的使用</p><h1 id="0-没有包管理工具的情况"><a href="#0-没有包管理工具的情况" class="headerlink" title="0.没有包管理工具的情况"></a>0.没有包管理工具的情况</h1><h2 id="0-1寻找依赖的路径："><a href="#0-1寻找依赖的路径：" class="headerlink" title="0.1寻找依赖的路径："></a>0.1寻找依赖的路径：</h2><p>1⃣️在GOROOT目录下查找</p><p>2⃣️在GOPATH/src下面查找包</p><h2 id="0-2获取依赖"><a href="#0-2获取依赖" class="headerlink" title="0.2获取依赖"></a>0.2获取依赖</h2><pre><code>go get 依赖地址 // 依赖包会存放到gopath下面两个位置，pkg里面.a文件和src下面的.go文件</code></pre><h1 id="1-govendor"><a href="#1-govendor" class="headerlink" title="1.govendor"></a>1.govendor</h1><h2 id="1-1管理方式"><a href="#1-1管理方式" class="headerlink" title="1.1管理方式"></a>1.1管理方式</h2><p>寻找依赖的路径：</p><p>1⃣️在$GOPATH/src/当前包文件/vendor目录</p><p>2⃣️向当前包目录的上级目录查找知道找到src下的vendor</p><p>3⃣️在GOROOT目录下查找</p><p>4⃣️在GOPATH下面查找包</p><h2 id="1-2安装"><a href="#1-2安装" class="headerlink" title="1.2安装"></a>1.2安装</h2><pre><code>go get -u github.com/kardianos/govendor</code></pre><p>安装完成后为方便使用加入到环境变量</p><pre><code>export PATH=&quot;$GOPATH/bin:$PATH&quot;</code></pre><h2 id="1-3使用"><a href="#1-3使用" class="headerlink" title="1.3使用"></a>1.3使用</h2><p>0⃣️如果不是从git上拉取已有vendor.json的项目，而是<strong>本地新建项目</strong>，则要初始化本地项目</p><p>初始化项目目录，生成vendor目录和vendor.json文件</p><pre><code>govendor init</code></pre><p>1⃣️下载项目依赖，这里以引入</p><p>依赖为例</p><p>从远程拉去下来依赖并放入当前vendor文件夹，记录到vendor.json,在gopath下不会有依赖包</p><pre><code>govendor fetch &quot;包链接&quot;// 举例：govendor fetch &quot;github.com/labstack/echo/...&quot;  //这里三个点表示文件夹下的所有文件，或者echo后面不要有斜杠，标识拉取项目</code></pre><p>🐻踩坑：i.对于无法从网上下载下里的包，只能从git上自己手动下载，放到vendor下面 ii.有时需要加上三个点标识所有文件，不然会下载下一个空文件夹</p><p>2⃣️提交到<strong>git上只需要提交vendor.json</strong>即可,不需要把所有的vendor依赖文件夹提交上去</p><p>从git上拉起他人项目，项目中含有vendor.json文件，通过如下命令安装依赖包</p><pre><code>govendor sync</code></pre><h2 id="1-4其他"><a href="#1-4其他" class="headerlink" title="1.4其他"></a>1.4其他</h2><p>常用命令</p><pre><code>govendor list // 列出代码中所有被引用到的包及其状态</code></pre><pre><code>govendor fetch // 从远程仓库添加或更新某个包</code></pre><table><thead><tr><th>子命令</th><th>功能</th></tr></thead><tbody><tr><td>init</td><td>初始化一个新项目，生成vendor文件夹</td></tr><tr><td>list</td><td>根据当前项目文件的import列出所有依赖包</td></tr><tr><td>add</td><td></td></tr><tr><td>update</td><td></td></tr><tr><td>remove</td><td></td></tr><tr><td>status</td><td></td></tr><tr><td>fetch</td><td>从远程仓库拉取依赖包</td></tr><tr><td>sync</td><td></td></tr><tr><td>migrate</td><td></td></tr><tr><td>get</td><td></td></tr><tr><td>license</td><td></td></tr><tr><td>shell</td><td></td></tr></tbody></table><p>状态参数</p><table><thead><tr><th>状态</th><th>缩写</th><th>含义</th></tr></thead><tbody><tr><td>+local</td><td>l</td><td>本地包，即项目内部编写的包</td></tr><tr><td>+external</td><td>e</td><td>外部包，即在 <code>GOPATH</code> 中、却不在项目 <code>vendor</code> 目录</td></tr><tr><td>+vendor</td><td>v</td><td>已在 <code>vendor</code> 目录下的包</td></tr><tr><td>+std</td><td>s</td><td>标准库里的包</td></tr><tr><td>+excluded</td><td>x</td><td>明确被排除的外部包</td></tr><tr><td>+unused</td><td>u</td><td>未使用的包，即在 <code>vendor</code> 目录下，但项目中并未引用到</td></tr><tr><td>+missing</td><td>m</td><td>被引用了但却找不到的包</td></tr><tr><td>+program</td><td>p</td><td>主程序包，即可被编译为执行文件的包</td></tr><tr><td>+outside</td><td></td><td>相当于状态为 <code>+external +missing</code></td></tr><tr><td>+all</td><td></td><td>所有包</td></tr></tbody></table><p>支持状态参数的子命令有：<code>list</code>、<code>add</code>、<code>update</code>、<code>remove</code>、<code>fetch</code></p><h1 id="2-gomod"><a href="#2-gomod" class="headerlink" title="2.gomod"></a>2.gomod</h1><p>前沿:go1.13版本会默认开启mod，1.11版本后才支持mod</p><h2 id="2-0前期准备-设置go环境参数使其支持mod"><a href="#2-0前期准备-设置go环境参数使其支持mod" class="headerlink" title="2.0前期准备,设置go环境参数使其支持mod"></a>2.0前期准备,设置go环境参数使其支持mod</h2><pre><code>go env -w GO111MODULE=on // 启用go mod，之后可以用go env 命令展示一下go的配置</code></pre><h2 id="2-1管理方式"><a href="#2-1管理方式" class="headerlink" title="2.1管理方式"></a>2.1管理方式</h2><p>模块:多个包package的集合</p><p>当<code>GO111MODULE</code>=<code>on</code>时，那么就会使用<code>modules</code>功能:这种模式下，<code>$GOPATH</code>不再作为build时导入的角色，依赖包会存放在<code>$GOPATH/pkg/mod</code>目录下。工程中的依赖包也会从此目录下查找.</p><h2 id="2-2初始化一个新项目"><a href="#2-2初始化一个新项目" class="headerlink" title="2.2初始化一个新项目"></a>2.2初始化一个新项目</h2><pre><code>go mod init &lt;项目名&gt; //项目名不填写则是gopath/src后的相对路径名，填的话一般为github.com/your name/project name</code></pre><h2 id="2-3添加依赖"><a href="#2-3添加依赖" class="headerlink" title="2.3添加依赖"></a>2.3添加依赖</h2><h3 id="a-先编写程序improt依赖包"><a href="#a-先编写程序improt依赖包" class="headerlink" title="a.先编写程序improt依赖包"></a>a.先编写程序improt依赖包</h3><p>其实当go run执行时会自动下载依赖包，当然也可以不运行而是只去下载依赖包</p><h3 id="b-下载依赖包"><a href="#b-下载依赖包" class="headerlink" title="b.下载依赖包"></a>b.下载依赖包</h3><pre><code>go mod tidy     // 检测并下载本项目的module所依赖的文件，同时会移除不需要的模块</code></pre><p>依赖包的存放位置是$GoPath/pkg/mod/</p><h3 id="C-修改go-mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝"><a href="#C-修改go-mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝" class="headerlink" title="C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝"></a>C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝</h3><p>例如go.mod的内容乳腺癌</p><pre><code>replace example.com/project/foo =&gt; ../foo</code></pre><h3 id="d-go-mod文件的介绍"><a href="#d-go-mod文件的介绍" class="headerlink" title="d.go.mod文件的介绍"></a>d.go.mod文件的介绍</h3><p>go.mod 提供了module, require、replace和exclude 四个命令</p><ul><li><code>module</code> 语句指定包的名字（路径）</li><li><code>require</code> 语句指定的依赖项模块</li><li><code>replace</code> 语句可以替换依赖项模块</li><li><code>exclude</code> 语句可以忽略依赖项模块</li></ul><h2 id="2-4其他命令"><a href="#2-4其他命令" class="headerlink" title="2.4其他命令"></a>2.4其他命令</h2><table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td>vendor</td><td>将依赖复制到vendor下</td></tr><tr><td>graph</td><td>打印模块依赖图</td></tr><tr><td>verify</td><td>验证依赖是否正确</td></tr><tr><td>edit</td><td>编辑go.mod文件</td></tr><tr><td>download</td><td>下载私有仓库的依赖到本地cache</td></tr></tbody></table><p>🐻在国内访问<code>golang.org/x</code>的各个包都需要翻墙，你可以在<code>go.mod</code>中使用<code>replace</code>替换成github上对应的库。形式如下：</p><pre><code>replace (    golang.org/x/crypto v0.0.0-20180820150726-614d502a4dac =&gt; github.com/golang/crypto v0.0.0-20180820150726-614d502a4dac    golang.org/x/net v0.0.0-20180821023952-922f4815f713 =&gt; github.com/golang/net v0.0.0-20180826012351-8a410e7b638d    golang.org/x/text v0.3.0 =&gt; github.com/golang/text v0.3.0)</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;参考博客&lt;/p&gt;
+&lt;p&gt;Go管理工具的使用&lt;/p&gt;
+&lt;h1 id=&quot;0-没有包管理工具的情况&quot;&gt;&lt;a href=&quot;#0-没有包管理工具的情况&quot; class=&quot;headerlink&quot; title=&quot;0.没有包管理工具的情况&quot;&gt;&lt;/a&gt;0.没有包管理工具的情况&lt;/h1&gt;&lt;h2 </summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Go" scheme="http://linxuesong.github.io/tags/Go/"/>
+    
+    <category term="包管理工具" scheme="http://linxuesong.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac配置iterm2</title>
+    <link href="http://linxuesong.github.io/2021/03/20/mac%E9%85%8D%E7%BD%AEiterm2/"/>
+    <id>http://linxuesong.github.io/2021/03/20/mac%E9%85%8D%E7%BD%AEiterm2/</id>
+    <published>2021-03-20T03:27:45.000Z</published>
+    <updated>2021-03-20T03:33:32.680Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考链接：晨旭OvO原创文章<a href="https://blog.csdn.net/a1228136188/article/details/109092435" target="_blank" rel="noopener">https://blog.csdn.net/a1228136188/article/details/109092435</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;参考链接：晨旭OvO原创文章&lt;a href=&quot;https://blog.csdn.net/a1228136188/article/details/109092435&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/</summary>
+      
+    
+    
+    
+    <category term="转载" scheme="http://linxuesong.github.io/categories/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+    <category term="mac软件" scheme="http://linxuesong.github.io/tags/mac%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac迁移软件经历</title>
+    <link href="http://linxuesong.github.io/2021/03/20/mac%E8%BF%81%E7%A7%BB%E8%BD%AF%E4%BB%B6%E7%BB%8F%E5%8E%86/"/>
+    <id>http://linxuesong.github.io/2021/03/20/mac%E8%BF%81%E7%A7%BB%E8%BD%AF%E4%BB%B6%E7%BB%8F%E5%8E%86/</id>
+    <published>2021-03-20T03:10:25.000Z</published>
+    <updated>2021-03-20T03:23:11.319Z</updated>
+    
+    <content type="html"><![CDATA[<p>Mac工作软件安装踩坑记录</p><h1 id="1-Idea"><a href="#1-Idea" class="headerlink" title="1.Idea"></a>1.Idea</h1><p>先下载idea，在idea里面下载jdk，这样避免配置jdk</p><h2 id="1-1下载idea"><a href="#1-1下载idea" class="headerlink" title="1.1下载idea"></a>1.1下载idea</h2><h2 id="1-2在idea内部安装jdk"><a href="#1-2在idea内部安装jdk" class="headerlink" title="1.2在idea内部安装jdk"></a>1.2在idea内部安装jdk</h2><p>![使用idea安装jdk](<a href="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/截屏2021-03-19" target="_blank" rel="noopener">https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/截屏2021-03-19</a> 下午7.45.35.png)</p><h2 id="1-3修改maven配置"><a href="#1-3修改maven配置" class="headerlink" title="1.3修改maven配置"></a>1.3修改maven配置</h2><p>主要解决：解决maven包拉取不下来</p><p>打开一个项目文件，在配置中将原来电脑的setting.xml做替换，更新maven即可</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%887.49.02.png" alt="截屏2021-03-19 下午7.49.02"></p><h1 id="2-goland"><a href="#2-goland" class="headerlink" title="2.goland"></a>2.goland</h1><h2 id="2-1安装goland"><a href="#2-1安装goland" class="headerlink" title="2.1安装goland"></a>2.1安装goland</h2><h2 id="2-2在goland中安装go环境"><a href="#2-2在goland中安装go环境" class="headerlink" title="2.2在goland中安装go环境"></a>2.2在goland中安装go环境</h2><p>![截屏2021-03-19 下午7.53.10](/Users/linxuesong/Desktop/截屏2021-03-19 下午7.53.10.png)</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%887.54.07.png" alt="截屏2021-03-19 下午7.54.07"></p><h1 id="3-邮件"><a href="#3-邮件" class="headerlink" title="3.邮件"></a>3.邮件</h1><h2 id="3-1关闭腾讯企业邮箱的安全登录"><a href="#3-1关闭腾讯企业邮箱的安全登录" class="headerlink" title="3.1关闭腾讯企业邮箱的安全登录"></a>3.1关闭腾讯企业邮箱的安全登录</h2><p>登录腾讯企业邮箱官网，设置-》账户，将账户安全修改如下：</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%887.57.47.png" alt="截屏2021-03-19 下午7.57.47"></p><h2 id="3-2mac邮件添加邮箱账户"><a href="#3-2mac邮件添加邮箱账户" class="headerlink" title="3.2mac邮件添加邮箱账户"></a>3.2mac邮件添加邮箱账户</h2><p>选填加其他邮箱账户</p><p>电子邮件和密码是公司提供的，确认后进入如下界面</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%888.02.55.png" alt="截屏2021-03-19 下午8.02.55"></p><p>这个配置的填写参考腾讯邮箱 设置-》客户端设置界面<img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%888.04.00.png" alt="截屏2021-03-19 下午8.04.00"></p><p>配置tls端口时要先关闭“自动管理链接设置”</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%888.17.18.png" alt="截屏2021-03-19 下午8.17.18"></p><p>参考博客：使用Mac自带邮箱添加腾讯企业邮箱 <a href="https://www.jianshu.com/p/2eb79645d94f" target="_blank" rel="noopener">https://www.jianshu.com/p/2eb79645d94f</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Mac工作软件安装踩坑记录&lt;/p&gt;
+&lt;h1 id=&quot;1-Idea&quot;&gt;&lt;a href=&quot;#1-Idea&quot; class=&quot;headerlink&quot; title=&quot;1.Idea&quot;&gt;&lt;/a&gt;1.Idea&lt;/h1&gt;&lt;p&gt;先下载idea，在idea里面下载jdk，这样避免配置jdk&lt;/p</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="软件安装" scheme="http://linxuesong.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://linxuesong.github.io/2021/03/19/hello-world/"/>
+    <id>http://linxuesong.github.io/2021/03/19/hello-world/</id>
+    <published>2021-03-19T12:49:38.727Z</published>
+    <updated>2021-03-19T12:49:38.727Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hexo+valine搭建博客评论系统</title>
+    <link href="http://linxuesong.github.io/2021/03/19/hexo+valine%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://linxuesong.github.io/2021/03/19/hexo+valine%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</id>
+    <published>2021-03-19T12:49:38.727Z</published>
+    <updated>2021-03-19T12:49:38.727Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="hexo-valine搭建博客评论系统"><a href="#hexo-valine搭建博客评论系统" class="headerlink" title="hexo+valine搭建博客评论系统"></a>hexo+valine搭建博客评论系统</h1><p>1.注册LeanCloud</p><p>2.在leanCloud中创建应用</p><p>3.拿到appid和appkey</p><p>然后 <strong>进入应用-&gt;设置-&gt;应用key</strong></p><p>拿到你的appid和appkey之后，打开<strong>主题配置文件</strong> 搜索 <strong>valine</strong>，填入appid 和 appkey</p><p>4.修改hexo博客主题目录themes/Skaura/_config.yml配置文件中的valine部分内容</p><pre><code># Valinevaline: truev_appId: GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHszv_appKey: mgOpfzbkHYqU92CV4IDlAUHQ</code></pre><p>5.记得在Leancloud -&gt; 设置 -&gt; 安全中心 -&gt; Web 安全域名 把你的域名加进去</p><p>最后当我们发送一条评论后可以在leanCloud中的   存储/结构化数据/comment看到评论信息</p><p>PS:valine还可以美化评论背景样式、增加评论邮件通知等等的功能</p><p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104281764" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104281764</a></p><p>PS:可以在<a href="https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了" target="_blank" rel="noopener">https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;hexo-valine搭建博客评论系统&quot;&gt;&lt;a href=&quot;#hexo-valine搭建博客评论系统&quot; class=&quot;headerlink&quot; title=&quot;hexo+valine搭建博客评论系统&quot;&gt;&lt;/a&gt;hexo+valine搭建博客评论系统&lt;/h1&gt;&lt;p&gt;1.</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>主题博客增加天气插件</title>
+    <link href="http://linxuesong.github.io/2021/03/08/%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E5%A4%A9%E6%B0%94%E6%8F%92%E4%BB%B6/"/>
+    <id>http://linxuesong.github.io/2021/03/08/%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E5%A4%A9%E6%B0%94%E6%8F%92%E4%BB%B6/</id>
+    <published>2021-03-08T07:57:56.000Z</published>
+    <updated>2021-03-19T12:49:38.728Z</updated>
+    
+    <content type="html"><![CDATA[<p>效果预览：</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210308160128.png" alt="image-20210308160120253"></p><h2 id="1-注册和风天气账号"><a href="#1-注册和风天气账号" class="headerlink" title="1.注册和风天气账号"></a>1.注册和风天气账号</h2><p>官方网址如下<a href="https://www.qweather.com/" target="_blank" rel="noopener">https://www.qweather.com/</a></p><h2 id="2-导入生成的插件代码"><a href="#2-导入生成的插件代码" class="headerlink" title="2.导入生成的插件代码"></a>2.导入生成的插件代码</h2><p>博客目录\themes\Sakura\layout_partial\header.ejs     嵌入到代码的最尾部</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;效果预览：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210308160128.png&quot; alt=&quot;image-202103081601</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="主题美化" scheme="http://linxuesong.github.io/tags/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
+    
+    <category term="sakura" scheme="http://linxuesong.github.io/tags/sakura/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu中apt-get安装的默认路径</title>
+    <link href="http://linxuesong.github.io/2021/03/01/ubuntu%E4%B8%ADapt-get%E5%AE%89%E8%A3%85%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84/"/>
+    <id>http://linxuesong.github.io/2021/03/01/ubuntu%E4%B8%ADapt-get%E5%AE%89%E8%A3%85%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84/</id>
+    <published>2021-03-01T03:12:51.000Z</published>
+    <updated>2021-03-19T12:49:38.728Z</updated>
+    
+    <content type="html"><![CDATA[<p>博客源地址：<a href="https://blog.csdn.net/yanhx1204/article/details/54893581" target="_blank" rel="noopener">https://blog.csdn.net/yanhx1204/article/details/54893581</a></p><h1 id="一、apt-get-安装"><a href="#一、apt-get-安装" class="headerlink" title="一、apt-get 安装"></a>一、apt-get 安装</h1><p>deb是debian linus的安装格式，跟red hat的rpm非常相似，最基本的安装命令是：dpkg -i file.deb或者直接双击此文件</p><p>dpkg 是Debian Package的简写，是为Debian 专门开发的套件管理系统，方便软件的安装、更新及移除。所有源自Debian的Linux发行版都使用dpkg，例如Ubuntu、Knoppix 等。<br>以下是一些 Dpkg 的普通用法：</p><p>1、dpkg -i<br>    安装一个 Debian 软件包，如你手动下载的文件。</p><p>2、dpkg -c<br>    列出 的内容。</p><p>3、dpkg -I<br>   从 中提取包裹信息。</p><p>4、dpkg -r<br>    移除一个已安装的包裹。</p><p>5、dpkg -P<br>   完全清除一个已安装的包裹。和 remove 不同的是，remove 只是删掉数据和可执行文件，purge 另外还删除所有的配制文件。</p><p>6、dpkg -L<br>   列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .deb 文件的内容。</p><p>7、dpkg -s<br>   显示已安装包裹的信息。同时请看 apt-cache 显示 Debian 存档中的包裹信息，以及 dpkg -I 来显示从一个 .deb 文件中提取的包裹信息。</p><p>8、dpkg-reconfigure<br>   重新配制一个已经安装的包裹，如果它使用的是 debconf (debconf 为包裹安装提供了一个统一的配制界面)。</p><h1 id="二、软件安装后相关文件位置"><a href="#二、软件安装后相关文件位置" class="headerlink" title="二、软件安装后相关文件位置"></a>二、软件安装后相关文件位置</h1><p>   1.下载的软件存放位置<br>    /var/cache/apt/archives</p><p>   2.安装后软件默认位置<br>  /usr/share</p><p>   3.可执行文件位置<br>  /usr/bin</p><p>   4.配置文件位置<br>   /etc</p><p>  5.lib文件位置<br>  /usr/lib</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;博客源地址：&lt;a href=&quot;https://blog.csdn.net/yanhx1204/article/details/54893581&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/yanhx1204/a</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="转载" scheme="http://linxuesong.github.io/categories/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+    <category term="linux" scheme="http://linxuesong.github.io/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编程开发技术学习资源整理</title>
+    <link href="http://linxuesong.github.io/2021/02/26/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/"/>
+    <id>http://linxuesong.github.io/2021/02/26/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</id>
+    <published>2021-02-26T06:19:14.000Z</published>
+    <updated>2021-03-19T12:49:38.730Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="0-大纲概览"><a href="#0-大纲概览" class="headerlink" title="0.大纲概览"></a>0.大纲概览</h1><p>主要介绍一下，本片文章涉及到的内容</p><p>1.编程语言,含c++、go、java</p><h1 id="1-编程语言语法"><a href="#1-编程语言语法" class="headerlink" title="1.编程语言语法"></a>1.编程语言语法</h1><h2 id="1-1-C"><a href="#1-1-C" class="headerlink" title="1.1 C++"></a>1.1 C++</h2><h2 id="1-2-Golang"><a href="#1-2-Golang" class="headerlink" title="1.2 Golang"></a>1.2 Golang</h2><p>①W3Cschool <a href="https://www.w3cschool.cn/yqbmht/7rcvwcqm.html" target="_blank" rel="noopener">https://www.w3cschool.cn/yqbmht/7rcvwcqm.html</a>    描述：前几章可以做入门使用，之后几章多了一些网络通信的编程</p><p>②<a href="https://draveness.me/golang/入门级学习" target="_blank" rel="noopener">https://draveness.me/golang/入门级学习</a></p><p>③<a href="https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/" target="_blank" rel="noopener">https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/</a> 更加底层的学习go语言，设计到汇编，内容细致，干活多</p><h2 id="1-3-Java"><a href="#1-3-Java" class="headerlink" title="1.3 Java"></a>1.3 Java</h2><h1 id="2-Linux命令速查"><a href="#2-Linux命令速查" class="headerlink" title="2.Linux命令速查"></a>2.Linux命令速查</h1><p><a href="https://blog.csdn.net/waitig1992/article/details/51884653" target="_blank" rel="noopener">https://blog.csdn.net/waitig1992/article/details/51884653</a> 描述：通过预览页快速定位到<a href="http://www.linuxdaxue.com/，快速定位把" target="_blank" rel="noopener">http://www.linuxdaxue.com/，快速定位把</a></p><h1 id="3-Nginx学习"><a href="#3-Nginx学习" class="headerlink" title="3.Nginx学习"></a>3.Nginx学习</h1><p>源码学习：</p><p><a href="https://www.kancloud.cn/digest/understandingnginx/202587" target="_blank" rel="noopener">https://www.kancloud.cn/digest/understandingnginx/202587</a> 章节式学习，有些枯燥</p><p><a href="https://segmentfault.com/a/1190000016922188" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016922188</a> 单独对nginx配置文件解析过程进行的分析</p><h1 id="4-算法"><a href="#4-算法" class="headerlink" title="4.算法"></a>4.算法</h1><p><a href="https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结" target="_blank" rel="noopener">https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结</a></p>]]></content>
+    
+    
+    <summary type="html">常用技术学习资源的分享，包含编程语言、硬盘数据库、内存数据库、网络编程框架</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="资源" scheme="http://linxuesong.github.io/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+    <category term="nginx" scheme="http://linxuesong.github.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo博客添加友链检测界面UptimeRobot+CupSatus</title>
+    <link href="http://linxuesong.github.io/2021/02/03/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE%E6%A3%80%E6%B5%8B%E7%95%8C%E9%9D%A2UptimeRobot-CupSatus/"/>
+    <id>http://linxuesong.github.io/2021/02/03/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE%E6%A3%80%E6%B5%8B%E7%95%8C%E9%9D%A2UptimeRobot-CupSatus/</id>
+    <published>2021-02-03T10:01:58.000Z</published>
+    <updated>2021-03-19T12:49:38.727Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="0-效果展示"><a href="#0-效果展示" class="headerlink" title="0.效果展示"></a>0.效果展示</h1><h1 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h1><p>a.注册UptimeRobot账号，将自己的网站和要检测的网站或者账号加上去</p><p>b.去<a href="https://github.com/izoyo/Cup网址下载CupStatus页面" target="_blank" rel="noopener">https://github.com/izoyo/Cup网址下载CupStatus页面</a></p><h1 id="2-应用到自己的hexo博客上"><a href="#2-应用到自己的hexo博客上" class="headerlink" title="2.应用到自己的hexo博客上"></a>2.应用到自己的hexo博客上</h1><p>hexo new page “friendlink_status” 页面</p><p>在source/friendlink_status/中把CupSatus的所有文件放进去，目录如下</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210203180649.png" alt="image-20210203180642121"></p><p>按照开源项目CupSatus中说的把js/config.js中的key替换成自己upTimeRobot账号下对应的api key即可</p><p>然后在博客目录/config.yml  注意不是主题目录下的那个配置文件</p><p>加入skip-render:   -friendlink_status/**  不使用主题的layout.ejs渲染这个页面</p><p>在主题的配置文件中菜单导航栏上加入这个页面即可</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;0-效果展示&quot;&gt;&lt;a href=&quot;#0-效果展示&quot; class=&quot;headerlink&quot; title=&quot;0.效果展示&quot;&gt;&lt;/a&gt;0.效果展示&lt;/h1&gt;&lt;h1 id=&quot;1-前期准备&quot;&gt;&lt;a href=&quot;#1-前期准备&quot; class=&quot;headerlink&quot; titl</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>博客美化增加瀑布流相册</title>
+    <link href="http://linxuesong.github.io/2021/01/26/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E7%80%91%E5%B8%83%E6%B5%81%E7%9B%B8%E5%86%8C/"/>
+    <id>http://linxuesong.github.io/2021/01/26/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E7%80%91%E5%B8%83%E6%B5%81%E7%9B%B8%E5%86%8C/</id>
+    <published>2021-01-26T06:53:03.000Z</published>
+    <updated>2021-03-19T12:49:38.729Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考链接:</p><p>来源: itsNekoDeng<br>文章作者: NekoDeng<br>文章链接: <a href="https://nekodeng.gitee.io/posts/waterfall-flow-photo-album.html#toc-heading-9" target="_blank" rel="noopener">https://nekodeng.gitee.io/posts/waterfall-flow-photo-album.html#toc-heading-9</a></p><p>自己经过修改后移植到sakura主题</p><h1 id="1-增加相册界面和相册详情页面"><a href="#1-增加相册界面和相册详情页面" class="headerlink" title="1.增加相册界面和相册详情页面"></a>1.增加相册界面和相册详情页面</h1><h2 id="1-1新建gallery界面-相册概览"><a href="#1-1新建gallery界面-相册概览" class="headerlink" title="1.1新建gallery界面(相册概览)"></a>1.1新建gallery界面(相册概览)</h2><pre><code>hexo new &quot;gallery&quot;</code></pre><p>在博客目录/source/gallery可以看到index.md文件，修改内容如下</p><pre><code>---title: gallerycomments: falsedate: 2021-01-25 19:40:18keywords:description:photos:layout: &quot;gallery&quot;---</code></pre><p>1.2增加相册详情页</p><p>在博客目录创建/source/gallery/test/index.md</p><p>创test文件夹</p><p><img src="C:%5CUsers%5Clinxuesong%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210126193135392.png" alt="image-20210126193135392"></p><p>及其下面的index.md文件<img src="C:%5CUsers%5Clinxuesong%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210126193145171.png" alt="image-20210126193145171"></p><p>index内容为</p><pre><code>---title: testdate: 2020-10-02 23:00:17 type: &quot;galleries&quot; layout: &quot;galleries&quot; password:---</code></pre><h2 id="1-2相册加密功能（选用）"><a href="#1-2相册加密功能（选用）" class="headerlink" title="1.2相册加密功能（选用）"></a>1.2相册加密功能（选用）</h2><p>在上面<code>index.md</code>文件中，可以实现加密功能，加密使用<code>SHA256</code>加密，所以在加密前需要先将你的密码转换成<code>SHA256格式</code>然后输入到最上面的创建相片页面的index.md的<code>password</code>里面。至于SHA256加密，请自行网上搜索在线生成，例如: <a href="http://www.ttmd5.com/hash.php?type=9" target="_blank" rel="noopener">http://www.ttmd5.com/hash.php?type=9</a></p><h3 id="编辑主题导航栏加入相册按钮"><a href="#编辑主题导航栏加入相册按钮" class="headerlink" title="编辑主题导航栏加入相册按钮"></a>编辑主题导航栏加入相册按钮</h3><h1 id="2-新增布局样式文件"><a href="#2-新增布局样式文件" class="headerlink" title="2.新增布局样式文件"></a>2.新增布局样式文件</h1><p>在博客目录/themes/sakura/layout/位置下新增两个文件gallery.ejs、galleries.ejs</p><p>这两个布局样式引用了<a href="https://github.com/feimosi/baguetteBox.js中的js和css样式文件，感兴趣可以自行参考" target="_blank" rel="noopener">https://github.com/feimosi/baguetteBox.js中的js和css样式文件，感兴趣可以自行参考</a></p><p>文件内容分别如下:</p><p>gallery.ejs</p><pre><code>[{    &quot;name&quot;: &quot;test&quot;,    &quot;cover&quot;: &quot;https://i.loli.net/2020/10/05/kBcvAf7INgMLaem.jpg&quot;,    &quot;date&quot;: &quot;2017-10&quot;,    &quot;description&quot;: &quot;test&quot;,    &quot;url_name&quot;: &quot;test&quot;,    &quot;album&quot;: [{        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/qtOevHpw5XImS1J.jpg&quot;,        &quot;title&quot;: &quot;test&quot;,        &quot;describe&quot;: &quot;test&quot;    }, {        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg&quot;,        &quot;title&quot;: &quot;test&quot;,        &quot;describe&quot;: &quot;test&quot;    }, {        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg&quot;,        &quot;title&quot;: &quot;test&quot;,        &quot;describe&quot;: &quot;test&quot;    }]}]</code></pre><p>galleries.ejs</p><pre><code>&lt;!-- 加密功能 --&gt;&lt;% if (theme.PhotoVerifyPassword.enable) { %&gt;    &lt;script src=&quot;&lt;%- theme.libs.js.crypto %&gt;&quot;&gt;&lt;/script&gt;    &lt;script&gt;        (function() {            let pwd = &#39;&lt;%- page.password %&gt;&#39;;            if (pwd &amp;&amp; pwd.length &gt; 0) {                if (pwd !== CryptoJS.SHA256(prompt(&#39;&lt;%- theme.PhotoVerifyPassword.promptMessage %&gt;&#39;)).toString(CryptoJS.enc.Hex)) {                    alert(&#39;&lt;%- theme.PhotoVerifyPassword.errorMessage %&gt;&#39;);                    location.href = &#39;&lt;%- url_for(&quot;/&quot;)  %&gt;&#39;;                }            }        })();    &lt;/script&gt;&lt;% } %&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%- theme.libs.css.baguetteBoxCss %&gt;&quot;&gt;&lt;!-- 该主题自带的lightGallery.js在图片多的时候会很卡，所以弃用，使用了一个我在网上找的baguetteBox，很轻量级，就是功能少了点 --&gt;&lt;script src=&quot;&lt;%- theme.libs.js.baguetteBoxJs %&gt;&quot;&gt;&lt;/script&gt; &lt;style&gt;        .my-gallery .photo img {        transition: all 0.6s ease-in-out;     }         .my-gallery .photo:hover img {        opacity: 0.6;        transform: scale(1.05);    }          .my-gallery {        margin: 20px auto;    }       .miaoshus .title {        font-family: MV Boli;    }    .miaoshus {        padding: 20px;        border: 1px dashed #e6e6e6;        color: #969696;        position: relative;        display: inline-block;        width: 75%;        background: #fbfbfb50;        border-radius: 10px;        font-size: 16px;        margin: 24px auto 12px;    }    body.dark .miaoshus {        background: 0 0;        border: 1px dashed #888;    }    body {        overflow: visible!important;    }    .box {            position: relative;        }    .box img {        width: 350px;        vertical-align: top;        padding: 8px;        border-radius: 10px;        transition: all 0.5s;    }    .box img:hover {        transform: scale(1.05);    }    .page-footer {        display: none    }    body {        overflow-y: visible!important;    }    header {        background-color: #000;    }    .biaotiss {            font-family: MV Boli;        }       @media only screen and (max-width: 1058px) {        .box {            margin-left: 145px;        }    }    @media only screen and (max-width: 770px) {        .box {            margin-left: 15px;        }    }    @media only screen and (max-width: 500px) {        #previous-button, #next-button {            display: none;        }    }    @media only screen and (max-width: 380px) {        .box {            margin-left: -5px;        }    }    @media only screen and (max-width: 323px) {        .box img {            width: 296px;            left: 0;        }    }&lt;/style&gt;&lt;div class=&quot;tag-title center-align&quot;&gt;    &lt;div class=&quot;miaoshus&quot;&gt;        &lt;div class=&quot;title center-align&quot;&gt;            “ &lt;% if (is_home() &amp;&amp; config.subtitle &amp;&amp; config.subtitle.length &gt; 0) { %&gt;                &lt;%= config.subtitle %&gt;            &lt;% } else { %&gt;                &lt;%= page.title %&gt;            &lt;% } %&gt; ”        &lt;/div&gt;        “ &lt;%- theme.gallery.title %&gt; ”        “ 这里有光影流年，还有两朵穿衣裳的云，相拥在明天的河岸。”    &lt;/div&gt;&lt;/div&gt;&lt;!-- 相册 --&gt;&lt;section class=&quot;gallery&quot;&gt;    &lt;div id=&quot;myGallery&quot; class=&quot;my-gallery&quot;&gt;        &lt;div class=&quot;row&quot;&gt;            &lt;div class=&quot;box&quot;&gt;            &lt;% if (site.data &amp;&amp; site.data.gallery) { %&gt;                &lt;% var galleries = site.data.gallery;                     var pageTitle = page.title;                    function getCurrentGallery(galleries, pageTitle) {                        for (let i = 0; i &lt; galleries.length; i++) {                            if (galleries[i][&#39;name&#39;] == pageTitle) {                                return galleries[i];                            }                        }                    }                    var currentGallery = getCurrentGallery(galleries, pageTitle);                    var photos = currentGallery.album;                %&gt;                &lt;% for (var i = 0, len = photos.length; i &lt; len; i++) { %&gt;                    &lt;% var my_album = photos[i]; %&gt;                                           &lt;a href=&quot;&lt;%- my_album.img_url %&gt;&quot; data-caption=&quot;&lt;%- my_album.title %&gt;&quot;&gt;                            &lt;img class=&quot;mat&quot; src=&quot;/medias/loading.svg&quot; data-src=&quot;&lt;%- my_album.img_url %&gt;&quot; alt=&quot;img&quot;+&lt;%- i %&gt; &gt;                        &lt;/a&gt;                                   &lt;% } %&gt;            &lt;% } %&gt;        &lt;/div&gt;        &lt;/div&gt;    &lt;/div&gt;&lt;/section&gt;&lt;script&gt;    $(function () {        // 获取图片的宽度(200px)        let imgWidth = $(&#39;.mat&#39;).outerWidth(); // 200        waterfallHandler();        // 瀑布流处理        function waterfallHandler() {            // 获取图片的列数            let column = parseInt($(window).width() / imgWidth);            // 高度数组            let heightArr = [];            for(let i=0; i&lt;column; i++) {                heightArr[i] = 0;            }            // 遍历所有图片进行定位处理            $.each($(&#39;.mat&#39;), function (index, item) {                // 当前元素的高度                let itemHeight = $(item).outerHeight();                // 高度数组最小的高度                let minHeight = Math.min(...heightArr);                // 高度数组最小的高度的索引                let minIndex = heightArr.indexOf(minHeight);                $(item).css({                    position: &#39;absolute&#39;,                    top: minHeight + &#39;px&#39;,                    left: minIndex * imgWidth + &#39;px&#39;                });                heightArr[minIndex] += itemHeight;            });        }        // 窗口大小改变        $(window).resize(function () {            waterfallHandler();        });    });&lt;/script&gt;&lt;script&gt;    baguetteBox.run(&#39;.gallery&#39;, {        // 配置参数        buttons:Boolean,//是否显示导航按钮。        noScrollbars:true,//是否在显示时隐藏滚动条。        titleTag:true,//是否使用图片上的title属性作为图片标题        async:false,//是否异步加载文件。    });    start()        $(window).on(&#39;scroll&#39;, function(){        start();    })    function start(){          //.not(&#39;[data-isLoaded]&#39;)选中已加载的图片不需要重新加载        $(&#39;.gallery img&#39;).not(&#39;[data-isLoaded]&#39;).each(function(){            var $node = $(this)            if( isShow($node) ){                loadImg($node);            }        });    }    //判断一个元素是不是出现在窗口(视野)    function isShow($node){        return $node.offset().top &lt;= $(window).height() + $(window).scrollTop();    }    //加载图片    function loadImg($img){    //.attr(值)    //.attr(属性名称,值)        $img.attr(&#39;src&#39;, $img.attr(&#39;data-src&#39;)); //把data-src的值 赋值给src        $img.attr(&#39;data-isLoaded&#39;, 1);//已加载的图片做标记    }&lt;/script&gt;</code></pre><h1 id="3-增加具体的相册图片"><a href="#3-增加具体的相册图片" class="headerlink" title="3.增加具体的相册图片"></a>3.增加具体的相册图片</h1><p>博客目录/source/_data/位置下(如果没有_data文件夹创建)</p><h2 id="3-1创建gallery-json文件，其内容为"><a href="#3-1创建gallery-json文件，其内容为" class="headerlink" title="3.1创建gallery.json文件，其内容为:"></a>3.1创建gallery.json文件，其内容为:</h2><pre><code>[{    &quot;name&quot;: &quot;test&quot;,    &quot;cover&quot;: &quot;https://i.loli.net/2020/10/05/kBcvAf7INgMLaem.jpg&quot;,    &quot;date&quot;: &quot;2017-10&quot;,    &quot;description&quot;: &quot;test&quot;,    &quot;url_name&quot;: &quot;test&quot;,    &quot;album&quot;: [{        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/qtOevHpw5XImS1J.jpg&quot;,        &quot;title&quot;: &quot;test&quot;,        &quot;describe&quot;: &quot;test&quot;    }, {        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg&quot;,        &quot;title&quot;: &quot;test&quot;,        &quot;describe&quot;: &quot;test&quot;    }, {        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg&quot;,        &quot;title&quot;: &quot;test&quot;,        &quot;describe&quot;: &quot;test&quot;    }]}]</code></pre><p>注:到目前位置检查一下</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210126194427.png" alt="image-20210126194426182"></p><p>我们之后如果要新加自己的相册，名称也要统一<br>1.json文件中新加  2.创相册详情文件夹 3.修改index的title</p><h1 id="4-主页面导航菜单增加相册"><a href="#4-主页面导航菜单增加相册" class="headerlink" title="4.主页面导航菜单增加相册"></a>4.主页面导航菜单增加相册</h1><p>博客目录/themes/sakura/_config.yml</p><h2 id="4-1增加导航"><a href="#4-1增加导航" class="headerlink" title="4.1增加导航"></a>4.1增加导航</h2><pre><code> 清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: {     书单: {path: /books/, fa: fa-th-list faa-bounce },     番组: {path: /bangumi/, fa: fa-film faa-vertical },     歌单: {path: /music/, fa: fa-headphones },    电影: {path: /movies/, fa: fa-video-camera },    游戏: {path: /games/, fa: fa-gamepad },    图集: {path: /gallery/, fa: fa-photo },</code></pre><h2 id="4-2增加相册配置"><a href="#4-2增加相册配置" class="headerlink" title="4.2增加相册配置"></a>4.2增加相册配置</h2><pre><code># 增加了相册页面 gallery:   title: 光影流年 #标题   icon: fa #这个显示相册页面的图标   icon2: fa #这个显示自己的具体相册里面的相册的图标PhotoVerifyPassword:   enable: true   promptMessage: 该相册已加密，请输入密码访问   errorMessage: 密码错误，将返回主页！</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;参考链接:&lt;/p&gt;
+&lt;p&gt;来源: itsNekoDeng&lt;br&gt;文章作者: NekoDeng&lt;br&gt;文章链接: &lt;a href=&quot;https://nekodeng.gitee.io/posts/waterfall-flow-photo-album.html#toc-head</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="主题美化" scheme="http://linxuesong.github.io/tags/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>回溯算法刷题整理总结</title>
+    <link href="http://linxuesong.github.io/2021/01/20/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E6%95%B4%E7%90%86%E6%80%BB%E7%BB%93/"/>
+    <id>http://linxuesong.github.io/2021/01/20/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E6%95%B4%E7%90%86%E6%80%BB%E7%BB%93/</id>
+    <published>2021-01-20T03:07:57.000Z</published>
+    <updated>2021-03-19T12:49:38.729Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、回溯算法理解"><a href="#一、回溯算法理解" class="headerlink" title="一、回溯算法理解"></a>一、回溯算法理解</h1><p>本质是以深度遍历的方式遍历决策树</p><p>但因为没有具体的TreeNode构成树，所以回溯与DFS遍历树很像，但不同的是回溯要多一步退回选择的操作</p><p>典型问题:全排列、N皇后问题</p><p>回溯算法的构成要素:</p><p>①选择列表</p><p>②已选路径或已做出的选择(trace或used)</p><p>③结束条件</p><p>回溯算法的模板如下:</p><pre><code>def backTrace(已选路径, 选择列表) {    if(结束条件) {        return ; // 对于return 如果只问是否有解则返回bool即可;如果要所有的解则用全局变量数组保存所有找到的解    }    for 某选择:选择列表 {        if(不必要选择) {            continue;        }        做选择:某选择加入已选路径，下一步选择列表是否变化        backTrace(已选路径, 选择列表)        回退选择:某选择退出已选路径，回退后选择列表是否需要恢复    }}</code></pre><p>回溯算法的思路如下:</p><p>画决策树，决策树节点的属性就是 选择和当前路径  我们的backTrace函数在树的各个节点游走，知道遇到结束条件</p>]]></content>
+    
+    
+    <summary type="html">回溯算法整理</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="算法" scheme="http://linxuesong.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>主题美化增加春节、圣诞、深夜主题模式</title>
+    <link href="http://linxuesong.github.io/2021/01/12/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E6%98%A5%E8%8A%82%E3%80%81%E5%9C%A3%E8%AF%9E%E3%80%81%E6%B7%B1%E5%A4%9C%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://linxuesong.github.io/2021/01/12/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E6%98%A5%E8%8A%82%E3%80%81%E5%9C%A3%E8%AF%9E%E3%80%81%E6%B7%B1%E5%A4%9C%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%BC%8F/</id>
+    <published>2021-01-12T12:58:50.000Z</published>
+    <updated>2021-03-19T12:49:38.728Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="0-设计原理"><a href="#0-设计原理" class="headerlink" title="0.设计原理"></a>0.设计原理</h1><p>①给一系列的css属性起名字如dark表示黑夜，默认为失效不显示<br>②页面上增加左侧主题切换按钮,按钮处理逻辑为将所有dark对应的css属性启用，并设置标记位</p><h1 id="1-增加主题切换按钮及其js处理逻辑"><a href="#1-增加主题切换按钮及其js处理逻辑" class="headerlink" title="1.增加主题切换按钮及其js处理逻辑"></a>1.增加主题切换按钮及其js处理逻辑</h1><p>位置:themes/sakura/layout/layout.ejs   这个文件会在所有页面生效</p><p>内容如下:（ps:多了个大红灯笼的div）</p><pre><code>  &lt;!-- 8.增加红灯笼按钮--&gt;       &lt;!--深夜模式按钮--&gt;  &lt;a onclick=&quot;switchNightMode()&quot; id=&quot;sma&quot;&gt;     &lt;i class=&quot;fa fa-moon-o&quot; id=&quot;nightMode&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;   &lt;/a&gt;       &lt;!--圣诞模式按钮--&gt;         &lt;script&gt;    if (localStorage.getItem(&#39;themechris&#39;) === &#39;1&#39;) {    document.body.classList.add(&#39;themechris&#39;);    }    else if (matchMedia(&#39;(prefers-color-scheme: themechris)&#39;).matches) {    document.body.classList.add(&#39;themechris&#39;);    }    &lt;/script&gt;  &lt;a onclick=&quot;switchChrisThemes()&quot; id=&quot;switchchristmas&quot;&gt;    &lt;img class=&quot;theme-buttonchrismas&quot; src=&quot;https://hesifan.top/medias/christmas-img/ball.jpg&quot; title=&quot;圣诞模式&quot;&gt;  &lt;/a&gt;       &lt;!--春节模式按钮--&gt;         &lt;script&gt;    if (localStorage.getItem(&#39;themespring&#39;) === &#39;1&#39;) {    document.body.classList.add(&#39;themespring&#39;);    }    else if (matchMedia(&#39;(prefers-color-scheme: themespring)&#39;).matches) {    document.body.classList.add(&#39;themespring&#39;);    }&lt;/script&gt;  &lt;div onclick=&quot;switchSpringThemes()&quot; id=&quot;switchspring&quot;&gt;    &lt;img class=&quot;theme-button&quot; src=&quot;https://hesifan.top/medias/spring-img/denglong.png&quot; title=&quot;春节模式&quot;&gt;  &lt;/div&gt;  &lt;!--春节主题的大红灯笼--&gt;      &lt;div class=&quot;denglong&quot;&gt;        &lt;div class=&quot;deng-box&quot;&gt;            &lt;div class=&quot;deng&quot;&gt;                &lt;div class=&quot;xian&quot;&gt;&lt;/div&gt;                &lt;div class=&quot;deng-a&quot;&gt;                    &lt;div class=&quot;deng-b&quot;&gt;&lt;div class=&quot;deng-t&quot;&gt;喜迎&lt;/div&gt;&lt;/div&gt;                &lt;/div&gt;                &lt;div class=&quot;shui shui-a&quot;&gt;&lt;div class=&quot;shui-c&quot;&gt;&lt;/div&gt;&lt;div class=&quot;shui-b&quot;&gt;&lt;/div&gt;&lt;/div&gt;            &lt;/div&gt;        &lt;/div&gt;        &lt;div class=&quot;deng-box1&quot;&gt;            &lt;div class=&quot;deng&quot;&gt;                &lt;div class=&quot;xian&quot;&gt;&lt;/div&gt;                &lt;div class=&quot;deng-a&quot;&gt;                    &lt;div class=&quot;deng-b&quot;&gt;&lt;div class=&quot;deng-t&quot;&gt;元旦&lt;/div&gt;&lt;/div&gt;                &lt;/div&gt;                &lt;div class=&quot;shui shui-a&quot;&gt;&lt;div class=&quot;shui-c&quot;&gt;&lt;/div&gt;&lt;div class=&quot;shui-b&quot;&gt;&lt;/div&gt;&lt;/div&gt;            &lt;/div&gt;        &lt;/div&gt;    &lt;/div&gt;  &lt;!--春节主题大红灯笼--&gt;       &lt;script&gt;       // 切换深色模式JS       function switchNightMode() {            var body = document.body;             if(body.classList.contains(&#39;dark&#39;)){                 document.body.classList.remove(&#39;dark&#39;);                 localStorage.setItem(&#39;dark&#39;,&#39;0&#39;);                 $(&#39;#nightMode&#39;).removeClass(&quot;fa-lightbulb-o&quot;).addClass(&quot;fa-moon-o&quot;);                 return;             } else {                document.body.classList.add(&#39;dark&#39;);                 localStorage.setItem(&#39;dark&#39;,&#39;1&#39;);                 $(&#39;#nightMode&#39;).removeClass(&quot;fa-moon-o&quot;).addClass(&quot;fa-lightbulb-o&quot;);                 return;             }        }           // 中国节日按钮切换    function switchSpringThemes() {        var body = document.body;        if(body.classList.contains(&#39;themechris&#39;)){            document.body.classList.remove(&#39;themechris&#39;);            localStorage.setItem(&#39;themechris&#39;,&#39;0&#39;);            document.body.classList.add(&#39;themespring&#39;);            localStorage.setItem(&#39;themespring&#39;,&#39;1&#39;);            return;        }        if(body.classList.contains(&#39;themespring&#39;)){        document.body.classList.remove(&#39;themespring&#39;);        localStorage.setItem(&#39;themespring&#39;,&#39;0&#39;);        return;        } else {        document.body.classList.add(&#39;themespring&#39;);        localStorage.setItem(&#39;themespring&#39;,&#39;1&#39;);        return;        }    };    // 圣诞节按钮切换    function switchChrisThemes() {        var body = document.body;        if(body.classList.contains(&#39;themespring&#39;)){            document.body.classList.remove(&#39;themespring&#39;);            localStorage.setItem(&#39;themespring&#39;,&#39;0&#39;);            document.body.classList.add(&#39;themechris&#39;);            localStorage.setItem(&#39;themechris&#39;,&#39;1&#39;);            return;        }        if(body.classList.contains(&#39;themechris&#39;)){        document.body.classList.remove(&#39;themechris&#39;);        localStorage.setItem(&#39;themechris&#39;,&#39;0&#39;);        return;        } else {        document.body.classList.add(&#39;themechris&#39;);        localStorage.setItem(&#39;themechris&#39;,&#39;1&#39;);        return;        }    };    &lt;/script&gt;</code></pre><h1 id="2-增加对应主题的css样式和按钮的css样式"><a href="#2-增加对应主题的css样式和按钮的css样式" class="headerlink" title="2.增加对应主题的css样式和按钮的css样式"></a>2.增加对应主题的css样式和按钮的css样式</h1><p>位置:thems/sakura/source/css/style.css</p><p>内容如下:</p><pre><code>/*节日切换按钮*//* 深色模式按钮设置 */ #sma {    background: #000;    width: 38px;    height: 38px;    display: block;    position: fixed;    border-radius: 50%;    right: 15px;    bottom: 250px;    padding-top: 15px;    margin-bottom: 0;    z-index: 998;    cursor: pointer;}#sma .fa-moon-o { position: absolute; right: 8px; bottom: 8px; font-size: 1.48rem!important; } #sma .fa-lightbulb-o { position: absolute;right: 12px;bottom: 3px;font-size: 1.8rem!important;.fa-moon-o:before { content: &quot;\f186&quot;; } .fa-comments:before { content: &quot;\f086&quot;; }/*深夜模式按钮样式结束*//*圣诞、春节按钮*/#switchspring {     background: #dc8f03;    width: 38px;    height: 38px;    display: block;    position: fixed;    border-radius: 50%;    right: 15px;    bottom: 295px;    padding-top: 15px;    margin-bottom: 0;    z-index: 998;    cursor: pointer;}#switchchristmas {    background: #FFF;    width: 38px;    height: 38px;    display: block;    position: fixed;    border-radius: 50%;    right: 15px;    bottom: 340px;    padding-top: 15px;    margin-bottom: 0;    z-index: 998;    cursor: pointer;}.theme-button {    width: 38px;    height: 38px;    border-radius: 50%;    position: absolute;    bottom: 0px;}.theme-buttonchrismas {    width: 38px;    height: 38px;    border-radius: 50%;    position: absolute;    bottom: 0px;    right: 1.7px}/*圣诞、春节按钮样式结束*//*深夜模式背景样式*//*字体变灰白*/body.dark .fas, body.dark .title, body.dark .row .text, body.dark article .article-content .summary, body.dark .card .card-image .card-title, body.dark .fa-moon-o:before, body.dark .fa-lightbulb-o:before, body.dark article .article-tags .chip, body.dark .chip-container .tag-title, body.dark div.jqcloud a, body.dark .friends-container .tag-title, body.dark .frind-ship .title h1, body.dark .card .card-content p,body.dark .card .card-content .dss,body.dark .v[data-class=v] .vcount, body.dark .v[data-class=v] .vcount .vnum, body.dark pre code, body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6, body.dark li, body.dark p, body.dark header .side-nav .mobile-head .logo-name, body.dark header .side-nav .mobile-head .logo-desc, body.dark header .side-nav .menu-list a, body.dark .bg-cover .post-title, body.dark a { color: rgba(255, 255, 255, 0.6); } /* 背景颜色变灰色 */ body.dark .card, body.dark .block-with-text:after { background-color: #282c34; } /* 背景颜色变黑色 */ body.dark, body.dark .v[data-class=v] .vcount, body.dark #rewardModal .modal-content, body.dark .modal, body.dark header .side-nav, body.dark header .side-nav .menu-list .m-nav-show { background-color: #12121c; } /* 改变透明度*/ body.dark .aplayer{background: #2f3742!important;} body.dark img, body.dark strong { filter: brightness(.7); }/*深夜模式背景样式结束*/*/*春节模式*//*èŠ‚æ—¥ä¸»é¢˜ æŒ‚ä»¶åŠçº¿*//*æ˜¥èŠ‚*/.caishenxianleft {    left: 16%!important;    position: absolute;    top: 0px;    width: 2px;    height: 20px;    background: #dc8f03;    transform-origin: 50% -100px;    animation: swing 3.5s infinite ease-in-out;    -webkit-transform-origin: 50% -100px;    -webkit-animation: swing 3.5s infinite ease-in-out;}.caishenxian {    position: absolute;    top: 0px;    right: 20%;    width: 2px;    height: 20px;    background: #dc8f03;    transform-origin: 50% -100px;    animation: swing 3.5s infinite ease-in-out;    -webkit-transform-origin: 50% -100px;    -webkit-animation: swing 3.5s infinite ease-in-out;}.guguxian {    position: absolute;    top: 0px;    left: 20%;    width: 2px;    height: 20px;    background: #dc8f03;    transform-origin: 50% -100px;    animation: swing 3.5s infinite ease-in-out;    -webkit-transform-origin: 50% -100px;    -webkit-animation: swing 3.5s infinite ease-in-out;}.wenzhangxian {    left: 50%!important;    z-index: 998;}/*春节主题 挂绳吊线*/.caishenxianleftsd {    left: 16%!important;    position: absolute;    top: 0px;    width: 2px;    height: 20px;    background:#5be4db;    transform-origin: 50% -100px;    animation: swing 3.5s infinite ease-in-out;    -webkit-transform-origin: 50% -100px;    -webkit-animation: swing 3.5s infinite ease-in-out;}.caishenxiansd {    position: absolute;    top: 0px;    right: 20%;    width: 2px;    height: 20px;    background:#5be4db;    transform-origin: 50% -100px;    animation: swing 3.5s infinite ease-in-out;    -webkit-transform-origin: 50% -100px;    -webkit-animation: swing 3.5s infinite ease-in-out;}.guguxiansd {    position: absolute;    top: 0px;    left: 20%;    width: 2px;    height: 20px;    background: #5be4db;    transform-origin: 50% -100px;    animation: swing 3.5s infinite ease-in-out;    -webkit-transform-origin: 50% -100px;    -webkit-animation: swing 3.5s infinite ease-in-out;}.wenzhangxiansd {    left: 50%!important;    z-index: 998;} /*春节主题 挂件*/ .fudai {    top: 14px!important;    left: -22px!important;}.caishenpic {    width: 48px;    height: 48px;    max-width: 48px; //这个参数是为了覆盖763\963行的img css样式    border-radius: 50%;    position: absolute;    top: 12px;    right: -22px;    z-index: 9;    /* transform-origin: 50% -100px; */    animation: swing 3.5s infinite ease-in-out;    /* -webkit-transform-origin: 50% -100px; */    -webkit-animation: swing 3.5s infinite ease-in-out;}.lala {    width: 32px!important;    height: 32px!important;    opacity: 1!important;    left: -4px!important;    top: 14px!important;}.chunp {    width: 216px!important;    height: 96px!important;    left: -80px!important;    top: 6px!important;}.fudao {    width: 38px;    height: 38px;    top: 18px!important;    left: -19px!important;}.lions {    width: 32px!important;    height: 32px!important;    opacity: 1!important;    left: -15px!important;    top: 14px!important;}.fenleiss {    position: absolute;    top: -64px;    left: 20%;    width: 2px;    height: 20px;    background: #dc8f03;    transform-origin: 50% -100px;    animation: swing 3.5s infinite ease-in-out;    -webkit-transform-origin: 50% -100px;    -webkit-animation: swing 3.5s infinite ease-in-out;}.gugus {    width: 32px!important;    height: 32px!important;    opacity: 1!important;    left: -15px!important;    top: 9px!important;}.huadengpic {    width: 40px!important;    height: 40px!important;    opacity: 1!important;    left: -18px!important;    top: 9px!important;}.shanzipic {    width: 40px!important;    height: 40px!important;    opacity: 1!important;    left: -18px!important;    top: 18px!important;}/*圣诞小挂件图片*/.caishenpicsd {    width: 48px;    height: 48px;    max-width: 48px; // 用于覆盖763\963等行的img css样式    border-radius: 50%;    position: absolute;    top: 12px;    right: -22px;    z-index: 9;    /* transform-origin: 50% -100px; */    animation: swing 3.5s infinite ease-in-out;    /* -webkit-transform-origin: 50% -100px; */    -webkit-animation: swing 3.5s infinite ease-in-out;}/*ä¸»é¢˜ å¸½å­*/.labelmz {    width: 34px;    height: 34px;    top: 7px;    right: -84px;    transform: rotate(40deg);    position: absolute;    z-index: 99;    -webkit-transform-origin: 50% -100px;    -webkit-animation: mzanimate 5s infinite ease-in-out;}.weilemz {    position: relative;}.friendmz {    width: 50px!important;    height: 50px!important;    position: absolute;    top: 8px;    right: -90px;    transform: rotate(44deg);    position: absolute;    z-index: 99;    -webkit-transform-origin: 50% -100px;    -webkit-animation: mzanimate 1.2s infinite ease-in-out;}.xiaomaozitx {    width: 60px;    height: 60px;    position: absolute;    top: -127px;    right: 25%;    transform: rotate(40deg);    position: absolute;    z-index: 99;    -webkit-animation: mzanimate 1.2s infinite ease-in-out;}.labelmzsd {    width: 34px;    height: 34px;    top: 10px;    right: -95px;    transform: rotate(40deg);    position: absolute;    z-index: 99;    -webkit-transform-origin: 50% -100px;    -webkit-animation: mzanimate 5s infinite ease-in-out;}/* 点击显示或隐藏总样式开始 */.caishendeng,.xiaomaozitx,.labelmz,.friendmz,.caishendengsd,.labelmzsd{    display: none;}body.themespring .caishendeng,body.themespring .xiaomaozitx,body.themespring .labelmz,body.themespring .friendmz,body.themechris .caishendengsd,body.themechris .labelmzsd{    display: block;}/* 点击显示或隐藏总样式结束 */.toupic {    position: relative;}.denglong {    display: none;}body.themespring .denglong {    display: block;}@media only screen and (min-width: 1124px) {    .nav-menu {        padding-right: 0px;    }    body.themespring .nav-menu {        padding-right: 96px;    }}@media only screen and (max-width: 760px) {    .denglong .deng-box ,.denglong .deng-box1{        display: none;    }    body.themespring .right {        float: left!important;    }}@media only screen and (min-width: 768px) and (max-width: 1024px) {    .right {        float: left!important;    }}/*æ˜¥èŠ‚ä¸»é¢˜ ç¯ç¬¼*/.deng-box {    position: fixed;    top: -40px;    right: -20px;    z-index: 999;}.deng-box1 {    position: fixed;    top: -30px;    right: 10px;    z-index: 999;}.deng-box1 .deng {    position: relative;    width: 120px;    height: 90px;    margin: 50px;    background: #d8000f;    background: rgba(216, 0, 15, 0.8);    border-radius: 50% 50%;    -webkit-transform-origin: 50% -100px;    -webkit-animation: swing 5s infinite ease-in-out;    box-shadow: -5px 5px 30px 4px rgba(252, 144, 61, 1);}    .deng {        position: relative;        width: 120px;        height: 90px;        margin: 50px;        background: #d8000f;        background: rgba(216, 0, 15, 0.8);        border-radius: 50% 50%;        -webkit-transform-origin: 50% -100px;        -webkit-animation: swing 3s infinite ease-in-out;        box-shadow: -5px 5px 50px 4px rgba(250, 108, 0, 1);    }    .deng-a {        width: 100px;        height: 90px;        background: #d8000f;        background: rgba(216, 0, 15, 0.1);        margin: 12px 8px 8px 10px;        border-radius: 50% 50%;        border: 2px solid #dc8f03;    }    .deng-b {        width: 45px;        height: 90px;        background: #d8000f;        background: rgba(216, 0, 15, 0.1);        margin: -4px 8px 8px 26px;        border-radius: 50% 50%;        border: 2px solid #dc8f03;    }    .xian {        position: absolute;        top: -20px;        left: 60px;        width: 2px;        height: 20px;        background: #dc8f03;    }    .shui-a {        position: relative;        width: 5px;        height: 20px;        margin: -5px 0 0 59px;        -webkit-animation: swing 4s infinite ease-in-out;        -webkit-transform-origin: 50% -45px;        background: #ffa500;        border-radius: 0 0 5px 5px;    }    .shui-b {        position: absolute;        top: 14px;        left: -2px;        width: 10px;        height: 10px;        background: #dc8f03;        border-radius: 50%;    }    .shui-c {        position: absolute;        top: 18px;        left: -2px;        width: 10px;        height: 35px;        background: #ffa500;        border-radius: 0 0 0 5px;    }    .deng:before {        position: absolute;        top: -7px;        left: 29px;        height: 12px;        width: 60px;        content: &quot; &quot;;        display: block;        z-index: 999;        border-radius: 5px 5px 0 0;        border: solid 1px #dc8f03;        background: #ffa500;        background: linear-gradient(to right, #dc8f03, #ffa500, #dc8f03, #ffa500, #dc8f03);    }    .deng:after {        position: absolute;        bottom: -7px;        left: 10px;        height: 12px;        width: 60px;        content: &quot; &quot;;        display: block;        margin-left: 20px;        border-radius: 0 0 5px 5px;        border: solid 1px #dc8f03;        background: #ffa500;        background: linear-gradient(to right, #dc8f03, #ffa500, #dc8f03, #ffa500, #dc8f03);    }    .deng-t {        font-family: åŽæ–‡è¡Œæ¥·;        font-size: 26px;        color: #dc8f03;        font-weight: bold;        line-height: 44px;        text-align: center;    }    .night .deng-t,    .night .deng-box,    .night .deng-box1 {        background: transparent !important;    }    @-moz-keyframes swing {        0% {                -moz-transform: rotate(-10deg)        }        50% {             -moz-transform: rotate(10deg)        }        100% {                -moz-transform: rotate(-10deg)        }    }    @-webkit-keyframes swing {        0% {                -webkit-transform: rotate(-10deg)        }        50% {                -webkit-transform: rotate(10deg)        }        100% {                -webkit-transform: rotate(-10deg)        }    }/*春节模式结束*/</code></pre><h1 id="3-在需要的位置加上挂件"><a href="#3-在需要的位置加上挂件" class="headerlink" title="3.在需要的位置加上挂件"></a>3.在需要的位置加上挂件</h1><p>当我们点击切换按钮时就会显示对应模式下的挂件,//挂件图片可自己替换</p><p>挂件示例:</p><pre><code> &lt;!--可以在你想要展示小挂件的地方加上这个挂件，还没有完善等之后再进行吧--&gt;  &lt;!--圣诞主题小挂件--&gt;    &lt;div class=&quot;caishendengsd&quot;&gt;                &lt;div class=&quot;caishenxiansd&quot;&gt;            &lt;img class=&quot;caishenpicsd&quot; src=&quot;https://hesifan.top/medias/christmas-img/2.png&quot;&gt;        &lt;/div&gt;                  &lt;/div&gt;  &lt;!-圣诞主题小挂件结束--&gt; &lt;!--春节主题小挂件--&gt;&lt;div class=&quot;caishendeng&quot;&gt;            &lt;div class=&quot;caishenxianleft&quot;&gt;        &lt;img class=&quot;caishenpic fudai&quot; src=&quot;https://hesifan.top/medias/spring-img/3.png&quot;&gt;    &lt;/div&gt;              &lt;/div&gt;  &lt;!-春节主题小挂件结束--&gt;</code></pre><h1 id="4-预览效果"><a href="#4-预览效果" class="headerlink" title="4.预览效果"></a>4.预览效果</h1><p><img src="C:%5CUsers%5Clinxuesong%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210113212346906.png" alt="image-20210113212346906"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;0-设计原理&quot;&gt;&lt;a href=&quot;#0-设计原理&quot; class=&quot;headerlink&quot; title=&quot;0.设计原理&quot;&gt;&lt;/a&gt;0.设计原理&lt;/h1&gt;&lt;p&gt;①给一系列的css属性起名字如dark表示黑夜，默认为失效不显示&lt;br&gt;②页面上增加左侧主题切换按钮,按钮处</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>博客美化增加任务清单页面</title>
+    <link href="http://linxuesong.github.io/2021/01/11/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E4%BB%BB%E5%8A%A1%E6%B8%85%E5%8D%95%E9%A1%B5%E9%9D%A2/"/>
+    <id>http://linxuesong.github.io/2021/01/11/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E4%BB%BB%E5%8A%A1%E6%B8%85%E5%8D%95%E9%A1%B5%E9%9D%A2/</id>
+    <published>2021-01-11T12:04:09.000Z</published>
+    <updated>2021-03-19T12:49:38.729Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考链接:<a href="https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1" target="_blank" rel="noopener">https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1</a></p><h1 id="1-新建todolist页面"><a href="#1-新建todolist页面" class="headerlink" title="1.新建todolist页面"></a>1.新建todolist页面</h1><pre><code>hexo new page &quot;todolist&quot;</code></pre><h1 id="2-配置该页面跳过渲染"><a href="#2-配置该页面跳过渲染" class="headerlink" title="2.配置该页面跳过渲染"></a>2.配置该页面跳过渲染</h1><p>这次添加的页面是一个html页面，需要配置跳过渲染后不会使用主题的layout对网页进行渲染</p><p>在主站的配置文件的skip:render种配置</p><pre><code>skip_render: - &quot;todolist/**&quot;</code></pre><h1 id="3-修改todolist界面"><a href="#3-修改todolist界面" class="headerlink" title="3.修改todolist界面"></a>3.修改todolist界面</h1><p>博客目录下/source/todolist/index.md 改为index.html， 文件内容如下:</p><pre><code>&lt;!DOCTYPE html&gt; &lt;html lang=&quot;en&quot;&gt;     &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;title&gt;Title&lt;/title&gt; &lt;script src=&quot;https://cdn.bootcss.com/vue/2.6.10/vue.min.js&quot;&gt;&lt;/script&gt; &lt;style&gt; body{ margin:0;background-color:#fafafa;font:14px &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif} h2{margin:0;font-size:12px} a{color:#000;text-decoration:none} input{outline:0} button{margin:0;padding:0;border:0;background:0;font-size:100%;vertical-align:baseline;font-family:inherit;font-weight:inherit;color:inherit;outline:0} ul{padding:0;margin:0;list-style:none} .page-top{width:100%;height:40px;background-color:#db4c3f} .page-content{width:50%;margin:0 auto} .page-content h2{line-height:40px;font-size:18px;color:#fff} .main{width:50%;margin:0 auto;box-sizing:border-box} .task-input{width:99%;height:30px;outline:0;border:1px solid #ccc} .task-count{display:flex;margin:10px 0} .task-count li{padding-left:10px;flex:1;color:#dd4b39} .task-count li:nth-child(1){padding:5px 0 0 10px} .action{text-align:center;display:flex} .action a{margin:0 10px;flex:1;padding:5px 0;color:#777} .action a:nth-child(3){margin-right:0} .active{border-bottom: 2px solid #629A9C} .tasks{background-color:#fff}.no-task-tip{padding:10px 0 10px 10px;display:block;border-bottom:1px solid #ededed;color:#777}.big-title{color:#222}.todo-list{margin:0;padding:0;list-style:none} .todo-list li{ position:relative; font-size:16px; border-left: 5px solid #629A9C; box-shadow: 0 1px 2px rgba(0,0,0,0.07); margin-bottom: 16px; } .todo-list li:hover{background-color:#fafafa} .todo-list li.editing{border-bottom:0;padding:0;} .todo-list li.editing .edit{display:block;padding:13px 17px 12px 17px;margin:0 0 0 43px} .todo-list li.editing .view{display:none} .toggle{ text-align:center; width:16px; height:16px; position:absolute; top:2px; left: 15px; bottom:0; margin:auto 0; cursor: pointer; } .todo-list li label{ white-space:pre-line; word-break:break-all; padding:15px 60px 15px 15px; margin-left:45px; display:block; line-height:1.2; transition:color .4s } .todo-list li.completed label{ color:#d9d9d9; text-decoration:line-through } .todo-list li .destroy{ display:none; text-align:center; width:16px; height:16px; position:absolute; top:0; right:15px; bottom:10px; margin:auto 0; cursor: pointer; font-size:28px; color:#cc9a9a; transition:color .2s ease-out } .todo-list li .destroy:hover{color:#af5b5e} .todo-list li .destroy:after{content:&#39;×&#39;} .todo-list li:hover .destroy{display:block} .todo-list li .edit{display:none} .todo-list li.editing:last-child{margin-bottom:-1px} &lt;/style&gt; &lt;/head&gt;     &lt;body&gt;         &lt;div class=&quot;page-top&quot;&gt;             &lt;div class=&quot;page-content&quot;&gt;                 &lt;h2&gt;任务计划列表&lt;/h2&gt;             &lt;/div&gt;         &lt;/div&gt;     &lt;div class=&quot;main&quot;&gt;         &lt;h3 class=&quot;big-title&quot;&gt;添加任务：&lt;/h3&gt;        &lt;input placeholder=&quot;例如：吃饭睡觉打豆豆； 提示：回车即可添加任务，双击列表标题即可编辑&quot; class=&quot;task-input&quot; type=&quot;text&quot; v-on:keyup.enter=&quot;enterFn&quot; v-model=&quot;todo&quot; /&gt;         &lt;ul class=&quot;task-count&quot;&gt;             &lt;li&gt;{{unComplete}}个任务未完成&lt;/li&gt;            &lt;li class=&quot;action&quot;&gt; &lt;a :class=&quot;{active:visibility!==&#39;unCompleted&#39;&amp;&amp;visibility!==&#39;completed&#39;}&quot; href=&quot;#all&quot;&gt;所有任务&lt;/a&gt; &lt;a :class=&quot;{active:visibility===&#39;unCompleted&#39;}&quot; href=&quot;#unCompleted&quot;&gt;未完成的任务&lt;/a&gt; &lt;a :class=&quot;{active:visibility===&#39;completed&#39;}&quot; href=&quot;#completed&quot;&gt;完成的任务&lt;/a&gt; &lt;/li&gt;         &lt;/ul&gt;         &lt;h3 class=&quot;big-title&quot;&gt;任务列表：&lt;/h3&gt;         &lt;div class=&quot;tasks&quot;&gt; &lt;span class=&quot;no-task-tip&quot; v-show=&quot;!list.length&quot;&gt;还没有添加任何任务&lt;/span&gt;         &lt;ul class=&quot;todo-list&quot; v-show=&quot;list.length&quot;&gt;            &lt;li class=&quot;todo&quot; v-for=&quot;item in filterData&quot; v-bind:class=&quot;{completed:item.isComplete,editing:item===edtorTodos}&quot; &gt;                 &lt;div class=&quot;view&quot;&gt;                     &lt;input class=&quot;toggle&quot; type=&quot;checkbox&quot; v-model=&quot;item.isComplete&quot; /&gt; &lt;label @dblclick=&quot;edtorTodo(item)&quot;&gt;{{item.title}}&lt;/label&gt; &lt;button class=&quot;destroy&quot; @click=&quot;delFn(item)&quot; &gt;&lt;/button&gt;                 &lt;/div&gt;                 &lt;input class=&quot;edit&quot; type=&quot;text&quot; v-focus=&quot;edtorTodos===item&quot; v-model=&quot;item.title&quot; @blur=&quot;edtoEnd(item)&quot; @keyup.enter=&quot;edtoEnd(item)&quot; @keyup.esc=&quot;cancelEdit(item)&quot; /&gt;             &lt;/li&gt;         &lt;/ul&gt;         &lt;/div&gt;    &lt;/div&gt; &lt;script&gt;  //存取localStorage中的数据var store = {     save(key,value){         window.localStorage.setItem(key,JSON.stringify(value));     },     fetch(key){         return JSON.parse(window.localStorage.getItem(key))||[];     } }     //list取出所有的值 var list = store.fetch(&quot;storeData&quot;); var vm = new Vue({     el:&quot;.main&quot;,     data:{         list,         todo:&#39;&#39;,        edtorTodos:&#39;&#39;,//记录正在编辑的数据,        beforeTitle:&quot;&quot;,//记录正在编辑的数据的title         visibility:&quot;all&quot;//通过这个属性值的变化对数据进行筛选     },     watch:{         //下面的这种方法是浅监控         /*list:function(){//监控list这个属性，当这个属性对应的值发生变化就会执行函数         store.save(&quot;storeData&quot;,this.list);         }*/         //下面的是深度监控         list:{             handler:function(){                store.save(&quot;storeData&quot;,this.list);             }, deep:true         }     },     methods:{         enterFn(ev){//添加任务         //向list中添加一项任务         //事件处理函数中的this指向的是当前这个根实例         if(this.todo==&quot;&quot;){return;}         this.list.push({             title:this.todo,             isComplete:false         });         this.todo = &quot;&quot;;    },     delFn(item){//删除任务     var index = this.list.indexOf(item);     this.list.splice(index,1)     },     edtorTodo(item){//编辑任务     //编辑任务的时候记录编辑之前的值         this.beforeTitle = item.title;         this.edtorTodos = item;     },     edtoEnd(item){//编辑完成     this.edtorTodos=&quot;&quot;;     // this.cancelEdit = this.edtorTodos;     },     cancelEdit(item){//取消编辑     item.title = this.beforeTitle;     this.beforeTitle = &#39;&#39;;    this.edtorTodos=&#39;&#39;;     }     },     directives:{     &quot;focus&quot;:{    update(el,binding){    if(binding.value){    el.focus();     }     }     }     },     computed:{ unComplete(){ return this.list.filter(item=&gt;{ return !item.isComplete }).length },     filterData(){  //过滤的时候有三种情况 all completed unCompleted  var filter = { all:function(list){ return list; }, completed:function(list){ return list.filter(item=&gt;{ return item.isComplete; }) }, unCompleted:function(list){ return list.filter(item=&gt;{ return !item.isComplete; }) } }  //如果找到了过滤函数，就返回过滤后的数据，如果没有找到就返回所有的数据  return filter[this.visibility]?filter[this.visibility](list):list; } } });  function hashFn(){ var hash = window.location.hash.slice(1); vm.visibility = hash; }  hashFn();  window.addEventListener(&#39;hashchange&#39;,hashFn);  &lt;/script&gt;  &lt;/body&gt;&lt;/html&gt;</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;参考链接:&lt;a href=&quot;https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://nekodeng.gitee.io/</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown语法整理</title>
+    <link href="http://linxuesong.github.io/2020/12/26/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E4%BB%A3%E7%A0%81%E5%9D%97%E6%8A%98%E5%8F%A0/"/>
+    <id>http://linxuesong.github.io/2020/12/26/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E4%BB%A3%E7%A0%81%E5%9D%97%E6%8A%98%E5%8F%A0/</id>
+    <published>2020-12-26T12:54:07.000Z</published>
+    <updated>2021-03-19T12:49:38.728Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="MarkDown快速查询转移字符"><a href="#MarkDown快速查询转移字符" class="headerlink" title="MarkDown快速查询转移字符"></a>MarkDown快速查询转移字符</h1><h1 id="公式块部分"><a href="#公式块部分" class="headerlink" title="公式块部分"></a>公式块部分</h1><p>举例</p><pre><code>$$dp[i]=\begin{cases}    计算式1     &amp;计算式条件  \\换行    计算式2    &amp;计算式条件  \\换行\end{cases}$$</code></pre><p>详细表格</p><table><thead><tr><th>公式块</th><th>\begin{cases}     内容    \end{cases}</th><th>大公式表达式</th></tr></thead><tbody><tr><td></td><td>\big[</td><td>比较大的左中括号</td></tr><tr><td></td><td>\bigg[</td><td>再大一点</td></tr><tr><td></td><td>\Big[</td><td>比big大一点</td></tr><tr><td></td><td>\Bigg[</td><td>比bigg大一点</td></tr><tr><td></td><td>a_2  a下标2  a^3 a上标3</td><td>上标下标</td></tr><tr><td></td><td>\sum ：∑  \int ：∫  \oint ：∮  \prod：∏</td><td>求和、求导</td></tr><tr><td></td><td>\alpha： α  \beta： β  \gamma：γ  \Phi ： Φ  \Omega：Ω  \Delta： Δ  \delta： δ</td><td>希腊字母</td></tr></tbody></table><h1 id="代码块部分"><a href="#代码块部分" class="headerlink" title="代码块部分"></a>代码块部分</h1><p>代码块折叠语法如下</p><pre><code>&lt;details&gt;   &lt;summary&gt;展开查看&lt;/summary&gt;   &lt;pre&gt;&lt;code&gt;       System.out.println(&quot;Hello&quot;);&lt;/code&gt;&lt;/pre&gt; &lt;/details&gt;</code></pre><p>效果展示</p><details>   <summary>展开查看</summary>   <pre><code>       System.out.println("Hello");</code></pre> </details><h1 id="文本部分"><a href="#文本部分" class="headerlink" title="文本部分"></a>文本部分</h1><table><thead><tr><th>&amp;nbsp;     或者    键盘全角模式空格键</th><th>空格</th><th></th></tr></thead><tbody><tr><td><strong>&lt;sup&gt;xxx&lt;/sup&gt;</strong></td><td><strong>上标</strong></td><td></td></tr><tr><td><strong>&lt;sub&gt;xxx&lt;/sub&gt;</strong></td><td><strong>下标</strong></td><td></td></tr><tr><td><strong>30&amp;deg;</strong></td><td><strong>角度符号30&deg;</strong></td><td></td></tr></tbody></table><p>在该文件夹下新建4个js文件</p><p>添加相应的文件内容</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;MarkDown快速查询转移字符&quot;&gt;&lt;a href=&quot;#MarkDown快速查询转移字符&quot; class=&quot;headerlink&quot; title=&quot;MarkDown快速查询转移字符&quot;&gt;&lt;/a&gt;MarkDown快速查询转移字符&lt;/h1&gt;&lt;h1 id=&quot;公式块部分&quot;&gt;&lt;a</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="MarkDown" scheme="http://linxuesong.github.io/tags/MarkDown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>主题美化添加文章阅读计数统计和网站运行事件</title>
+    <link href="http://linxuesong.github.io/2020/12/26/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E8%AE%A1%E6%95%B0%E7%BB%9F%E8%AE%A1/"/>
+    <id>http://linxuesong.github.io/2020/12/26/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E8%AE%A1%E6%95%B0%E7%BB%9F%E8%AE%A1/</id>
+    <published>2020-12-26T12:31:05.000Z</published>
+    <updated>2021-03-19T12:49:38.728Z</updated>
+    
+    <content type="html"><![CDATA[<p>在主题目录/layout/_partial/footer.ejs中<br>&lt;div class=”footer-device”&gt;和&lt;div class=”site-info”&gt;的下面之间加入如下代码</p><pre><code> &lt;!-- 网站数据统计 --&gt;        &lt;div class=&quot;footer-device&quot;&gt;          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;            &lt;span style=&quot;color: #ff9999;padding-left: 20px;&quot;&gt;                &lt;!-- 网站运行时间统计 --&gt;                &lt;i class=&quot;fa fa-clock-o&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;                &lt;span id=&quot;time&quot; align=&quot;center&quot;&gt;载入时间中...&lt;/span&gt;                &lt;script&gt;                var now = new Date();                 function createtime() {                       var grt= new Date(&quot;&lt;%- theme.siteBuildingTime %&gt;&quot;);//在此处修改你的建站时间                      now.setTime(now.getTime()+250);                       days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);                       hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);                       if(String(hnum).length ==1 ){hnum = &quot;0&quot; + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);                       mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = &quot;0&quot; + mnum;}                       seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);                       snum = Math.round(seconds); if(String(snum).length ==1 ){snum = &quot;0&quot; + snum;}                       document.getElementById(&quot;time&quot;).innerHTML = &quot;小破站在各种灾难中苟活了 &quot;+ dnum +&quot; 天 &quot;+hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;                        }                   setInterval(&quot;createtime()&quot;,250);                &lt;/script&gt;            &lt;/span&gt;           &lt;/p&gt;        &lt;/div&gt;        &lt;div class=&quot;footer-device&quot;&gt;          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;            &lt;span style=&quot;color: #b9b9b9;padding-left: 20px;&quot;&gt;              &lt;!-- 全网站字数统计wordcount --&gt;              &lt;i class=&quot;fa fa-line-chart&quot;  aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt; 博客全站共: &lt;span class=&quot;post-count&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;%= totalcount(site) %&gt;&lt;/span&gt;字&lt;/span&gt;              &lt;!-- 不蒜子网页计数器 --&gt;              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalTraffic) { %&gt;              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-fire&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;总访问量： &lt;span id=&quot;busuanzi_value_site_pv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;次&lt;/span&gt;              &lt;/span&gt;              &lt;% } %&gt;              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalNumberOfvisitors) { %&gt;              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-user&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;总访问人数： &lt;span id=&quot;busuanzi_value_site_uv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;人&lt;/span&gt;              &lt;/span&gt;              &lt;% } %&gt;            &lt;/span&gt;          &lt;/p&gt;        &lt;/div&gt;</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;在主题目录/layout/_partial/footer.ejs中&lt;br&gt;&amp;lt;div class=”footer-device”&amp;gt;和&amp;lt;div class=”site-info”&amp;gt;的下面之间加入如下代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;lt;!-- 网</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="主题美化" scheme="http://linxuesong.github.io/tags/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
+    
+  </entry>
+  
+</feed>
