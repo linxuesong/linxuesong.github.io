@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>58信天翁训练活动</title>
-    <url>/2020/08/15/58%E4%BF%A1%E5%A4%A9%E7%BF%81%E8%AE%AD%E7%BB%83%E6%B4%BB%E5%8A%A8/</url>
-    <content><![CDATA[<p>校招新入职训练活动：</p>
-<p>时间悄悄地从手里溜走，或许我已不再年轻，不再可以懵懂无知。转眼入职一月有余，一个人一段过往，一个人一段羁绊。我们走走停停，历风雨、经风霜，有过彩红有过微笑有过眼泪，我大多生命都在厌恶着世界、逃离着生活，试过爱世界，试过把自己关在自己的心里，我办不到，像是躲进心里的黑屋，外面的人熙熙攘攘，他们的声音、行动，你看在眼里停入耳中却无法组织进入心中。哭泣的心灵渴望陪伴和安慰，心声一次次一遍遍告诉自己去得到爱，然而生活中无法感受爱。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>感悟</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++读取文件到内存中流程含示例</title>
     <url>/2020/12/26/C-%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E6%B5%81%E7%A8%8B%E5%90%AB%E7%A4%BA%E4%BE%8B/</url>
     <content><![CDATA[<h1 id="一、示例说明"><a href="#一、示例说明" class="headerlink" title="一、示例说明"></a>一、示例说明</h1><p>程序输入为种子用户ID数据集合，每一行包括用户ID和256维用户特征，用户特征数据类型为浮点型数据（存在部分数据用科学计数法表示的情况，比如1.4283673760891302E-4），所有数据分隔符为逗号，ID处于第1个位置，其它256维特征按照顺序处于2-257个位置。其中1-128维为连续性特征，数据都大于等于0小于等于1，余下129-256维为分类型特征经过one-hot处理过后的稀疏数据，数据都为0或者1。如下格式：<br><em>ID0001,0.1,0,0.56,…,0,1</em></p>
@@ -289,6 +276,19 @@ int main(int argc, char *argv[])
         <tag>文件读取</tag>
         <tag>C++</tag>
         <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>58信天翁训练活动</title>
+    <url>/2020/08/15/58%E4%BF%A1%E5%A4%A9%E7%BF%81%E8%AE%AD%E7%BB%83%E6%B4%BB%E5%8A%A8/</url>
+    <content><![CDATA[<p>校招新入职训练活动：</p>
+<p>时间悄悄地从手里溜走，或许我已不再年轻，不再可以懵懂无知。转眼入职一月有余，一个人一段过往，一个人一段羁绊。我们走走停停，历风雨、经风霜，有过彩红有过微笑有过眼泪，我大多生命都在厌恶着世界、逃离着生活，试过爱世界，试过把自己关在自己的心里，我办不到，像是躲进心里的黑屋，外面的人熙熙攘攘，他们的声音、行动，你看在眼里停入耳中却无法组织进入心中。哭泣的心灵渴望陪伴和安慰，心声一次次一遍遍告诉自己去得到爱，然而生活中无法感受爱。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
       </tags>
   </entry>
   <entry>
@@ -833,6 +833,51 @@ int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>Java中祖先类Object提供的基础方法</title>
+    <url>/2021/04/09/Java%E4%B8%AD%E7%A5%96%E5%85%88%E7%B1%BBObject%E6%8F%90%E4%BE%9B%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th>函数声明</th>
+<th>Object中作用</th>
+<th>子类重写作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean <strong>equals</strong> (Object other)</td>
+<td>两个对象的引用是否相等，而非其实例域</td>
+<td>比较子类的两个对象其内容是否相等</td>
+</tr>
+<tr>
+<td>String hashCode()</td>
+<td>由对象导出的散列码</td>
+<td></td>
+</tr>
+<tr>
+<td>String <strong>toString</strong> ()</td>
+<td>返回对象类名和散列码</td>
+<td>方便打印对象变量的实际内容，在JAVA语句中+x或x可以自动转为x.toString()</td>
+</tr>
+<tr>
+<td>Class getClass ()</td>
+<td>返回包含对象信息的类对象</td>
+<td></td>
+</tr>
+<tr>
+<td>String getName()</td>
+<td>获取类名字</td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-119.杨辉三角 II</title>
     <url>/2020/09/01/LeetCode119.%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%20II/</url>
     <content><![CDATA[<h4 id="LeetCode119-杨辉三角-II"><a href="#LeetCode119-杨辉三角-II" class="headerlink" title="LeetCode119. 杨辉三角 II"></a><a href="https://leetcode-cn.com/problems/pascals-triangle-ii/" target="_blank" rel="noopener">LeetCode119. 杨辉三角 II</a></h4><h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个非负索引 <em>k</em>，其中 <em>k</em> ≤ 33，返回杨辉三角的第 <em>k</em> 行。</p>
@@ -907,83 +952,6 @@ int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
         <tag>数组</tag>
         <tag>LeetCode</tag>
         <tag>简单</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java重写完美的equals方法</title>
-    <url>/2021/04/09/Java%E9%87%8D%E5%86%99%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>示例代码：</p>
-<pre><code>    @Override
-    public boolean equals(Object otherObject) {
-        // 1.判断是否引用自身，小优化可以提前避免后面的实例比较
-        if(this == otherObject) {
-            return true;
-        }
-        // 2.比较this和otherObject是否为同一个类,此处有两种选择：
-        //   a. this.getClass()==otherObject.getClass(),各个子类中的语义不一致
-        //   b. otherObject instanceof ClassName,各个子类中的语义一致
-        if (this.getClass() != otherObject.getClass()) {
-            return false;
-        }
-
-        // 如果步骤2中按b分支，既比较双方可以转为通用父类，则多下面一步转换
-        // 按照a分支则无需此步骤
-        // ClassName other = (ClassName) otherObject;
-        Father other = (Father) otherObject;
-
-        // 3.比较this，other的内部实例, 基本类型用==，其他类型用Objects.equals(a,b)
-        return Objects.equals(this.a, other.a) &amp;&amp; this.b == other.b;
-    }</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java中祖先类Object提供的基础方法</title>
-    <url>/2021/04/09/Java%E4%B8%AD%E7%A5%96%E5%85%88%E7%B1%BBObject%E6%8F%90%E4%BE%9B%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<table>
-<thead>
-<tr>
-<th>函数声明</th>
-<th>Object中作用</th>
-<th>子类重写作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>boolean <strong>equals</strong> (Object other)</td>
-<td>两个对象的引用是否相等，而非其实例域</td>
-<td>比较子类的两个对象其内容是否相等</td>
-</tr>
-<tr>
-<td>String hashCode()</td>
-<td>由对象导出的散列码</td>
-<td></td>
-</tr>
-<tr>
-<td>String <strong>toString</strong> ()</td>
-<td>返回对象类名和散列码</td>
-<td>方便打印对象变量的实际内容，在JAVA语句中+x或x可以自动转为x.toString()</td>
-</tr>
-<tr>
-<td>Class getClass ()</td>
-<td>返回包含对象信息的类对象</td>
-<td></td>
-</tr>
-<tr>
-<td>String getName()</td>
-<td>获取类名字</td>
-<td></td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
       </tags>
   </entry>
   <entry>
@@ -1122,60 +1090,6 @@ int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-28. 实现 strStr()</title>
-    <url>/2020/08/11/Leetcode-28-%E5%AE%9E%E7%8E%B0-strStr/</url>
-    <content><![CDATA[<h4 id="Leetcode-28-实现-strStr"><a href="#Leetcode-28-实现-strStr" class="headerlink" title="Leetcode-28. 实现 strStr()"></a><a href="https://leetcode-cn.com/problems/implement-strstr/" target="_blank" rel="noopener">Leetcode-28. 实现 strStr()</a></h4><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>实现 strStr() 函数。</p>
-<p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。</p>
-<p>示例 1:</p>
-<p>输入: haystack = “hello”, needle = “ll”<br>输出: 2<br>示例 2:</p>
-<p>输入: haystack = “aaaaa”, needle = “bba”<br>输出: -1<br>说明:</p>
-<p>当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
-<p>对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/implement-strstr" target="_blank" rel="noopener">https://leetcode-cn.com/problems/implement-strstr</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>遍历每一个haystack的字符，以此为起点和needle匹配，匹配成功，则返回遍历下标；否则返回-1</p>
-<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><pre><code>func strStr(haystack string, needle string) int {
-    hay_len := len(haystack)
-    ne_len := len(needle)
-    for i:=0; i &lt; hay_len-ne_len+1; i++ {
-       //判断haystack[i]开头是否和needle匹配
-       if(isStrEqual(haystack[i:], needle)){
-           return i
-       }
-    }
-    return -1
-}
-
-func isStrEqual(str1 string, str2 string) bool {
-    length := len(str2)
-    flag := true
-    for j:=0; j&lt;length ;j++ {
-        if(str1[j] != str2[j]) {
-            flag = false
-            break
-        }
-    } 
-    return flag
-}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>书写代码在一开始的时候没有注意到haystack的遍历区间是</p>
-<p>len(haystack) - len(needle)+1，遍历到尾部是没必要且麻烦的</p>
-<p>避免这种情况就是当我有了基本思路后，是会有好多漏洞的，实现方法要想一次最优且简洁就要把所有的测试用例列出来，不要光用脑子想，要写在纸上</p>
-<p>然后把脑子里的思路转成代码，和用例一一对应</p>
-<h1 id="进一步的优化（未完待补坑）"><a href="#进一步的优化（未完待补坑）" class="headerlink" title="进一步的优化（未完待补坑）"></a>进一步的优化（未完待补坑）</h1><p>上面代码的时间复杂度为O((N-L)*L)</p>
-<h2 id="优化方案一：hash省去L长度是否匹配判断"><a href="#优化方案一：hash省去L长度是否匹配判断" class="headerlink" title="优化方案一：hash省去L长度是否匹配判断"></a>优化方案一：hash省去L长度是否匹配判断</h2><p>之所以复杂是因为遍历每一字符都要比较L长度判断是否匹配</p>
-<p>这个*L可以转化为O(1)</p>
-<p>方法就是用hash值，我们对字符进行编码，生成唯一值</p>
-<p>这样每次判断匹配时就转化为计算hash值了</p>
-<h2 id="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"><a href="#优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间" class="headerlink" title="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"></a>优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间</h2><p>这个查了资料比较复杂，等以后有时间不用，挖个坑QAQ</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>LeetCode</tag>
-        <tag>简单</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-35搜索插入位置</title>
     <url>/2020/08/11/Leetcode-35%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/search-insert-position/" target="_blank" rel="noopener">Leetcode-35搜索插入位置</a></p>
@@ -1250,6 +1164,38 @@ func isStrEqual(str1 string, str2 string) bool {
         <tag>数组</tag>
         <tag>LeetCode</tag>
         <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java重写完美的equals方法</title>
+    <url>/2021/04/09/Java%E9%87%8D%E5%86%99%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>示例代码：</p>
+<pre><code>    @Override
+    public boolean equals(Object otherObject) {
+        // 1.判断是否引用自身，小优化可以提前避免后面的实例比较
+        if(this == otherObject) {
+            return true;
+        }
+        // 2.比较this和otherObject是否为同一个类,此处有两种选择：
+        //   a. this.getClass()==otherObject.getClass(),各个子类中的语义不一致
+        //   b. otherObject instanceof ClassName,各个子类中的语义一致
+        if (this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+
+        // 如果步骤2中按b分支，既比较双方可以转为通用父类，则多下面一步转换
+        // 按照a分支则无需此步骤
+        // ClassName other = (ClassName) otherObject;
+        Father other = (Father) otherObject;
+
+        // 3.比较this，other的内部实例, 基本类型用==，其他类型用Objects.equals(a,b)
+        return Objects.equals(this.a, other.a) &amp;&amp; this.b == other.b;
+    }</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
       </tags>
   </entry>
   <entry>
@@ -1337,40 +1283,6 @@ func max(arr []int) int{
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-66. 加一</title>
-    <url>/2020/08/12/Leetcode-66-%E5%8A%A0%E4%B8%80/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">Leetcode-66. 加一</a></p>
-<h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p>
-<p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p>
-<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
-<p>示例 1:</p>
-<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。<br>示例 2:</p>
-<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/plus-one" target="_blank" rel="noopener">https://leetcode-cn.com/problems/plus-one</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="2-0解题思路"><a href="#2-0解题思路" class="headerlink" title="2.0解题思路"></a>2.0解题思路</h1><p>这道题比较简单，从后向前遍历找到第一个非9数字，记下标为not9first，该下标之后所有数全为0，本下标元素值+1 对异常情况值溢出做特殊处理</p>
-<h1 id="3-0实现代码"><a href="#3-0实现代码" class="headerlink" title="3.0实现代码"></a>3.0实现代码</h1><pre><code>func plusOne(digits []int) []int {
-    oldLen := len(digits)
-    not9first := oldLen-1 // 从后向前非9的第一个数
-    for ; not9first &gt;= 0 &amp;&amp; digits[not9first] == 9; not9first-- {
-        digits[not9first] = 0 // 是9就成0
-    }
-    if(not9first != -1) { // 加完没溢出
-        digits[not9first] += 1
-    }else { // 加完溢出
-        digits = append([]int{1}, digits...) // 首部赋值1
-    }
-    return digits
-}</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>LeetCode</tag>
-        <tag>简单</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode88. 合并两个有序数组</title>
     <url>/2020/08/12/Leetcode88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/merge-sorted-array/" target="_blank" rel="noopener">Leetcode-88. 合并两个有序数组</a></p>
@@ -1420,6 +1332,60 @@ func max(arr []int) int{
         <tag>LeetCode</tag>
         <tag>简单</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-66. 加一</title>
+    <url>/2020/08/12/Leetcode-66-%E5%8A%A0%E4%B8%80/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">Leetcode-66. 加一</a></p>
+<h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p>
+<p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p>
+<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
+<p>示例 1:</p>
+<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。<br>示例 2:</p>
+<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/plus-one" target="_blank" rel="noopener">https://leetcode-cn.com/problems/plus-one</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="2-0解题思路"><a href="#2-0解题思路" class="headerlink" title="2.0解题思路"></a>2.0解题思路</h1><p>这道题比较简单，从后向前遍历找到第一个非9数字，记下标为not9first，该下标之后所有数全为0，本下标元素值+1 对异常情况值溢出做特殊处理</p>
+<h1 id="3-0实现代码"><a href="#3-0实现代码" class="headerlink" title="3.0实现代码"></a>3.0实现代码</h1><pre><code>func plusOne(digits []int) []int {
+    oldLen := len(digits)
+    not9first := oldLen-1 // 从后向前非9的第一个数
+    for ; not9first &gt;= 0 &amp;&amp; digits[not9first] == 9; not9first-- {
+        digits[not9first] = 0 // 是9就成0
+    }
+    if(not9first != -1) { // 加完没溢出
+        digits[not9first] += 1
+    }else { // 加完溢出
+        digits = append([]int{1}, digits...) // 首部赋值1
+    }
+    return digits
+}</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sakura添加在线和博主聊天功能</title>
+    <url>/2020/12/16/Sakura%E6%B7%BB%E5%8A%A0%E5%9C%A8%E7%BA%BF%E5%92%8C%E5%8D%9A%E4%B8%BB%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104295156" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104295156</a></p>
+<h1 id="添加-DaoVoice-在线聊天功能"><a href="#添加-DaoVoice-在线聊天功能" class="headerlink" title="添加 DaoVoice 在线聊天功能"></a>添加 <a href="http://www.daovoice.io/" target="_blank" rel="noopener">DaoVoice</a> 在线聊天功能</h1><p>效果展示</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201216202906.png" alt="image-20201216202904581"></p>
+<h2 id="1-官网注册账号获取appid修改conifg文件"><a href="#1-官网注册账号获取appid修改conifg文件" class="headerlink" title="1.官网注册账号获取appid修改conifg文件"></a>1.官网注册账号获取appid修改conifg文件</h2><p>前往 <a href="http://www.daovoice.io/" target="_blank" rel="noopener">DaoVoice</a> 官网注册并且获取 <code>app_id</code>，并将 <code>app_id</code> 填入主题的 <code>_config.yml</code> 文件中。</p>
+<pre><code>daovoice:
+  enable: true
+  daovoice_app_id: 7e5676fe ##这里替换成你DaoVoice上的appid</code></pre><h2 id="2-在footer-ejs文件末尾中添加"><a href="#2-在footer-ejs文件末尾中添加" class="headerlink" title="2.在footer.ejs文件末尾中添加"></a>2.在footer.ejs文件末尾中添加</h2><pre><code>  &lt;script&gt;
+  (function(i,s,o,g,r,a,m){i[&quot;DaoVoiceObject&quot;]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset=&quot;utf-8&quot;;m.parentNode.insertBefore(a,m)})(window,document,&quot;script&quot;,(&#39;https:&#39; == document.location.protocol ? &#39;https:&#39; : &#39;http:&#39;) + &quot;//widget.daovoice.io/widget/&lt;%= theme.daovoice.daovoice_app_id%&gt;.js&quot;,&quot;daovoice&quot;);
+    daovoice(&#39;init&#39;, {
+      app_id: &quot;&lt;%= theme.daovoice.daovoice_app_id%&gt;&quot;
+    });
+    daovoice(&#39;update&#39;);</code></pre><h2 id="3-配置自己喜欢的聊天样式"><a href="#3-配置自己喜欢的聊天样式" class="headerlink" title="3.配置自己喜欢的聊天样式"></a>3.配置自己喜欢的聊天样式</h2><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201216202754.png" alt="image-20201216202746421"></p>
+<h2 id="4-可以绑定微信-邮箱-如果有人发消息会邮箱-微信消息提醒-在官网查看"><a href="#4-可以绑定微信-邮箱-如果有人发消息会邮箱-微信消息提醒-在官网查看" class="headerlink" title="4.可以绑定微信\邮箱,如果有人发消息会邮箱\微信消息提醒,在官网查看"></a>4.可以绑定微信\邮箱,如果有人发消息会邮箱\微信消息提醒,在官网查看</h2>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
   </entry>
   <entry>
     <title>Sakura主题添加背景切换功能</title>
@@ -1491,26 +1457,6 @@ func max(arr []int) int{
       </categories>
   </entry>
   <entry>
-    <title>Sakura添加在线和博主聊天功能</title>
-    <url>/2020/12/16/Sakura%E6%B7%BB%E5%8A%A0%E5%9C%A8%E7%BA%BF%E5%92%8C%E5%8D%9A%E4%B8%BB%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/</url>
-    <content><![CDATA[<p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104295156" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104295156</a></p>
-<h1 id="添加-DaoVoice-在线聊天功能"><a href="#添加-DaoVoice-在线聊天功能" class="headerlink" title="添加 DaoVoice 在线聊天功能"></a>添加 <a href="http://www.daovoice.io/" target="_blank" rel="noopener">DaoVoice</a> 在线聊天功能</h1><p>效果展示</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201216202906.png" alt="image-20201216202904581"></p>
-<h2 id="1-官网注册账号获取appid修改conifg文件"><a href="#1-官网注册账号获取appid修改conifg文件" class="headerlink" title="1.官网注册账号获取appid修改conifg文件"></a>1.官网注册账号获取appid修改conifg文件</h2><p>前往 <a href="http://www.daovoice.io/" target="_blank" rel="noopener">DaoVoice</a> 官网注册并且获取 <code>app_id</code>，并将 <code>app_id</code> 填入主题的 <code>_config.yml</code> 文件中。</p>
-<pre><code>daovoice:
-  enable: true
-  daovoice_app_id: 7e5676fe ##这里替换成你DaoVoice上的appid</code></pre><h2 id="2-在footer-ejs文件末尾中添加"><a href="#2-在footer-ejs文件末尾中添加" class="headerlink" title="2.在footer.ejs文件末尾中添加"></a>2.在footer.ejs文件末尾中添加</h2><pre><code>  &lt;script&gt;
-  (function(i,s,o,g,r,a,m){i[&quot;DaoVoiceObject&quot;]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset=&quot;utf-8&quot;;m.parentNode.insertBefore(a,m)})(window,document,&quot;script&quot;,(&#39;https:&#39; == document.location.protocol ? &#39;https:&#39; : &#39;http:&#39;) + &quot;//widget.daovoice.io/widget/&lt;%= theme.daovoice.daovoice_app_id%&gt;.js&quot;,&quot;daovoice&quot;);
-    daovoice(&#39;init&#39;, {
-      app_id: &quot;&lt;%= theme.daovoice.daovoice_app_id%&gt;&quot;
-    });
-    daovoice(&#39;update&#39;);</code></pre><h2 id="3-配置自己喜欢的聊天样式"><a href="#3-配置自己喜欢的聊天样式" class="headerlink" title="3.配置自己喜欢的聊天样式"></a>3.配置自己喜欢的聊天样式</h2><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201216202754.png" alt="image-20201216202746421"></p>
-<h2 id="4-可以绑定微信-邮箱-如果有人发消息会邮箱-微信消息提醒-在官网查看"><a href="#4-可以绑定微信-邮箱-如果有人发消息会邮箱-微信消息提醒-在官网查看" class="headerlink" title="4.可以绑定微信\邮箱,如果有人发消息会邮箱\微信消息提醒,在官网查看"></a>4.可以绑定微信\邮箱,如果有人发消息会邮箱\微信消息提醒,在官网查看</h2>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2021/03/19/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
@@ -1523,6 +1469,60 @@ func max(arr []int) int{
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Leetcode-28. 实现 strStr()</title>
+    <url>/2020/08/11/Leetcode-28-%E5%AE%9E%E7%8E%B0-strStr/</url>
+    <content><![CDATA[<h4 id="Leetcode-28-实现-strStr"><a href="#Leetcode-28-实现-strStr" class="headerlink" title="Leetcode-28. 实现 strStr()"></a><a href="https://leetcode-cn.com/problems/implement-strstr/" target="_blank" rel="noopener">Leetcode-28. 实现 strStr()</a></h4><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>实现 strStr() 函数。</p>
+<p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。</p>
+<p>示例 1:</p>
+<p>输入: haystack = “hello”, needle = “ll”<br>输出: 2<br>示例 2:</p>
+<p>输入: haystack = “aaaaa”, needle = “bba”<br>输出: -1<br>说明:</p>
+<p>当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
+<p>对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/implement-strstr" target="_blank" rel="noopener">https://leetcode-cn.com/problems/implement-strstr</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>遍历每一个haystack的字符，以此为起点和needle匹配，匹配成功，则返回遍历下标；否则返回-1</p>
+<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><pre><code>func strStr(haystack string, needle string) int {
+    hay_len := len(haystack)
+    ne_len := len(needle)
+    for i:=0; i &lt; hay_len-ne_len+1; i++ {
+       //判断haystack[i]开头是否和needle匹配
+       if(isStrEqual(haystack[i:], needle)){
+           return i
+       }
+    }
+    return -1
+}
+
+func isStrEqual(str1 string, str2 string) bool {
+    length := len(str2)
+    flag := true
+    for j:=0; j&lt;length ;j++ {
+        if(str1[j] != str2[j]) {
+            flag = false
+            break
+        }
+    } 
+    return flag
+}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>书写代码在一开始的时候没有注意到haystack的遍历区间是</p>
+<p>len(haystack) - len(needle)+1，遍历到尾部是没必要且麻烦的</p>
+<p>避免这种情况就是当我有了基本思路后，是会有好多漏洞的，实现方法要想一次最优且简洁就要把所有的测试用例列出来，不要光用脑子想，要写在纸上</p>
+<p>然后把脑子里的思路转成代码，和用例一一对应</p>
+<h1 id="进一步的优化（未完待补坑）"><a href="#进一步的优化（未完待补坑）" class="headerlink" title="进一步的优化（未完待补坑）"></a>进一步的优化（未完待补坑）</h1><p>上面代码的时间复杂度为O((N-L)*L)</p>
+<h2 id="优化方案一：hash省去L长度是否匹配判断"><a href="#优化方案一：hash省去L长度是否匹配判断" class="headerlink" title="优化方案一：hash省去L长度是否匹配判断"></a>优化方案一：hash省去L长度是否匹配判断</h2><p>之所以复杂是因为遍历每一字符都要比较L长度判断是否匹配</p>
+<p>这个*L可以转化为O(1)</p>
+<p>方法就是用hash值，我们对字符进行编码，生成唯一值</p>
+<p>这样每次判断匹配时就转化为计算hash值了</p>
+<h2 id="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"><a href="#优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间" class="headerlink" title="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"></a>优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间</h2><p>这个查了资料比较复杂，等以后有时间不用，挖个坑QAQ</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>简单</tag>
+      </tags>
   </entry>
   <entry>
     <title>hexo+valine搭建博客评论系统</title>
@@ -1542,23 +1542,6 @@ v_appKey: mgOpfzbkHYqU92CV4IDlAUHQ</code></pre><p>5.记得在Leancloud -&gt; 设
 <p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104281764" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104281764</a></p>
 <p>PS:可以在<a href="https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了" target="_blank" rel="noopener">https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>hexo博客添加友链检测界面UptimeRobot+CupSatus</title>
-    <url>/2021/02/03/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE%E6%A3%80%E6%B5%8B%E7%95%8C%E9%9D%A2UptimeRobot-CupSatus/</url>
-    <content><![CDATA[<h1 id="0-效果展示"><a href="#0-效果展示" class="headerlink" title="0.效果展示"></a>0.效果展示</h1><h1 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h1><p>a.注册UptimeRobot账号，将自己的网站和要检测的网站或者账号加上去</p>
-<p>b.去<a href="https://github.com/izoyo/Cup网址下载CupStatus页面" target="_blank" rel="noopener">https://github.com/izoyo/Cup网址下载CupStatus页面</a></p>
-<h1 id="2-应用到自己的hexo博客上"><a href="#2-应用到自己的hexo博客上" class="headerlink" title="2.应用到自己的hexo博客上"></a>2.应用到自己的hexo博客上</h1><p>hexo new page “friendlink_status” 页面</p>
-<p>在source/friendlink_status/中把CupSatus的所有文件放进去，目录如下</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210203180649.png" alt="image-20210203180642121"></p>
-<p>按照开源项目CupSatus中说的把js/config.js中的key替换成自己upTimeRobot账号下对应的api key即可</p>
-<p>然后在博客目录/config.yml  注意不是主题目录下的那个配置文件</p>
-<p>加入skip-render:   -friendlink_status/**  不使用主题的layout.ejs渲染这个页面</p>
-<p>在主题的配置文件中菜单导航栏上加入这个页面即可</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
   </entry>
   <entry>
     <title>Redis常用命令整理</title>
@@ -1595,6 +1578,23 @@ ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和
       <tags>
         <tag>Reids</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>hexo博客添加友链检测界面UptimeRobot+CupSatus</title>
+    <url>/2021/02/03/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE%E6%A3%80%E6%B5%8B%E7%95%8C%E9%9D%A2UptimeRobot-CupSatus/</url>
+    <content><![CDATA[<h1 id="0-效果展示"><a href="#0-效果展示" class="headerlink" title="0.效果展示"></a>0.效果展示</h1><h1 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h1><p>a.注册UptimeRobot账号，将自己的网站和要检测的网站或者账号加上去</p>
+<p>b.去<a href="https://github.com/izoyo/Cup网址下载CupStatus页面" target="_blank" rel="noopener">https://github.com/izoyo/Cup网址下载CupStatus页面</a></p>
+<h1 id="2-应用到自己的hexo博客上"><a href="#2-应用到自己的hexo博客上" class="headerlink" title="2.应用到自己的hexo博客上"></a>2.应用到自己的hexo博客上</h1><p>hexo new page “friendlink_status” 页面</p>
+<p>在source/friendlink_status/中把CupSatus的所有文件放进去，目录如下</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210203180649.png" alt="image-20210203180642121"></p>
+<p>按照开源项目CupSatus中说的把js/config.js中的key替换成自己upTimeRobot账号下对应的api key即可</p>
+<p>然后在博客目录/config.yml  注意不是主题目录下的那个配置文件</p>
+<p>加入skip-render:   -friendlink_status/**  不使用主题的layout.ejs渲染这个页面</p>
+<p>在主题的配置文件中菜单导航栏上加入这个页面即可</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
   </entry>
   <entry>
     <title>hexo增加RSS订阅功能</title>
@@ -1907,6 +1907,22 @@ cd 解压后的文件夹</code></pre><h2 id="3-执行命令安装nginx"><a href=
       </categories>
       <tags>
         <tag>软件安装</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>主题博客增加天气插件</title>
+    <url>/2021/03/08/%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E5%A4%A9%E6%B0%94%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<p>效果预览：</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210308160128.png" alt="image-20210308160120253"></p>
+<h2 id="1-注册和风天气账号"><a href="#1-注册和风天气账号" class="headerlink" title="1.注册和风天气账号"></a>1.注册和风天气账号</h2><p>官方网址如下<a href="https://www.qweather.com/" target="_blank" rel="noopener">https://www.qweather.com/</a></p>
+<h2 id="2-导入生成的插件代码"><a href="#2-导入生成的插件代码" class="headerlink" title="2.导入生成的插件代码"></a>2.导入生成的插件代码</h2><p>博客目录\themes\Sakura\layout_partial\header.ejs     嵌入到代码的最尾部</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
+        <tag>sakura</tag>
       </tags>
   </entry>
   <entry>
@@ -2238,75 +2254,6 @@ static char *ngx_http_hello_counter(ngx_conf_t *cf, ngx_command_t *cmd, void *co
       </categories>
       <tags>
         <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>主题博客增加天气插件</title>
-    <url>/2021/03/08/%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E5%A4%A9%E6%B0%94%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<p>效果预览：</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210308160128.png" alt="image-20210308160120253"></p>
-<h2 id="1-注册和风天气账号"><a href="#1-注册和风天气账号" class="headerlink" title="1.注册和风天气账号"></a>1.注册和风天气账号</h2><p>官方网址如下<a href="https://www.qweather.com/" target="_blank" rel="noopener">https://www.qweather.com/</a></p>
-<h2 id="2-导入生成的插件代码"><a href="#2-导入生成的插件代码" class="headerlink" title="2.导入生成的插件代码"></a>2.导入生成的插件代码</h2><p>博客目录\themes\Sakura\layout_partial\header.ejs     嵌入到代码的最尾部</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
-        <tag>sakura</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>主题美化添加文章阅读计数统计和网站运行事件</title>
-    <url>/2020/12/26/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E8%AE%A1%E6%95%B0%E7%BB%9F%E8%AE%A1/</url>
-    <content><![CDATA[<p>在主题目录/layout/_partial/footer.ejs中<br>&lt;div class=”footer-device”&gt;和&lt;div class=”site-info”&gt;的下面之间加入如下代码</p>
-<pre><code> &lt;!-- 网站数据统计 --&gt;
-        &lt;div class=&quot;footer-device&quot;&gt;
-          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;
-            &lt;span style=&quot;color: #ff9999;padding-left: 20px;&quot;&gt;
-                &lt;!-- 网站运行时间统计 --&gt;
-                &lt;i class=&quot;fa fa-clock-o&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
-                &lt;span id=&quot;time&quot; align=&quot;center&quot;&gt;载入时间中...&lt;/span&gt;
-                &lt;script&gt;
-                var now = new Date(); 
-                function createtime() { 
-                      var grt= new Date(&quot;&lt;%- theme.siteBuildingTime %&gt;&quot;);//在此处修改你的建站时间
-                      now.setTime(now.getTime()+250); 
-                      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-                      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-                      if(String(hnum).length ==1 ){hnum = &quot;0&quot; + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-                      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = &quot;0&quot; + mnum;} 
-                      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-                      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = &quot;0&quot; + snum;} 
-                      document.getElementById(&quot;time&quot;).innerHTML = &quot;小破站在各种灾难中苟活了 &quot;+ dnum +&quot; 天 &quot;+hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;      
-                  } 
-                  setInterval(&quot;createtime()&quot;,250);
-                &lt;/script&gt;
-            &lt;/span&gt; 
-          &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;footer-device&quot;&gt;
-          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;
-            &lt;span style=&quot;color: #b9b9b9;padding-left: 20px;&quot;&gt;
-              &lt;!-- 全网站字数统计wordcount --&gt;
-              &lt;i class=&quot;fa fa-line-chart&quot;  aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt; 博客全站共: &lt;span class=&quot;post-count&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;%= totalcount(site) %&gt;&lt;/span&gt;字&lt;/span&gt;
-              &lt;!-- 不蒜子网页计数器 --&gt;
-              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalTraffic) { %&gt;
-              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-fire&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;总访问量： &lt;span id=&quot;busuanzi_value_site_pv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;次&lt;/span&gt;
-              &lt;/span&gt;
-              &lt;% } %&gt;
-              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalNumberOfvisitors) { %&gt;
-              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-user&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;总访问人数： &lt;span id=&quot;busuanzi_value_site_uv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;人&lt;/span&gt;
-              &lt;/span&gt;
-              &lt;% } %&gt;
-            &lt;/span&gt;
-          &lt;/p&gt;
-        &lt;/div&gt;</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
       </tags>
   </entry>
   <entry>
@@ -3200,6 +3147,93 @@ layout<span class="token punctuation">:</span> <span class="token punctuation">[
       </tags>
   </entry>
   <entry>
+    <title>主题美化添加文章阅读计数统计和网站运行事件</title>
+    <url>/2020/12/26/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E8%AE%A1%E6%95%B0%E7%BB%9F%E8%AE%A1/</url>
+    <content><![CDATA[<p>在主题目录/layout/_partial/footer.ejs中<br>&lt;div class=”footer-device”&gt;和&lt;div class=”site-info”&gt;的下面之间加入如下代码</p>
+<pre><code> &lt;!-- 网站数据统计 --&gt;
+        &lt;div class=&quot;footer-device&quot;&gt;
+          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;
+            &lt;span style=&quot;color: #ff9999;padding-left: 20px;&quot;&gt;
+                &lt;!-- 网站运行时间统计 --&gt;
+                &lt;i class=&quot;fa fa-clock-o&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+                &lt;span id=&quot;time&quot; align=&quot;center&quot;&gt;载入时间中...&lt;/span&gt;
+                &lt;script&gt;
+                var now = new Date(); 
+                function createtime() { 
+                      var grt= new Date(&quot;&lt;%- theme.siteBuildingTime %&gt;&quot;);//在此处修改你的建站时间
+                      now.setTime(now.getTime()+250); 
+                      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                      if(String(hnum).length ==1 ){hnum = &quot;0&quot; + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = &quot;0&quot; + mnum;} 
+                      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = &quot;0&quot; + snum;} 
+                      document.getElementById(&quot;time&quot;).innerHTML = &quot;小破站在各种灾难中苟活了 &quot;+ dnum +&quot; 天 &quot;+hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;      
+                  } 
+                  setInterval(&quot;createtime()&quot;,250);
+                &lt;/script&gt;
+            &lt;/span&gt; 
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;footer-device&quot;&gt;
+          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;
+            &lt;span style=&quot;color: #b9b9b9;padding-left: 20px;&quot;&gt;
+              &lt;!-- 全网站字数统计wordcount --&gt;
+              &lt;i class=&quot;fa fa-line-chart&quot;  aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt; 博客全站共: &lt;span class=&quot;post-count&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;%= totalcount(site) %&gt;&lt;/span&gt;字&lt;/span&gt;
+              &lt;!-- 不蒜子网页计数器 --&gt;
+              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalTraffic) { %&gt;
+              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-fire&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;总访问量： &lt;span id=&quot;busuanzi_value_site_pv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;次&lt;/span&gt;
+              &lt;/span&gt;
+              &lt;% } %&gt;
+              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalNumberOfvisitors) { %&gt;
+              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-user&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;总访问人数： &lt;span id=&quot;busuanzi_value_site_uv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;人&lt;/span&gt;
+              &lt;/span&gt;
+              &lt;% } %&gt;
+            &lt;/span&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>回溯算法刷题整理总结</title>
+    <url>/2021/01/20/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E6%95%B4%E7%90%86%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="一、回溯算法理解"><a href="#一、回溯算法理解" class="headerlink" title="一、回溯算法理解"></a>一、回溯算法理解</h1><p>本质是以深度遍历的方式遍历决策树</p>
+<p>但因为没有具体的TreeNode构成树，所以回溯与DFS遍历树很像，但不同的是回溯要多一步退回选择的操作</p>
+<p>典型问题:全排列、N皇后问题</p>
+<p>回溯算法的构成要素:</p>
+<p>①选择列表</p>
+<p>②已选路径或已做出的选择(trace或used)</p>
+<p>③结束条件</p>
+<p>回溯算法的模板如下:</p>
+<pre><code>def backTrace(已选路径, 选择列表) {
+    if(结束条件) {
+        return ; // 对于return 如果只问是否有解则返回bool即可;如果要所有的解则用全局变量数组保存所有找到的解
+    }
+
+    for 某选择:选择列表 {
+        if(不必要选择) {
+            continue;
+        }
+        做选择:某选择加入已选路径，下一步选择列表是否变化
+        backTrace(已选路径, 选择列表)
+        回退选择:某选择退出已选路径，回退后选择列表是否需要恢复
+    }
+}</code></pre><p>回溯算法的思路如下:</p>
+<p>画决策树，决策树节点的属性就是 选择和当前路径  我们的backTrace函数在树的各个节点游走，知道遇到结束条件</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用主题的个人插件在文章中插入B站外链视频和图片</title>
     <url>/2020/12/18/%E4%BD%BF%E7%94%A8%E4%B8%BB%E9%A2%98%E7%9A%84%E4%B8%AA%E4%BA%BA%E6%8F%92%E4%BB%B6%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5B%E7%AB%99%E5%A4%96%E9%93%BE%E8%A7%86%E9%A2%91%E5%92%8C%E5%9B%BE%E7%89%87/</url>
     <content><![CDATA[<h2 id="写文章配置"><a href="#写文章配置" class="headerlink" title="写文章配置"></a>写文章配置</h2><p>主题集成了个人插件hexo-tag-bili和hexo-tag-fancybox_img。其中hexo-tag-bili用来在文章或单页面中插入B站外链视频，使用语法如下：</p>
@@ -3209,132 +3243,6 @@ layout<span class="token punctuation">:</span> <span class="token punctuation">[
 <pre class=" language-md"><code class="language-md">{% fb_img src [caption] %}</code></pre>
 <p>详细使用教程详见<a href="https://github.com/honjun/hexo-tag-fancybox_img/blob/master/README-zh_cn.md" target="_blank" rel="noopener">hexo-tag-fancybox_img</a></p>
 ]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>博客美化增加任务清单页面</title>
-    <url>/2021/01/11/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E4%BB%BB%E5%8A%A1%E6%B8%85%E5%8D%95%E9%A1%B5%E9%9D%A2/</url>
-    <content><![CDATA[<p>参考链接:<a href="https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1" target="_blank" rel="noopener">https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1</a></p>
-<h1 id="1-新建todolist页面"><a href="#1-新建todolist页面" class="headerlink" title="1.新建todolist页面"></a>1.新建todolist页面</h1><pre><code>hexo new page &quot;todolist&quot;</code></pre><h1 id="2-配置该页面跳过渲染"><a href="#2-配置该页面跳过渲染" class="headerlink" title="2.配置该页面跳过渲染"></a>2.配置该页面跳过渲染</h1><p>这次添加的页面是一个html页面，需要配置跳过渲染后不会使用主题的layout对网页进行渲染</p>
-<p>在主站的配置文件的skip:render种配置</p>
-<pre><code>skip_render: 
-- &quot;todolist/**&quot;</code></pre><h1 id="3-修改todolist界面"><a href="#3-修改todolist界面" class="headerlink" title="3.修改todolist界面"></a>3.修改todolist界面</h1><p>博客目录下/source/todolist/index.md 改为index.html， 文件内容如下:</p>
-<pre><code>&lt;!DOCTYPE html&gt; 
-&lt;html lang=&quot;en&quot;&gt; 
-    &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;title&gt;Title&lt;/title&gt; &lt;script src=&quot;https://cdn.bootcss.com/vue/2.6.10/vue.min.js&quot;&gt;&lt;/script&gt; &lt;style&gt; body{ margin:0;background-color:#fafafa;font:14px &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif} h2{margin:0;font-size:12px} a{color:#000;text-decoration:none} input{outline:0} button{margin:0;padding:0;border:0;background:0;font-size:100%;vertical-align:baseline;font-family:inherit;font-weight:inherit;color:inherit;outline:0} ul{padding:0;margin:0;list-style:none} .page-top{width:100%;height:40px;background-color:#db4c3f} .page-content{width:50%;margin:0 auto} .page-content h2{line-height:40px;font-size:18px;color:#fff} .main{width:50%;margin:0 auto;box-sizing:border-box} .task-input{width:99%;height:30px;outline:0;border:1px solid #ccc} .task-count{display:flex;margin:10px 0} .task-count li{padding-left:10px;flex:1;color:#dd4b39} .task-count li:nth-child(1){padding:5px 0 0 10px} .action{text-align:center;display:flex} .action a{margin:0 10px;flex:1;padding:5px 0;color:#777} .action a:nth-child(3){margin-right:0} .active{border-bottom: 2px solid #629A9C} .tasks{background-color:#fff}.no-task-tip{padding:10px 0 10px 10px;display:block;border-bottom:1px solid #ededed;color:#777}.big-title{color:#222}.todo-list{margin:0;padding:0;list-style:none} .todo-list li{ position:relative; font-size:16px; border-left: 5px solid #629A9C; box-shadow: 0 1px 2px rgba(0,0,0,0.07); margin-bottom: 16px; } .todo-list li:hover{background-color:#fafafa} .todo-list li.editing{border-bottom:0;padding:0;} .todo-list li.editing .edit{display:block;padding:13px 17px 12px 17px;margin:0 0 0 43px} .todo-list li.editing .view{display:none} .toggle{ text-align:center; width:16px; height:16px; position:absolute; top:2px; left: 15px; bottom:0; margin:auto 0; cursor: pointer; } .todo-list li label{ white-space:pre-line; word-break:break-all; padding:15px 60px 15px 15px; margin-left:45px; display:block; line-height:1.2; transition:color .4s } .todo-list li.completed label{ color:#d9d9d9; text-decoration:line-through } .todo-list li .destroy{ display:none; text-align:center; width:16px; height:16px; position:absolute; top:0; right:15px; bottom:10px; margin:auto 0; cursor: pointer; font-size:28px; color:#cc9a9a; transition:color .2s ease-out } .todo-list li .destroy:hover{color:#af5b5e} .todo-list li .destroy:after{content:&#39;×&#39;} .todo-list li:hover .destroy{display:block} .todo-list li .edit{display:none} .todo-list li.editing:last-child{margin-bottom:-1px} &lt;/style&gt; &lt;/head&gt; 
-    &lt;body&gt; 
-        &lt;div class=&quot;page-top&quot;&gt; 
-            &lt;div class=&quot;page-content&quot;&gt; 
-                &lt;h2&gt;任务计划列表&lt;/h2&gt; 
-            &lt;/div&gt; 
-        &lt;/div&gt; 
-    &lt;div class=&quot;main&quot;&gt; 
-        &lt;h3 class=&quot;big-title&quot;&gt;添加任务：&lt;/h3&gt;
-        &lt;input placeholder=&quot;例如：吃饭睡觉打豆豆； 提示：回车即可添加任务，双击列表标题即可编辑&quot; class=&quot;task-input&quot; type=&quot;text&quot; v-on:keyup.enter=&quot;enterFn&quot; v-model=&quot;todo&quot; /&gt; 
-        &lt;ul class=&quot;task-count&quot;&gt; 
-            &lt;li&gt;{{unComplete}}个任务未完成&lt;/li&gt;
-            &lt;li class=&quot;action&quot;&gt; &lt;a :class=&quot;{active:visibility!==&#39;unCompleted&#39;&amp;&amp;visibility!==&#39;completed&#39;}&quot; href=&quot;#all&quot;&gt;所有任务&lt;/a&gt; &lt;a :class=&quot;{active:visibility===&#39;unCompleted&#39;}&quot; href=&quot;#unCompleted&quot;&gt;未完成的任务&lt;/a&gt; &lt;a :class=&quot;{active:visibility===&#39;completed&#39;}&quot; href=&quot;#completed&quot;&gt;完成的任务&lt;/a&gt; &lt;/li&gt; 
-        &lt;/ul&gt; 
-        &lt;h3 class=&quot;big-title&quot;&gt;任务列表：&lt;/h3&gt; 
-        &lt;div class=&quot;tasks&quot;&gt; &lt;span class=&quot;no-task-tip&quot; v-show=&quot;!list.length&quot;&gt;还没有添加任何任务&lt;/span&gt; 
-        &lt;ul class=&quot;todo-list&quot; v-show=&quot;list.length&quot;&gt;
-            &lt;li class=&quot;todo&quot; v-for=&quot;item in filterData&quot; v-bind:class=&quot;{completed:item.isComplete,editing:item===edtorTodos}&quot; &gt; 
-                &lt;div class=&quot;view&quot;&gt; 
-                    &lt;input class=&quot;toggle&quot; type=&quot;checkbox&quot; v-model=&quot;item.isComplete&quot; /&gt; &lt;label @dblclick=&quot;edtorTodo(item)&quot;&gt;{{item.title}}&lt;/label&gt; &lt;button class=&quot;destroy&quot; @click=&quot;delFn(item)&quot; &gt;&lt;/button&gt; 
-                &lt;/div&gt; 
-                &lt;input class=&quot;edit&quot; type=&quot;text&quot; v-focus=&quot;edtorTodos===item&quot; v-model=&quot;item.title&quot; @blur=&quot;edtoEnd(item)&quot; @keyup.enter=&quot;edtoEnd(item)&quot; @keyup.esc=&quot;cancelEdit(item)&quot; /&gt; 
-            &lt;/li&gt; 
-        &lt;/ul&gt; 
-        &lt;/div&gt;
-    &lt;/div&gt;
-
- &lt;script&gt; 
- //存取localStorage中的数据
-var store = { 
-    save(key,value){ 
-        window.localStorage.setItem(key,JSON.stringify(value)); 
-    }, 
-    fetch(key){ 
-        return JSON.parse(window.localStorage.getItem(key))||[]; 
-    } 
-} 
-    //list取出所有的值 
-var list = store.fetch(&quot;storeData&quot;); 
-
-var vm = new Vue({ 
-    el:&quot;.main&quot;, 
-    data:{ 
-        list, 
-        todo:&#39;&#39;,
-        edtorTodos:&#39;&#39;,//记录正在编辑的数据,
-        beforeTitle:&quot;&quot;,//记录正在编辑的数据的title 
-        visibility:&quot;all&quot;//通过这个属性值的变化对数据进行筛选 
-    }, 
-    watch:{ 
-        //下面的这种方法是浅监控 
-        /*list:function(){//监控list这个属性，当这个属性对应的值发生变化就会执行函数 
-        store.save(&quot;storeData&quot;,this.list); 
-        }*/ 
-        //下面的是深度监控 
-        list:{ 
-            handler:function(){
-                store.save(&quot;storeData&quot;,this.list); 
-            }, deep:true 
-        } 
-    }, 
-    methods:{ 
-        enterFn(ev){//添加任务 
-        //向list中添加一项任务 
-        //事件处理函数中的this指向的是当前这个根实例 
-        if(this.todo==&quot;&quot;){return;} 
-        this.list.push({ 
-            title:this.todo, 
-            isComplete:false 
-        }); 
-        this.todo = &quot;&quot;;
-    }, 
-    delFn(item){//删除任务 
-    var index = this.list.indexOf(item); 
-    this.list.splice(index,1) 
-    }, 
-    edtorTodo(item){//编辑任务 
-    //编辑任务的时候记录编辑之前的值 
-        this.beforeTitle = item.title; 
-        this.edtorTodos = item; 
-    }, 
-    edtoEnd(item){//编辑完成 
-    this.edtorTodos=&quot;&quot;; 
-    // this.cancelEdit = this.edtorTodos; 
-    }, 
-    cancelEdit(item){//取消编辑 
-    item.title = this.beforeTitle; 
-    this.beforeTitle = &#39;&#39;;
-    this.edtorTodos=&#39;&#39;; 
-    } 
-    }, 
-    directives:{ 
-    &quot;focus&quot;:{
-    update(el,binding){
-    if(binding.value){
-    el.focus(); 
-    } 
-    } 
-    } 
-    }, 
-    computed:{ unComplete(){ return this.list.filter(item=&gt;{ return !item.isComplete }).length }, 
-    filterData(){ 
- //过滤的时候有三种情况 all completed unCompleted 
- var filter = { all:function(list){ return list; }, completed:function(list){ return list.filter(item=&gt;{ return item.isComplete; }) }, unCompleted:function(list){ return list.filter(item=&gt;{ return !item.isComplete; }) } } 
- //如果找到了过滤函数，就返回过滤后的数据，如果没有找到就返回所有的数据 
- return filter[this.visibility]?filter[this.visibility](list):list; } } }); 
- function hashFn(){ var hash = window.location.hash.slice(1); vm.visibility = hash; } 
- hashFn(); 
- window.addEventListener(&#39;hashchange&#39;,hashFn); 
- &lt;/script&gt; 
- &lt;/body&gt;
-&lt;/html&gt;</code></pre>]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -4489,40 +4397,6 @@ PhotoVerifyPassword:
       </tags>
   </entry>
   <entry>
-    <title>回溯算法刷题整理总结</title>
-    <url>/2021/01/20/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E6%95%B4%E7%90%86%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h1 id="一、回溯算法理解"><a href="#一、回溯算法理解" class="headerlink" title="一、回溯算法理解"></a>一、回溯算法理解</h1><p>本质是以深度遍历的方式遍历决策树</p>
-<p>但因为没有具体的TreeNode构成树，所以回溯与DFS遍历树很像，但不同的是回溯要多一步退回选择的操作</p>
-<p>典型问题:全排列、N皇后问题</p>
-<p>回溯算法的构成要素:</p>
-<p>①选择列表</p>
-<p>②已选路径或已做出的选择(trace或used)</p>
-<p>③结束条件</p>
-<p>回溯算法的模板如下:</p>
-<pre><code>def backTrace(已选路径, 选择列表) {
-    if(结束条件) {
-        return ; // 对于return 如果只问是否有解则返回bool即可;如果要所有的解则用全局变量数组保存所有找到的解
-    }
-
-    for 某选择:选择列表 {
-        if(不必要选择) {
-            continue;
-        }
-        做选择:某选择加入已选路径，下一步选择列表是否变化
-        backTrace(已选路径, 选择列表)
-        回退选择:某选择退出已选路径，回退后选择列表是否需要恢复
-    }
-}</code></pre><p>回溯算法的思路如下:</p>
-<p>画决策树，决策树节点的属性就是 选择和当前路径  我们的backTrace函数在树的各个节点游走，知道遇到结束条件</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>增加文章统计折线图、饼状图</title>
     <url>/2020/12/18/%E5%A2%9E%E5%8A%A0%E6%96%87%E7%AB%A0%E7%BB%9F%E8%AE%A1%E6%8A%98%E7%BA%BF%E5%9B%BE%E3%80%81%E9%A5%BC%E7%8A%B6%E5%9B%BE/</url>
     <content><![CDATA[<h3 id="1-sakura-layout-analytics-ejs"><a href="#1-sakura-layout-analytics-ejs" class="headerlink" title="1.sakura/layout/analytics.ejs"></a>1.sakura/layout/analytics.ejs</h3><pre><code>&lt;div class=&quot;pattern-center-blank&quot;&gt;
@@ -4856,6 +4730,132 @@ PhotoVerifyPassword:
       </tags>
   </entry>
   <entry>
+    <title>博客美化增加任务清单页面</title>
+    <url>/2021/01/11/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E4%BB%BB%E5%8A%A1%E6%B8%85%E5%8D%95%E9%A1%B5%E9%9D%A2/</url>
+    <content><![CDATA[<p>参考链接:<a href="https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1" target="_blank" rel="noopener">https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1</a></p>
+<h1 id="1-新建todolist页面"><a href="#1-新建todolist页面" class="headerlink" title="1.新建todolist页面"></a>1.新建todolist页面</h1><pre><code>hexo new page &quot;todolist&quot;</code></pre><h1 id="2-配置该页面跳过渲染"><a href="#2-配置该页面跳过渲染" class="headerlink" title="2.配置该页面跳过渲染"></a>2.配置该页面跳过渲染</h1><p>这次添加的页面是一个html页面，需要配置跳过渲染后不会使用主题的layout对网页进行渲染</p>
+<p>在主站的配置文件的skip:render种配置</p>
+<pre><code>skip_render: 
+- &quot;todolist/**&quot;</code></pre><h1 id="3-修改todolist界面"><a href="#3-修改todolist界面" class="headerlink" title="3.修改todolist界面"></a>3.修改todolist界面</h1><p>博客目录下/source/todolist/index.md 改为index.html， 文件内容如下:</p>
+<pre><code>&lt;!DOCTYPE html&gt; 
+&lt;html lang=&quot;en&quot;&gt; 
+    &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;title&gt;Title&lt;/title&gt; &lt;script src=&quot;https://cdn.bootcss.com/vue/2.6.10/vue.min.js&quot;&gt;&lt;/script&gt; &lt;style&gt; body{ margin:0;background-color:#fafafa;font:14px &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif} h2{margin:0;font-size:12px} a{color:#000;text-decoration:none} input{outline:0} button{margin:0;padding:0;border:0;background:0;font-size:100%;vertical-align:baseline;font-family:inherit;font-weight:inherit;color:inherit;outline:0} ul{padding:0;margin:0;list-style:none} .page-top{width:100%;height:40px;background-color:#db4c3f} .page-content{width:50%;margin:0 auto} .page-content h2{line-height:40px;font-size:18px;color:#fff} .main{width:50%;margin:0 auto;box-sizing:border-box} .task-input{width:99%;height:30px;outline:0;border:1px solid #ccc} .task-count{display:flex;margin:10px 0} .task-count li{padding-left:10px;flex:1;color:#dd4b39} .task-count li:nth-child(1){padding:5px 0 0 10px} .action{text-align:center;display:flex} .action a{margin:0 10px;flex:1;padding:5px 0;color:#777} .action a:nth-child(3){margin-right:0} .active{border-bottom: 2px solid #629A9C} .tasks{background-color:#fff}.no-task-tip{padding:10px 0 10px 10px;display:block;border-bottom:1px solid #ededed;color:#777}.big-title{color:#222}.todo-list{margin:0;padding:0;list-style:none} .todo-list li{ position:relative; font-size:16px; border-left: 5px solid #629A9C; box-shadow: 0 1px 2px rgba(0,0,0,0.07); margin-bottom: 16px; } .todo-list li:hover{background-color:#fafafa} .todo-list li.editing{border-bottom:0;padding:0;} .todo-list li.editing .edit{display:block;padding:13px 17px 12px 17px;margin:0 0 0 43px} .todo-list li.editing .view{display:none} .toggle{ text-align:center; width:16px; height:16px; position:absolute; top:2px; left: 15px; bottom:0; margin:auto 0; cursor: pointer; } .todo-list li label{ white-space:pre-line; word-break:break-all; padding:15px 60px 15px 15px; margin-left:45px; display:block; line-height:1.2; transition:color .4s } .todo-list li.completed label{ color:#d9d9d9; text-decoration:line-through } .todo-list li .destroy{ display:none; text-align:center; width:16px; height:16px; position:absolute; top:0; right:15px; bottom:10px; margin:auto 0; cursor: pointer; font-size:28px; color:#cc9a9a; transition:color .2s ease-out } .todo-list li .destroy:hover{color:#af5b5e} .todo-list li .destroy:after{content:&#39;×&#39;} .todo-list li:hover .destroy{display:block} .todo-list li .edit{display:none} .todo-list li.editing:last-child{margin-bottom:-1px} &lt;/style&gt; &lt;/head&gt; 
+    &lt;body&gt; 
+        &lt;div class=&quot;page-top&quot;&gt; 
+            &lt;div class=&quot;page-content&quot;&gt; 
+                &lt;h2&gt;任务计划列表&lt;/h2&gt; 
+            &lt;/div&gt; 
+        &lt;/div&gt; 
+    &lt;div class=&quot;main&quot;&gt; 
+        &lt;h3 class=&quot;big-title&quot;&gt;添加任务：&lt;/h3&gt;
+        &lt;input placeholder=&quot;例如：吃饭睡觉打豆豆； 提示：回车即可添加任务，双击列表标题即可编辑&quot; class=&quot;task-input&quot; type=&quot;text&quot; v-on:keyup.enter=&quot;enterFn&quot; v-model=&quot;todo&quot; /&gt; 
+        &lt;ul class=&quot;task-count&quot;&gt; 
+            &lt;li&gt;{{unComplete}}个任务未完成&lt;/li&gt;
+            &lt;li class=&quot;action&quot;&gt; &lt;a :class=&quot;{active:visibility!==&#39;unCompleted&#39;&amp;&amp;visibility!==&#39;completed&#39;}&quot; href=&quot;#all&quot;&gt;所有任务&lt;/a&gt; &lt;a :class=&quot;{active:visibility===&#39;unCompleted&#39;}&quot; href=&quot;#unCompleted&quot;&gt;未完成的任务&lt;/a&gt; &lt;a :class=&quot;{active:visibility===&#39;completed&#39;}&quot; href=&quot;#completed&quot;&gt;完成的任务&lt;/a&gt; &lt;/li&gt; 
+        &lt;/ul&gt; 
+        &lt;h3 class=&quot;big-title&quot;&gt;任务列表：&lt;/h3&gt; 
+        &lt;div class=&quot;tasks&quot;&gt; &lt;span class=&quot;no-task-tip&quot; v-show=&quot;!list.length&quot;&gt;还没有添加任何任务&lt;/span&gt; 
+        &lt;ul class=&quot;todo-list&quot; v-show=&quot;list.length&quot;&gt;
+            &lt;li class=&quot;todo&quot; v-for=&quot;item in filterData&quot; v-bind:class=&quot;{completed:item.isComplete,editing:item===edtorTodos}&quot; &gt; 
+                &lt;div class=&quot;view&quot;&gt; 
+                    &lt;input class=&quot;toggle&quot; type=&quot;checkbox&quot; v-model=&quot;item.isComplete&quot; /&gt; &lt;label @dblclick=&quot;edtorTodo(item)&quot;&gt;{{item.title}}&lt;/label&gt; &lt;button class=&quot;destroy&quot; @click=&quot;delFn(item)&quot; &gt;&lt;/button&gt; 
+                &lt;/div&gt; 
+                &lt;input class=&quot;edit&quot; type=&quot;text&quot; v-focus=&quot;edtorTodos===item&quot; v-model=&quot;item.title&quot; @blur=&quot;edtoEnd(item)&quot; @keyup.enter=&quot;edtoEnd(item)&quot; @keyup.esc=&quot;cancelEdit(item)&quot; /&gt; 
+            &lt;/li&gt; 
+        &lt;/ul&gt; 
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+ &lt;script&gt; 
+ //存取localStorage中的数据
+var store = { 
+    save(key,value){ 
+        window.localStorage.setItem(key,JSON.stringify(value)); 
+    }, 
+    fetch(key){ 
+        return JSON.parse(window.localStorage.getItem(key))||[]; 
+    } 
+} 
+    //list取出所有的值 
+var list = store.fetch(&quot;storeData&quot;); 
+
+var vm = new Vue({ 
+    el:&quot;.main&quot;, 
+    data:{ 
+        list, 
+        todo:&#39;&#39;,
+        edtorTodos:&#39;&#39;,//记录正在编辑的数据,
+        beforeTitle:&quot;&quot;,//记录正在编辑的数据的title 
+        visibility:&quot;all&quot;//通过这个属性值的变化对数据进行筛选 
+    }, 
+    watch:{ 
+        //下面的这种方法是浅监控 
+        /*list:function(){//监控list这个属性，当这个属性对应的值发生变化就会执行函数 
+        store.save(&quot;storeData&quot;,this.list); 
+        }*/ 
+        //下面的是深度监控 
+        list:{ 
+            handler:function(){
+                store.save(&quot;storeData&quot;,this.list); 
+            }, deep:true 
+        } 
+    }, 
+    methods:{ 
+        enterFn(ev){//添加任务 
+        //向list中添加一项任务 
+        //事件处理函数中的this指向的是当前这个根实例 
+        if(this.todo==&quot;&quot;){return;} 
+        this.list.push({ 
+            title:this.todo, 
+            isComplete:false 
+        }); 
+        this.todo = &quot;&quot;;
+    }, 
+    delFn(item){//删除任务 
+    var index = this.list.indexOf(item); 
+    this.list.splice(index,1) 
+    }, 
+    edtorTodo(item){//编辑任务 
+    //编辑任务的时候记录编辑之前的值 
+        this.beforeTitle = item.title; 
+        this.edtorTodos = item; 
+    }, 
+    edtoEnd(item){//编辑完成 
+    this.edtorTodos=&quot;&quot;; 
+    // this.cancelEdit = this.edtorTodos; 
+    }, 
+    cancelEdit(item){//取消编辑 
+    item.title = this.beforeTitle; 
+    this.beforeTitle = &#39;&#39;;
+    this.edtorTodos=&#39;&#39;; 
+    } 
+    }, 
+    directives:{ 
+    &quot;focus&quot;:{
+    update(el,binding){
+    if(binding.value){
+    el.focus(); 
+    } 
+    } 
+    } 
+    }, 
+    computed:{ unComplete(){ return this.list.filter(item=&gt;{ return !item.isComplete }).length }, 
+    filterData(){ 
+ //过滤的时候有三种情况 all completed unCompleted 
+ var filter = { all:function(list){ return list; }, completed:function(list){ return list.filter(item=&gt;{ return item.isComplete; }) }, unCompleted:function(list){ return list.filter(item=&gt;{ return !item.isComplete; }) } } 
+ //如果找到了过滤函数，就返回过滤后的数据，如果没有找到就返回所有的数据 
+ return filter[this.visibility]?filter[this.visibility](list):list; } } }); 
+ function hashFn(){ var hash = window.location.hash.slice(1); vm.visibility = hash; } 
+ hashFn(); 
+ window.addEventListener(&#39;hashchange&#39;,hashFn); 
+ &lt;/script&gt; 
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+  </entry>
+  <entry>
     <title>将博客网站生成手机app获取下载安装码</title>
     <url>/2020/12/17/%E5%B0%86%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E6%89%8B%E6%9C%BAapp%E8%8E%B7%E5%8F%96%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E7%A0%81/</url>
     <content><![CDATA[<p>一门App网站   <a href="https://www.yimenapp.com/" target="_blank" rel="noopener">https://www.yimenapp.com/</a></p>
@@ -4866,6 +4866,28 @@ PhotoVerifyPassword:
       </categories>
       <tags>
         <tag>黑科技</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>编程开发技术学习资源整理</title>
+    <url>/2021/02/26/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h1 id="0-大纲概览"><a href="#0-大纲概览" class="headerlink" title="0.大纲概览"></a>0.大纲概览</h1><p>主要介绍一下，本片文章涉及到的内容</p>
+<p>1.编程语言,含c++、go、java</p>
+<h1 id="1-编程语言语法"><a href="#1-编程语言语法" class="headerlink" title="1.编程语言语法"></a>1.编程语言语法</h1><h2 id="1-1-C"><a href="#1-1-C" class="headerlink" title="1.1 C++"></a>1.1 C++</h2><h2 id="1-2-Golang"><a href="#1-2-Golang" class="headerlink" title="1.2 Golang"></a>1.2 Golang</h2><p>①W3Cschool <a href="https://www.w3cschool.cn/yqbmht/7rcvwcqm.html" target="_blank" rel="noopener">https://www.w3cschool.cn/yqbmht/7rcvwcqm.html</a>    描述：前几章可以做入门使用，之后几章多了一些网络通信的编程</p>
+<p>②<a href="https://draveness.me/golang/入门级学习" target="_blank" rel="noopener">https://draveness.me/golang/入门级学习</a></p>
+<p>③<a href="https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/" target="_blank" rel="noopener">https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/</a> 更加底层的学习go语言，设计到汇编，内容细致，干活多</p>
+<h2 id="1-3-Java"><a href="#1-3-Java" class="headerlink" title="1.3 Java"></a>1.3 Java</h2><h1 id="2-Linux命令速查"><a href="#2-Linux命令速查" class="headerlink" title="2.Linux命令速查"></a>2.Linux命令速查</h1><p><a href="https://blog.csdn.net/waitig1992/article/details/51884653" target="_blank" rel="noopener">https://blog.csdn.net/waitig1992/article/details/51884653</a> 描述：通过预览页快速定位到<a href="http://www.linuxdaxue.com/，快速定位把" target="_blank" rel="noopener">http://www.linuxdaxue.com/，快速定位把</a></p>
+<h1 id="3-Nginx学习"><a href="#3-Nginx学习" class="headerlink" title="3.Nginx学习"></a>3.Nginx学习</h1><p>源码学习：</p>
+<p><a href="https://www.kancloud.cn/digest/understandingnginx/202587" target="_blank" rel="noopener">https://www.kancloud.cn/digest/understandingnginx/202587</a> 章节式学习，有些枯燥</p>
+<p><a href="https://segmentfault.com/a/1190000016922188" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016922188</a> 单独对nginx配置文件解析过程进行的分析</p>
+<h1 id="4-算法"><a href="#4-算法" class="headerlink" title="4.算法"></a>4.算法</h1><p><a href="https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结" target="_blank" rel="noopener">https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>资源</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -4909,28 +4931,6 @@ PhotoVerifyPassword:
       <categories>
         <category>技术</category>
       </categories>
-  </entry>
-  <entry>
-    <title>编程开发技术学习资源整理</title>
-    <url>/2021/02/26/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<h1 id="0-大纲概览"><a href="#0-大纲概览" class="headerlink" title="0.大纲概览"></a>0.大纲概览</h1><p>主要介绍一下，本片文章涉及到的内容</p>
-<p>1.编程语言,含c++、go、java</p>
-<h1 id="1-编程语言语法"><a href="#1-编程语言语法" class="headerlink" title="1.编程语言语法"></a>1.编程语言语法</h1><h2 id="1-1-C"><a href="#1-1-C" class="headerlink" title="1.1 C++"></a>1.1 C++</h2><h2 id="1-2-Golang"><a href="#1-2-Golang" class="headerlink" title="1.2 Golang"></a>1.2 Golang</h2><p>①W3Cschool <a href="https://www.w3cschool.cn/yqbmht/7rcvwcqm.html" target="_blank" rel="noopener">https://www.w3cschool.cn/yqbmht/7rcvwcqm.html</a>    描述：前几章可以做入门使用，之后几章多了一些网络通信的编程</p>
-<p>②<a href="https://draveness.me/golang/入门级学习" target="_blank" rel="noopener">https://draveness.me/golang/入门级学习</a></p>
-<p>③<a href="https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/" target="_blank" rel="noopener">https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/</a> 更加底层的学习go语言，设计到汇编，内容细致，干活多</p>
-<h2 id="1-3-Java"><a href="#1-3-Java" class="headerlink" title="1.3 Java"></a>1.3 Java</h2><h1 id="2-Linux命令速查"><a href="#2-Linux命令速查" class="headerlink" title="2.Linux命令速查"></a>2.Linux命令速查</h1><p><a href="https://blog.csdn.net/waitig1992/article/details/51884653" target="_blank" rel="noopener">https://blog.csdn.net/waitig1992/article/details/51884653</a> 描述：通过预览页快速定位到<a href="http://www.linuxdaxue.com/，快速定位把" target="_blank" rel="noopener">http://www.linuxdaxue.com/，快速定位把</a></p>
-<h1 id="3-Nginx学习"><a href="#3-Nginx学习" class="headerlink" title="3.Nginx学习"></a>3.Nginx学习</h1><p>源码学习：</p>
-<p><a href="https://www.kancloud.cn/digest/understandingnginx/202587" target="_blank" rel="noopener">https://www.kancloud.cn/digest/understandingnginx/202587</a> 章节式学习，有些枯燥</p>
-<p><a href="https://segmentfault.com/a/1190000016922188" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016922188</a> 单独对nginx配置文件解析过程进行的分析</p>
-<h1 id="4-算法"><a href="#4-算法" class="headerlink" title="4.算法"></a>4.算法</h1><p><a href="https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结" target="_blank" rel="noopener">https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>资源</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-      </tags>
   </entry>
   <entry>
     <title>自己定的计划</title>
