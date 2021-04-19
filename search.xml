@@ -1,284 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C++读取文件到内存中流程含示例</title>
-    <url>/2020/12/26/C-%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E6%B5%81%E7%A8%8B%E5%90%AB%E7%A4%BA%E4%BE%8B/</url>
-    <content><![CDATA[<h1 id="一、示例说明"><a href="#一、示例说明" class="headerlink" title="一、示例说明"></a>一、示例说明</h1><p>程序输入为种子用户ID数据集合，每一行包括用户ID和256维用户特征，用户特征数据类型为浮点型数据（存在部分数据用科学计数法表示的情况，比如1.4283673760891302E-4），所有数据分隔符为逗号，ID处于第1个位置，其它256维特征按照顺序处于2-257个位置。其中1-128维为连续性特征，数据都大于等于0小于等于1，余下129-256维为分类型特征经过one-hot处理过后的稀疏数据，数据都为0或者1。如下格式：<br><em>ID0001,0.1,0,0.56,…,0,1</em></p>
-<p>保存变量的结构体如下：</p>
-<pre><code>typedef struct User{
-    string id;
-    float fv[128];
-    int iv[128];
-};</code></pre><p>计划读取文件每一行记录一个User变量的成员，元素1为id，元素2<del>129为fv,元素130</del>257为iv</p>
-<h1 id="二、读取文件代码"><a href="#二、读取文件代码" class="headerlink" title="二、读取文件代码"></a>二、读取文件代码</h1><p>示例代码:</p>
-<pre><code>#include &lt;QCoreApplication&gt;
-#include &lt;fstream&gt;
-#include &lt;sstream&gt;
-using namespace std;
-typedef struct {
-    string id;
-    float fv[128];
-    int iv[128];
-}User;
-
-
-int main(int argc, char *argv[])
-{
-    QCoreApplication a(argc, argv);
-    fstream seedf(&quot;C:\\Users\\linxuesong\\Desktop\\cpp\\input\\seed.txt&quot;);
-    vector&lt;User&gt; users;
-
-
-
-    while(!seedf.eof()) {
-        string oneline;
-        getline(seedf, oneline);
-
-        User user;
-        // 将一行按逗号分隔
-        stringstream ss(oneline);
-        getline(ss,  user.id, &#39;,&#39;); //先读取一个
-
-        string para;
-        int count = 0; // 用来计数,当读取128个float后就是int了
-        while(getline(ss,  para, &#39;,&#39;)){ // 读取剩下的256个
-            if(count &lt;= 127){
-                user.fv[count] = stof(para);
-            }else {
-                user.iv[count-128] = stoi(para);
-            }
-            count++;
-        }
-        users.push_back(user);
-    }
-
-    seedf.clear();
-    seedf.close();
-    return a.exec();
-}
-</code></pre><h1 id="三、涉及到的知识总结"><a href="#三、涉及到的知识总结" class="headerlink" title="三、涉及到的知识总结"></a>三、涉及到的知识总结</h1><h2 id="1-fstream"><a href="#1-fstream" class="headerlink" title="1.fstream"></a>1.fstream</h2><p>作用：主要用于读写文件</p>
-<p>定义:fstream f;</p>
-<p>类继承关系如图:</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201226114456.png" alt="image-20201226114448172"></p>
-<p>主要方法:</p>
-<table>
-<thead>
-<tr>
-<th>函数名</th>
-<th>参数</th>
-<th>返回值</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>open</strong></td>
-<td>( const char * filename,  os_base::openmode mode = ios_base::in | ios_base::out )<br />// 文件路径和打开方式,打开方式可以省略</td>
-<td>无</td>
-<td>以指定的方式打开文件</td>
-</tr>
-<tr>
-<td><strong>close</strong></td>
-<td>无参数</td>
-<td>无</td>
-<td>关闭文件</td>
-</tr>
-<tr>
-<td>bad()</td>
-<td></td>
-<td>bool</td>
-<td>状态标识符，读写出错</td>
-</tr>
-<tr>
-<td>fail()</td>
-<td></td>
-<td>bool</td>
-<td>状态标识符,格式错误或读写错误</td>
-</tr>
-<tr>
-<td><strong>eof</strong>()</td>
-<td></td>
-<td>bool</td>
-<td>文件到达结尾返回ture</td>
-</tr>
-<tr>
-<td>good()</td>
-<td></td>
-<td>bool</td>
-<td>没有出现任何错误</td>
-</tr>
-<tr>
-<td><em>tellg()和tellp()*</em></td>
-<td></td>
-<td>pos_type<br />就是一个int</td>
-<td>返回当前读出流\写入流的get、put指针位置</td>
-</tr>
-<tr>
-<td><em>seekg()和seekp()*</em></td>
-<td>重载一:pos_type<br />重载二：(off_type offset, seekdir direction)</td>
-<td>pos_type<br />就是一个int</td>
-<td>设置读出流\写入流的get、put指针位置</td>
-</tr>
-</tbody></table>
-<p>简单示例：</p>
-<pre><code>vector&lt;string&gt; arrs;
-string tmp;
-fstream myfile(&quot;文件路径&quot;); // 构造函数会调用open方法
-if(!myfile) {  // fstream重载了!感叹号操作符，fstream对象会返回true或fasle,也可以用!file.good()判断
-    cout &lt;&lt; &quot;文件打开失败&quot;; 
-}
-while(!myfile.eof()) { // 直到遇到文件结束符
-    getline(myfile, tmp); // 取一行
-    arrs.push_back(tmp);
-}
-myfile.close();</code></pre><h2 id="2-getline"><a href="#2-getline" class="headerlink" title="2.getline"></a>2.getline</h2><p>作用:  读取输入流到内存中知道遇到指定的分隔符，默认分隔符为’\n’所以默认时读取一整行</p>
-<p>函数原型</p>
-<pre><code>/**
-*pram1 输入流
-*pram2 接收流的内存变量地址
-*pram3 分隔符\n,会读取输入流知道遇到分割符，遇到分割符之后停止读取并把分隔符跳过
-*/
-istream&amp; getline (istream&amp; is, string&amp; str, char delim = &#39;\n&#39;);</code></pre><p>简单示例</p>
-<h1 id="四、多线程读取大文件实现（仍旧为完善）-此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件"><a href="#四、多线程读取大文件实现（仍旧为完善）-此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件" class="headerlink" title="四、多线程读取大文件实现（仍旧为完善） 此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件"></a>四、多线程读取大文件实现（仍旧为完善） 此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件</h1><p>思路:大文件分隔若干份(cpu有几个核)文件块，对于每一部分以start和end作为标志<br>seekg设置不同的读取起始位置，每个文件从不同的起始位置读，读到end</p>
-<p>需要注意的是我们在读取变量时start可能不是正好的位置，需要对其进行处理,这里是先读取完本行到行末，得到一行结束位置</p>
-<p>代码如下</p>
-<pre><code>#include &lt;QCoreApplication&gt;
-#include &lt;fstream&gt;
-#include &lt;sstream&gt;
-#include &lt;thread&gt;
-#include &lt;iostream&gt;
-#include &lt;math.h&gt;
-#include &lt;mutex&gt;
-using namespace std;
-
-typedef struct {
-    string id;
-    float fv[128];
-    int iv[128];
-}User;
-
-
-typedef struct {
-    int start;
-    int end;
-
-}FileBlock;
-static vector&lt;vector&lt;User&gt;&gt; aa;
-
-mutex aa_lock;
-//获取文件大小 文件偏移量为int, 可以标识2的32次个字节 相当于4G
-int getFileSize(string filepath){
-    fstream f(filepath);
-    if(!f) {
-        cout &lt;&lt; &quot;打开文件失败&quot; &lt;&lt; endl;
-    }
-    f.seekg(0, ios::end);
-    return f.tellg();
-    f.close();
-}
-
-// 获取当前cpu的核数   /      线程处理参数为      param1文件地址  parm2读取文件的位置  param3
-int getCpuCoreCnt() {
-    return thread::hardware_concurrency();
-}
-
-// 将文件分为cpu核心个部分,并放入到vector&lt;FileBlock&gt;中
-vector&lt;FileBlock&gt; splitFile(string filepath)  {
-    vector&lt;FileBlock&gt; fileBlocks;
-    fstream f(filepath);
-    if(!f) {
-        cout &lt;&lt; &quot;打开文件失败&quot; &lt;&lt; endl;
-    }
-    int fsize = getFileSize(filepath);
-    int cpu_core_cnt = getCpuCoreCnt();
-    int block_size = ceil(fsize/cpu_core_cnt); //向上取整，为了防止向下取整导致最后涵盖所有
-    int start=0,end;
-    for(int i = 0; i &lt; cpu_core_cnt; i++) {
-        end = (i+1)*block_size; // 当访问最后一个访问块时可能会超出范围
-        if(end &gt;= fsize) {
-            end = fsize;
-            fileBlocks.push_back(FileBlock{start, end});//已经是最后一行了就结束吧
-            break;
-        }
-        {   // end可能不正好在文件的一行的结尾\n处，去下一行
-            f.seekg(end);
-            string tmp;
-            getline(f, tmp);
-        }
-        end = (long)f.tellg()-1;
-        fileBlocks.push_back(FileBlock{start, end});
-        start = f.tellg();
-    }
-
-    return fileBlocks;
-}
-
-
-
-
-// 之后各个线程按文件的起始位置进行读取
-void thread_read_file(FileBlock fb, string filepath) {
-
-    fstream seedf(filepath);
-    vector&lt;User&gt; users;
-    seedf.seekg(fb.start);
-    while(seedf.tellg()&lt;=fb.end &amp;&amp; !seedf.eof()) {
-        string oneline;
-        getline(seedf, oneline);
-
-        User user;
-        // 将一行按逗号分隔
-        stringstream ss(oneline);
-        getline(ss,  user.id, &#39;,&#39;); //先读取一个
-
-        string para;
-        int count = 0; // 用来计数,当读取128个float后就是int了
-        while(getline(ss,  para, &#39;,&#39;)){ // 读取剩下的256个
-            if(count &lt;= 127){
-                user.fv[count] = stof(para);
-            }else {
-                user.iv[count-128] = stoi(para);
-            }
-            count++;
-        }
-        users.push_back(user);
-    }
-    lock_guard&lt;mutex&gt; lock(aa_lock);
-
-    aa.push_back(users);
-    seedf.clear();
-    seedf.close();
-}
-
-
-
-int main(int argc, char *argv[])
-{
-    QCoreApplication a(argc, argv);
-    string filepath =&quot;C:\\Users\\linxuesong\\Desktop\\cpp\\input\\seed.txt&quot;;
-    vector&lt;FileBlock&gt; fbs = splitFile(filepath);
-     for(int i = 0; i&lt;getCpuCoreCnt(); i++) {
-        thread t(thread_read_file, fbs[i], filepath);
-        t.join();
-    }
-    this_thread::sleep_for(std::chrono::seconds(1));
-    cout &lt;&lt; aa.size()&lt;&lt;endl;
-    for (int i =0;i&lt;(int)aa.size();i++)
-        for(int j; j&lt;(int)aa[i].size();j++)
-            cout &lt;&lt; aa[i][j].id &lt;&lt; endl;
-
-    return 0;
-}
-</code></pre><h1 id="五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象"><a href="#五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象" class="headerlink" title="五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象"></a>五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象</h1>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>文件读取</tag>
-        <tag>C++</tag>
-        <tag>多线程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>58信天翁训练活动</title>
     <url>/2020/08/15/58%E4%BF%A1%E5%A4%A9%E7%BF%81%E8%AE%AD%E7%BB%83%E6%B4%BB%E5%8A%A8/</url>
     <content><![CDATA[<p>校招新入职训练活动：</p>
@@ -637,34 +359,6 @@ links:
       </tags>
   </entry>
   <entry>
-    <title>JAVA中数组的常见操作</title>
-    <url>/2021/04/08/JAVA%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h1 id="一、普通数组int"><a href="#一、普通数组int" class="headerlink" title="一、普通数组int[]"></a>一、普通数组int[]</h1><h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>类似C++中的数组指针，使用等号赋值只是浅拷贝，深拷贝需要用Arrays类的如下方法</p>
-<pre><code>Static type copyOf(type a[], int length) // 深拷贝出一个新的数组
-Static type copyOfRange(type a[], int start, int end)</code></pre><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><pre><code>int[] a = new int[1000];
-Arrays.sort(a); // 使用优化后的快速排序方法对数组进行排序</code></pre><h2 id="判断是否相等"><a href="#判断是否相等" class="headerlink" title="判断是否相等"></a>判断是否相等</h2><p>直接用等号判断是判断引用是否为同一处，如果要判断具体值要用Arrays类的如下方法</p>
-<pre><code>static boolean equals(type[] a, type[] b)</code></pre><h1 id="二、泛型数组列表ArrayList-lt-type-gt"><a href="#二、泛型数组列表ArrayList-lt-type-gt" class="headerlink" title="二、泛型数组列表ArrayList&lt;type&gt;"></a>二、泛型数组列表ArrayList&lt;type&gt;</h1><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 构建</span>
-ArrayList<span class="token operator">&lt;</span>Empolyee<span class="token operator">></span> staff <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>Employee<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 声明并构造</span>
-<span class="token comment" spellcheck="true">// 增删改查</span>
-staff<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Emplyee</span><span class="token punctuation">(</span><span class="token string">"xxx"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 尾部添加元素,也可以指定位置</span>
-Employee e <span class="token operator">=</span> staff<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 删除下标为index的元素，之后所有元素前一</span>
-staff<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 将index位置元素赋值</span>
-Employee e <span class="token operator">=</span> staff<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 取指定位置元素</span>
-<span class="token comment" spellcheck="true">// 遍历</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span>Employee e <span class="token operator">:</span> staff<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
-<p>使用ArrayList存放基本类型数据需要装箱和拆箱</p>
-<pre><code>ArrayList&lt;Integer&gt; lst = new ArrayList&lt;Integer&gt;();
-lst.add(3); //等价于Integer.valueOf(3)
-int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>JAVA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JAVA String和StringBuilder常用方法</title>
     <url>/2021/04/08/JAVA-String%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h1 id="一、String不可变字符串"><a href="#一、String不可变字符串" class="headerlink" title="一、String不可变字符串"></a>一、String不可变字符串</h1><h2 id="1-int-compareTo-String-other-比较两字符串大小"><a href="#1-int-compareTo-String-other-比较两字符串大小" class="headerlink" title="1.int compareTo(String other) 比较两字符串大小"></a>1.int compareTo(String other) 比较两字符串大小</h2><h2 id="2-boolean-equals-Object-object-比较两字符串是否其内容一致"><a href="#2-boolean-equals-Object-object-比较两字符串是否其内容一致" class="headerlink" title="2.boolean equals(Object object)比较两字符串是否其内容一致"></a>2.boolean equals(Object object)比较两字符串是否其内容一致</h2><p>==比较运算符比较的是引用位置是否相等，而非其内容</p>
@@ -683,36 +377,72 @@ int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-26删除数组中重复项</title>
-    <url>/2020/08/11/LeetCode-26%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
-<p>示例 1:</p>
-<p>给定数组 nums = [1,1,2], </p>
-<p>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p>
-<p>你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p>
-<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p>
-<p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p>
-<p>你不需要考虑数组中超出新长度后面的元素。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>双指针法：存放非重复元素的指针(0开始)   寻找下一个非重复元素的指针(1开始)</p>
-<p>寻找指针：遍历数组找到 下一个不重复元素(和已存放的元素不相等)，找到后存入非重复指针</p>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><pre><code>func removeDuplicates(nums []int) int {
-    if(len(nums) == 1) {
-        return 1
-    }
-    //bef最大不重复项  cur当前遍历元素
-    bef := 0
-    for cur := 1; cur &lt; len(nums); cur++ {
-        if(nums[bef] != nums[cur]) {
-            bef++
-            nums[bef] = nums[cur]
-        }
-    }    
-    return bef+1  
-}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一开始的思路是相邻元素两两比较，不同则后续元素前移一位，数组长度减1</p>
-<p>，时间复杂度为O(n方)。</p>
-<p>缺点就是每次不同移动n个元素，双指针法就是一指针存放，一指针寻找，只移动一个元素，更快</p>
+    <title>Leetcode-119.杨辉三角 II</title>
+    <url>/2020/09/01/LeetCode119.%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%20II/</url>
+    <content><![CDATA[<h4 id="LeetCode119-杨辉三角-II"><a href="#LeetCode119-杨辉三角-II" class="headerlink" title="LeetCode119. 杨辉三角 II"></a><a href="https://leetcode-cn.com/problems/pascals-triangle-ii/" target="_blank" rel="noopener">LeetCode119. 杨辉三角 II</a></h4><h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个非负索引 <em>k</em>，其中 <em>k</em> ≤ 33，返回杨辉三角的第 <em>k</em> 行。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif" alt="img"></p>
+<p>在杨辉三角中，每个数是它左上方和右上方的数的和。</p>
+<p><strong>示例:</strong></p>
+<pre><code>输入: 3
+输出: [1,3,3,1]</code></pre><p><strong>进阶：</strong></p>
+<p>你可以优化你的算法到 <em>O</em>(<em>k</em>) 空间复杂度吗？</p>
+<h1 id="2-0-题目分析"><a href="#2-0-题目分析" class="headerlink" title="2.0 题目分析"></a>2.0 题目分析</h1><p>和上一题118联系一起，我们发现二维数组存杨辉三角上一层数组生成下一层数组，现在要求仅用一维数组存储</p>
+<p>如何在一维数组的前提下，使用我们的递推公式</p>
+<p>本层arr[i]=上一层arr[i] + 上一层arr[i-1]</p>
+<h1 id="3-0两种思路对比"><a href="#3-0两种思路对比" class="headerlink" title="3.0两种思路对比"></a>3.0两种思路对比</h1><h2 id="3-1正向遍历思维"><a href="#3-1正向遍历思维" class="headerlink" title="3.1正向遍历思维"></a>3.1正向遍历思维</h2><p>遍历时</p>
+<p>arr[0] = arr[0]上一层</p>
+<p>本层arr[1] = arr[1]上一层 + arr[0]上一层</p>
+<p>本层arr[2] = arr[2]上一层+arr[1]（公式要求上一层，但这一步已经arr[1]变成本层了）</p>
+<p>所以正向遍历思路就是保存这个上一层的arr[i]</p>
+<p>需要变量个数分析：一次遍历要 保存本层arr[i]、用上一层arr[i-1]</p>
+<p>保存是一个变量cur   用上一层又是一个变量pre</p>
+<p>代码如下</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">getRow</span><span class="token punctuation">(</span>rowIndex <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token punctuation">{</span>
+    ret <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> rowIndex<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> rowIndex<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+        pre <span class="token operator">:=</span> <span class="token number">0</span>
+        cur <span class="token operator">:=</span> ret<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> j<span class="token operator">:=</span><span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span> <span class="token punctuation">{</span>
+            ret<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> pre <span class="token operator">+</span> cur
+            pre<span class="token punctuation">,</span>cur <span class="token operator">=</span> cur<span class="token punctuation">,</span> ret<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+        ret<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> ret
+<span class="token punctuation">}</span></code></pre>
+<p>进一步优化如果不用两个变量保存，而是换一种方式呢</p>
+<p>在头部插入一个0，让数组错开一位，不存在覆盖的现象</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">getRow</span><span class="token punctuation">(</span>rowIndex <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token punctuation">{</span>
+    res <span class="token operator">:=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span>
+    <span class="token keyword">for</span> i<span class="token operator">:=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>rowIndex<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">{</span>
+        res <span class="token operator">=</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">,</span>res<span class="token operator">...</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> j<span class="token operator">:=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>i<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">{</span>
+            res<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span> res<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span>res<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> res
+<span class="token punctuation">}</span></code></pre>
+<h2 id="3-2反向遍历思维"><a href="#3-2反向遍历思维" class="headerlink" title="3.2反向遍历思维"></a>3.2反向遍历思维</h2><p>反向遍历</p>
+<p>arr[n-1] = arr[n-1] + arr[n-2]</p>
+<p>arr[n-2] = arr[n-2] + arr[n-1]</p>
+<p>···</p>
+<p>arr[0] = 1</p>
+<p>发现不存在本层覆盖上一层的情况</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">getRow</span><span class="token punctuation">(</span>rowIndex <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token punctuation">{</span>
+    ret <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> rowIndex<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+    ret<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> rowIndex<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> j <span class="token operator">:=</span> i<span class="token punctuation">;</span> j <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">--</span> <span class="token punctuation">{</span>
+            ret<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> ret<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span> ret<span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> ret
+<span class="token punctuation">}</span></code></pre>
+<h1 id="4-0总结"><a href="#4-0总结" class="headerlink" title="4.0总结"></a>4.0总结</h1><p>动态规划内存空间二维转一维的方式</p>
+<p>如果存在状态转移时一维保存数组出现上一层把本层数据占了，两种较好的思路是：</p>
+<p>1.从后向前遍历</p>
+<p>2.数组头部加一个0值错开位置</p>
+<p>这一切都是基于本层状态保存n个 上一层n-1个</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -721,6 +451,51 @@ int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
         <tag>数组</tag>
         <tag>LeetCode</tag>
         <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java中祖先类Object提供的基础方法</title>
+    <url>/2021/04/09/Java%E4%B8%AD%E7%A5%96%E5%85%88%E7%B1%BBObject%E6%8F%90%E4%BE%9B%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th>函数声明</th>
+<th>Object中作用</th>
+<th>子类重写作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean <strong>equals</strong> (Object other)</td>
+<td>两个对象的引用是否相等，而非其实例域</td>
+<td>比较子类的两个对象其内容是否相等</td>
+</tr>
+<tr>
+<td>String hashCode()</td>
+<td>由对象导出的散列码</td>
+<td></td>
+</tr>
+<tr>
+<td>String <strong>toString</strong> ()</td>
+<td>返回对象类名和散列码</td>
+<td>方便打印对象变量的实际内容，在JAVA语句中+x或x可以自动转为x.toString()</td>
+</tr>
+<tr>
+<td>Class getClass ()</td>
+<td>返回包含对象信息的类对象</td>
+<td></td>
+</tr>
+<tr>
+<td>String getName()</td>
+<td>获取类名字</td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
       </tags>
   </entry>
   <entry>
@@ -833,128 +608,6 @@ int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>Java中祖先类Object提供的基础方法</title>
-    <url>/2021/04/09/Java%E4%B8%AD%E7%A5%96%E5%85%88%E7%B1%BBObject%E6%8F%90%E4%BE%9B%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<table>
-<thead>
-<tr>
-<th>函数声明</th>
-<th>Object中作用</th>
-<th>子类重写作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>boolean <strong>equals</strong> (Object other)</td>
-<td>两个对象的引用是否相等，而非其实例域</td>
-<td>比较子类的两个对象其内容是否相等</td>
-</tr>
-<tr>
-<td>String hashCode()</td>
-<td>由对象导出的散列码</td>
-<td></td>
-</tr>
-<tr>
-<td>String <strong>toString</strong> ()</td>
-<td>返回对象类名和散列码</td>
-<td>方便打印对象变量的实际内容，在JAVA语句中+x或x可以自动转为x.toString()</td>
-</tr>
-<tr>
-<td>Class getClass ()</td>
-<td>返回包含对象信息的类对象</td>
-<td></td>
-</tr>
-<tr>
-<td>String getName()</td>
-<td>获取类名字</td>
-<td></td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-119.杨辉三角 II</title>
-    <url>/2020/09/01/LeetCode119.%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%20II/</url>
-    <content><![CDATA[<h4 id="LeetCode119-杨辉三角-II"><a href="#LeetCode119-杨辉三角-II" class="headerlink" title="LeetCode119. 杨辉三角 II"></a><a href="https://leetcode-cn.com/problems/pascals-triangle-ii/" target="_blank" rel="noopener">LeetCode119. 杨辉三角 II</a></h4><h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个非负索引 <em>k</em>，其中 <em>k</em> ≤ 33，返回杨辉三角的第 <em>k</em> 行。</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif" alt="img"></p>
-<p>在杨辉三角中，每个数是它左上方和右上方的数的和。</p>
-<p><strong>示例:</strong></p>
-<pre><code>输入: 3
-输出: [1,3,3,1]</code></pre><p><strong>进阶：</strong></p>
-<p>你可以优化你的算法到 <em>O</em>(<em>k</em>) 空间复杂度吗？</p>
-<h1 id="2-0-题目分析"><a href="#2-0-题目分析" class="headerlink" title="2.0 题目分析"></a>2.0 题目分析</h1><p>和上一题118联系一起，我们发现二维数组存杨辉三角上一层数组生成下一层数组，现在要求仅用一维数组存储</p>
-<p>如何在一维数组的前提下，使用我们的递推公式</p>
-<p>本层arr[i]=上一层arr[i] + 上一层arr[i-1]</p>
-<h1 id="3-0两种思路对比"><a href="#3-0两种思路对比" class="headerlink" title="3.0两种思路对比"></a>3.0两种思路对比</h1><h2 id="3-1正向遍历思维"><a href="#3-1正向遍历思维" class="headerlink" title="3.1正向遍历思维"></a>3.1正向遍历思维</h2><p>遍历时</p>
-<p>arr[0] = arr[0]上一层</p>
-<p>本层arr[1] = arr[1]上一层 + arr[0]上一层</p>
-<p>本层arr[2] = arr[2]上一层+arr[1]（公式要求上一层，但这一步已经arr[1]变成本层了）</p>
-<p>所以正向遍历思路就是保存这个上一层的arr[i]</p>
-<p>需要变量个数分析：一次遍历要 保存本层arr[i]、用上一层arr[i-1]</p>
-<p>保存是一个变量cur   用上一层又是一个变量pre</p>
-<p>代码如下</p>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">getRow</span><span class="token punctuation">(</span>rowIndex <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token punctuation">{</span>
-    ret <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> rowIndex<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> rowIndex<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
-        pre <span class="token operator">:=</span> <span class="token number">0</span>
-        cur <span class="token operator">:=</span> ret<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-        <span class="token keyword">for</span> j<span class="token operator">:=</span><span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span> <span class="token punctuation">{</span>
-            ret<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> pre <span class="token operator">+</span> cur
-            pre<span class="token punctuation">,</span>cur <span class="token operator">=</span> cur<span class="token punctuation">,</span> ret<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
-        <span class="token punctuation">}</span>
-        ret<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> ret
-<span class="token punctuation">}</span></code></pre>
-<p>进一步优化如果不用两个变量保存，而是换一种方式呢</p>
-<p>在头部插入一个0，让数组错开一位，不存在覆盖的现象</p>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">getRow</span><span class="token punctuation">(</span>rowIndex <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token punctuation">{</span>
-    res <span class="token operator">:=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span>
-    <span class="token keyword">for</span> i<span class="token operator">:=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>rowIndex<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">{</span>
-        res <span class="token operator">=</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">,</span>res<span class="token operator">...</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span> j<span class="token operator">:=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>i<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">{</span>
-            res<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span> res<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span>res<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> res
-<span class="token punctuation">}</span></code></pre>
-<h2 id="3-2反向遍历思维"><a href="#3-2反向遍历思维" class="headerlink" title="3.2反向遍历思维"></a>3.2反向遍历思维</h2><p>反向遍历</p>
-<p>arr[n-1] = arr[n-1] + arr[n-2]</p>
-<p>arr[n-2] = arr[n-2] + arr[n-1]</p>
-<p>···</p>
-<p>arr[0] = 1</p>
-<p>发现不存在本层覆盖上一层的情况</p>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">getRow</span><span class="token punctuation">(</span>rowIndex <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token punctuation">{</span>
-    ret <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> rowIndex<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-    ret<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> rowIndex<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> j <span class="token operator">:=</span> i<span class="token punctuation">;</span> j <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">--</span> <span class="token punctuation">{</span>
-            ret<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> ret<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span> ret<span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> ret
-<span class="token punctuation">}</span></code></pre>
-<h1 id="4-0总结"><a href="#4-0总结" class="headerlink" title="4.0总结"></a>4.0总结</h1><p>动态规划内存空间二维转一维的方式</p>
-<p>如果存在状态转移时一维保存数组出现上一层把本层数据占了，两种较好的思路是：</p>
-<p>1.从后向前遍历</p>
-<p>2.数组头部加一个0值错开位置</p>
-<p>这一切都是基于本层状态保存n个 上一层n-1个</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>LeetCode</tag>
-        <tag>简单</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-118. 杨辉三角</title>
     <url>/2020/08/11/Leetcode-118.%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/</url>
     <content><![CDATA[<h4 id="Leetcode-118-杨辉三角"><a href="#Leetcode-118-杨辉三角" class="headerlink" title="Leetcode-118. 杨辉三角"></a><a href="https://leetcode-cn.com/problems/pascals-triangle/" target="_blank" rel="noopener">Leetcode-118. 杨辉三角</a></h4><h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个非负整数 <em>numRows，*生成杨辉三角的前 *numRows</em> 行。</p>
@@ -998,6 +651,34 @@ int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
         <tag>数组</tag>
         <tag>LeetCode</tag>
         <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JAVA中数组的常见操作</title>
+    <url>/2021/04/08/JAVA%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h1 id="一、普通数组int"><a href="#一、普通数组int" class="headerlink" title="一、普通数组int[]"></a>一、普通数组int[]</h1><h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>类似C++中的数组指针，使用等号赋值只是浅拷贝，深拷贝需要用Arrays类的如下方法</p>
+<pre><code>Static type copyOf(type a[], int length) // 深拷贝出一个新的数组
+Static type copyOfRange(type a[], int start, int end)</code></pre><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><pre><code>int[] a = new int[1000];
+Arrays.sort(a); // 使用优化后的快速排序方法对数组进行排序</code></pre><h2 id="判断是否相等"><a href="#判断是否相等" class="headerlink" title="判断是否相等"></a>判断是否相等</h2><p>直接用等号判断是判断引用是否为同一处，如果要判断具体值要用Arrays类的如下方法</p>
+<pre><code>static boolean equals(type[] a, type[] b)</code></pre><h1 id="二、泛型数组列表ArrayList-lt-type-gt"><a href="#二、泛型数组列表ArrayList-lt-type-gt" class="headerlink" title="二、泛型数组列表ArrayList&lt;type&gt;"></a>二、泛型数组列表ArrayList&lt;type&gt;</h1><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 构建</span>
+ArrayList<span class="token operator">&lt;</span>Empolyee<span class="token operator">></span> staff <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>Employee<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 声明并构造</span>
+<span class="token comment" spellcheck="true">// 增删改查</span>
+staff<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Emplyee</span><span class="token punctuation">(</span><span class="token string">"xxx"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 尾部添加元素,也可以指定位置</span>
+Employee e <span class="token operator">=</span> staff<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 删除下标为index的元素，之后所有元素前一</span>
+staff<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 将index位置元素赋值</span>
+Employee e <span class="token operator">=</span> staff<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 取指定位置元素</span>
+<span class="token comment" spellcheck="true">// 遍历</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>Employee e <span class="token operator">:</span> staff<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
+<p>使用ArrayList存放基本类型数据需要装箱和拆箱</p>
+<pre><code>ArrayList&lt;Integer&gt; lst = new ArrayList&lt;Integer&gt;();
+lst.add(3); //等价于Integer.valueOf(3)
+int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -1090,115 +771,6 @@ int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-35搜索插入位置</title>
-    <url>/2020/08/11/Leetcode-35%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/search-insert-position/" target="_blank" rel="noopener">Leetcode-35搜索插入位置</a></p>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
-<p>你可以假设数组中无重复元素。</p>
-<p>示例 1:</p>
-<p>输入: [1,3,5,6], 5<br>输出: 2<br>示例 2:</p>
-<p>输入: [1,3,5,6], 2<br>输出: 1<br>示例 3:</p>
-<p>输入: [1,3,5,6], 7<br>输出: 4<br>示例 4:</p>
-<p>输入: [1,3,5,6], 0<br>输出: 0</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/search-insert-position" target="_blank" rel="noopener">https://leetcode-cn.com/problems/search-insert-position</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>二分法很容易想到，但问题是怎么用，查找目标值是等于target，当low&gt;high还未找到就没有</p>
-<p>类推插入位置或匹配位置就是找顺序第一个 &gt;=tartget 元素的位置</p>
-<p>二分查找最后一定是left=right+1</p>
-<p>如果left左开区间的值一直保持小于target，right右开区间一直保持大于等于target，</p>
-<p>这样————right———————left—————</p>
-<p>[0。。。。right]小于targrt</p>
-<p>[left….length-1]大于等于target</p>
-<p>即使边界时也一样</p>
-<p>如果硬用二分查找值 &lt; == &gt; 三个分支匹配可看总结处理起来会很麻烦</p>
-<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><pre><code>func searchInsert(nums []int, target int) int {
-    length := len(nums)
-    high := length-1
-    low := 0
-    for ; low &lt;= high; {
-        mid := (high-low)&gt;&gt;1 + low
-        if(nums[mid] &lt; target) {
-            low = mid+1
-        }else {
-            high = mid-1
-        }
-    }
-    return low
-}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这个题感觉跳出了二分查找的套路，用left、right分别表示数组不同两集合比较合适，集合交汇处就是我们要找的值</p>
-<p>二分查找时其实也差不多</p>
-<p>个人初始代码想到了二分但是没有想到插入位置和target的数学关系，直接用的二分查找的代码，最后把所有的可能全部考虑</p>
-<p>代码为</p>
-<pre><code>func searchInsert(nums []int, target int) int {
-    length := len(nums)
-    high := length-1
-    low := 0
-    for ; low &lt;= high; {
-        mid := (high+low)/2
-        if(nums[mid] &lt; target) {
-            low = mid+1
-        }else if(nums[mid] == target) {
-            return mid
-        }else {
-            high = mid-1
-        }
-    }
-    // if(high == -1) {
-    //     return 0
-    // }else if(low == length) {
-    //     return length
-    // }else {
-    //     return low
-    // }
-    return low
-}</code></pre><p>反思：问题的起点在于没有get到解决问题的数学关系，死板于二分查找&lt; 、&gt;的判断</p>
-<p>对于该类问题  把要查找的目标    和    left、right指针的意义对应起来，</p>
-<p>left的位置表示其左开区间即【0.。。。right】满足left=mid+1条件</p>
-<p>right的位置表示其有开区间【right。。。length-1】满足right=mid-1条件</p>
-<p>在边界时left=0，high=-1 时表示所有元素都满足left=mid+1条件</p>
-<p>left=length,high=length-1时表示所有元素都满足right=mid-1条件</p>
-<p>从算法的数学意义出发，每一个变量可以表示一类事物，掌握了和 数学的联系才能掌握算法，取代一个又一个测试用例的自己检测</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>LeetCode</tag>
-        <tag>简单</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java重写完美的equals方法</title>
-    <url>/2021/04/09/Java%E9%87%8D%E5%86%99%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>示例代码：</p>
-<pre><code>    @Override
-    public boolean equals(Object otherObject) {
-        // 1.判断是否引用自身，小优化可以提前避免后面的实例比较
-        if(this == otherObject) {
-            return true;
-        }
-        // 2.比较this和otherObject是否为同一个类,此处有两种选择：
-        //   a. this.getClass()==otherObject.getClass(),各个子类中的语义不一致
-        //   b. otherObject instanceof ClassName,各个子类中的语义一致
-        if (this.getClass() != otherObject.getClass()) {
-            return false;
-        }
-
-        // 如果步骤2中按b分支，既比较双方可以转为通用父类，则多下面一步转换
-        // 按照a分支则无需此步骤
-        // ClassName other = (ClassName) otherObject;
-        Father other = (Father) otherObject;
-
-        // 3.比较this，other的内部实例, 基本类型用==，其他类型用Objects.equals(a,b)
-        return Objects.equals(this.a, other.a) &amp;&amp; this.b == other.b;
-    }</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-53. 最大子序和</title>
     <url>/2020/08/11/Leetcode-53-%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="noopener">Leetcode-53. 最大子序和</a></p>
@@ -1283,6 +855,178 @@ func max(arr []int) int{
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-26删除数组中重复项</title>
+    <url>/2020/08/11/LeetCode-26%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<p>示例 1:</p>
+<p>给定数组 nums = [1,1,2], </p>
+<p>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p>
+<p>你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p>
+<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p>
+<p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p>
+<p>你不需要考虑数组中超出新长度后面的元素。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>双指针法：存放非重复元素的指针(0开始)   寻找下一个非重复元素的指针(1开始)</p>
+<p>寻找指针：遍历数组找到 下一个不重复元素(和已存放的元素不相等)，找到后存入非重复指针</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><pre><code>func removeDuplicates(nums []int) int {
+    if(len(nums) == 1) {
+        return 1
+    }
+    //bef最大不重复项  cur当前遍历元素
+    bef := 0
+    for cur := 1; cur &lt; len(nums); cur++ {
+        if(nums[bef] != nums[cur]) {
+            bef++
+            nums[bef] = nums[cur]
+        }
+    }    
+    return bef+1  
+}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一开始的思路是相邻元素两两比较，不同则后续元素前移一位，数组长度减1</p>
+<p>，时间复杂度为O(n方)。</p>
+<p>缺点就是每次不同移动n个元素，双指针法就是一指针存放，一指针寻找，只移动一个元素，更快</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-35搜索插入位置</title>
+    <url>/2020/08/11/Leetcode-35%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/search-insert-position/" target="_blank" rel="noopener">Leetcode-35搜索插入位置</a></p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>你可以假设数组中无重复元素。</p>
+<p>示例 1:</p>
+<p>输入: [1,3,5,6], 5<br>输出: 2<br>示例 2:</p>
+<p>输入: [1,3,5,6], 2<br>输出: 1<br>示例 3:</p>
+<p>输入: [1,3,5,6], 7<br>输出: 4<br>示例 4:</p>
+<p>输入: [1,3,5,6], 0<br>输出: 0</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/search-insert-position" target="_blank" rel="noopener">https://leetcode-cn.com/problems/search-insert-position</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>二分法很容易想到，但问题是怎么用，查找目标值是等于target，当low&gt;high还未找到就没有</p>
+<p>类推插入位置或匹配位置就是找顺序第一个 &gt;=tartget 元素的位置</p>
+<p>二分查找最后一定是left=right+1</p>
+<p>如果left左开区间的值一直保持小于target，right右开区间一直保持大于等于target，</p>
+<p>这样————right———————left—————</p>
+<p>[0。。。。right]小于targrt</p>
+<p>[left….length-1]大于等于target</p>
+<p>即使边界时也一样</p>
+<p>如果硬用二分查找值 &lt; == &gt; 三个分支匹配可看总结处理起来会很麻烦</p>
+<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><pre><code>func searchInsert(nums []int, target int) int {
+    length := len(nums)
+    high := length-1
+    low := 0
+    for ; low &lt;= high; {
+        mid := (high-low)&gt;&gt;1 + low
+        if(nums[mid] &lt; target) {
+            low = mid+1
+        }else {
+            high = mid-1
+        }
+    }
+    return low
+}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这个题感觉跳出了二分查找的套路，用left、right分别表示数组不同两集合比较合适，集合交汇处就是我们要找的值</p>
+<p>二分查找时其实也差不多</p>
+<p>个人初始代码想到了二分但是没有想到插入位置和target的数学关系，直接用的二分查找的代码，最后把所有的可能全部考虑</p>
+<p>代码为</p>
+<pre><code>func searchInsert(nums []int, target int) int {
+    length := len(nums)
+    high := length-1
+    low := 0
+    for ; low &lt;= high; {
+        mid := (high+low)/2
+        if(nums[mid] &lt; target) {
+            low = mid+1
+        }else if(nums[mid] == target) {
+            return mid
+        }else {
+            high = mid-1
+        }
+    }
+    // if(high == -1) {
+    //     return 0
+    // }else if(low == length) {
+    //     return length
+    // }else {
+    //     return low
+    // }
+    return low
+}</code></pre><p>反思：问题的起点在于没有get到解决问题的数学关系，死板于二分查找&lt; 、&gt;的判断</p>
+<p>对于该类问题  把要查找的目标    和    left、right指针的意义对应起来，</p>
+<p>left的位置表示其左开区间即【0.。。。right】满足left=mid+1条件</p>
+<p>right的位置表示其有开区间【right。。。length-1】满足right=mid-1条件</p>
+<p>在边界时left=0，high=-1 时表示所有元素都满足left=mid+1条件</p>
+<p>left=length,high=length-1时表示所有元素都满足right=mid-1条件</p>
+<p>从算法的数学意义出发，每一个变量可以表示一类事物，掌握了和 数学的联系才能掌握算法，取代一个又一个测试用例的自己检测</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-28. 实现 strStr()</title>
+    <url>/2020/08/11/Leetcode-28-%E5%AE%9E%E7%8E%B0-strStr/</url>
+    <content><![CDATA[<h4 id="Leetcode-28-实现-strStr"><a href="#Leetcode-28-实现-strStr" class="headerlink" title="Leetcode-28. 实现 strStr()"></a><a href="https://leetcode-cn.com/problems/implement-strstr/" target="_blank" rel="noopener">Leetcode-28. 实现 strStr()</a></h4><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>实现 strStr() 函数。</p>
+<p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。</p>
+<p>示例 1:</p>
+<p>输入: haystack = “hello”, needle = “ll”<br>输出: 2<br>示例 2:</p>
+<p>输入: haystack = “aaaaa”, needle = “bba”<br>输出: -1<br>说明:</p>
+<p>当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
+<p>对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/implement-strstr" target="_blank" rel="noopener">https://leetcode-cn.com/problems/implement-strstr</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>遍历每一个haystack的字符，以此为起点和needle匹配，匹配成功，则返回遍历下标；否则返回-1</p>
+<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><pre><code>func strStr(haystack string, needle string) int {
+    hay_len := len(haystack)
+    ne_len := len(needle)
+    for i:=0; i &lt; hay_len-ne_len+1; i++ {
+       //判断haystack[i]开头是否和needle匹配
+       if(isStrEqual(haystack[i:], needle)){
+           return i
+       }
+    }
+    return -1
+}
+
+func isStrEqual(str1 string, str2 string) bool {
+    length := len(str2)
+    flag := true
+    for j:=0; j&lt;length ;j++ {
+        if(str1[j] != str2[j]) {
+            flag = false
+            break
+        }
+    } 
+    return flag
+}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>书写代码在一开始的时候没有注意到haystack的遍历区间是</p>
+<p>len(haystack) - len(needle)+1，遍历到尾部是没必要且麻烦的</p>
+<p>避免这种情况就是当我有了基本思路后，是会有好多漏洞的，实现方法要想一次最优且简洁就要把所有的测试用例列出来，不要光用脑子想，要写在纸上</p>
+<p>然后把脑子里的思路转成代码，和用例一一对应</p>
+<h1 id="进一步的优化（未完待补坑）"><a href="#进一步的优化（未完待补坑）" class="headerlink" title="进一步的优化（未完待补坑）"></a>进一步的优化（未完待补坑）</h1><p>上面代码的时间复杂度为O((N-L)*L)</p>
+<h2 id="优化方案一：hash省去L长度是否匹配判断"><a href="#优化方案一：hash省去L长度是否匹配判断" class="headerlink" title="优化方案一：hash省去L长度是否匹配判断"></a>优化方案一：hash省去L长度是否匹配判断</h2><p>之所以复杂是因为遍历每一字符都要比较L长度判断是否匹配</p>
+<p>这个*L可以转化为O(1)</p>
+<p>方法就是用hash值，我们对字符进行编码，生成唯一值</p>
+<p>这样每次判断匹配时就转化为计算hash值了</p>
+<h2 id="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"><a href="#优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间" class="headerlink" title="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"></a>优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间</h2><p>这个查了资料比较复杂，等以后有时间不用，挖个坑QAQ</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode88. 合并两个有序数组</title>
     <url>/2020/08/12/Leetcode88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/merge-sorted-array/" target="_blank" rel="noopener">Leetcode-88. 合并两个有序数组</a></p>
@@ -1334,58 +1078,36 @@ func max(arr []int) int{
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-66. 加一</title>
-    <url>/2020/08/12/Leetcode-66-%E5%8A%A0%E4%B8%80/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">Leetcode-66. 加一</a></p>
-<h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p>
-<p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p>
-<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
-<p>示例 1:</p>
-<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。<br>示例 2:</p>
-<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/plus-one" target="_blank" rel="noopener">https://leetcode-cn.com/problems/plus-one</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="2-0解题思路"><a href="#2-0解题思路" class="headerlink" title="2.0解题思路"></a>2.0解题思路</h1><p>这道题比较简单，从后向前遍历找到第一个非9数字，记下标为not9first，该下标之后所有数全为0，本下标元素值+1 对异常情况值溢出做特殊处理</p>
-<h1 id="3-0实现代码"><a href="#3-0实现代码" class="headerlink" title="3.0实现代码"></a>3.0实现代码</h1><pre><code>func plusOne(digits []int) []int {
-    oldLen := len(digits)
-    not9first := oldLen-1 // 从后向前非9的第一个数
-    for ; not9first &gt;= 0 &amp;&amp; digits[not9first] == 9; not9first-- {
-        digits[not9first] = 0 // 是9就成0
-    }
-    if(not9first != -1) { // 加完没溢出
-        digits[not9first] += 1
-    }else { // 加完溢出
-        digits = append([]int{1}, digits...) // 首部赋值1
-    }
-    return digits
-}</code></pre>]]></content>
+    <title>Java重写完美的equals方法</title>
+    <url>/2021/04/09/Java%E9%87%8D%E5%86%99%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>示例代码：</p>
+<pre><code>    @Override
+    public boolean equals(Object otherObject) {
+        // 1.判断是否引用自身，小优化可以提前避免后面的实例比较
+        if(this == otherObject) {
+            return true;
+        }
+        // 2.比较this和otherObject是否为同一个类,此处有两种选择：
+        //   a. this.getClass()==otherObject.getClass(),各个子类中的语义不一致
+        //   b. otherObject instanceof ClassName,各个子类中的语义一致
+        if (this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+
+        // 如果步骤2中按b分支，既比较双方可以转为通用父类，则多下面一步转换
+        // 按照a分支则无需此步骤
+        // ClassName other = (ClassName) otherObject;
+        Father other = (Father) otherObject;
+
+        // 3.比较this，other的内部实例, 基本类型用==，其他类型用Objects.equals(a,b)
+        return Objects.equals(this.a, other.a) &amp;&amp; this.b == other.b;
+    }</code></pre>]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>数组</tag>
-        <tag>LeetCode</tag>
-        <tag>简单</tag>
+        <tag>JAVA</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Sakura添加在线和博主聊天功能</title>
-    <url>/2020/12/16/Sakura%E6%B7%BB%E5%8A%A0%E5%9C%A8%E7%BA%BF%E5%92%8C%E5%8D%9A%E4%B8%BB%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/</url>
-    <content><![CDATA[<p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104295156" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104295156</a></p>
-<h1 id="添加-DaoVoice-在线聊天功能"><a href="#添加-DaoVoice-在线聊天功能" class="headerlink" title="添加 DaoVoice 在线聊天功能"></a>添加 <a href="http://www.daovoice.io/" target="_blank" rel="noopener">DaoVoice</a> 在线聊天功能</h1><p>效果展示</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201216202906.png" alt="image-20201216202904581"></p>
-<h2 id="1-官网注册账号获取appid修改conifg文件"><a href="#1-官网注册账号获取appid修改conifg文件" class="headerlink" title="1.官网注册账号获取appid修改conifg文件"></a>1.官网注册账号获取appid修改conifg文件</h2><p>前往 <a href="http://www.daovoice.io/" target="_blank" rel="noopener">DaoVoice</a> 官网注册并且获取 <code>app_id</code>，并将 <code>app_id</code> 填入主题的 <code>_config.yml</code> 文件中。</p>
-<pre><code>daovoice:
-  enable: true
-  daovoice_app_id: 7e5676fe ##这里替换成你DaoVoice上的appid</code></pre><h2 id="2-在footer-ejs文件末尾中添加"><a href="#2-在footer-ejs文件末尾中添加" class="headerlink" title="2.在footer.ejs文件末尾中添加"></a>2.在footer.ejs文件末尾中添加</h2><pre><code>  &lt;script&gt;
-  (function(i,s,o,g,r,a,m){i[&quot;DaoVoiceObject&quot;]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset=&quot;utf-8&quot;;m.parentNode.insertBefore(a,m)})(window,document,&quot;script&quot;,(&#39;https:&#39; == document.location.protocol ? &#39;https:&#39; : &#39;http:&#39;) + &quot;//widget.daovoice.io/widget/&lt;%= theme.daovoice.daovoice_app_id%&gt;.js&quot;,&quot;daovoice&quot;);
-    daovoice(&#39;init&#39;, {
-      app_id: &quot;&lt;%= theme.daovoice.daovoice_app_id%&gt;&quot;
-    });
-    daovoice(&#39;update&#39;);</code></pre><h2 id="3-配置自己喜欢的聊天样式"><a href="#3-配置自己喜欢的聊天样式" class="headerlink" title="3.配置自己喜欢的聊天样式"></a>3.配置自己喜欢的聊天样式</h2><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201216202754.png" alt="image-20201216202746421"></p>
-<h2 id="4-可以绑定微信-邮箱-如果有人发消息会邮箱-微信消息提醒-在官网查看"><a href="#4-可以绑定微信-邮箱-如果有人发消息会邮箱-微信消息提醒-在官网查看" class="headerlink" title="4.可以绑定微信\邮箱,如果有人发消息会邮箱\微信消息提醒,在官网查看"></a>4.可以绑定微信\邮箱,如果有人发消息会邮箱\微信消息提醒,在官网查看</h2>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
   </entry>
   <entry>
     <title>Sakura主题添加背景切换功能</title>
@@ -1457,64 +1179,50 @@ func max(arr []int) int{
       </categories>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/03/19/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
+    <title>Sakura添加在线和博主聊天功能</title>
+    <url>/2020/12/16/Sakura%E6%B7%BB%E5%8A%A0%E5%9C%A8%E7%BA%BF%E5%92%8C%E5%8D%9A%E4%B8%BB%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104295156" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104295156</a></p>
+<h1 id="添加-DaoVoice-在线聊天功能"><a href="#添加-DaoVoice-在线聊天功能" class="headerlink" title="添加 DaoVoice 在线聊天功能"></a>添加 <a href="http://www.daovoice.io/" target="_blank" rel="noopener">DaoVoice</a> 在线聊天功能</h1><p>效果展示</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201216202906.png" alt="image-20201216202904581"></p>
+<h2 id="1-官网注册账号获取appid修改conifg文件"><a href="#1-官网注册账号获取appid修改conifg文件" class="headerlink" title="1.官网注册账号获取appid修改conifg文件"></a>1.官网注册账号获取appid修改conifg文件</h2><p>前往 <a href="http://www.daovoice.io/" target="_blank" rel="noopener">DaoVoice</a> 官网注册并且获取 <code>app_id</code>，并将 <code>app_id</code> 填入主题的 <code>_config.yml</code> 文件中。</p>
+<pre><code>daovoice:
+  enable: true
+  daovoice_app_id: 7e5676fe ##这里替换成你DaoVoice上的appid</code></pre><h2 id="2-在footer-ejs文件末尾中添加"><a href="#2-在footer-ejs文件末尾中添加" class="headerlink" title="2.在footer.ejs文件末尾中添加"></a>2.在footer.ejs文件末尾中添加</h2><pre><code>  &lt;script&gt;
+  (function(i,s,o,g,r,a,m){i[&quot;DaoVoiceObject&quot;]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset=&quot;utf-8&quot;;m.parentNode.insertBefore(a,m)})(window,document,&quot;script&quot;,(&#39;https:&#39; == document.location.protocol ? &#39;https:&#39; : &#39;http:&#39;) + &quot;//widget.daovoice.io/widget/&lt;%= theme.daovoice.daovoice_app_id%&gt;.js&quot;,&quot;daovoice&quot;);
+    daovoice(&#39;init&#39;, {
+      app_id: &quot;&lt;%= theme.daovoice.daovoice_app_id%&gt;&quot;
+    });
+    daovoice(&#39;update&#39;);</code></pre><h2 id="3-配置自己喜欢的聊天样式"><a href="#3-配置自己喜欢的聊天样式" class="headerlink" title="3.配置自己喜欢的聊天样式"></a>3.配置自己喜欢的聊天样式</h2><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201216202754.png" alt="image-20201216202746421"></p>
+<h2 id="4-可以绑定微信-邮箱-如果有人发消息会邮箱-微信消息提醒-在官网查看"><a href="#4-可以绑定微信-邮箱-如果有人发消息会邮箱-微信消息提醒-在官网查看" class="headerlink" title="4.可以绑定微信\邮箱,如果有人发消息会邮箱\微信消息提醒,在官网查看"></a>4.可以绑定微信\邮箱,如果有人发消息会邮箱\微信消息提醒,在官网查看</h2>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
   </entry>
   <entry>
-    <title>Leetcode-28. 实现 strStr()</title>
-    <url>/2020/08/11/Leetcode-28-%E5%AE%9E%E7%8E%B0-strStr/</url>
-    <content><![CDATA[<h4 id="Leetcode-28-实现-strStr"><a href="#Leetcode-28-实现-strStr" class="headerlink" title="Leetcode-28. 实现 strStr()"></a><a href="https://leetcode-cn.com/problems/implement-strstr/" target="_blank" rel="noopener">Leetcode-28. 实现 strStr()</a></h4><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>实现 strStr() 函数。</p>
-<p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。</p>
+    <title>Leetcode-66. 加一</title>
+    <url>/2020/08/12/Leetcode-66-%E5%8A%A0%E4%B8%80/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">Leetcode-66. 加一</a></p>
+<h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p>
+<p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p>
+<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
 <p>示例 1:</p>
-<p>输入: haystack = “hello”, needle = “ll”<br>输出: 2<br>示例 2:</p>
-<p>输入: haystack = “aaaaa”, needle = “bba”<br>输出: -1<br>说明:</p>
-<p>当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
-<p>对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/implement-strstr" target="_blank" rel="noopener">https://leetcode-cn.com/problems/implement-strstr</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>遍历每一个haystack的字符，以此为起点和needle匹配，匹配成功，则返回遍历下标；否则返回-1</p>
-<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><pre><code>func strStr(haystack string, needle string) int {
-    hay_len := len(haystack)
-    ne_len := len(needle)
-    for i:=0; i &lt; hay_len-ne_len+1; i++ {
-       //判断haystack[i]开头是否和needle匹配
-       if(isStrEqual(haystack[i:], needle)){
-           return i
-       }
+<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。<br>示例 2:</p>
+<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/plus-one" target="_blank" rel="noopener">https://leetcode-cn.com/problems/plus-one</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="2-0解题思路"><a href="#2-0解题思路" class="headerlink" title="2.0解题思路"></a>2.0解题思路</h1><p>这道题比较简单，从后向前遍历找到第一个非9数字，记下标为not9first，该下标之后所有数全为0，本下标元素值+1 对异常情况值溢出做特殊处理</p>
+<h1 id="3-0实现代码"><a href="#3-0实现代码" class="headerlink" title="3.0实现代码"></a>3.0实现代码</h1><pre><code>func plusOne(digits []int) []int {
+    oldLen := len(digits)
+    not9first := oldLen-1 // 从后向前非9的第一个数
+    for ; not9first &gt;= 0 &amp;&amp; digits[not9first] == 9; not9first-- {
+        digits[not9first] = 0 // 是9就成0
     }
-    return -1
-}
-
-func isStrEqual(str1 string, str2 string) bool {
-    length := len(str2)
-    flag := true
-    for j:=0; j&lt;length ;j++ {
-        if(str1[j] != str2[j]) {
-            flag = false
-            break
-        }
-    } 
-    return flag
-}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>书写代码在一开始的时候没有注意到haystack的遍历区间是</p>
-<p>len(haystack) - len(needle)+1，遍历到尾部是没必要且麻烦的</p>
-<p>避免这种情况就是当我有了基本思路后，是会有好多漏洞的，实现方法要想一次最优且简洁就要把所有的测试用例列出来，不要光用脑子想，要写在纸上</p>
-<p>然后把脑子里的思路转成代码，和用例一一对应</p>
-<h1 id="进一步的优化（未完待补坑）"><a href="#进一步的优化（未完待补坑）" class="headerlink" title="进一步的优化（未完待补坑）"></a>进一步的优化（未完待补坑）</h1><p>上面代码的时间复杂度为O((N-L)*L)</p>
-<h2 id="优化方案一：hash省去L长度是否匹配判断"><a href="#优化方案一：hash省去L长度是否匹配判断" class="headerlink" title="优化方案一：hash省去L长度是否匹配判断"></a>优化方案一：hash省去L长度是否匹配判断</h2><p>之所以复杂是因为遍历每一字符都要比较L长度判断是否匹配</p>
-<p>这个*L可以转化为O(1)</p>
-<p>方法就是用hash值，我们对字符进行编码，生成唯一值</p>
-<p>这样每次判断匹配时就转化为计算hash值了</p>
-<h2 id="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"><a href="#优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间" class="headerlink" title="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"></a>优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间</h2><p>这个查了资料比较复杂，等以后有时间不用，挖个坑QAQ</p>
-]]></content>
+    if(not9first != -1) { // 加完没溢出
+        digits[not9first] += 1
+    }else { // 加完溢出
+        digits = append([]int{1}, digits...) // 首部赋值1
+    }
+    return digits
+}</code></pre>]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1544,57 +1252,296 @@ v_appKey: mgOpfzbkHYqU92CV4IDlAUHQ</code></pre><p>5.记得在Leancloud -&gt; 设
 ]]></content>
   </entry>
   <entry>
-    <title>Redis常用命令整理</title>
-    <url>/2021/04/01/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<h1 id="0-前言及Redis的链接"><a href="#0-前言及Redis的链接" class="headerlink" title="0.前言及Redis的链接"></a>0.前言及Redis的链接</h1><p>redis缓存数据库，主要存放key-value键值对，其中key为字符串，value可为多种类型<strong>字符串</strong>、<strong>列表</strong>、<strong>集合</strong>、<strong>字典</strong></p>
-<h1 id="1-设置字符串"><a href="#1-设置字符串" class="headerlink" title="1.设置字符串"></a>1.设置字符串</h1><pre><code>set key value
-get key value</code></pre><h1 id="2-设置列表"><a href="#2-设置列表" class="headerlink" title="2.设置列表"></a>2.设置列表</h1><pre><code>lpsuh key childElement // 头部插入
-lpop  key // 头部删除
-lrang key 0 10 // 从头部开始查询到10
-
-// 注：尾部操作则将lpush替换成rpush
-// 头部插入的下表说明，头部入A、B、C
-下标:  0、  1、   2
-元素:  A、  B、   C
-下标:  -3、 -2、  -1</code></pre><h1 id="3-设置集合"><a href="#3-设置集合" class="headerlink" title="3.设置集合"></a>3.设置集合</h1><p>集合分为无序集合和有序集合(元素含权重)，集合元素个数为2的32次方-1个</p>
-<p>无序集合</p>
-<pre><code>sadd key member  // 添加元素
-smemebers key    // 查询所有元素
-scard key        // 获取集合中元素个数
-sdiff key1 key2  // 差集
-sinter key1 key2 // 集合的交集运算
-sunion key1 key2 // 集合的补集</code></pre><p>有序集合（元素含权重）</p>
-<pre><code>将sadd改为zadd极为有序集合
-zadd key score member // 添加元素，score为元素权重</code></pre><h1 id="4-key的其他操作（移除、过期时间、检测）"><a href="#4-key的其他操作（移除、过期时间、检测）" class="headerlink" title="4.key的其他操作（移除、过期时间、检测）"></a>4.key的其他操作（移除、过期时间、检测）</h1><pre><code>del key   // 删除key
-exist key // 检测key是否存在
-type key // 查看key类型
-expire   // 设置过期时间
-persist key // 持久化key，移除key过期时间
-ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和订阅"><a href="#5-Redis发布和订阅" class="headerlink" title="5.Redis发布和订阅"></a>5.Redis发布和订阅</h1><h1 id="6-Redis事务"><a href="#6-Redis事务" class="headerlink" title="6.Redis事务"></a>6.Redis事务</h1><h1 id="7-Redis脚本"><a href="#7-Redis脚本" class="headerlink" title="7.Redis脚本"></a>7.Redis脚本</h1>]]></content>
-      <categories>
-        <category>技术</category>
-        <category>主题</category>
-      </categories>
-      <tags>
-        <tag>Reids</tag>
-      </tags>
+    <title>Hello World</title>
+    <url>/2021/03/19/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
-    <title>hexo博客添加友链检测界面UptimeRobot+CupSatus</title>
-    <url>/2021/02/03/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE%E6%A3%80%E6%B5%8B%E7%95%8C%E9%9D%A2UptimeRobot-CupSatus/</url>
-    <content><![CDATA[<h1 id="0-效果展示"><a href="#0-效果展示" class="headerlink" title="0.效果展示"></a>0.效果展示</h1><h1 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h1><p>a.注册UptimeRobot账号，将自己的网站和要检测的网站或者账号加上去</p>
-<p>b.去<a href="https://github.com/izoyo/Cup网址下载CupStatus页面" target="_blank" rel="noopener">https://github.com/izoyo/Cup网址下载CupStatus页面</a></p>
-<h1 id="2-应用到自己的hexo博客上"><a href="#2-应用到自己的hexo博客上" class="headerlink" title="2.应用到自己的hexo博客上"></a>2.应用到自己的hexo博客上</h1><p>hexo new page “friendlink_status” 页面</p>
-<p>在source/friendlink_status/中把CupSatus的所有文件放进去，目录如下</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210203180649.png" alt="image-20210203180642121"></p>
-<p>按照开源项目CupSatus中说的把js/config.js中的key替换成自己upTimeRobot账号下对应的api key即可</p>
-<p>然后在博客目录/config.yml  注意不是主题目录下的那个配置文件</p>
-<p>加入skip-render:   -friendlink_status/**  不使用主题的layout.ejs渲染这个页面</p>
-<p>在主题的配置文件中菜单导航栏上加入这个页面即可</p>
-]]></content>
+    <title>C++读取文件到内存中流程含示例</title>
+    <url>/2020/12/26/C-%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E6%B5%81%E7%A8%8B%E5%90%AB%E7%A4%BA%E4%BE%8B/</url>
+    <content><![CDATA[<h1 id="一、示例说明"><a href="#一、示例说明" class="headerlink" title="一、示例说明"></a>一、示例说明</h1><p>程序输入为种子用户ID数据集合，每一行包括用户ID和256维用户特征，用户特征数据类型为浮点型数据（存在部分数据用科学计数法表示的情况，比如1.4283673760891302E-4），所有数据分隔符为逗号，ID处于第1个位置，其它256维特征按照顺序处于2-257个位置。其中1-128维为连续性特征，数据都大于等于0小于等于1，余下129-256维为分类型特征经过one-hot处理过后的稀疏数据，数据都为0或者1。如下格式：<br><em>ID0001,0.1,0,0.56,…,0,1</em></p>
+<p>保存变量的结构体如下：</p>
+<pre><code>typedef struct User{
+    string id;
+    float fv[128];
+    int iv[128];
+};</code></pre><p>计划读取文件每一行记录一个User变量的成员，元素1为id，元素2<del>129为fv,元素130</del>257为iv</p>
+<h1 id="二、读取文件代码"><a href="#二、读取文件代码" class="headerlink" title="二、读取文件代码"></a>二、读取文件代码</h1><p>示例代码:</p>
+<pre><code>#include &lt;QCoreApplication&gt;
+#include &lt;fstream&gt;
+#include &lt;sstream&gt;
+using namespace std;
+typedef struct {
+    string id;
+    float fv[128];
+    int iv[128];
+}User;
+
+
+int main(int argc, char *argv[])
+{
+    QCoreApplication a(argc, argv);
+    fstream seedf(&quot;C:\\Users\\linxuesong\\Desktop\\cpp\\input\\seed.txt&quot;);
+    vector&lt;User&gt; users;
+
+
+
+    while(!seedf.eof()) {
+        string oneline;
+        getline(seedf, oneline);
+
+        User user;
+        // 将一行按逗号分隔
+        stringstream ss(oneline);
+        getline(ss,  user.id, &#39;,&#39;); //先读取一个
+
+        string para;
+        int count = 0; // 用来计数,当读取128个float后就是int了
+        while(getline(ss,  para, &#39;,&#39;)){ // 读取剩下的256个
+            if(count &lt;= 127){
+                user.fv[count] = stof(para);
+            }else {
+                user.iv[count-128] = stoi(para);
+            }
+            count++;
+        }
+        users.push_back(user);
+    }
+
+    seedf.clear();
+    seedf.close();
+    return a.exec();
+}
+</code></pre><h1 id="三、涉及到的知识总结"><a href="#三、涉及到的知识总结" class="headerlink" title="三、涉及到的知识总结"></a>三、涉及到的知识总结</h1><h2 id="1-fstream"><a href="#1-fstream" class="headerlink" title="1.fstream"></a>1.fstream</h2><p>作用：主要用于读写文件</p>
+<p>定义:fstream f;</p>
+<p>类继承关系如图:</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201226114456.png" alt="image-20201226114448172"></p>
+<p>主要方法:</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>参数</th>
+<th>返回值</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>open</strong></td>
+<td>( const char * filename,  os_base::openmode mode = ios_base::in | ios_base::out )<br />// 文件路径和打开方式,打开方式可以省略</td>
+<td>无</td>
+<td>以指定的方式打开文件</td>
+</tr>
+<tr>
+<td><strong>close</strong></td>
+<td>无参数</td>
+<td>无</td>
+<td>关闭文件</td>
+</tr>
+<tr>
+<td>bad()</td>
+<td></td>
+<td>bool</td>
+<td>状态标识符，读写出错</td>
+</tr>
+<tr>
+<td>fail()</td>
+<td></td>
+<td>bool</td>
+<td>状态标识符,格式错误或读写错误</td>
+</tr>
+<tr>
+<td><strong>eof</strong>()</td>
+<td></td>
+<td>bool</td>
+<td>文件到达结尾返回ture</td>
+</tr>
+<tr>
+<td>good()</td>
+<td></td>
+<td>bool</td>
+<td>没有出现任何错误</td>
+</tr>
+<tr>
+<td><em>tellg()和tellp()*</em></td>
+<td></td>
+<td>pos_type<br />就是一个int</td>
+<td>返回当前读出流\写入流的get、put指针位置</td>
+</tr>
+<tr>
+<td><em>seekg()和seekp()*</em></td>
+<td>重载一:pos_type<br />重载二：(off_type offset, seekdir direction)</td>
+<td>pos_type<br />就是一个int</td>
+<td>设置读出流\写入流的get、put指针位置</td>
+</tr>
+</tbody></table>
+<p>简单示例：</p>
+<pre><code>vector&lt;string&gt; arrs;
+string tmp;
+fstream myfile(&quot;文件路径&quot;); // 构造函数会调用open方法
+if(!myfile) {  // fstream重载了!感叹号操作符，fstream对象会返回true或fasle,也可以用!file.good()判断
+    cout &lt;&lt; &quot;文件打开失败&quot;; 
+}
+while(!myfile.eof()) { // 直到遇到文件结束符
+    getline(myfile, tmp); // 取一行
+    arrs.push_back(tmp);
+}
+myfile.close();</code></pre><h2 id="2-getline"><a href="#2-getline" class="headerlink" title="2.getline"></a>2.getline</h2><p>作用:  读取输入流到内存中知道遇到指定的分隔符，默认分隔符为’\n’所以默认时读取一整行</p>
+<p>函数原型</p>
+<pre><code>/**
+*pram1 输入流
+*pram2 接收流的内存变量地址
+*pram3 分隔符\n,会读取输入流知道遇到分割符，遇到分割符之后停止读取并把分隔符跳过
+*/
+istream&amp; getline (istream&amp; is, string&amp; str, char delim = &#39;\n&#39;);</code></pre><p>简单示例</p>
+<h1 id="四、多线程读取大文件实现（仍旧为完善）-此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件"><a href="#四、多线程读取大文件实现（仍旧为完善）-此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件" class="headerlink" title="四、多线程读取大文件实现（仍旧为完善） 此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件"></a>四、多线程读取大文件实现（仍旧为完善） 此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件</h1><p>思路:大文件分隔若干份(cpu有几个核)文件块，对于每一部分以start和end作为标志<br>seekg设置不同的读取起始位置，每个文件从不同的起始位置读，读到end</p>
+<p>需要注意的是我们在读取变量时start可能不是正好的位置，需要对其进行处理,这里是先读取完本行到行末，得到一行结束位置</p>
+<p>代码如下</p>
+<pre><code>#include &lt;QCoreApplication&gt;
+#include &lt;fstream&gt;
+#include &lt;sstream&gt;
+#include &lt;thread&gt;
+#include &lt;iostream&gt;
+#include &lt;math.h&gt;
+#include &lt;mutex&gt;
+using namespace std;
+
+typedef struct {
+    string id;
+    float fv[128];
+    int iv[128];
+}User;
+
+
+typedef struct {
+    int start;
+    int end;
+
+}FileBlock;
+static vector&lt;vector&lt;User&gt;&gt; aa;
+
+mutex aa_lock;
+//获取文件大小 文件偏移量为int, 可以标识2的32次个字节 相当于4G
+int getFileSize(string filepath){
+    fstream f(filepath);
+    if(!f) {
+        cout &lt;&lt; &quot;打开文件失败&quot; &lt;&lt; endl;
+    }
+    f.seekg(0, ios::end);
+    return f.tellg();
+    f.close();
+}
+
+// 获取当前cpu的核数   /      线程处理参数为      param1文件地址  parm2读取文件的位置  param3
+int getCpuCoreCnt() {
+    return thread::hardware_concurrency();
+}
+
+// 将文件分为cpu核心个部分,并放入到vector&lt;FileBlock&gt;中
+vector&lt;FileBlock&gt; splitFile(string filepath)  {
+    vector&lt;FileBlock&gt; fileBlocks;
+    fstream f(filepath);
+    if(!f) {
+        cout &lt;&lt; &quot;打开文件失败&quot; &lt;&lt; endl;
+    }
+    int fsize = getFileSize(filepath);
+    int cpu_core_cnt = getCpuCoreCnt();
+    int block_size = ceil(fsize/cpu_core_cnt); //向上取整，为了防止向下取整导致最后涵盖所有
+    int start=0,end;
+    for(int i = 0; i &lt; cpu_core_cnt; i++) {
+        end = (i+1)*block_size; // 当访问最后一个访问块时可能会超出范围
+        if(end &gt;= fsize) {
+            end = fsize;
+            fileBlocks.push_back(FileBlock{start, end});//已经是最后一行了就结束吧
+            break;
+        }
+        {   // end可能不正好在文件的一行的结尾\n处，去下一行
+            f.seekg(end);
+            string tmp;
+            getline(f, tmp);
+        }
+        end = (long)f.tellg()-1;
+        fileBlocks.push_back(FileBlock{start, end});
+        start = f.tellg();
+    }
+
+    return fileBlocks;
+}
+
+
+
+
+// 之后各个线程按文件的起始位置进行读取
+void thread_read_file(FileBlock fb, string filepath) {
+
+    fstream seedf(filepath);
+    vector&lt;User&gt; users;
+    seedf.seekg(fb.start);
+    while(seedf.tellg()&lt;=fb.end &amp;&amp; !seedf.eof()) {
+        string oneline;
+        getline(seedf, oneline);
+
+        User user;
+        // 将一行按逗号分隔
+        stringstream ss(oneline);
+        getline(ss,  user.id, &#39;,&#39;); //先读取一个
+
+        string para;
+        int count = 0; // 用来计数,当读取128个float后就是int了
+        while(getline(ss,  para, &#39;,&#39;)){ // 读取剩下的256个
+            if(count &lt;= 127){
+                user.fv[count] = stof(para);
+            }else {
+                user.iv[count-128] = stoi(para);
+            }
+            count++;
+        }
+        users.push_back(user);
+    }
+    lock_guard&lt;mutex&gt; lock(aa_lock);
+
+    aa.push_back(users);
+    seedf.clear();
+    seedf.close();
+}
+
+
+
+int main(int argc, char *argv[])
+{
+    QCoreApplication a(argc, argv);
+    string filepath =&quot;C:\\Users\\linxuesong\\Desktop\\cpp\\input\\seed.txt&quot;;
+    vector&lt;FileBlock&gt; fbs = splitFile(filepath);
+     for(int i = 0; i&lt;getCpuCoreCnt(); i++) {
+        thread t(thread_read_file, fbs[i], filepath);
+        t.join();
+    }
+    this_thread::sleep_for(std::chrono::seconds(1));
+    cout &lt;&lt; aa.size()&lt;&lt;endl;
+    for (int i =0;i&lt;(int)aa.size();i++)
+        for(int j; j&lt;(int)aa[i].size();j++)
+            cout &lt;&lt; aa[i][j].id &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre><h1 id="五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象"><a href="#五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象" class="headerlink" title="五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象"></a>五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象</h1>]]></content>
       <categories>
         <category>技术</category>
       </categories>
+      <tags>
+        <tag>文件读取</tag>
+        <tag>C++</tag>
+        <tag>多线程</tag>
+      </tags>
   </entry>
   <entry>
     <title>hexo增加RSS订阅功能</title>
@@ -1617,6 +1564,23 @@ feed:
   order_by: -date
   icon: #icon.png</code></pre><h3 id="3-themes-sakura-config-yml"><a href="#3-themes-sakura-config-yml" class="headerlink" title="3.themes\sakura_config.yml"></a>3.themes\sakura_config.yml</h3><pre><code># 简易信息聚合,站点共享
 rss: /atom.xml</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>hexo博客添加友链检测界面UptimeRobot+CupSatus</title>
+    <url>/2021/02/03/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE%E6%A3%80%E6%B5%8B%E7%95%8C%E9%9D%A2UptimeRobot-CupSatus/</url>
+    <content><![CDATA[<h1 id="0-效果展示"><a href="#0-效果展示" class="headerlink" title="0.效果展示"></a>0.效果展示</h1><h1 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h1><p>a.注册UptimeRobot账号，将自己的网站和要检测的网站或者账号加上去</p>
+<p>b.去<a href="https://github.com/izoyo/Cup网址下载CupStatus页面" target="_blank" rel="noopener">https://github.com/izoyo/Cup网址下载CupStatus页面</a></p>
+<h1 id="2-应用到自己的hexo博客上"><a href="#2-应用到自己的hexo博客上" class="headerlink" title="2.应用到自己的hexo博客上"></a>2.应用到自己的hexo博客上</h1><p>hexo new page “friendlink_status” 页面</p>
+<p>在source/friendlink_status/中把CupSatus的所有文件放进去，目录如下</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210203180649.png" alt="image-20210203180642121"></p>
+<p>按照开源项目CupSatus中说的把js/config.js中的key替换成自己upTimeRobot账号下对应的api key即可</p>
+<p>然后在博客目录/config.yml  注意不是主题目录下的那个配置文件</p>
+<p>加入skip-render:   -friendlink_status/**  不使用主题的layout.ejs渲染这个页面</p>
+<p>在主题的配置文件中菜单导航栏上加入这个页面即可</p>
+]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1671,258 +1635,6 @@ cd 解压后的文件夹</code></pre><h2 id="3-执行命令安装nginx"><a href=
       </categories>
       <tags>
         <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>golang包管理工具介绍</title>
-    <url>/2021/03/31/golang%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<p>参考博客</p>
-<p>Go管理工具的使用</p>
-<h1 id="0-没有包管理工具的情况"><a href="#0-没有包管理工具的情况" class="headerlink" title="0.没有包管理工具的情况"></a>0.没有包管理工具的情况</h1><h2 id="0-1寻找依赖的路径："><a href="#0-1寻找依赖的路径：" class="headerlink" title="0.1寻找依赖的路径："></a>0.1寻找依赖的路径：</h2><p>1⃣️在GOROOT目录下查找</p>
-<p>2⃣️在GOPATH/src下面查找包</p>
-<h2 id="0-2获取依赖"><a href="#0-2获取依赖" class="headerlink" title="0.2获取依赖"></a>0.2获取依赖</h2><pre><code>go get 依赖地址 // 依赖包会存放到gopath下面两个位置，pkg里面.a文件和src下面的.go文件</code></pre><h1 id="1-govendor"><a href="#1-govendor" class="headerlink" title="1.govendor"></a>1.govendor</h1><h2 id="1-1管理方式"><a href="#1-1管理方式" class="headerlink" title="1.1管理方式"></a>1.1管理方式</h2><p>寻找依赖的路径：</p>
-<p>1⃣️在$GOPATH/src/当前包文件/vendor目录</p>
-<p>2⃣️向当前包目录的上级目录查找知道找到src下的vendor</p>
-<p>3⃣️在GOROOT目录下查找</p>
-<p>4⃣️在GOPATH下面查找包</p>
-<h2 id="1-2安装"><a href="#1-2安装" class="headerlink" title="1.2安装"></a>1.2安装</h2><pre><code>go get -u github.com/kardianos/govendor</code></pre><p>安装完成后为方便使用加入到环境变量</p>
-<pre><code>export PATH=&quot;$GOPATH/bin:$PATH&quot;</code></pre><h2 id="1-3使用"><a href="#1-3使用" class="headerlink" title="1.3使用"></a>1.3使用</h2><p>0⃣️如果不是从git上拉取已有vendor.json的项目，而是<strong>本地新建项目</strong>，则要初始化本地项目</p>
-<p>初始化项目目录，生成vendor目录和vendor.json文件</p>
-<pre><code>govendor init</code></pre><p>1⃣️下载项目依赖，这里以引入</p>
-<p>依赖为例</p>
-<p>从远程拉去下来依赖并放入当前vendor文件夹，记录到vendor.json,在gopath下不会有依赖包</p>
-<pre><code>govendor fetch &quot;包链接&quot;
-// 举例：govendor fetch &quot;github.com/labstack/echo/...&quot;  //这里三个点表示文件夹下的所有文件，或者echo后面不要有斜杠，标识拉取项目</code></pre><p>🐻踩坑：i.对于无法从网上下载下里的包，只能从git上自己手动下载，放到vendor下面 ii.有时需要加上三个点标识所有文件，不然会下载下一个空文件夹</p>
-<p>2⃣️提交到<strong>git上只需要提交vendor.json</strong>即可,不需要把所有的vendor依赖文件夹提交上去</p>
-<p>从git上拉起他人项目，项目中含有vendor.json文件，通过如下命令安装依赖包</p>
-<pre><code>govendor sync</code></pre><h2 id="1-4其他"><a href="#1-4其他" class="headerlink" title="1.4其他"></a>1.4其他</h2><p>常用命令</p>
-<pre><code>govendor list // 列出代码中所有被引用到的包及其状态</code></pre><pre><code>govendor fetch // 从远程仓库添加或更新某个包</code></pre><table>
-<thead>
-<tr>
-<th>子命令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>init</td>
-<td>初始化一个新项目，生成vendor文件夹</td>
-</tr>
-<tr>
-<td>list</td>
-<td>根据当前项目文件的import列出所有依赖包</td>
-</tr>
-<tr>
-<td>add</td>
-<td></td>
-</tr>
-<tr>
-<td>update</td>
-<td></td>
-</tr>
-<tr>
-<td>remove</td>
-<td></td>
-</tr>
-<tr>
-<td>status</td>
-<td></td>
-</tr>
-<tr>
-<td>fetch</td>
-<td>从远程仓库拉取依赖包</td>
-</tr>
-<tr>
-<td>sync</td>
-<td></td>
-</tr>
-<tr>
-<td>migrate</td>
-<td></td>
-</tr>
-<tr>
-<td>get</td>
-<td></td>
-</tr>
-<tr>
-<td>license</td>
-<td></td>
-</tr>
-<tr>
-<td>shell</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>状态参数</p>
-<table>
-<thead>
-<tr>
-<th>状态</th>
-<th>缩写</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>+local</td>
-<td>l</td>
-<td>本地包，即项目内部编写的包</td>
-</tr>
-<tr>
-<td>+external</td>
-<td>e</td>
-<td>外部包，即在 <code>GOPATH</code> 中、却不在项目 <code>vendor</code> 目录</td>
-</tr>
-<tr>
-<td>+vendor</td>
-<td>v</td>
-<td>已在 <code>vendor</code> 目录下的包</td>
-</tr>
-<tr>
-<td>+std</td>
-<td>s</td>
-<td>标准库里的包</td>
-</tr>
-<tr>
-<td>+excluded</td>
-<td>x</td>
-<td>明确被排除的外部包</td>
-</tr>
-<tr>
-<td>+unused</td>
-<td>u</td>
-<td>未使用的包，即在 <code>vendor</code> 目录下，但项目中并未引用到</td>
-</tr>
-<tr>
-<td>+missing</td>
-<td>m</td>
-<td>被引用了但却找不到的包</td>
-</tr>
-<tr>
-<td>+program</td>
-<td>p</td>
-<td>主程序包，即可被编译为执行文件的包</td>
-</tr>
-<tr>
-<td>+outside</td>
-<td></td>
-<td>相当于状态为 <code>+external +missing</code></td>
-</tr>
-<tr>
-<td>+all</td>
-<td></td>
-<td>所有包</td>
-</tr>
-</tbody></table>
-<p>支持状态参数的子命令有：<code>list</code>、<code>add</code>、<code>update</code>、<code>remove</code>、<code>fetch</code></p>
-<h1 id="2-gomod"><a href="#2-gomod" class="headerlink" title="2.gomod"></a>2.gomod</h1><p>前沿:go1.13版本会默认开启mod，1.11版本后才支持mod</p>
-<h2 id="2-0前期准备-设置go环境参数使其支持mod"><a href="#2-0前期准备-设置go环境参数使其支持mod" class="headerlink" title="2.0前期准备,设置go环境参数使其支持mod"></a>2.0前期准备,设置go环境参数使其支持mod</h2><pre><code>go env -w GO111MODULE=on // 启用go mod，之后可以用go env 命令展示一下go的配置</code></pre><h2 id="2-1管理方式"><a href="#2-1管理方式" class="headerlink" title="2.1管理方式"></a>2.1管理方式</h2><p>模块:多个包package的集合</p>
-<p>当<code>GO111MODULE</code>=<code>on</code>时，那么就会使用<code>modules</code>功能:这种模式下，<code>$GOPATH</code>不再作为build时导入的角色，依赖包会存放在<code>$GOPATH/pkg/mod</code>目录下。工程中的依赖包也会从此目录下查找.</p>
-<h2 id="2-2初始化一个新项目"><a href="#2-2初始化一个新项目" class="headerlink" title="2.2初始化一个新项目"></a>2.2初始化一个新项目</h2><pre><code>go mod init &lt;项目名&gt; //项目名不填写则是gopath/src后的相对路径名，填的话一般为github.com/your name/project name</code></pre><h2 id="2-3添加依赖"><a href="#2-3添加依赖" class="headerlink" title="2.3添加依赖"></a>2.3添加依赖</h2><h3 id="a-先编写程序improt依赖包"><a href="#a-先编写程序improt依赖包" class="headerlink" title="a.先编写程序improt依赖包"></a>a.先编写程序improt依赖包</h3><p>其实当go run执行时会自动下载依赖包，当然也可以不运行而是只去下载依赖包</p>
-<h3 id="b-下载依赖包"><a href="#b-下载依赖包" class="headerlink" title="b.下载依赖包"></a>b.下载依赖包</h3><pre><code>go mod tidy     // 检测并下载本项目的module所依赖的文件，同时会移除不需要的模块</code></pre><p>依赖包的存放位置是$GoPath/pkg/mod/</p>
-<h3 id="C-修改go-mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝"><a href="#C-修改go-mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝" class="headerlink" title="C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝"></a>C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝</h3><p>例如go.mod的内容乳腺癌</p>
-<pre><code>replace example.com/project/foo =&gt; ../foo</code></pre><h3 id="d-go-mod文件的介绍"><a href="#d-go-mod文件的介绍" class="headerlink" title="d.go.mod文件的介绍"></a>d.go.mod文件的介绍</h3><p>go.mod 提供了module, require、replace和exclude 四个命令</p>
-<ul>
-<li><code>module</code> 语句指定包的名字（路径）</li>
-<li><code>require</code> 语句指定的依赖项模块</li>
-<li><code>replace</code> 语句可以替换依赖项模块</li>
-<li><code>exclude</code> 语句可以忽略依赖项模块</li>
-</ul>
-<h2 id="2-4其他命令"><a href="#2-4其他命令" class="headerlink" title="2.4其他命令"></a>2.4其他命令</h2><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>vendor</td>
-<td>将依赖复制到vendor下</td>
-</tr>
-<tr>
-<td>graph</td>
-<td>打印模块依赖图</td>
-</tr>
-<tr>
-<td>verify</td>
-<td>验证依赖是否正确</td>
-</tr>
-<tr>
-<td>edit</td>
-<td>编辑go.mod文件</td>
-</tr>
-<tr>
-<td>download</td>
-<td>下载私有仓库的依赖到本地cache</td>
-</tr>
-</tbody></table>
-<p>🐻在国内访问<code>golang.org/x</code>的各个包都需要翻墙，你可以在<code>go.mod</code>中使用<code>replace</code>替换成github上对应的库。形式如下：</p>
-<pre><code>replace (
-    golang.org/x/crypto v0.0.0-20180820150726-614d502a4dac =&gt; github.com/golang/crypto v0.0.0-20180820150726-614d502a4dac
-    golang.org/x/net v0.0.0-20180821023952-922f4815f713 =&gt; github.com/golang/net v0.0.0-20180826012351-8a410e7b638d
-    golang.org/x/text v0.3.0 =&gt; github.com/golang/text v0.3.0
-)</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>包管理工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mac配置iterm2</title>
-    <url>/2021/03/20/mac%E9%85%8D%E7%BD%AEiterm2/</url>
-    <content><![CDATA[<p>参考链接：晨旭OvO原创文章<a href="https://blog.csdn.net/a1228136188/article/details/109092435" target="_blank" rel="noopener">https://blog.csdn.net/a1228136188/article/details/109092435</a></p>
-]]></content>
-      <categories>
-        <category>转载</category>
-      </categories>
-      <tags>
-        <tag>mac软件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mac迁移软件经历</title>
-    <url>/2021/03/20/mac%E8%BF%81%E7%A7%BB%E8%BD%AF%E4%BB%B6%E7%BB%8F%E5%8E%86/</url>
-    <content><![CDATA[<p>Mac工作软件安装踩坑记录</p>
-<h1 id="1-Idea"><a href="#1-Idea" class="headerlink" title="1.Idea"></a>1.Idea</h1><p>先下载idea，在idea里面下载jdk，这样避免配置jdk</p>
-<h2 id="1-1下载idea"><a href="#1-1下载idea" class="headerlink" title="1.1下载idea"></a>1.1下载idea</h2><h2 id="1-2在idea内部安装jdk"><a href="#1-2在idea内部安装jdk" class="headerlink" title="1.2在idea内部安装jdk"></a>1.2在idea内部安装jdk</h2><p>![使用idea安装jdk](<a href="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/截屏2021-03-19" target="_blank" rel="noopener">https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/截屏2021-03-19</a> 下午7.45.35.png)</p>
-<h2 id="1-3修改maven配置"><a href="#1-3修改maven配置" class="headerlink" title="1.3修改maven配置"></a>1.3修改maven配置</h2><p>主要解决：解决maven包拉取不下来</p>
-<p>打开一个项目文件，在配置中将原来电脑的setting.xml做替换，更新maven即可</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%887.49.02.png" alt="截屏2021-03-19 下午7.49.02"></p>
-<h1 id="2-goland"><a href="#2-goland" class="headerlink" title="2.goland"></a>2.goland</h1><h2 id="2-1安装goland"><a href="#2-1安装goland" class="headerlink" title="2.1安装goland"></a>2.1安装goland</h2><h2 id="2-2在goland中安装go环境"><a href="#2-2在goland中安装go环境" class="headerlink" title="2.2在goland中安装go环境"></a>2.2在goland中安装go环境</h2><p>![截屏2021-03-19 下午7.53.10](/Users/linxuesong/Desktop/截屏2021-03-19 下午7.53.10.png)</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%887.54.07.png" alt="截屏2021-03-19 下午7.54.07"></p>
-<h1 id="3-邮件"><a href="#3-邮件" class="headerlink" title="3.邮件"></a>3.邮件</h1><h2 id="3-1关闭腾讯企业邮箱的安全登录"><a href="#3-1关闭腾讯企业邮箱的安全登录" class="headerlink" title="3.1关闭腾讯企业邮箱的安全登录"></a>3.1关闭腾讯企业邮箱的安全登录</h2><p>登录腾讯企业邮箱官网，设置-》账户，将账户安全修改如下：</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%887.57.47.png" alt="截屏2021-03-19 下午7.57.47"></p>
-<h2 id="3-2mac邮件添加邮箱账户"><a href="#3-2mac邮件添加邮箱账户" class="headerlink" title="3.2mac邮件添加邮箱账户"></a>3.2mac邮件添加邮箱账户</h2><p>选填加其他邮箱账户</p>
-<p>电子邮件和密码是公司提供的，确认后进入如下界面</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%888.02.55.png" alt="截屏2021-03-19 下午8.02.55"></p>
-<p>这个配置的填写参考腾讯邮箱 设置-》客户端设置界面<img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%888.04.00.png" alt="截屏2021-03-19 下午8.04.00"></p>
-<p>配置tls端口时要先关闭“自动管理链接设置”</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%888.17.18.png" alt="截屏2021-03-19 下午8.17.18"></p>
-<p>参考博客：使用Mac自带邮箱添加腾讯企业邮箱 <a href="https://www.jianshu.com/p/2eb79645d94f" target="_blank" rel="noopener">https://www.jianshu.com/p/2eb79645d94f</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>主题</category>
-      </categories>
-      <tags>
-        <tag>软件安装</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>主题博客增加天气插件</title>
-    <url>/2021/03/08/%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E5%A4%A9%E6%B0%94%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<p>效果预览：</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210308160128.png" alt="image-20210308160120253"></p>
-<h2 id="1-注册和风天气账号"><a href="#1-注册和风天气账号" class="headerlink" title="1.注册和风天气账号"></a>1.注册和风天气账号</h2><p>官方网址如下<a href="https://www.qweather.com/" target="_blank" rel="noopener">https://www.qweather.com/</a></p>
-<h2 id="2-导入生成的插件代码"><a href="#2-导入生成的插件代码" class="headerlink" title="2.导入生成的插件代码"></a>2.导入生成的插件代码</h2><p>博客目录\themes\Sakura\layout_partial\header.ejs     嵌入到代码的最尾部</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
-        <tag>sakura</tag>
       </tags>
   </entry>
   <entry>
@@ -2229,6 +1941,266 @@ static char *ngx_http_hello_counter(ngx_conf_t *cf, ngx_command_t *cmd, void *co
       </tags>
   </entry>
   <entry>
+    <title>Redis常用命令整理</title>
+    <url>/2021/04/01/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h1 id="0-前言及Redis的链接"><a href="#0-前言及Redis的链接" class="headerlink" title="0.前言及Redis的链接"></a>0.前言及Redis的链接</h1><p>redis缓存数据库，主要存放key-value键值对，其中key为字符串，value可为多种类型<strong>字符串</strong>、<strong>列表</strong>、<strong>集合</strong>、<strong>字典</strong></p>
+<h1 id="1-设置字符串"><a href="#1-设置字符串" class="headerlink" title="1.设置字符串"></a>1.设置字符串</h1><pre><code>set key value
+get key value</code></pre><h1 id="2-设置列表"><a href="#2-设置列表" class="headerlink" title="2.设置列表"></a>2.设置列表</h1><pre><code>lpsuh key childElement // 头部插入
+lpop  key // 头部删除
+lrang key 0 10 // 从头部开始查询到10
+
+// 注：尾部操作则将lpush替换成rpush
+// 头部插入的下表说明，头部入A、B、C
+下标:  0、  1、   2
+元素:  A、  B、   C
+下标:  -3、 -2、  -1</code></pre><h1 id="3-设置集合"><a href="#3-设置集合" class="headerlink" title="3.设置集合"></a>3.设置集合</h1><p>集合分为无序集合和有序集合(元素含权重)，集合元素个数为2的32次方-1个</p>
+<p>无序集合</p>
+<pre><code>sadd key member  // 添加元素
+smemebers key    // 查询所有元素
+scard key        // 获取集合中元素个数
+sdiff key1 key2  // 差集
+sinter key1 key2 // 集合的交集运算
+sunion key1 key2 // 集合的补集</code></pre><p>有序集合（元素含权重）</p>
+<pre><code>将sadd改为zadd极为有序集合
+zadd key score member // 添加元素，score为元素权重</code></pre><h1 id="4-key的其他操作（移除、过期时间、检测）"><a href="#4-key的其他操作（移除、过期时间、检测）" class="headerlink" title="4.key的其他操作（移除、过期时间、检测）"></a>4.key的其他操作（移除、过期时间、检测）</h1><pre><code>del key   // 删除key
+exist key // 检测key是否存在
+type key // 查看key类型
+expire   // 设置过期时间
+persist key // 持久化key，移除key过期时间
+ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和订阅"><a href="#5-Redis发布和订阅" class="headerlink" title="5.Redis发布和订阅"></a>5.Redis发布和订阅</h1><h1 id="6-Redis事务"><a href="#6-Redis事务" class="headerlink" title="6.Redis事务"></a>6.Redis事务</h1><h1 id="7-Redis脚本"><a href="#7-Redis脚本" class="headerlink" title="7.Redis脚本"></a>7.Redis脚本</h1>]]></content>
+      <categories>
+        <category>技术</category>
+        <category>主题</category>
+      </categories>
+      <tags>
+        <tag>Reids</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mac迁移软件经历</title>
+    <url>/2021/03/20/mac%E8%BF%81%E7%A7%BB%E8%BD%AF%E4%BB%B6%E7%BB%8F%E5%8E%86/</url>
+    <content><![CDATA[<p>Mac工作软件安装踩坑记录</p>
+<h1 id="1-Idea"><a href="#1-Idea" class="headerlink" title="1.Idea"></a>1.Idea</h1><p>先下载idea，在idea里面下载jdk，这样避免配置jdk</p>
+<h2 id="1-1下载idea"><a href="#1-1下载idea" class="headerlink" title="1.1下载idea"></a>1.1下载idea</h2><h2 id="1-2在idea内部安装jdk"><a href="#1-2在idea内部安装jdk" class="headerlink" title="1.2在idea内部安装jdk"></a>1.2在idea内部安装jdk</h2><p>![使用idea安装jdk](<a href="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/截屏2021-03-19" target="_blank" rel="noopener">https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/截屏2021-03-19</a> 下午7.45.35.png)</p>
+<h2 id="1-3修改maven配置"><a href="#1-3修改maven配置" class="headerlink" title="1.3修改maven配置"></a>1.3修改maven配置</h2><p>主要解决：解决maven包拉取不下来</p>
+<p>打开一个项目文件，在配置中将原来电脑的setting.xml做替换，更新maven即可</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%887.49.02.png" alt="截屏2021-03-19 下午7.49.02"></p>
+<h1 id="2-goland"><a href="#2-goland" class="headerlink" title="2.goland"></a>2.goland</h1><h2 id="2-1安装goland"><a href="#2-1安装goland" class="headerlink" title="2.1安装goland"></a>2.1安装goland</h2><h2 id="2-2在goland中安装go环境"><a href="#2-2在goland中安装go环境" class="headerlink" title="2.2在goland中安装go环境"></a>2.2在goland中安装go环境</h2><p>![截屏2021-03-19 下午7.53.10](/Users/linxuesong/Desktop/截屏2021-03-19 下午7.53.10.png)</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%887.54.07.png" alt="截屏2021-03-19 下午7.54.07"></p>
+<h1 id="3-邮件"><a href="#3-邮件" class="headerlink" title="3.邮件"></a>3.邮件</h1><h2 id="3-1关闭腾讯企业邮箱的安全登录"><a href="#3-1关闭腾讯企业邮箱的安全登录" class="headerlink" title="3.1关闭腾讯企业邮箱的安全登录"></a>3.1关闭腾讯企业邮箱的安全登录</h2><p>登录腾讯企业邮箱官网，设置-》账户，将账户安全修改如下：</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%887.57.47.png" alt="截屏2021-03-19 下午7.57.47"></p>
+<h2 id="3-2mac邮件添加邮箱账户"><a href="#3-2mac邮件添加邮箱账户" class="headerlink" title="3.2mac邮件添加邮箱账户"></a>3.2mac邮件添加邮箱账户</h2><p>选填加其他邮箱账户</p>
+<p>电子邮件和密码是公司提供的，确认后进入如下界面</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%888.02.55.png" alt="截屏2021-03-19 下午8.02.55"></p>
+<p>这个配置的填写参考腾讯邮箱 设置-》客户端设置界面<img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%888.04.00.png" alt="截屏2021-03-19 下午8.04.00"></p>
+<p>配置tls端口时要先关闭“自动管理链接设置”</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/%E6%88%AA%E5%B1%8F2021-03-19%20%E4%B8%8B%E5%8D%888.17.18.png" alt="截屏2021-03-19 下午8.17.18"></p>
+<p>参考博客：使用Mac自带邮箱添加腾讯企业邮箱 <a href="https://www.jianshu.com/p/2eb79645d94f" target="_blank" rel="noopener">https://www.jianshu.com/p/2eb79645d94f</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>主题</category>
+      </categories>
+      <tags>
+        <tag>软件安装</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang包管理工具介绍</title>
+    <url>/2021/03/31/golang%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<p>参考博客</p>
+<p>Go管理工具的使用</p>
+<h1 id="0-没有包管理工具的情况"><a href="#0-没有包管理工具的情况" class="headerlink" title="0.没有包管理工具的情况"></a>0.没有包管理工具的情况</h1><h2 id="0-1寻找依赖的路径："><a href="#0-1寻找依赖的路径：" class="headerlink" title="0.1寻找依赖的路径："></a>0.1寻找依赖的路径：</h2><p>1⃣️在GOROOT目录下查找</p>
+<p>2⃣️在GOPATH/src下面查找包</p>
+<h2 id="0-2获取依赖"><a href="#0-2获取依赖" class="headerlink" title="0.2获取依赖"></a>0.2获取依赖</h2><pre><code>go get 依赖地址 // 依赖包会存放到gopath下面两个位置，pkg里面.a文件和src下面的.go文件</code></pre><h1 id="1-govendor"><a href="#1-govendor" class="headerlink" title="1.govendor"></a>1.govendor</h1><h2 id="1-1管理方式"><a href="#1-1管理方式" class="headerlink" title="1.1管理方式"></a>1.1管理方式</h2><p>寻找依赖的路径：</p>
+<p>1⃣️在$GOPATH/src/当前包文件/vendor目录</p>
+<p>2⃣️向当前包目录的上级目录查找知道找到src下的vendor</p>
+<p>3⃣️在GOROOT目录下查找</p>
+<p>4⃣️在GOPATH下面查找包</p>
+<h2 id="1-2安装"><a href="#1-2安装" class="headerlink" title="1.2安装"></a>1.2安装</h2><pre><code>go get -u github.com/kardianos/govendor</code></pre><p>安装完成后为方便使用加入到环境变量</p>
+<pre><code>export PATH=&quot;$GOPATH/bin:$PATH&quot;</code></pre><h2 id="1-3使用"><a href="#1-3使用" class="headerlink" title="1.3使用"></a>1.3使用</h2><p>0⃣️如果不是从git上拉取已有vendor.json的项目，而是<strong>本地新建项目</strong>，则要初始化本地项目</p>
+<p>初始化项目目录，生成vendor目录和vendor.json文件</p>
+<pre><code>govendor init</code></pre><p>1⃣️下载项目依赖，这里以引入</p>
+<p>依赖为例</p>
+<p>从远程拉去下来依赖并放入当前vendor文件夹，记录到vendor.json,在gopath下不会有依赖包</p>
+<pre><code>govendor fetch &quot;包链接&quot;
+// 举例：govendor fetch &quot;github.com/labstack/echo/...&quot;  //这里三个点表示文件夹下的所有文件，或者echo后面不要有斜杠，标识拉取项目</code></pre><p>🐻踩坑：i.对于无法从网上下载下里的包，只能从git上自己手动下载，放到vendor下面 ii.有时需要加上三个点标识所有文件，不然会下载下一个空文件夹</p>
+<p>2⃣️提交到<strong>git上只需要提交vendor.json</strong>即可,不需要把所有的vendor依赖文件夹提交上去</p>
+<p>从git上拉起他人项目，项目中含有vendor.json文件，通过如下命令安装依赖包</p>
+<pre><code>govendor sync</code></pre><h2 id="1-4其他"><a href="#1-4其他" class="headerlink" title="1.4其他"></a>1.4其他</h2><p>常用命令</p>
+<pre><code>govendor list // 列出代码中所有被引用到的包及其状态</code></pre><pre><code>govendor fetch // 从远程仓库添加或更新某个包</code></pre><table>
+<thead>
+<tr>
+<th>子命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>init</td>
+<td>初始化一个新项目，生成vendor文件夹</td>
+</tr>
+<tr>
+<td>list</td>
+<td>根据当前项目文件的import列出所有依赖包</td>
+</tr>
+<tr>
+<td>add</td>
+<td></td>
+</tr>
+<tr>
+<td>update</td>
+<td></td>
+</tr>
+<tr>
+<td>remove</td>
+<td></td>
+</tr>
+<tr>
+<td>status</td>
+<td></td>
+</tr>
+<tr>
+<td>fetch</td>
+<td>从远程仓库拉取依赖包</td>
+</tr>
+<tr>
+<td>sync</td>
+<td></td>
+</tr>
+<tr>
+<td>migrate</td>
+<td></td>
+</tr>
+<tr>
+<td>get</td>
+<td></td>
+</tr>
+<tr>
+<td>license</td>
+<td></td>
+</tr>
+<tr>
+<td>shell</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>状态参数</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>缩写</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+local</td>
+<td>l</td>
+<td>本地包，即项目内部编写的包</td>
+</tr>
+<tr>
+<td>+external</td>
+<td>e</td>
+<td>外部包，即在 <code>GOPATH</code> 中、却不在项目 <code>vendor</code> 目录</td>
+</tr>
+<tr>
+<td>+vendor</td>
+<td>v</td>
+<td>已在 <code>vendor</code> 目录下的包</td>
+</tr>
+<tr>
+<td>+std</td>
+<td>s</td>
+<td>标准库里的包</td>
+</tr>
+<tr>
+<td>+excluded</td>
+<td>x</td>
+<td>明确被排除的外部包</td>
+</tr>
+<tr>
+<td>+unused</td>
+<td>u</td>
+<td>未使用的包，即在 <code>vendor</code> 目录下，但项目中并未引用到</td>
+</tr>
+<tr>
+<td>+missing</td>
+<td>m</td>
+<td>被引用了但却找不到的包</td>
+</tr>
+<tr>
+<td>+program</td>
+<td>p</td>
+<td>主程序包，即可被编译为执行文件的包</td>
+</tr>
+<tr>
+<td>+outside</td>
+<td></td>
+<td>相当于状态为 <code>+external +missing</code></td>
+</tr>
+<tr>
+<td>+all</td>
+<td></td>
+<td>所有包</td>
+</tr>
+</tbody></table>
+<p>支持状态参数的子命令有：<code>list</code>、<code>add</code>、<code>update</code>、<code>remove</code>、<code>fetch</code></p>
+<h1 id="2-gomod"><a href="#2-gomod" class="headerlink" title="2.gomod"></a>2.gomod</h1><p>前沿:go1.13版本会默认开启mod，1.11版本后才支持mod</p>
+<h2 id="2-0前期准备-设置go环境参数使其支持mod"><a href="#2-0前期准备-设置go环境参数使其支持mod" class="headerlink" title="2.0前期准备,设置go环境参数使其支持mod"></a>2.0前期准备,设置go环境参数使其支持mod</h2><pre><code>go env -w GO111MODULE=on // 启用go mod，之后可以用go env 命令展示一下go的配置</code></pre><h2 id="2-1管理方式"><a href="#2-1管理方式" class="headerlink" title="2.1管理方式"></a>2.1管理方式</h2><p>模块:多个包package的集合</p>
+<p>当<code>GO111MODULE</code>=<code>on</code>时，那么就会使用<code>modules</code>功能:这种模式下，<code>$GOPATH</code>不再作为build时导入的角色，依赖包会存放在<code>$GOPATH/pkg/mod</code>目录下。工程中的依赖包也会从此目录下查找.</p>
+<h2 id="2-2初始化一个新项目"><a href="#2-2初始化一个新项目" class="headerlink" title="2.2初始化一个新项目"></a>2.2初始化一个新项目</h2><pre><code>go mod init &lt;项目名&gt; //项目名不填写则是gopath/src后的相对路径名，填的话一般为github.com/your name/project name</code></pre><h2 id="2-3添加依赖"><a href="#2-3添加依赖" class="headerlink" title="2.3添加依赖"></a>2.3添加依赖</h2><h3 id="a-先编写程序improt依赖包"><a href="#a-先编写程序improt依赖包" class="headerlink" title="a.先编写程序improt依赖包"></a>a.先编写程序improt依赖包</h3><p>其实当go run执行时会自动下载依赖包，当然也可以不运行而是只去下载依赖包</p>
+<h3 id="b-下载依赖包"><a href="#b-下载依赖包" class="headerlink" title="b.下载依赖包"></a>b.下载依赖包</h3><pre><code>go mod tidy     // 检测并下载本项目的module所依赖的文件，同时会移除不需要的模块</code></pre><p>依赖包的存放位置是$GoPath/pkg/mod/</p>
+<h3 id="C-修改go-mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝"><a href="#C-修改go-mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝" class="headerlink" title="C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝"></a>C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝</h3><p>例如go.mod的内容乳腺癌</p>
+<pre><code>replace example.com/project/foo =&gt; ../foo</code></pre><h3 id="d-go-mod文件的介绍"><a href="#d-go-mod文件的介绍" class="headerlink" title="d.go.mod文件的介绍"></a>d.go.mod文件的介绍</h3><p>go.mod 提供了module, require、replace和exclude 四个命令</p>
+<ul>
+<li><code>module</code> 语句指定包的名字（路径）</li>
+<li><code>require</code> 语句指定的依赖项模块</li>
+<li><code>replace</code> 语句可以替换依赖项模块</li>
+<li><code>exclude</code> 语句可以忽略依赖项模块</li>
+</ul>
+<h2 id="2-4其他命令"><a href="#2-4其他命令" class="headerlink" title="2.4其他命令"></a>2.4其他命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vendor</td>
+<td>将依赖复制到vendor下</td>
+</tr>
+<tr>
+<td>graph</td>
+<td>打印模块依赖图</td>
+</tr>
+<tr>
+<td>verify</td>
+<td>验证依赖是否正确</td>
+</tr>
+<tr>
+<td>edit</td>
+<td>编辑go.mod文件</td>
+</tr>
+<tr>
+<td>download</td>
+<td>下载私有仓库的依赖到本地cache</td>
+</tr>
+</tbody></table>
+<p>🐻在国内访问<code>golang.org/x</code>的各个包都需要翻墙，你可以在<code>go.mod</code>中使用<code>replace</code>替换成github上对应的库。形式如下：</p>
+<pre><code>replace (
+    golang.org/x/crypto v0.0.0-20180820150726-614d502a4dac =&gt; github.com/golang/crypto v0.0.0-20180820150726-614d502a4dac
+    golang.org/x/net v0.0.0-20180821023952-922f4815f713 =&gt; github.com/golang/net v0.0.0-20180826012351-8a410e7b638d
+    golang.org/x/text v0.3.0 =&gt; github.com/golang/text v0.3.0
+)</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>包管理工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu中apt-get安装的默认路径</title>
     <url>/2021/03/01/ubuntu%E4%B8%ADapt-get%E5%AE%89%E8%A3%85%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84/</url>
     <content><![CDATA[<p>博客源地址：<a href="https://blog.csdn.net/yanhx1204/article/details/54893581" target="_blank" rel="noopener">https://blog.csdn.net/yanhx1204/article/details/54893581</a></p>
@@ -2257,100 +2229,166 @@ static char *ngx_http_hello_counter(ngx_conf_t *cf, ngx_command_t *cmd, void *co
       </tags>
   </entry>
   <entry>
-    <title>Markdown语法整理</title>
-    <url>/2020/12/26/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E4%BB%A3%E7%A0%81%E5%9D%97%E6%8A%98%E5%8F%A0/</url>
-    <content><![CDATA[<h1 id="MarkDown快速查询转移字符"><a href="#MarkDown快速查询转移字符" class="headerlink" title="MarkDown快速查询转移字符"></a>MarkDown快速查询转移字符</h1><h1 id="公式块部分"><a href="#公式块部分" class="headerlink" title="公式块部分"></a>公式块部分</h1><p>举例</p>
-<pre><code>$$
-dp[i]=
-\begin{cases}
+    <title>主题美化添加文章阅读计数统计和网站运行事件</title>
+    <url>/2020/12/26/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E8%AE%A1%E6%95%B0%E7%BB%9F%E8%AE%A1/</url>
+    <content><![CDATA[<p>在主题目录/layout/_partial/footer.ejs中<br>&lt;div class=”footer-device”&gt;和&lt;div class=”site-info”&gt;的下面之间加入如下代码</p>
+<pre><code> &lt;!-- 网站数据统计 --&gt;
+        &lt;div class=&quot;footer-device&quot;&gt;
+          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;
+            &lt;span style=&quot;color: #ff9999;padding-left: 20px;&quot;&gt;
+                &lt;!-- 网站运行时间统计 --&gt;
+                &lt;i class=&quot;fa fa-clock-o&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+                &lt;span id=&quot;time&quot; align=&quot;center&quot;&gt;载入时间中...&lt;/span&gt;
+                &lt;script&gt;
+                var now = new Date(); 
+                function createtime() { 
+                      var grt= new Date(&quot;&lt;%- theme.siteBuildingTime %&gt;&quot;);//在此处修改你的建站时间
+                      now.setTime(now.getTime()+250); 
+                      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                      if(String(hnum).length ==1 ){hnum = &quot;0&quot; + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = &quot;0&quot; + mnum;} 
+                      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = &quot;0&quot; + snum;} 
+                      document.getElementById(&quot;time&quot;).innerHTML = &quot;小破站在各种灾难中苟活了 &quot;+ dnum +&quot; 天 &quot;+hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;      
+                  } 
+                  setInterval(&quot;createtime()&quot;,250);
+                &lt;/script&gt;
+            &lt;/span&gt; 
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;footer-device&quot;&gt;
+          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;
+            &lt;span style=&quot;color: #b9b9b9;padding-left: 20px;&quot;&gt;
+              &lt;!-- 全网站字数统计wordcount --&gt;
+              &lt;i class=&quot;fa fa-line-chart&quot;  aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt; 博客全站共: &lt;span class=&quot;post-count&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;%= totalcount(site) %&gt;&lt;/span&gt;字&lt;/span&gt;
+              &lt;!-- 不蒜子网页计数器 --&gt;
+              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalTraffic) { %&gt;
+              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-fire&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;总访问量： &lt;span id=&quot;busuanzi_value_site_pv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;次&lt;/span&gt;
+              &lt;/span&gt;
+              &lt;% } %&gt;
+              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalNumberOfvisitors) { %&gt;
+              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-user&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;总访问人数： &lt;span id=&quot;busuanzi_value_site_uv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;人&lt;/span&gt;
+              &lt;/span&gt;
+              &lt;% } %&gt;
+            &lt;/span&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>主题美化添加自己的书单页面</title>
+    <url>/2020/12/18/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B9%A6%E5%8D%95%E9%A1%B5%E9%9D%A2/</url>
+    <content><![CDATA[<p>参考</p>
+<p><a href="https://blog.csdn.net/qq_44846853/article/details/104563887" target="_blank" rel="noopener">https://blog.csdn.net/qq_44846853/article/details/104563887</a></p>
+<h1 id="0-准备安装hexo-douban插件"><a href="#0-准备安装hexo-douban插件" class="headerlink" title="0.准备安装hexo-douban插件"></a>0.准备安装hexo-douban插件</h1><pre><code>npm install hexo-douban --save    </code></pre><h1 id="1-修改主站目录-非主题目录-的-config-yml"><a href="#1-修改主站目录-非主题目录-的-config-yml" class="headerlink" title="1.修改主站目录(非主题目录)的_config.yml"></a>1.修改主站目录(非主题目录)的_config.yml</h1><p>博客目录/_config.yml下新建books.ejs</p>
+<p>内容如下</p>
+<pre><code>douban: 
+  user: 252345665    #这个需要修改为你个人的id  
+  builtin: false   #如果想生成豆瓣页面，这个需要设置为true
+  book: 
+      title: &#39;This is my book title&#39; 
+      quote: &#39;This is my book quote&#39; 
+  movie: 
+      title: &#39;This is my movie title&#39; 
+      quote: &#39;This is my movie quote&#39; 
+  game: 
+      title: &#39;This is my game title&#39; 
+      quote: &#39;This is my game quote&#39; 
+  timeout: 10000</code></pre><p>说明:</p>
+<ul>
+<li><strong>user</strong>:：你的豆瓣ID。打开豆瓣，登入账户，然后在右上角点击 ”个人主页“，这时候地址栏的URL大概是这样：<a href="https://yafine-blog.cn/go.html?url=aHR0cHM6Ly93d3cuZG91YmFuLmNvbS9wZW9wbGUveHh4eHh4Lw==" target="_blank" rel="noopener">https://www.douban.com/people/xxxxxx/</a> ，其中的”xxxxxx”就是你的个人ID了。</li>
+<li><strong>builtin</strong>：是否将生成页面的功能嵌入 <code>hexo s</code> 和 <code>hexo g</code> 中，默认是 <code>false</code> ，另一可选项为 <code>true</code> 。</li>
+<li><strong>title</strong>： 该页面的标题。</li>
+<li><strong>quote</strong>： 写在页面开头的一段话,支持html语法。</li>
+<li><strong>timeout</strong>： 爬取数据的超时时间，默认是 10000ms，如果在使用时发现报了超时的错(ETIMEOUT)可以把这个数据设置的大一点。</li>
+</ul>
+<h1 id="2-在导航处增加入口"><a href="#2-在导航处增加入口" class="headerlink" title="2.在导航处增加入口"></a>2.在导航处增加入口</h1><p>博客目录/themes/sakura/_config.yml中加入书单、电影的入口   /books    /movies</p>
+<pre><code>  清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
+    书单: {path: /books/, fa: fa-th-list faa-bounce }, 
+    番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
+    歌单: {path: /music/, fa: fa-headphones },
+    电影: {path: /movies/, fa: fa-headphones },
+    图集: {path: /tags/图集/, fa: fa-photo },
+    娱乐: {path: /dinoswords, fa: fa-gamepad }
+  } }</code></pre><p>这个时候已经可以进入第5步验证，不过如果想自定义书单页面样式的话要3、4步</p>
+<h1 id="3-适配sakura主题"><a href="#3-适配sakura主题" class="headerlink" title="3.适配sakura主题"></a>3.适配sakura主题</h1><p>博客目录/themes/sakura/layout/下  增加文件 douban.ejs</p>
+<pre><code>&lt;div class=&quot;blank&quot; style=&quot;padding-top: 75px;&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pattern-center &quot;&gt;
+  &lt;div class=&quot;pattern-attachment-img&quot;&gt;
+    &lt;% if (page.photos) { %&gt;
+    &lt;img src=&quot;&lt;%= page.photos %&gt;&quot; src=&quot;&lt;%- theme.lazyloadImg %&gt;&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot; class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot; style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
+    &lt;% } else { %&gt;
+      &lt;img src=&quot;&lt;%= theme.bg[Math.floor(Math.random() * theme.bg.length + 1)-1] %&gt;&quot; src=&quot;&lt;%- theme.lazyloadImg %&gt;&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot; class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot; style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
+    &lt;% } %&gt;
+    &lt;header class=&quot;pattern-header &quot;&gt;
+      &lt;h1 class=&quot;entry-title&quot;&gt;悦读&lt;/h1&gt;
+    &lt;/header&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;content&quot; class=&quot;site-content&quot;&gt;
+  &lt;div id=&quot;main&quot;&gt;
+    &lt;div id=&quot;main-part&quot;&gt;
+      &lt;div class=&quot;card&quot;&gt; 
+            &lt;div class=&quot;card-content&quot; style=&quot;padding: 30px&quot;&gt; 
+                &lt;h1 style=&quot;margin: 10px 0 10px 0px;&quot;&gt;&lt;%= page.title %&gt;&lt;/h1&gt; 
+                &lt;%- page.content %&gt; 
+            &lt;/div&gt; 
+        &lt;/div&gt; 
 
-    计算式1     &amp;计算式条件  \\换行
-    计算式2    &amp;计算式条件  \\换行
-\end{cases}
-$$</code></pre><p>详细表格</p>
-<table>
-<thead>
-<tr>
-<th>公式块</th>
-<th>\begin{cases}     内容    \end{cases}</th>
-<th>大公式表达式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td>\big[</td>
-<td>比较大的左中括号</td>
-</tr>
-<tr>
-<td></td>
-<td>\bigg[</td>
-<td>再大一点</td>
-</tr>
-<tr>
-<td></td>
-<td>\Big[</td>
-<td>比big大一点</td>
-</tr>
-<tr>
-<td></td>
-<td>\Bigg[</td>
-<td>比bigg大一点</td>
-</tr>
-<tr>
-<td></td>
-<td>a_2  a下标2  a^3 a上标3</td>
-<td>上标下标</td>
-</tr>
-<tr>
-<td></td>
-<td>\sum ：∑  \int ：∫  \oint ：∮  \prod：∏</td>
-<td>求和、求导</td>
-</tr>
-<tr>
-<td></td>
-<td>\alpha： α  \beta： β  \gamma：γ  \Phi ： Φ  \Omega：Ω  \Delta： Δ  \delta： δ</td>
-<td>希腊字母</td>
-</tr>
-</tbody></table>
-<h1 id="代码块部分"><a href="#代码块部分" class="headerlink" title="代码块部分"></a>代码块部分</h1><p>代码块折叠语法如下</p>
-<pre><code>&lt;details&gt;   &lt;summary&gt;展开查看&lt;/summary&gt;   &lt;pre&gt;&lt;code&gt;       System.out.println(&quot;Hello&quot;);
-&lt;/code&gt;&lt;/pre&gt; &lt;/details&gt;</code></pre><p>效果展示</p>
-<details>   <summary>展开查看</summary>   <pre><code>       System.out.println("Hello");
-</code></pre> </details>
 
-<h1 id="文本部分"><a href="#文本部分" class="headerlink" title="文本部分"></a>文本部分</h1><table>
-<thead>
-<tr>
-<th>&amp;nbsp;     或者    键盘全角模式空格键</th>
-<th>空格</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>&lt;sup&gt;xxx&lt;/sup&gt;</strong></td>
-<td><strong>上标</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>&lt;sub&gt;xxx&lt;/sub&gt;</strong></td>
-<td><strong>下标</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>30&amp;deg;</strong></td>
-<td><strong>角度符号30&deg;</strong></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>在该文件夹下新建4个js文件</p>
-<p>添加相应的文件内容</p>
+
+        &lt;section class=&quot;author-profile&quot;&gt;
+          &lt;div class=&quot;info&quot; itemprop=&quot;author&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/Person&quot;&gt;
+            &lt;a href=&quot;/about/&quot; class=&quot;profile gravatar&quot;&gt;&lt;img src=&quot;&lt;%- (theme.cdn || &#39;&#39;) + theme.avatar%&gt;&quot; itemprop=&quot;image&quot; alt=&quot;hojun&quot; height=&quot;70&quot; width=&quot;70&quot;&gt;&lt;/a&gt;
+            &lt;div class=&quot;meta&quot;&gt;
+              &lt;span class=&quot;title&quot;&gt;Author&lt;/span&gt;
+              &lt;h3 itemprop=&quot;name&quot;&gt;
+              &lt;a href=&quot;&lt;%- theme.url%&gt;&quot; itemprop=&quot;url&quot; rel=&quot;author&quot;&gt;&lt;%- config.author %&gt;&lt;/a&gt;
+              &lt;/h3&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;p id=&quot;showStr&quot;&gt;&lt;/p&gt;
+        &lt;/section&gt;
+      &lt;/div&gt;   
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><h1 id="4-修改插件默认应用的模板"><a href="#4-修改插件默认应用的模板" class="headerlink" title="4.修改插件默认应用的模板"></a>4.修改插件默认应用的模板</h1><p>然后在博客站点目录下的<code>node_modules</code>文件夹下找到<code>hexo-douban/lib</code>，文件夹下有三个js文件，分别为：<code>books-generator.js</code> 、<code>games-generator.js</code> 、<code>movies-generator.js</code>，用文本编辑器打开这三个文件，并将其文件内容末尾的代码修改为一下内容：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/* 原文件内容为 layout: [`page`, `post`] ，将其修改为下面的内容*/</span>
+layout<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token template-string"><span class="token string">`douban`</span></span><span class="token punctuation">]</span></code></pre>
+<h1 id="5-运行插件生成相应界面"><a href="#5-运行插件生成相应界面" class="headerlink" title="5.运行插件生成相应界面"></a>5.运行插件生成相应界面</h1><pre class=" language-bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo douban -bgm <span class="token operator">&amp;&amp;</span> hexo g <span class="token operator">&amp;&amp;</span> hexo s</code></pre>
+<p>这时页面localhost:4000/books   或   localhost:4000/movies 可以看到界面了</p>
+<p><strong>PS:以下是可选的命令参数：</strong></p>
+<pre class=" language-bash"><code class="language-bash">-h, --help    <span class="token comment" spellcheck="true"># 帮助页面</span>
+-b, --books   <span class="token comment" spellcheck="true"># 只生成书单页面</span>
+-g, --games   <span class="token comment" spellcheck="true"># 只生成游戏页面</span>
+-m, --movies  <span class="token comment" spellcheck="true"># 只生成电影页面</span></code></pre>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>MarkDown</tag>
+        <tag>主题美化</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>使用主题的个人插件在文章中插入B站外链视频和图片</title>
+    <url>/2020/12/18/%E4%BD%BF%E7%94%A8%E4%B8%BB%E9%A2%98%E7%9A%84%E4%B8%AA%E4%BA%BA%E6%8F%92%E4%BB%B6%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5B%E7%AB%99%E5%A4%96%E9%93%BE%E8%A7%86%E9%A2%91%E5%92%8C%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[<h2 id="写文章配置"><a href="#写文章配置" class="headerlink" title="写文章配置"></a>写文章配置</h2><p>主题集成了个人插件hexo-tag-bili和hexo-tag-fancybox_img。其中hexo-tag-bili用来在文章或单页面中插入B站外链视频，使用语法如下：</p>
+<pre class=" language-md"><code class="language-md">{% bili video_id [page] %}</code></pre>
+<p>详细使用教程详见<a href="https://github.com/honjun/hexo-tag-bili/blob/master/README-zh_cn.md" target="_blank" rel="noopener">hexo-tag-bili</a>。</p>
+<p>hexo-tag-fancybox_img用来在文章或单页面中图片，使用语法如下：</p>
+<pre class=" language-md"><code class="language-md">{% fb_img src [caption] %}</code></pre>
+<p>详细使用教程详见<a href="https://github.com/honjun/hexo-tag-fancybox_img/blob/master/README-zh_cn.md" target="_blank" rel="noopener">hexo-tag-fancybox_img</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
   </entry>
   <entry>
     <title>主题美化增加春节、圣诞、深夜主题模式</title>
@@ -3052,197 +3090,127 @@ body.themespring .denglong {
       </categories>
   </entry>
   <entry>
-    <title>主题美化添加自己的书单页面</title>
-    <url>/2020/12/18/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B9%A6%E5%8D%95%E9%A1%B5%E9%9D%A2/</url>
-    <content><![CDATA[<p>参考</p>
-<p><a href="https://blog.csdn.net/qq_44846853/article/details/104563887" target="_blank" rel="noopener">https://blog.csdn.net/qq_44846853/article/details/104563887</a></p>
-<h1 id="0-准备安装hexo-douban插件"><a href="#0-准备安装hexo-douban插件" class="headerlink" title="0.准备安装hexo-douban插件"></a>0.准备安装hexo-douban插件</h1><pre><code>npm install hexo-douban --save    </code></pre><h1 id="1-修改主站目录-非主题目录-的-config-yml"><a href="#1-修改主站目录-非主题目录-的-config-yml" class="headerlink" title="1.修改主站目录(非主题目录)的_config.yml"></a>1.修改主站目录(非主题目录)的_config.yml</h1><p>博客目录/_config.yml下新建books.ejs</p>
-<p>内容如下</p>
-<pre><code>douban: 
-  user: 252345665    #这个需要修改为你个人的id  
-  builtin: false   #如果想生成豆瓣页面，这个需要设置为true
-  book: 
-      title: &#39;This is my book title&#39; 
-      quote: &#39;This is my book quote&#39; 
-  movie: 
-      title: &#39;This is my movie title&#39; 
-      quote: &#39;This is my movie quote&#39; 
-  game: 
-      title: &#39;This is my game title&#39; 
-      quote: &#39;This is my game quote&#39; 
-  timeout: 10000</code></pre><p>说明:</p>
-<ul>
-<li><strong>user</strong>:：你的豆瓣ID。打开豆瓣，登入账户，然后在右上角点击 ”个人主页“，这时候地址栏的URL大概是这样：<a href="https://yafine-blog.cn/go.html?url=aHR0cHM6Ly93d3cuZG91YmFuLmNvbS9wZW9wbGUveHh4eHh4Lw==" target="_blank" rel="noopener">https://www.douban.com/people/xxxxxx/</a> ，其中的”xxxxxx”就是你的个人ID了。</li>
-<li><strong>builtin</strong>：是否将生成页面的功能嵌入 <code>hexo s</code> 和 <code>hexo g</code> 中，默认是 <code>false</code> ，另一可选项为 <code>true</code> 。</li>
-<li><strong>title</strong>： 该页面的标题。</li>
-<li><strong>quote</strong>： 写在页面开头的一段话,支持html语法。</li>
-<li><strong>timeout</strong>： 爬取数据的超时时间，默认是 10000ms，如果在使用时发现报了超时的错(ETIMEOUT)可以把这个数据设置的大一点。</li>
-</ul>
-<h1 id="2-在导航处增加入口"><a href="#2-在导航处增加入口" class="headerlink" title="2.在导航处增加入口"></a>2.在导航处增加入口</h1><p>博客目录/themes/sakura/_config.yml中加入书单、电影的入口   /books    /movies</p>
-<pre><code>  清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
-    书单: {path: /books/, fa: fa-th-list faa-bounce }, 
-    番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
-    歌单: {path: /music/, fa: fa-headphones },
-    电影: {path: /movies/, fa: fa-headphones },
-    图集: {path: /tags/图集/, fa: fa-photo },
-    娱乐: {path: /dinoswords, fa: fa-gamepad }
-  } }</code></pre><p>这个时候已经可以进入第5步验证，不过如果想自定义书单页面样式的话要3、4步</p>
-<h1 id="3-适配sakura主题"><a href="#3-适配sakura主题" class="headerlink" title="3.适配sakura主题"></a>3.适配sakura主题</h1><p>博客目录/themes/sakura/layout/下  增加文件 douban.ejs</p>
-<pre><code>&lt;div class=&quot;blank&quot; style=&quot;padding-top: 75px;&quot;&gt;
-&lt;/div&gt;
-&lt;div class=&quot;pattern-center &quot;&gt;
-  &lt;div class=&quot;pattern-attachment-img&quot;&gt;
-    &lt;% if (page.photos) { %&gt;
-    &lt;img src=&quot;&lt;%= page.photos %&gt;&quot; src=&quot;&lt;%- theme.lazyloadImg %&gt;&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot; class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot; style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
-    &lt;% } else { %&gt;
-      &lt;img src=&quot;&lt;%= theme.bg[Math.floor(Math.random() * theme.bg.length + 1)-1] %&gt;&quot; src=&quot;&lt;%- theme.lazyloadImg %&gt;&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot; class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot; style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
-    &lt;% } %&gt;
-    &lt;header class=&quot;pattern-header &quot;&gt;
-      &lt;h1 class=&quot;entry-title&quot;&gt;悦读&lt;/h1&gt;
-    &lt;/header&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&quot;content&quot; class=&quot;site-content&quot;&gt;
-  &lt;div id=&quot;main&quot;&gt;
-    &lt;div id=&quot;main-part&quot;&gt;
-      &lt;div class=&quot;card&quot;&gt; 
-            &lt;div class=&quot;card-content&quot; style=&quot;padding: 30px&quot;&gt; 
-                &lt;h1 style=&quot;margin: 10px 0 10px 0px;&quot;&gt;&lt;%= page.title %&gt;&lt;/h1&gt; 
-                &lt;%- page.content %&gt; 
+    <title>博客美化增加任务清单页面</title>
+    <url>/2021/01/11/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E4%BB%BB%E5%8A%A1%E6%B8%85%E5%8D%95%E9%A1%B5%E9%9D%A2/</url>
+    <content><![CDATA[<p>参考链接:<a href="https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1" target="_blank" rel="noopener">https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1</a></p>
+<h1 id="1-新建todolist页面"><a href="#1-新建todolist页面" class="headerlink" title="1.新建todolist页面"></a>1.新建todolist页面</h1><pre><code>hexo new page &quot;todolist&quot;</code></pre><h1 id="2-配置该页面跳过渲染"><a href="#2-配置该页面跳过渲染" class="headerlink" title="2.配置该页面跳过渲染"></a>2.配置该页面跳过渲染</h1><p>这次添加的页面是一个html页面，需要配置跳过渲染后不会使用主题的layout对网页进行渲染</p>
+<p>在主站的配置文件的skip:render种配置</p>
+<pre><code>skip_render: 
+- &quot;todolist/**&quot;</code></pre><h1 id="3-修改todolist界面"><a href="#3-修改todolist界面" class="headerlink" title="3.修改todolist界面"></a>3.修改todolist界面</h1><p>博客目录下/source/todolist/index.md 改为index.html， 文件内容如下:</p>
+<pre><code>&lt;!DOCTYPE html&gt; 
+&lt;html lang=&quot;en&quot;&gt; 
+    &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;title&gt;Title&lt;/title&gt; &lt;script src=&quot;https://cdn.bootcss.com/vue/2.6.10/vue.min.js&quot;&gt;&lt;/script&gt; &lt;style&gt; body{ margin:0;background-color:#fafafa;font:14px &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif} h2{margin:0;font-size:12px} a{color:#000;text-decoration:none} input{outline:0} button{margin:0;padding:0;border:0;background:0;font-size:100%;vertical-align:baseline;font-family:inherit;font-weight:inherit;color:inherit;outline:0} ul{padding:0;margin:0;list-style:none} .page-top{width:100%;height:40px;background-color:#db4c3f} .page-content{width:50%;margin:0 auto} .page-content h2{line-height:40px;font-size:18px;color:#fff} .main{width:50%;margin:0 auto;box-sizing:border-box} .task-input{width:99%;height:30px;outline:0;border:1px solid #ccc} .task-count{display:flex;margin:10px 0} .task-count li{padding-left:10px;flex:1;color:#dd4b39} .task-count li:nth-child(1){padding:5px 0 0 10px} .action{text-align:center;display:flex} .action a{margin:0 10px;flex:1;padding:5px 0;color:#777} .action a:nth-child(3){margin-right:0} .active{border-bottom: 2px solid #629A9C} .tasks{background-color:#fff}.no-task-tip{padding:10px 0 10px 10px;display:block;border-bottom:1px solid #ededed;color:#777}.big-title{color:#222}.todo-list{margin:0;padding:0;list-style:none} .todo-list li{ position:relative; font-size:16px; border-left: 5px solid #629A9C; box-shadow: 0 1px 2px rgba(0,0,0,0.07); margin-bottom: 16px; } .todo-list li:hover{background-color:#fafafa} .todo-list li.editing{border-bottom:0;padding:0;} .todo-list li.editing .edit{display:block;padding:13px 17px 12px 17px;margin:0 0 0 43px} .todo-list li.editing .view{display:none} .toggle{ text-align:center; width:16px; height:16px; position:absolute; top:2px; left: 15px; bottom:0; margin:auto 0; cursor: pointer; } .todo-list li label{ white-space:pre-line; word-break:break-all; padding:15px 60px 15px 15px; margin-left:45px; display:block; line-height:1.2; transition:color .4s } .todo-list li.completed label{ color:#d9d9d9; text-decoration:line-through } .todo-list li .destroy{ display:none; text-align:center; width:16px; height:16px; position:absolute; top:0; right:15px; bottom:10px; margin:auto 0; cursor: pointer; font-size:28px; color:#cc9a9a; transition:color .2s ease-out } .todo-list li .destroy:hover{color:#af5b5e} .todo-list li .destroy:after{content:&#39;×&#39;} .todo-list li:hover .destroy{display:block} .todo-list li .edit{display:none} .todo-list li.editing:last-child{margin-bottom:-1px} &lt;/style&gt; &lt;/head&gt; 
+    &lt;body&gt; 
+        &lt;div class=&quot;page-top&quot;&gt; 
+            &lt;div class=&quot;page-content&quot;&gt; 
+                &lt;h2&gt;任务计划列表&lt;/h2&gt; 
             &lt;/div&gt; 
         &lt;/div&gt; 
-
-
-
-        &lt;section class=&quot;author-profile&quot;&gt;
-          &lt;div class=&quot;info&quot; itemprop=&quot;author&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/Person&quot;&gt;
-            &lt;a href=&quot;/about/&quot; class=&quot;profile gravatar&quot;&gt;&lt;img src=&quot;&lt;%- (theme.cdn || &#39;&#39;) + theme.avatar%&gt;&quot; itemprop=&quot;image&quot; alt=&quot;hojun&quot; height=&quot;70&quot; width=&quot;70&quot;&gt;&lt;/a&gt;
-            &lt;div class=&quot;meta&quot;&gt;
-              &lt;span class=&quot;title&quot;&gt;Author&lt;/span&gt;
-              &lt;h3 itemprop=&quot;name&quot;&gt;
-              &lt;a href=&quot;&lt;%- theme.url%&gt;&quot; itemprop=&quot;url&quot; rel=&quot;author&quot;&gt;&lt;%- config.author %&gt;&lt;/a&gt;
-              &lt;/h3&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-          &lt;p id=&quot;showStr&quot;&gt;&lt;/p&gt;
-        &lt;/section&gt;
-      &lt;/div&gt;   
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre><h1 id="4-修改插件默认应用的模板"><a href="#4-修改插件默认应用的模板" class="headerlink" title="4.修改插件默认应用的模板"></a>4.修改插件默认应用的模板</h1><p>然后在博客站点目录下的<code>node_modules</code>文件夹下找到<code>hexo-douban/lib</code>，文件夹下有三个js文件，分别为：<code>books-generator.js</code> 、<code>games-generator.js</code> 、<code>movies-generator.js</code>，用文本编辑器打开这三个文件，并将其文件内容末尾的代码修改为一下内容：</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/* 原文件内容为 layout: [`page`, `post`] ，将其修改为下面的内容*/</span>
-layout<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token template-string"><span class="token string">`douban`</span></span><span class="token punctuation">]</span></code></pre>
-<h1 id="5-运行插件生成相应界面"><a href="#5-运行插件生成相应界面" class="headerlink" title="5.运行插件生成相应界面"></a>5.运行插件生成相应界面</h1><pre class=" language-bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo douban -bgm <span class="token operator">&amp;&amp;</span> hexo g <span class="token operator">&amp;&amp;</span> hexo s</code></pre>
-<p>这时页面localhost:4000/books   或   localhost:4000/movies 可以看到界面了</p>
-<p><strong>PS:以下是可选的命令参数：</strong></p>
-<pre class=" language-bash"><code class="language-bash">-h, --help    <span class="token comment" spellcheck="true"># 帮助页面</span>
--b, --books   <span class="token comment" spellcheck="true"># 只生成书单页面</span>
--g, --games   <span class="token comment" spellcheck="true"># 只生成游戏页面</span>
--m, --movies  <span class="token comment" spellcheck="true"># 只生成电影页面</span></code></pre>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>主题美化添加文章阅读计数统计和网站运行事件</title>
-    <url>/2020/12/26/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E8%AE%A1%E6%95%B0%E7%BB%9F%E8%AE%A1/</url>
-    <content><![CDATA[<p>在主题目录/layout/_partial/footer.ejs中<br>&lt;div class=”footer-device”&gt;和&lt;div class=”site-info”&gt;的下面之间加入如下代码</p>
-<pre><code> &lt;!-- 网站数据统计 --&gt;
-        &lt;div class=&quot;footer-device&quot;&gt;
-          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;
-            &lt;span style=&quot;color: #ff9999;padding-left: 20px;&quot;&gt;
-                &lt;!-- 网站运行时间统计 --&gt;
-                &lt;i class=&quot;fa fa-clock-o&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
-                &lt;span id=&quot;time&quot; align=&quot;center&quot;&gt;载入时间中...&lt;/span&gt;
-                &lt;script&gt;
-                var now = new Date(); 
-                function createtime() { 
-                      var grt= new Date(&quot;&lt;%- theme.siteBuildingTime %&gt;&quot;);//在此处修改你的建站时间
-                      now.setTime(now.getTime()+250); 
-                      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-                      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-                      if(String(hnum).length ==1 ){hnum = &quot;0&quot; + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-                      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = &quot;0&quot; + mnum;} 
-                      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-                      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = &quot;0&quot; + snum;} 
-                      document.getElementById(&quot;time&quot;).innerHTML = &quot;小破站在各种灾难中苟活了 &quot;+ dnum +&quot; 天 &quot;+hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;      
-                  } 
-                  setInterval(&quot;createtime()&quot;,250);
-                &lt;/script&gt;
-            &lt;/span&gt; 
-          &lt;/p&gt;
+    &lt;div class=&quot;main&quot;&gt; 
+        &lt;h3 class=&quot;big-title&quot;&gt;添加任务：&lt;/h3&gt;
+        &lt;input placeholder=&quot;例如：吃饭睡觉打豆豆； 提示：回车即可添加任务，双击列表标题即可编辑&quot; class=&quot;task-input&quot; type=&quot;text&quot; v-on:keyup.enter=&quot;enterFn&quot; v-model=&quot;todo&quot; /&gt; 
+        &lt;ul class=&quot;task-count&quot;&gt; 
+            &lt;li&gt;{{unComplete}}个任务未完成&lt;/li&gt;
+            &lt;li class=&quot;action&quot;&gt; &lt;a :class=&quot;{active:visibility!==&#39;unCompleted&#39;&amp;&amp;visibility!==&#39;completed&#39;}&quot; href=&quot;#all&quot;&gt;所有任务&lt;/a&gt; &lt;a :class=&quot;{active:visibility===&#39;unCompleted&#39;}&quot; href=&quot;#unCompleted&quot;&gt;未完成的任务&lt;/a&gt; &lt;a :class=&quot;{active:visibility===&#39;completed&#39;}&quot; href=&quot;#completed&quot;&gt;完成的任务&lt;/a&gt; &lt;/li&gt; 
+        &lt;/ul&gt; 
+        &lt;h3 class=&quot;big-title&quot;&gt;任务列表：&lt;/h3&gt; 
+        &lt;div class=&quot;tasks&quot;&gt; &lt;span class=&quot;no-task-tip&quot; v-show=&quot;!list.length&quot;&gt;还没有添加任何任务&lt;/span&gt; 
+        &lt;ul class=&quot;todo-list&quot; v-show=&quot;list.length&quot;&gt;
+            &lt;li class=&quot;todo&quot; v-for=&quot;item in filterData&quot; v-bind:class=&quot;{completed:item.isComplete,editing:item===edtorTodos}&quot; &gt; 
+                &lt;div class=&quot;view&quot;&gt; 
+                    &lt;input class=&quot;toggle&quot; type=&quot;checkbox&quot; v-model=&quot;item.isComplete&quot; /&gt; &lt;label @dblclick=&quot;edtorTodo(item)&quot;&gt;{{item.title}}&lt;/label&gt; &lt;button class=&quot;destroy&quot; @click=&quot;delFn(item)&quot; &gt;&lt;/button&gt; 
+                &lt;/div&gt; 
+                &lt;input class=&quot;edit&quot; type=&quot;text&quot; v-focus=&quot;edtorTodos===item&quot; v-model=&quot;item.title&quot; @blur=&quot;edtoEnd(item)&quot; @keyup.enter=&quot;edtoEnd(item)&quot; @keyup.esc=&quot;cancelEdit(item)&quot; /&gt; 
+            &lt;/li&gt; 
+        &lt;/ul&gt; 
         &lt;/div&gt;
-        &lt;div class=&quot;footer-device&quot;&gt;
-          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;
-            &lt;span style=&quot;color: #b9b9b9;padding-left: 20px;&quot;&gt;
-              &lt;!-- 全网站字数统计wordcount --&gt;
-              &lt;i class=&quot;fa fa-line-chart&quot;  aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt; 博客全站共: &lt;span class=&quot;post-count&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;%= totalcount(site) %&gt;&lt;/span&gt;字&lt;/span&gt;
-              &lt;!-- 不蒜子网页计数器 --&gt;
-              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalTraffic) { %&gt;
-              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-fire&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;总访问量： &lt;span id=&quot;busuanzi_value_site_pv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;次&lt;/span&gt;
-              &lt;/span&gt;
-              &lt;% } %&gt;
-              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalNumberOfvisitors) { %&gt;
-              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-user&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;总访问人数： &lt;span id=&quot;busuanzi_value_site_uv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;人&lt;/span&gt;
-              &lt;/span&gt;
-              &lt;% } %&gt;
-            &lt;/span&gt;
-          &lt;/p&gt;
-        &lt;/div&gt;</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>回溯算法刷题整理总结</title>
-    <url>/2021/01/20/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E6%95%B4%E7%90%86%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h1 id="一、回溯算法理解"><a href="#一、回溯算法理解" class="headerlink" title="一、回溯算法理解"></a>一、回溯算法理解</h1><p>本质是以深度遍历的方式遍历决策树</p>
-<p>但因为没有具体的TreeNode构成树，所以回溯与DFS遍历树很像，但不同的是回溯要多一步退回选择的操作</p>
-<p>典型问题:全排列、N皇后问题</p>
-<p>回溯算法的构成要素:</p>
-<p>①选择列表</p>
-<p>②已选路径或已做出的选择(trace或used)</p>
-<p>③结束条件</p>
-<p>回溯算法的模板如下:</p>
-<pre><code>def backTrace(已选路径, 选择列表) {
-    if(结束条件) {
-        return ; // 对于return 如果只问是否有解则返回bool即可;如果要所有的解则用全局变量数组保存所有找到的解
-    }
+    &lt;/div&gt;
 
-    for 某选择:选择列表 {
-        if(不必要选择) {
-            continue;
-        }
-        做选择:某选择加入已选路径，下一步选择列表是否变化
-        backTrace(已选路径, 选择列表)
-        回退选择:某选择退出已选路径，回退后选择列表是否需要恢复
-    }
-}</code></pre><p>回溯算法的思路如下:</p>
-<p>画决策树，决策树节点的属性就是 选择和当前路径  我们的backTrace函数在树的各个节点游走，知道遇到结束条件</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用主题的个人插件在文章中插入B站外链视频和图片</title>
-    <url>/2020/12/18/%E4%BD%BF%E7%94%A8%E4%B8%BB%E9%A2%98%E7%9A%84%E4%B8%AA%E4%BA%BA%E6%8F%92%E4%BB%B6%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5B%E7%AB%99%E5%A4%96%E9%93%BE%E8%A7%86%E9%A2%91%E5%92%8C%E5%9B%BE%E7%89%87/</url>
-    <content><![CDATA[<h2 id="写文章配置"><a href="#写文章配置" class="headerlink" title="写文章配置"></a>写文章配置</h2><p>主题集成了个人插件hexo-tag-bili和hexo-tag-fancybox_img。其中hexo-tag-bili用来在文章或单页面中插入B站外链视频，使用语法如下：</p>
-<pre class=" language-md"><code class="language-md">{% bili video_id [page] %}</code></pre>
-<p>详细使用教程详见<a href="https://github.com/honjun/hexo-tag-bili/blob/master/README-zh_cn.md" target="_blank" rel="noopener">hexo-tag-bili</a>。</p>
-<p>hexo-tag-fancybox_img用来在文章或单页面中图片，使用语法如下：</p>
-<pre class=" language-md"><code class="language-md">{% fb_img src [caption] %}</code></pre>
-<p>详细使用教程详见<a href="https://github.com/honjun/hexo-tag-fancybox_img/blob/master/README-zh_cn.md" target="_blank" rel="noopener">hexo-tag-fancybox_img</a></p>
-]]></content>
+ &lt;script&gt; 
+ //存取localStorage中的数据
+var store = { 
+    save(key,value){ 
+        window.localStorage.setItem(key,JSON.stringify(value)); 
+    }, 
+    fetch(key){ 
+        return JSON.parse(window.localStorage.getItem(key))||[]; 
+    } 
+} 
+    //list取出所有的值 
+var list = store.fetch(&quot;storeData&quot;); 
+
+var vm = new Vue({ 
+    el:&quot;.main&quot;, 
+    data:{ 
+        list, 
+        todo:&#39;&#39;,
+        edtorTodos:&#39;&#39;,//记录正在编辑的数据,
+        beforeTitle:&quot;&quot;,//记录正在编辑的数据的title 
+        visibility:&quot;all&quot;//通过这个属性值的变化对数据进行筛选 
+    }, 
+    watch:{ 
+        //下面的这种方法是浅监控 
+        /*list:function(){//监控list这个属性，当这个属性对应的值发生变化就会执行函数 
+        store.save(&quot;storeData&quot;,this.list); 
+        }*/ 
+        //下面的是深度监控 
+        list:{ 
+            handler:function(){
+                store.save(&quot;storeData&quot;,this.list); 
+            }, deep:true 
+        } 
+    }, 
+    methods:{ 
+        enterFn(ev){//添加任务 
+        //向list中添加一项任务 
+        //事件处理函数中的this指向的是当前这个根实例 
+        if(this.todo==&quot;&quot;){return;} 
+        this.list.push({ 
+            title:this.todo, 
+            isComplete:false 
+        }); 
+        this.todo = &quot;&quot;;
+    }, 
+    delFn(item){//删除任务 
+    var index = this.list.indexOf(item); 
+    this.list.splice(index,1) 
+    }, 
+    edtorTodo(item){//编辑任务 
+    //编辑任务的时候记录编辑之前的值 
+        this.beforeTitle = item.title; 
+        this.edtorTodos = item; 
+    }, 
+    edtoEnd(item){//编辑完成 
+    this.edtorTodos=&quot;&quot;; 
+    // this.cancelEdit = this.edtorTodos; 
+    }, 
+    cancelEdit(item){//取消编辑 
+    item.title = this.beforeTitle; 
+    this.beforeTitle = &#39;&#39;;
+    this.edtorTodos=&#39;&#39;; 
+    } 
+    }, 
+    directives:{ 
+    &quot;focus&quot;:{
+    update(el,binding){
+    if(binding.value){
+    el.focus(); 
+    } 
+    } 
+    } 
+    }, 
+    computed:{ unComplete(){ return this.list.filter(item=&gt;{ return !item.isComplete }).length }, 
+    filterData(){ 
+ //过滤的时候有三种情况 all completed unCompleted 
+ var filter = { all:function(list){ return list; }, completed:function(list){ return list.filter(item=&gt;{ return item.isComplete; }) }, unCompleted:function(list){ return list.filter(item=&gt;{ return !item.isComplete; }) } } 
+ //如果找到了过滤函数，就返回过滤后的数据，如果没有找到就返回所有的数据 
+ return filter[this.visibility]?filter[this.visibility](list):list; } } }); 
+ function hashFn(){ var hash = window.location.hash.slice(1); vm.visibility = hash; } 
+ hashFn(); 
+ window.addEventListener(&#39;hashchange&#39;,hashFn); 
+ &lt;/script&gt; 
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -4075,6 +4043,56 @@ layout<span class="token punctuation">:</span> <span class="token punctuation">[
       </tags>
   </entry>
   <entry>
+    <title>主题博客增加天气插件</title>
+    <url>/2021/03/08/%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E5%A4%A9%E6%B0%94%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<p>效果预览：</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210308160128.png" alt="image-20210308160120253"></p>
+<h2 id="1-注册和风天气账号"><a href="#1-注册和风天气账号" class="headerlink" title="1.注册和风天气账号"></a>1.注册和风天气账号</h2><p>官方网址如下<a href="https://www.qweather.com/" target="_blank" rel="noopener">https://www.qweather.com/</a></p>
+<h2 id="2-导入生成的插件代码"><a href="#2-导入生成的插件代码" class="headerlink" title="2.导入生成的插件代码"></a>2.导入生成的插件代码</h2><p>博客目录\themes\Sakura\layout_partial\header.ejs     嵌入到代码的最尾部</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
+        <tag>sakura</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>回溯算法刷题整理总结</title>
+    <url>/2021/01/20/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E6%95%B4%E7%90%86%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="一、回溯算法理解"><a href="#一、回溯算法理解" class="headerlink" title="一、回溯算法理解"></a>一、回溯算法理解</h1><p>本质是以深度遍历的方式遍历决策树</p>
+<p>但因为没有具体的TreeNode构成树，所以回溯与DFS遍历树很像，但不同的是回溯要多一步退回选择的操作</p>
+<p>典型问题:全排列、N皇后问题</p>
+<p>回溯算法的构成要素:</p>
+<p>①选择列表</p>
+<p>②已选路径或已做出的选择(trace或used)</p>
+<p>③结束条件</p>
+<p>回溯算法的模板如下:</p>
+<pre><code>def backTrace(已选路径, 选择列表) {
+    if(结束条件) {
+        return ; // 对于return 如果只问是否有解则返回bool即可;如果要所有的解则用全局变量数组保存所有找到的解
+    }
+
+    for 某选择:选择列表 {
+        if(不必要选择) {
+            continue;
+        }
+        做选择:某选择加入已选路径，下一步选择列表是否变化
+        backTrace(已选路径, 选择列表)
+        回退选择:某选择退出已选路径，回退后选择列表是否需要恢复
+    }
+}</code></pre><p>回溯算法的思路如下:</p>
+<p>画决策树，决策树节点的属性就是 选择和当前路径  我们的backTrace函数在树的各个节点游走，知道遇到结束条件</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>博客美化增加瀑布流相册</title>
     <url>/2021/01/26/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E7%80%91%E5%B8%83%E6%B5%81%E7%9B%B8%E5%86%8C/</url>
     <content><![CDATA[<p>参考链接:</p>
@@ -4397,6 +4415,127 @@ PhotoVerifyPassword:
       </tags>
   </entry>
   <entry>
+    <title>增加文章贡献日历</title>
+    <url>/2020/12/11/%E5%A2%9E%E5%8A%A0%E6%96%87%E7%AB%A0%E8%B4%A1%E7%8C%AE%E6%97%A5%E5%8E%86/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/cungudafa/article/details/106420842" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/106420842</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown语法整理</title>
+    <url>/2020/12/26/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E4%BB%A3%E7%A0%81%E5%9D%97%E6%8A%98%E5%8F%A0/</url>
+    <content><![CDATA[<h1 id="MarkDown快速查询转移字符"><a href="#MarkDown快速查询转移字符" class="headerlink" title="MarkDown快速查询转移字符"></a>MarkDown快速查询转移字符</h1><h1 id="公式块部分"><a href="#公式块部分" class="headerlink" title="公式块部分"></a>公式块部分</h1><p>举例</p>
+<pre><code>$$
+dp[i]=
+\begin{cases}
+
+    计算式1     &amp;计算式条件  \\换行
+    计算式2    &amp;计算式条件  \\换行
+\end{cases}
+$$</code></pre><p>详细表格</p>
+<table>
+<thead>
+<tr>
+<th>公式块</th>
+<th>\begin{cases}     内容    \end{cases}</th>
+<th>大公式表达式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>\big[</td>
+<td>比较大的左中括号</td>
+</tr>
+<tr>
+<td></td>
+<td>\bigg[</td>
+<td>再大一点</td>
+</tr>
+<tr>
+<td></td>
+<td>\Big[</td>
+<td>比big大一点</td>
+</tr>
+<tr>
+<td></td>
+<td>\Bigg[</td>
+<td>比bigg大一点</td>
+</tr>
+<tr>
+<td></td>
+<td>a_2  a下标2  a^3 a上标3</td>
+<td>上标下标</td>
+</tr>
+<tr>
+<td></td>
+<td>\sum ：∑  \int ：∫  \oint ：∮  \prod：∏</td>
+<td>求和、求导</td>
+</tr>
+<tr>
+<td></td>
+<td>\alpha： α  \beta： β  \gamma：γ  \Phi ： Φ  \Omega：Ω  \Delta： Δ  \delta： δ</td>
+<td>希腊字母</td>
+</tr>
+</tbody></table>
+<h1 id="代码块部分"><a href="#代码块部分" class="headerlink" title="代码块部分"></a>代码块部分</h1><p>代码块折叠语法如下</p>
+<pre><code>&lt;details&gt;   &lt;summary&gt;展开查看&lt;/summary&gt;   &lt;pre&gt;&lt;code&gt;       System.out.println(&quot;Hello&quot;);
+&lt;/code&gt;&lt;/pre&gt; &lt;/details&gt;</code></pre><p>效果展示</p>
+<details>   <summary>展开查看</summary>   <pre><code>       System.out.println("Hello");
+</code></pre> </details>
+
+<h1 id="文本部分"><a href="#文本部分" class="headerlink" title="文本部分"></a>文本部分</h1><table>
+<thead>
+<tr>
+<th>&amp;nbsp;     或者    键盘全角模式空格键</th>
+<th>空格</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>&lt;sup&gt;xxx&lt;/sup&gt;</strong></td>
+<td><strong>上标</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>&lt;sub&gt;xxx&lt;/sub&gt;</strong></td>
+<td><strong>下标</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>30&amp;deg;</strong></td>
+<td><strong>角度符号30&deg;</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>在该文件夹下新建4个js文件</p>
+<p>添加相应的文件内容</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>MarkDown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将博客网站生成手机app获取下载安装码</title>
+    <url>/2020/12/17/%E5%B0%86%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E6%89%8B%E6%9C%BAapp%E8%8E%B7%E5%8F%96%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E7%A0%81/</url>
+    <content><![CDATA[<p>一门App网站   <a href="https://www.yimenapp.com/" target="_blank" rel="noopener">https://www.yimenapp.com/</a></p>
+<p>这个比较靠谱，实惠</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>黑科技</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>增加文章统计折线图、饼状图</title>
     <url>/2020/12/18/%E5%A2%9E%E5%8A%A0%E6%96%87%E7%AB%A0%E7%BB%9F%E8%AE%A1%E6%8A%98%E7%BA%BF%E5%9B%BE%E3%80%81%E9%A5%BC%E7%8A%B6%E5%9B%BE/</url>
     <content><![CDATA[<h3 id="1-sakura-layout-analytics-ejs"><a href="#1-sakura-layout-analytics-ejs" class="headerlink" title="1.sakura/layout/analytics.ejs"></a>1.sakura/layout/analytics.ejs</h3><pre><code>&lt;div class=&quot;pattern-center-blank&quot;&gt;
@@ -4703,18 +4842,6 @@ PhotoVerifyPassword:
       </tags>
   </entry>
   <entry>
-    <title>增加文章贡献日历</title>
-    <url>/2020/12/11/%E5%A2%9E%E5%8A%A0%E6%96%87%E7%AB%A0%E8%B4%A1%E7%8C%AE%E6%97%A5%E5%8E%86/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/cungudafa/article/details/106420842" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/106420842</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何调整顶部导航栏的整体长度以放入更多导航项</title>
     <url>/2020/12/17/%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F%E7%9A%84%E6%95%B4%E4%BD%93%E9%95%BF%E5%BA%A6%E4%BB%A5%E6%94%BE%E5%85%A5%E6%9B%B4%E5%A4%9A%E5%AF%BC%E8%88%AA%E9%A1%B9/</url>
     <content><![CDATA[<p>修改主题目录/source/css/style.css文件   搜到如下内容按自己需要修改</p>
@@ -4728,176 +4855,6 @@ PhotoVerifyPassword:
       <tags>
         <tag>主题美化</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>博客美化增加任务清单页面</title>
-    <url>/2021/01/11/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E4%BB%BB%E5%8A%A1%E6%B8%85%E5%8D%95%E9%A1%B5%E9%9D%A2/</url>
-    <content><![CDATA[<p>参考链接:<a href="https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1" target="_blank" rel="noopener">https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1</a></p>
-<h1 id="1-新建todolist页面"><a href="#1-新建todolist页面" class="headerlink" title="1.新建todolist页面"></a>1.新建todolist页面</h1><pre><code>hexo new page &quot;todolist&quot;</code></pre><h1 id="2-配置该页面跳过渲染"><a href="#2-配置该页面跳过渲染" class="headerlink" title="2.配置该页面跳过渲染"></a>2.配置该页面跳过渲染</h1><p>这次添加的页面是一个html页面，需要配置跳过渲染后不会使用主题的layout对网页进行渲染</p>
-<p>在主站的配置文件的skip:render种配置</p>
-<pre><code>skip_render: 
-- &quot;todolist/**&quot;</code></pre><h1 id="3-修改todolist界面"><a href="#3-修改todolist界面" class="headerlink" title="3.修改todolist界面"></a>3.修改todolist界面</h1><p>博客目录下/source/todolist/index.md 改为index.html， 文件内容如下:</p>
-<pre><code>&lt;!DOCTYPE html&gt; 
-&lt;html lang=&quot;en&quot;&gt; 
-    &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;title&gt;Title&lt;/title&gt; &lt;script src=&quot;https://cdn.bootcss.com/vue/2.6.10/vue.min.js&quot;&gt;&lt;/script&gt; &lt;style&gt; body{ margin:0;background-color:#fafafa;font:14px &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif} h2{margin:0;font-size:12px} a{color:#000;text-decoration:none} input{outline:0} button{margin:0;padding:0;border:0;background:0;font-size:100%;vertical-align:baseline;font-family:inherit;font-weight:inherit;color:inherit;outline:0} ul{padding:0;margin:0;list-style:none} .page-top{width:100%;height:40px;background-color:#db4c3f} .page-content{width:50%;margin:0 auto} .page-content h2{line-height:40px;font-size:18px;color:#fff} .main{width:50%;margin:0 auto;box-sizing:border-box} .task-input{width:99%;height:30px;outline:0;border:1px solid #ccc} .task-count{display:flex;margin:10px 0} .task-count li{padding-left:10px;flex:1;color:#dd4b39} .task-count li:nth-child(1){padding:5px 0 0 10px} .action{text-align:center;display:flex} .action a{margin:0 10px;flex:1;padding:5px 0;color:#777} .action a:nth-child(3){margin-right:0} .active{border-bottom: 2px solid #629A9C} .tasks{background-color:#fff}.no-task-tip{padding:10px 0 10px 10px;display:block;border-bottom:1px solid #ededed;color:#777}.big-title{color:#222}.todo-list{margin:0;padding:0;list-style:none} .todo-list li{ position:relative; font-size:16px; border-left: 5px solid #629A9C; box-shadow: 0 1px 2px rgba(0,0,0,0.07); margin-bottom: 16px; } .todo-list li:hover{background-color:#fafafa} .todo-list li.editing{border-bottom:0;padding:0;} .todo-list li.editing .edit{display:block;padding:13px 17px 12px 17px;margin:0 0 0 43px} .todo-list li.editing .view{display:none} .toggle{ text-align:center; width:16px; height:16px; position:absolute; top:2px; left: 15px; bottom:0; margin:auto 0; cursor: pointer; } .todo-list li label{ white-space:pre-line; word-break:break-all; padding:15px 60px 15px 15px; margin-left:45px; display:block; line-height:1.2; transition:color .4s } .todo-list li.completed label{ color:#d9d9d9; text-decoration:line-through } .todo-list li .destroy{ display:none; text-align:center; width:16px; height:16px; position:absolute; top:0; right:15px; bottom:10px; margin:auto 0; cursor: pointer; font-size:28px; color:#cc9a9a; transition:color .2s ease-out } .todo-list li .destroy:hover{color:#af5b5e} .todo-list li .destroy:after{content:&#39;×&#39;} .todo-list li:hover .destroy{display:block} .todo-list li .edit{display:none} .todo-list li.editing:last-child{margin-bottom:-1px} &lt;/style&gt; &lt;/head&gt; 
-    &lt;body&gt; 
-        &lt;div class=&quot;page-top&quot;&gt; 
-            &lt;div class=&quot;page-content&quot;&gt; 
-                &lt;h2&gt;任务计划列表&lt;/h2&gt; 
-            &lt;/div&gt; 
-        &lt;/div&gt; 
-    &lt;div class=&quot;main&quot;&gt; 
-        &lt;h3 class=&quot;big-title&quot;&gt;添加任务：&lt;/h3&gt;
-        &lt;input placeholder=&quot;例如：吃饭睡觉打豆豆； 提示：回车即可添加任务，双击列表标题即可编辑&quot; class=&quot;task-input&quot; type=&quot;text&quot; v-on:keyup.enter=&quot;enterFn&quot; v-model=&quot;todo&quot; /&gt; 
-        &lt;ul class=&quot;task-count&quot;&gt; 
-            &lt;li&gt;{{unComplete}}个任务未完成&lt;/li&gt;
-            &lt;li class=&quot;action&quot;&gt; &lt;a :class=&quot;{active:visibility!==&#39;unCompleted&#39;&amp;&amp;visibility!==&#39;completed&#39;}&quot; href=&quot;#all&quot;&gt;所有任务&lt;/a&gt; &lt;a :class=&quot;{active:visibility===&#39;unCompleted&#39;}&quot; href=&quot;#unCompleted&quot;&gt;未完成的任务&lt;/a&gt; &lt;a :class=&quot;{active:visibility===&#39;completed&#39;}&quot; href=&quot;#completed&quot;&gt;完成的任务&lt;/a&gt; &lt;/li&gt; 
-        &lt;/ul&gt; 
-        &lt;h3 class=&quot;big-title&quot;&gt;任务列表：&lt;/h3&gt; 
-        &lt;div class=&quot;tasks&quot;&gt; &lt;span class=&quot;no-task-tip&quot; v-show=&quot;!list.length&quot;&gt;还没有添加任何任务&lt;/span&gt; 
-        &lt;ul class=&quot;todo-list&quot; v-show=&quot;list.length&quot;&gt;
-            &lt;li class=&quot;todo&quot; v-for=&quot;item in filterData&quot; v-bind:class=&quot;{completed:item.isComplete,editing:item===edtorTodos}&quot; &gt; 
-                &lt;div class=&quot;view&quot;&gt; 
-                    &lt;input class=&quot;toggle&quot; type=&quot;checkbox&quot; v-model=&quot;item.isComplete&quot; /&gt; &lt;label @dblclick=&quot;edtorTodo(item)&quot;&gt;{{item.title}}&lt;/label&gt; &lt;button class=&quot;destroy&quot; @click=&quot;delFn(item)&quot; &gt;&lt;/button&gt; 
-                &lt;/div&gt; 
-                &lt;input class=&quot;edit&quot; type=&quot;text&quot; v-focus=&quot;edtorTodos===item&quot; v-model=&quot;item.title&quot; @blur=&quot;edtoEnd(item)&quot; @keyup.enter=&quot;edtoEnd(item)&quot; @keyup.esc=&quot;cancelEdit(item)&quot; /&gt; 
-            &lt;/li&gt; 
-        &lt;/ul&gt; 
-        &lt;/div&gt;
-    &lt;/div&gt;
-
- &lt;script&gt; 
- //存取localStorage中的数据
-var store = { 
-    save(key,value){ 
-        window.localStorage.setItem(key,JSON.stringify(value)); 
-    }, 
-    fetch(key){ 
-        return JSON.parse(window.localStorage.getItem(key))||[]; 
-    } 
-} 
-    //list取出所有的值 
-var list = store.fetch(&quot;storeData&quot;); 
-
-var vm = new Vue({ 
-    el:&quot;.main&quot;, 
-    data:{ 
-        list, 
-        todo:&#39;&#39;,
-        edtorTodos:&#39;&#39;,//记录正在编辑的数据,
-        beforeTitle:&quot;&quot;,//记录正在编辑的数据的title 
-        visibility:&quot;all&quot;//通过这个属性值的变化对数据进行筛选 
-    }, 
-    watch:{ 
-        //下面的这种方法是浅监控 
-        /*list:function(){//监控list这个属性，当这个属性对应的值发生变化就会执行函数 
-        store.save(&quot;storeData&quot;,this.list); 
-        }*/ 
-        //下面的是深度监控 
-        list:{ 
-            handler:function(){
-                store.save(&quot;storeData&quot;,this.list); 
-            }, deep:true 
-        } 
-    }, 
-    methods:{ 
-        enterFn(ev){//添加任务 
-        //向list中添加一项任务 
-        //事件处理函数中的this指向的是当前这个根实例 
-        if(this.todo==&quot;&quot;){return;} 
-        this.list.push({ 
-            title:this.todo, 
-            isComplete:false 
-        }); 
-        this.todo = &quot;&quot;;
-    }, 
-    delFn(item){//删除任务 
-    var index = this.list.indexOf(item); 
-    this.list.splice(index,1) 
-    }, 
-    edtorTodo(item){//编辑任务 
-    //编辑任务的时候记录编辑之前的值 
-        this.beforeTitle = item.title; 
-        this.edtorTodos = item; 
-    }, 
-    edtoEnd(item){//编辑完成 
-    this.edtorTodos=&quot;&quot;; 
-    // this.cancelEdit = this.edtorTodos; 
-    }, 
-    cancelEdit(item){//取消编辑 
-    item.title = this.beforeTitle; 
-    this.beforeTitle = &#39;&#39;;
-    this.edtorTodos=&#39;&#39;; 
-    } 
-    }, 
-    directives:{ 
-    &quot;focus&quot;:{
-    update(el,binding){
-    if(binding.value){
-    el.focus(); 
-    } 
-    } 
-    } 
-    }, 
-    computed:{ unComplete(){ return this.list.filter(item=&gt;{ return !item.isComplete }).length }, 
-    filterData(){ 
- //过滤的时候有三种情况 all completed unCompleted 
- var filter = { all:function(list){ return list; }, completed:function(list){ return list.filter(item=&gt;{ return item.isComplete; }) }, unCompleted:function(list){ return list.filter(item=&gt;{ return !item.isComplete; }) } } 
- //如果找到了过滤函数，就返回过滤后的数据，如果没有找到就返回所有的数据 
- return filter[this.visibility]?filter[this.visibility](list):list; } } }); 
- function hashFn(){ var hash = window.location.hash.slice(1); vm.visibility = hash; } 
- hashFn(); 
- window.addEventListener(&#39;hashchange&#39;,hashFn); 
- &lt;/script&gt; 
- &lt;/body&gt;
-&lt;/html&gt;</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>将博客网站生成手机app获取下载安装码</title>
-    <url>/2020/12/17/%E5%B0%86%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E6%89%8B%E6%9C%BAapp%E8%8E%B7%E5%8F%96%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E7%A0%81/</url>
-    <content><![CDATA[<p>一门App网站   <a href="https://www.yimenapp.com/" target="_blank" rel="noopener">https://www.yimenapp.com/</a></p>
-<p>这个比较靠谱，实惠</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>黑科技</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>编程开发技术学习资源整理</title>
-    <url>/2021/02/26/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<h1 id="0-大纲概览"><a href="#0-大纲概览" class="headerlink" title="0.大纲概览"></a>0.大纲概览</h1><p>主要介绍一下，本片文章涉及到的内容</p>
-<p>1.编程语言,含c++、go、java</p>
-<h1 id="1-编程语言语法"><a href="#1-编程语言语法" class="headerlink" title="1.编程语言语法"></a>1.编程语言语法</h1><h2 id="1-1-C"><a href="#1-1-C" class="headerlink" title="1.1 C++"></a>1.1 C++</h2><h2 id="1-2-Golang"><a href="#1-2-Golang" class="headerlink" title="1.2 Golang"></a>1.2 Golang</h2><p>①W3Cschool <a href="https://www.w3cschool.cn/yqbmht/7rcvwcqm.html" target="_blank" rel="noopener">https://www.w3cschool.cn/yqbmht/7rcvwcqm.html</a>    描述：前几章可以做入门使用，之后几章多了一些网络通信的编程</p>
-<p>②<a href="https://draveness.me/golang/入门级学习" target="_blank" rel="noopener">https://draveness.me/golang/入门级学习</a></p>
-<p>③<a href="https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/" target="_blank" rel="noopener">https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/</a> 更加底层的学习go语言，设计到汇编，内容细致，干活多</p>
-<h2 id="1-3-Java"><a href="#1-3-Java" class="headerlink" title="1.3 Java"></a>1.3 Java</h2><h1 id="2-Linux命令速查"><a href="#2-Linux命令速查" class="headerlink" title="2.Linux命令速查"></a>2.Linux命令速查</h1><p><a href="https://blog.csdn.net/waitig1992/article/details/51884653" target="_blank" rel="noopener">https://blog.csdn.net/waitig1992/article/details/51884653</a> 描述：通过预览页快速定位到<a href="http://www.linuxdaxue.com/，快速定位把" target="_blank" rel="noopener">http://www.linuxdaxue.com/，快速定位把</a></p>
-<h1 id="3-Nginx学习"><a href="#3-Nginx学习" class="headerlink" title="3.Nginx学习"></a>3.Nginx学习</h1><p>源码学习：</p>
-<p><a href="https://www.kancloud.cn/digest/understandingnginx/202587" target="_blank" rel="noopener">https://www.kancloud.cn/digest/understandingnginx/202587</a> 章节式学习，有些枯燥</p>
-<p><a href="https://segmentfault.com/a/1190000016922188" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016922188</a> 单独对nginx配置文件解析过程进行的分析</p>
-<h1 id="4-算法"><a href="#4-算法" class="headerlink" title="4.算法"></a>4.算法</h1><p><a href="https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结" target="_blank" rel="noopener">https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>资源</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>每页文章结尾出增加标签云展示</title>
-    <url>/2020/12/11/%E6%AF%8F%E9%A1%B5%E6%96%87%E7%AB%A0%E7%BB%93%E5%B0%BE%E5%87%BA%E5%A2%9E%E5%8A%A0%E6%A0%87%E7%AD%BE%E4%BA%91%E5%B1%95%E7%A4%BA/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/cungudafa/article/details/104616500" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104616500</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
   </entry>
   <entry>
     <title>给博客添加小游戏界面谷歌恐龙小游戏加强版</title>
@@ -4933,6 +4890,37 @@ var vm = new Vue({
       </categories>
   </entry>
   <entry>
+    <title>每页文章结尾出增加标签云展示</title>
+    <url>/2020/12/11/%E6%AF%8F%E9%A1%B5%E6%96%87%E7%AB%A0%E7%BB%93%E5%B0%BE%E5%87%BA%E5%A2%9E%E5%8A%A0%E6%A0%87%E7%AD%BE%E4%BA%91%E5%B1%95%E7%A4%BA/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/cungudafa/article/details/104616500" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104616500</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>编程开发技术学习资源整理</title>
+    <url>/2021/02/26/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h1 id="0-大纲概览"><a href="#0-大纲概览" class="headerlink" title="0.大纲概览"></a>0.大纲概览</h1><p>主要介绍一下，本片文章涉及到的内容</p>
+<p>1.编程语言,含c++、go、java</p>
+<h1 id="1-编程语言语法"><a href="#1-编程语言语法" class="headerlink" title="1.编程语言语法"></a>1.编程语言语法</h1><h2 id="1-1-C"><a href="#1-1-C" class="headerlink" title="1.1 C++"></a>1.1 C++</h2><h2 id="1-2-Golang"><a href="#1-2-Golang" class="headerlink" title="1.2 Golang"></a>1.2 Golang</h2><p>①W3Cschool <a href="https://www.w3cschool.cn/yqbmht/7rcvwcqm.html" target="_blank" rel="noopener">https://www.w3cschool.cn/yqbmht/7rcvwcqm.html</a>    描述：前几章可以做入门使用，之后几章多了一些网络通信的编程</p>
+<p>②<a href="https://draveness.me/golang/入门级学习" target="_blank" rel="noopener">https://draveness.me/golang/入门级学习</a></p>
+<p>③<a href="https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/" target="_blank" rel="noopener">https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/</a> 更加底层的学习go语言，设计到汇编，内容细致，干活多</p>
+<h2 id="1-3-Java"><a href="#1-3-Java" class="headerlink" title="1.3 Java"></a>1.3 Java</h2><h1 id="2-Linux命令速查"><a href="#2-Linux命令速查" class="headerlink" title="2.Linux命令速查"></a>2.Linux命令速查</h1><p><a href="https://blog.csdn.net/waitig1992/article/details/51884653" target="_blank" rel="noopener">https://blog.csdn.net/waitig1992/article/details/51884653</a> 描述：通过预览页快速定位到<a href="http://www.linuxdaxue.com/，快速定位把" target="_blank" rel="noopener">http://www.linuxdaxue.com/，快速定位把</a></p>
+<h1 id="3-Nginx学习"><a href="#3-Nginx学习" class="headerlink" title="3.Nginx学习"></a>3.Nginx学习</h1><p>源码学习：</p>
+<p><a href="https://www.kancloud.cn/digest/understandingnginx/202587" target="_blank" rel="noopener">https://www.kancloud.cn/digest/understandingnginx/202587</a> 章节式学习，有些枯燥</p>
+<p><a href="https://segmentfault.com/a/1190000016922188" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016922188</a> 单独对nginx配置文件解析过程进行的分析</p>
+<h1 id="4-算法"><a href="#4-算法" class="headerlink" title="4.算法"></a>4.算法</h1><p><a href="https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结" target="_blank" rel="noopener">https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>资源</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>自己定的计划</title>
     <url>/2020/08/11/%E8%87%AA%E5%B7%B1%E5%AE%9A%E7%9A%84%E8%AE%A1%E5%88%92/</url>
     <content><![CDATA[<p>自己定的计划</p>
@@ -4955,6 +4943,18 @@ var vm = new Vue({
       </categories>
       <tags>
         <tag>小目标</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mac配置iterm2</title>
+    <url>/2021/03/20/mac%E9%85%8D%E7%BD%AEiterm2/</url>
+    <content><![CDATA[<p>参考链接：晨旭OvO原创文章<a href="https://blog.csdn.net/a1228136188/article/details/109092435" target="_blank" rel="noopener">https://blog.csdn.net/a1228136188/article/details/109092435</a></p>
+]]></content>
+      <categories>
+        <category>转载</category>
+      </categories>
+      <tags>
+        <tag>mac软件</tag>
       </tags>
   </entry>
   <entry>
