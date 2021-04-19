@@ -224,26 +224,6 @@
   </entry>
   
   <entry>
-    <title>hexo+valine搭建博客评论系统</title>
-    <link href="http://linxuesong.github.io/2021/03/19/hexo+valine%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/"/>
-    <id>http://linxuesong.github.io/2021/03/19/hexo+valine%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</id>
-    <published>2021-03-19T12:49:38.727Z</published>
-    <updated>2021-03-19T12:49:38.727Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="hexo-valine搭建博客评论系统"><a href="#hexo-valine搭建博客评论系统" class="headerlink" title="hexo+valine搭建博客评论系统"></a>hexo+valine搭建博客评论系统</h1><p>1.注册LeanCloud</p><p>2.在leanCloud中创建应用</p><p>3.拿到appid和appkey</p><p>然后 <strong>进入应用-&gt;设置-&gt;应用key</strong></p><p>拿到你的appid和appkey之后，打开<strong>主题配置文件</strong> 搜索 <strong>valine</strong>，填入appid 和 appkey</p><p>4.修改hexo博客主题目录themes/Skaura/_config.yml配置文件中的valine部分内容</p><pre><code># Valinevaline: truev_appId: GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHszv_appKey: mgOpfzbkHYqU92CV4IDlAUHQ</code></pre><p>5.记得在Leancloud -&gt; 设置 -&gt; 安全中心 -&gt; Web 安全域名 把你的域名加进去</p><p>最后当我们发送一条评论后可以在leanCloud中的   存储/结构化数据/comment看到评论信息</p><p>PS:valine还可以美化评论背景样式、增加评论邮件通知等等的功能</p><p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104281764" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104281764</a></p><p>PS:可以在<a href="https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了" target="_blank" rel="noopener">https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;hexo-valine搭建博客评论系统&quot;&gt;&lt;a href=&quot;#hexo-valine搭建博客评论系统&quot; class=&quot;headerlink&quot; title=&quot;hexo+valine搭建博客评论系统&quot;&gt;&lt;/a&gt;hexo+valine搭建博客评论系统&lt;/h1&gt;&lt;p&gt;1.</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="http://linxuesong.github.io/2021/03/19/hello-world/"/>
     <id>http://linxuesong.github.io/2021/03/19/hello-world/</id>
@@ -256,6 +236,26 @@
       
       
     <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hexo+valine搭建博客评论系统</title>
+    <link href="http://linxuesong.github.io/2021/03/19/hexo+valine%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://linxuesong.github.io/2021/03/19/hexo+valine%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</id>
+    <published>2021-03-19T12:49:38.727Z</published>
+    <updated>2021-03-19T12:49:38.727Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="hexo-valine搭建博客评论系统"><a href="#hexo-valine搭建博客评论系统" class="headerlink" title="hexo+valine搭建博客评论系统"></a>hexo+valine搭建博客评论系统</h1><p>1.注册LeanCloud</p><p>2.在leanCloud中创建应用</p><p>3.拿到appid和appkey</p><p>然后 <strong>进入应用-&gt;设置-&gt;应用key</strong></p><p>拿到你的appid和appkey之后，打开<strong>主题配置文件</strong> 搜索 <strong>valine</strong>，填入appid 和 appkey</p><p>4.修改hexo博客主题目录themes/Skaura/_config.yml配置文件中的valine部分内容</p><pre><code># Valinevaline: truev_appId: GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHszv_appKey: mgOpfzbkHYqU92CV4IDlAUHQ</code></pre><p>5.记得在Leancloud -&gt; 设置 -&gt; 安全中心 -&gt; Web 安全域名 把你的域名加进去</p><p>最后当我们发送一条评论后可以在leanCloud中的   存储/结构化数据/comment看到评论信息</p><p>PS:valine还可以美化评论背景样式、增加评论邮件通知等等的功能</p><p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104281764" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104281764</a></p><p>PS:可以在<a href="https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了" target="_blank" rel="noopener">https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;hexo-valine搭建博客评论系统&quot;&gt;&lt;a href=&quot;#hexo-valine搭建博客评论系统&quot; class=&quot;headerlink&quot; title=&quot;hexo+valine搭建博客评论系统&quot;&gt;&lt;/a&gt;hexo+valine搭建博客评论系统&lt;/h1&gt;&lt;p&gt;1.</summary>
       
     
     
