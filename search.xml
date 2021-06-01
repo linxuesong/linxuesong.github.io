@@ -321,6 +321,159 @@ layout<span class="token punctuation">:</span> <span class="token punctuation">[
       </tags>
   </entry>
   <entry>
+    <title>Golang日志第三方库的使用</title>
+    <url>/2021/05/20/Golang%E6%97%A5%E5%BF%97%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="1-第三方日志库的对比"><a href="#1-第三方日志库的对比" class="headerlink" title="1.第三方日志库的对比"></a>1.第三方日志库的对比</h1><h1 id="2-Zap"><a href="#2-Zap" class="headerlink" title="2.Zap"></a>2.Zap</h1><h2 id="2-1简单实例-会把日志打印到控制台"><a href="#2-1简单实例-会把日志打印到控制台" class="headerlink" title="2.1简单实例-会把日志打印到控制台"></a>2.1简单实例-会把日志打印到控制台</h2><pre><code>//1.快速创建Zap.logger的方法，使用预先写好的配置创建日志变量
+//NewExample(Option...)
+//NewDevelopment(Option...)
+//NewProduction
+logger, _ := zap.NewProduction() 
+
+defer logger.Sync() // flushes buffer, if any
+//2.创建日志对象后可以打印日志了，有两种打印日志的方式
+//2.1效率低一点，但自由度更高
+sugar := logger.Sugar()
+sugar.Infow(&quot;failed to fetch URL&quot;,
+  // Structured context as loosely typed key-value pairs.
+  &quot;url&quot;, url,
+  &quot;attempt&quot;, 3,
+  &quot;backoff&quot;, time.Second,
+)
+sugar.Infof(&quot;Failed to fetch URL: %s&quot;, url)
+//2.2效率高一点，要指定类型
+defer logger.Sync()
+logger.Info(&quot;failed to fetch URL&quot;,
+  // Structured context as strongly typed Field values.
+  zap.String(&quot;url&quot;, url),
+  zap.Int(&quot;attempt&quot;, 3),
+  zap.Duration(&quot;backoff&quot;, time.Second),
+)
+</code></pre><h2 id="2-2定义自己的logger-打印到指定文件"><a href="#2-2定义自己的logger-打印到指定文件" class="headerlink" title="2.2定义自己的logger-打印到指定文件"></a>2.2定义自己的logger-打印到指定文件</h2><pre><code>//使用zap.New创建自定义的日志变量
+//func New(core zapcore.Core, options ...Option) *Logger
+
+
+//zapcore.Core可以使用zapcore.NewCore，如果需要不同级别日志输出到不同文件使用zapcore.NewTee(Core...)放入多个core
+需要需要三个配置
+//  Encoder编码器(日志格式)：可以使用预先设置的配置  zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig()),除此之外还有zapcore.NewConsoleEncoder(EncoderConfig)等配置
+//  WriterSyncer(日志输出位置):zapcore.AddSync(io.Writer)将打开的文件传入
+//  LogLevel(哪些日志级别的日志将被打印): 可以直接使用提供好的日志级别，也可以定制zap.LevelEnablerFunc(func(lvl zapcore.Level) bool) 传入一个函数返回bool用于判断日志级别是否需要被打印
+
+//1.创建Encode日志格式
+    encoder := zapcore.NewConsoleEncoder(zapcore.EncoderConfig{
+        MessageKey:  &quot;msg&quot;,
+        LevelKey:    &quot;level&quot;,
+        EncodeLevel: zapcore.CapitalLevelEncoder,
+        TimeKey:     &quot;ts&quot;,
+        EncodeTime: func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
+            enc.AppendString(fmt.Sprintf(&quot;%d%02d%02d_%02d%02d%02d&quot;, t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second()))
+        },
+        CallerKey:    &quot;file&quot;,
+        EncodeCaller: zapcore.ShortCallerEncoder,
+        EncodeDuration: func(d time.Duration, enc zapcore.PrimitiveArrayEncoder) {
+            enc.AppendInt64(int64(d) / 1000000)
+        },
+    })
+//2.创建writer日志输出位置
+      file, err := os.OpenFile(logPath, os.O_CREATE|os.O_APPEND|os.O_RDWR, 0744)
+      if err != nil {
+          return     fmt.Errorf(&quot;log file open file ,err:%v&quot;, err)
+      }
+    writer := apcore.AddSync(writer)
+//3.创建logLevel日志输出范围
+
+    // 实现判断日志等级的interface (其实 zapcore.*Level 自身就是 interface)，创建出的level等价于zapcore.InfoLevel
+    level := zap.LevelEnablerFunc(func(lvl zapcore.Level) bool {
+        return lvl &gt;= zapcore.InfoLevel
+    })
+
+
+    // 4.创建具体core
+        zapcore.NewCore(encoder, writer, level)
+
+        // 如果要是不同级别日志放到不同文件，用NewTee
+    // core := zapcore.NewTee(
+    //   zapcore.NewCore(encoder, writer, level),
+    //   zapcore.NewCore(encoder2, writer2, level2)
+    // )
+// 创建logger，可以加入可选项
+    logger = zap.New(core, zap.AddCaller()) // 需要传入 zap.AddCaller() 才会显示打日志点的文件名和行数</code></pre><h1 id="3-文件日志切割第三方库"><a href="#3-文件日志切割第三方库" class="headerlink" title="3.文件日志切割第三方库"></a>3.文件日志切割第三方库</h1><table>
+<thead>
+<tr>
+<th>仓库</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/natefinch" target="_blank" rel="noopener">natefinch</a>/<strong><a href="https://github.com/natefinch/lumberjack" target="_blank" rel="noopener">lumberjack</a></strong></td>
+<td>按文件大小自动切割</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/lestrrat-go" target="_blank" rel="noopener">lestrrat-go</a>/<strong><a href="https://github.com/lestrrat-go/file-rotatelogs" target="_blank" rel="noopener">file-rotatelogs</a></strong></td>
+<td>按找时间自动切割</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<pre><code>    /* 日志轮转相关函数
+    Filename: 日志文件的位置
+    MaxSize：在进行切割之前，日志文件的最大大小（以MB为单位）
+    MaxBackups：保留旧文件的最大个数
+    MaxAges：保留旧文件的最大天数
+    Compress：是否压缩/归档旧文件
+    */
+    writer := &amp;lumberjack.Logger{
+        Filename:   logPath,
+        MaxSize:    100,
+        MaxBackups: 5,
+        MaxAge:     5,
+        Compress:   false,
+    }</code></pre><pre><code>    /* 日志轮转相关函数
+    `WithLinkName` 为最新的日志建立软连接
+    `WithRotationTime` 设置日志分割的时间，隔多久分割一次
+    WithMaxAge 和 WithRotationCount二者只能设置一个
+    `WithMaxAge` 设置文件清理前的最长保存时间
+    `WithRotationCount` 设置文件清理前最多保存的个数
+    */
+    writer, err := rotatelogs.New(
+        logPath+&quot;.%Y-%m-%d-%H:%M&quot;,
+        rotatelogs.WithLinkName(logPath),
+        rotatelogs.WithMaxAge(time.Duration(24)*time.Hour),
+        rotatelogs.WithRotationTime(time.Duration(60)*time.Hour),
+    )</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客md文件插入图片（以Typora编辑器为例）</title>
+    <url>/2020/07/28/Hexo%E5%8D%9A%E5%AE%A2md%E6%96%87%E4%BB%B6%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%EF%BC%88%E4%BB%A5Typora%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%BA%E4%BE%8B%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="Typora插入Base64图片"><a href="#Typora插入Base64图片" class="headerlink" title="Typora插入Base64图片"></a>Typora插入Base64图片</h1><p>在Typora中插入图片常用的处理方法是：</p>
+<p>将本地的图片地址传入<br>将网络上的图片地址传入<br>这两种方式都存在一个问题：链接不可用时，图片就展示不出来了！</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>首先将图片通过在线转码工具转换成base64的编码，并用以下格式嵌入即可，格式如下：</p>
+<p>![image] (base64)<br>但是由于这base64编码往往都很长，很占篇幅，因此我们可以给图片编号，并将所有的图片base64编码放在文档的最后即可，格式如下：<br>在插入图片的地方使用：![image] [图片编号]<br>在文档最后使用：[图片编号]:base64编码<br>这样即可完成图片的永久插入！</p>
+<p>————————————————<br>版权声明：本文为CSDN博主「听雨眠_sun」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/baidu_31492511/java/article/details/90704123" target="_blank" rel="noopener">https://blog.csdn.net/baidu_31492511/java/article/details/90704123</a></p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>图片素材按官方教程说法，可统一放置在source/images目录中，并以 <code>![](/images/image.jpg)</code> 方式引用</p>
+<p>或者在 _config.yml 打开 post_asset_folder 功能，将当前文章所用的图片放置到source目录下的文章同名资源目录下，以 <code>![](image.jpg)</code> 方式引用</p>
+<p>————————————————</p>
+<p>作者：Wavky<br>链接：<a href="https://www.jianshu.com/p/925fa86ccc95" target="_blank" rel="noopener">https://www.jianshu.com/p/925fa86ccc95</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo-Theme-Sakura</title>
     <url>/2018/12/12/Hexo-Theme-Sakura/</url>
     <content><![CDATA[<p>hexo-theme-sakura主题 <a href="https://github.com/honjun/hexo-theme-sakura/blob/master/README.md" target="_blank" rel="noopener">English document</a></p>
@@ -617,44 +770,6 @@ links:
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客md文件插入图片（以Typora编辑器为例）</title>
-    <url>/2020/07/28/Hexo%E5%8D%9A%E5%AE%A2md%E6%96%87%E4%BB%B6%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%EF%BC%88%E4%BB%A5Typora%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%BA%E4%BE%8B%EF%BC%89/</url>
-    <content><![CDATA[<h1 id="Typora插入Base64图片"><a href="#Typora插入Base64图片" class="headerlink" title="Typora插入Base64图片"></a>Typora插入Base64图片</h1><p>在Typora中插入图片常用的处理方法是：</p>
-<p>将本地的图片地址传入<br>将网络上的图片地址传入<br>这两种方式都存在一个问题：链接不可用时，图片就展示不出来了！</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>首先将图片通过在线转码工具转换成base64的编码，并用以下格式嵌入即可，格式如下：</p>
-<p>![image] (base64)<br>但是由于这base64编码往往都很长，很占篇幅，因此我们可以给图片编号，并将所有的图片base64编码放在文档的最后即可，格式如下：<br>在插入图片的地方使用：![image] [图片编号]<br>在文档最后使用：[图片编号]:base64编码<br>这样即可完成图片的永久插入！</p>
-<p>————————————————<br>版权声明：本文为CSDN博主「听雨眠_sun」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/baidu_31492511/java/article/details/90704123" target="_blank" rel="noopener">https://blog.csdn.net/baidu_31492511/java/article/details/90704123</a></p>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>图片素材按官方教程说法，可统一放置在source/images目录中，并以 <code>![](/images/image.jpg)</code> 方式引用</p>
-<p>或者在 _config.yml 打开 post_asset_folder 功能，将当前文章所用的图片放置到source目录下的文章同名资源目录下，以 <code>![](image.jpg)</code> 方式引用</p>
-<p>————————————————</p>
-<p>作者：Wavky<br>链接：<a href="https://www.jianshu.com/p/925fa86ccc95" target="_blank" rel="noopener">https://www.jianshu.com/p/925fa86ccc95</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JAVA String和StringBuilder常用方法</title>
-    <url>/2021/04/08/JAVA-String%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="一、String不可变字符串"><a href="#一、String不可变字符串" class="headerlink" title="一、String不可变字符串"></a>一、String不可变字符串</h1><h2 id="1-int-compareTo-String-other-比较两字符串大小"><a href="#1-int-compareTo-String-other-比较两字符串大小" class="headerlink" title="1.int compareTo(String other) 比较两字符串大小"></a>1.int compareTo(String other) 比较两字符串大小</h2><h2 id="2-boolean-equals-Object-object-比较两字符串是否其内容一致"><a href="#2-boolean-equals-Object-object-比较两字符串是否其内容一致" class="headerlink" title="2.boolean equals(Object object)比较两字符串是否其内容一致"></a>2.boolean equals(Object object)比较两字符串是否其内容一致</h2><p>==比较运算符比较的是引用位置是否相等，而非其内容</p>
-<h2 id="3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true"><a href="#3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true" class="headerlink" title="3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true"></a>3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true</h2><h2 id="4-int-indexOf-String-str-返回与指定字符串匹配的首个位置"><a href="#4-int-indexOf-String-str-返回与指定字符串匹配的首个位置" class="headerlink" title="4.int indexOf(String str)返回与指定字符串匹配的首个位置"></a>4.int indexOf(String str)返回与指定字符串匹配的首个位置</h2><p>如果还要其他要求，是有函数重载的</p>
-<h2 id="5-int-length-字符串长度"><a href="#5-int-length-字符串长度" class="headerlink" title="5.int length()字符串长度"></a>5.int length()字符串长度</h2><h2 id="6-String-toLowerCase-和String-toUpperCase-大小写转换"><a href="#6-String-toLowerCase-和String-toUpperCase-大小写转换" class="headerlink" title="6.String toLowerCase()和String toUpperCase()大小写转换"></a>6.String toLowerCase()和String toUpperCase()大小写转换</h2><h2 id="7-String-trim-删除原始字符串头部和尾部的空格"><a href="#7-String-trim-删除原始字符串头部和尾部的空格" class="headerlink" title="7.String trim()删除原始字符串头部和尾部的空格"></a>7.String trim()删除原始字符串头部和尾部的空格</h2><p>更多方法可以参考Java的官网api文档</p>
-<h1 id="二、StringBuilder"><a href="#二、StringBuilder" class="headerlink" title="二、StringBuilder"></a>二、StringBuilder</h1><p>string问题是每次做字符串拼接都会产生一个新的String对象，这样既耗时又费空间</p>
-<p>使用StringBuilder则可以避免这个问题发生</p>
-<h2 id="1-String-toString-转为字符串"><a href="#1-String-toString-转为字符串" class="headerlink" title="1.String toString()转为字符串"></a>1.String toString()转为字符串</h2><h2 id="2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传"><a href="#2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传" class="headerlink" title="2.StringBuilder insert(int offset， String str) 指定位置插入自负传"></a>2.StringBuilder insert(int offset， String str) 指定位置插入自负传</h2><h2 id="3-void-setCharAt-int-i，-char-c-设置指定位置字符"><a href="#3-void-setCharAt-int-i，-char-c-设置指定位置字符" class="headerlink" title="3.void setCharAt(int i， char c)设置指定位置字符"></a>3.void setCharAt(int i， char c)设置指定位置字符</h2><h2 id="4-StringBuilder-append（String-str）追加字符串在尾部"><a href="#4-StringBuilder-append（String-str）追加字符串在尾部" class="headerlink" title="4.StringBuilder append（String str）追加字符串在尾部"></a>4.StringBuilder append（String str）追加字符串在尾部</h2>]]></content>
-      <categories>
-        <category>技术</category>
-        <category>主题</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-        <tag>String</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JAVA异常机制</title>
     <url>/2021/04/14/JAVA%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6/</url>
     <content><![CDATA[<h1 id="一、异常"><a href="#一、异常" class="headerlink" title="一、异常"></a>一、异常</h1><p>异常有两种选择：throws和catch，一种是抛给调用者，另一种是在本方法中捕获处理。</p>
@@ -697,44 +812,48 @@ public class Main {
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-26删除数组中重复项</title>
-    <url>/2020/08/11/LeetCode-26%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
-<p>示例 1:</p>
-<p>给定数组 nums = [1,1,2], </p>
-<p>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p>
-<p>你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p>
-<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p>
-<p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p>
-<p>你不需要考虑数组中超出新长度后面的元素。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>双指针法：存放非重复元素的指针(0开始)   寻找下一个非重复元素的指针(1开始)</p>
-<p>寻找指针：遍历数组找到 下一个不重复元素(和已存放的元素不相等)，找到后存入非重复指针</p>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><pre><code>func removeDuplicates(nums []int) int {
-    if(len(nums) == 1) {
-        return 1
-    }
-    //bef最大不重复项  cur当前遍历元素
-    bef := 0
-    for cur := 1; cur &lt; len(nums); cur++ {
-        if(nums[bef] != nums[cur]) {
-            bef++
-            nums[bef] = nums[cur]
-        }
-    }    
-    return bef+1  
-}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一开始的思路是相邻元素两两比较，不同则后续元素前移一位，数组长度减1</p>
-<p>，时间复杂度为O(n方)。</p>
-<p>缺点就是每次不同移动n个元素，双指针法就是一指针存放，一指针寻找，只移动一个元素，更快</p>
+    <title>Java中祖先类Object提供的基础方法</title>
+    <url>/2021/04/09/Java%E4%B8%AD%E7%A5%96%E5%85%88%E7%B1%BBObject%E6%8F%90%E4%BE%9B%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th>函数声明</th>
+<th>Object中作用</th>
+<th>子类重写作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean <strong>equals</strong> (Object other)</td>
+<td>两个对象的引用是否相等，而非其实例域</td>
+<td>比较子类的两个对象其内容是否相等</td>
+</tr>
+<tr>
+<td>String hashCode()</td>
+<td>由对象导出的散列码</td>
+<td></td>
+</tr>
+<tr>
+<td>String <strong>toString</strong> ()</td>
+<td>返回对象类名和散列码</td>
+<td>方便打印对象变量的实际内容，在JAVA语句中+x或x可以自动转为x.toString()</td>
+</tr>
+<tr>
+<td>Class getClass ()</td>
+<td>返回包含对象信息的类对象</td>
+<td></td>
+</tr>
+<tr>
+<td>String getName()</td>
+<td>获取类名字</td>
+<td></td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>数组</tag>
-        <tag>LeetCode</tag>
-        <tag>简单</tag>
+        <tag>JAVA</tag>
       </tags>
   </entry>
   <entry>
@@ -847,6 +966,65 @@ public class Main {
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-26删除数组中重复项</title>
+    <url>/2020/08/11/LeetCode-26%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<p>示例 1:</p>
+<p>给定数组 nums = [1,1,2], </p>
+<p>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p>
+<p>你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p>
+<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p>
+<p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p>
+<p>你不需要考虑数组中超出新长度后面的元素。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>双指针法：存放非重复元素的指针(0开始)   寻找下一个非重复元素的指针(1开始)</p>
+<p>寻找指针：遍历数组找到 下一个不重复元素(和已存放的元素不相等)，找到后存入非重复指针</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><pre><code>func removeDuplicates(nums []int) int {
+    if(len(nums) == 1) {
+        return 1
+    }
+    //bef最大不重复项  cur当前遍历元素
+    bef := 0
+    for cur := 1; cur &lt; len(nums); cur++ {
+        if(nums[bef] != nums[cur]) {
+            bef++
+            nums[bef] = nums[cur]
+        }
+    }    
+    return bef+1  
+}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一开始的思路是相邻元素两两比较，不同则后续元素前移一位，数组长度减1</p>
+<p>，时间复杂度为O(n方)。</p>
+<p>缺点就是每次不同移动n个元素，双指针法就是一指针存放，一指针寻找，只移动一个元素，更快</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JAVA String和StringBuilder常用方法</title>
+    <url>/2021/04/08/JAVA-String%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="一、String不可变字符串"><a href="#一、String不可变字符串" class="headerlink" title="一、String不可变字符串"></a>一、String不可变字符串</h1><h2 id="1-int-compareTo-String-other-比较两字符串大小"><a href="#1-int-compareTo-String-other-比较两字符串大小" class="headerlink" title="1.int compareTo(String other) 比较两字符串大小"></a>1.int compareTo(String other) 比较两字符串大小</h2><h2 id="2-boolean-equals-Object-object-比较两字符串是否其内容一致"><a href="#2-boolean-equals-Object-object-比较两字符串是否其内容一致" class="headerlink" title="2.boolean equals(Object object)比较两字符串是否其内容一致"></a>2.boolean equals(Object object)比较两字符串是否其内容一致</h2><p>==比较运算符比较的是引用位置是否相等，而非其内容</p>
+<h2 id="3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true"><a href="#3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true" class="headerlink" title="3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true"></a>3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true</h2><h2 id="4-int-indexOf-String-str-返回与指定字符串匹配的首个位置"><a href="#4-int-indexOf-String-str-返回与指定字符串匹配的首个位置" class="headerlink" title="4.int indexOf(String str)返回与指定字符串匹配的首个位置"></a>4.int indexOf(String str)返回与指定字符串匹配的首个位置</h2><p>如果还要其他要求，是有函数重载的</p>
+<h2 id="5-int-length-字符串长度"><a href="#5-int-length-字符串长度" class="headerlink" title="5.int length()字符串长度"></a>5.int length()字符串长度</h2><h2 id="6-String-toLowerCase-和String-toUpperCase-大小写转换"><a href="#6-String-toLowerCase-和String-toUpperCase-大小写转换" class="headerlink" title="6.String toLowerCase()和String toUpperCase()大小写转换"></a>6.String toLowerCase()和String toUpperCase()大小写转换</h2><h2 id="7-String-trim-删除原始字符串头部和尾部的空格"><a href="#7-String-trim-删除原始字符串头部和尾部的空格" class="headerlink" title="7.String trim()删除原始字符串头部和尾部的空格"></a>7.String trim()删除原始字符串头部和尾部的空格</h2><p>更多方法可以参考Java的官网api文档</p>
+<h1 id="二、StringBuilder"><a href="#二、StringBuilder" class="headerlink" title="二、StringBuilder"></a>二、StringBuilder</h1><p>string问题是每次做字符串拼接都会产生一个新的String对象，这样既耗时又费空间</p>
+<p>使用StringBuilder则可以避免这个问题发生</p>
+<h2 id="1-String-toString-转为字符串"><a href="#1-String-toString-转为字符串" class="headerlink" title="1.String toString()转为字符串"></a>1.String toString()转为字符串</h2><h2 id="2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传"><a href="#2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传" class="headerlink" title="2.StringBuilder insert(int offset， String str) 指定位置插入自负传"></a>2.StringBuilder insert(int offset， String str) 指定位置插入自负传</h2><h2 id="3-void-setCharAt-int-i，-char-c-设置指定位置字符"><a href="#3-void-setCharAt-int-i，-char-c-设置指定位置字符" class="headerlink" title="3.void setCharAt(int i， char c)设置指定位置字符"></a>3.void setCharAt(int i， char c)设置指定位置字符</h2><h2 id="4-StringBuilder-append（String-str）追加字符串在尾部"><a href="#4-StringBuilder-append（String-str）追加字符串在尾部" class="headerlink" title="4.StringBuilder append（String str）追加字符串在尾部"></a>4.StringBuilder append（String str）追加字符串在尾部</h2>]]></content>
+      <categories>
+        <category>技术</category>
+        <category>主题</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>String</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-119.杨辉三角 II</title>
     <url>/2020/09/01/LeetCode119.%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%20II/</url>
     <content><![CDATA[<h4 id="LeetCode119-杨辉三角-II"><a href="#LeetCode119-杨辉三角-II" class="headerlink" title="LeetCode119. 杨辉三角 II"></a><a href="https://leetcode-cn.com/problems/pascals-triangle-ii/" target="_blank" rel="noopener">LeetCode119. 杨辉三角 II</a></h4><h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个非负索引 <em>k</em>，其中 <em>k</em> ≤ 33，返回杨辉三角的第 <em>k</em> 行。</p>
@@ -921,6 +1099,66 @@ public class Main {
         <tag>数组</tag>
         <tag>LeetCode</tag>
         <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JAVA中数组的常见操作</title>
+    <url>/2021/04/08/JAVA%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h1 id="一、普通数组int"><a href="#一、普通数组int" class="headerlink" title="一、普通数组int[]"></a>一、普通数组int[]</h1><h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>类似C++中的数组指针，使用等号赋值只是浅拷贝，深拷贝需要用Arrays类的如下方法</p>
+<pre><code>Static type copyOf(type a[], int length) // 深拷贝出一个新的数组
+Static type copyOfRange(type a[], int start, int end)</code></pre><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><pre><code>int[] a = new int[1000];
+Arrays.sort(a); // 使用优化后的快速排序方法对数组进行排序</code></pre><h2 id="判断是否相等"><a href="#判断是否相等" class="headerlink" title="判断是否相等"></a>判断是否相等</h2><p>直接用等号判断是判断引用是否为同一处，如果要判断具体值要用Arrays类的如下方法</p>
+<pre><code>static boolean equals(type[] a, type[] b)</code></pre><h1 id="二、泛型数组列表ArrayList-lt-type-gt"><a href="#二、泛型数组列表ArrayList-lt-type-gt" class="headerlink" title="二、泛型数组列表ArrayList&lt;type&gt;"></a>二、泛型数组列表ArrayList&lt;type&gt;</h1><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 构建</span>
+ArrayList<span class="token operator">&lt;</span>Empolyee<span class="token operator">></span> staff <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>Employee<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 声明并构造</span>
+<span class="token comment" spellcheck="true">// 增删改查</span>
+staff<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Emplyee</span><span class="token punctuation">(</span><span class="token string">"xxx"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 尾部添加元素,也可以指定位置</span>
+Employee e <span class="token operator">=</span> staff<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 删除下标为index的元素，之后所有元素前一</span>
+staff<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 将index位置元素赋值</span>
+Employee e <span class="token operator">=</span> staff<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 取指定位置元素</span>
+<span class="token comment" spellcheck="true">// 遍历</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>Employee e <span class="token operator">:</span> staff<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
+<p>使用ArrayList存放基本类型数据需要装箱和拆箱</p>
+<pre><code>ArrayList&lt;Integer&gt; lst = new ArrayList&lt;Integer&gt;();
+lst.add(3); //等价于Integer.valueOf(3)
+int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java重写完美的equals方法</title>
+    <url>/2021/04/09/Java%E9%87%8D%E5%86%99%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>示例代码：</p>
+<pre><code>    @Override
+    public boolean equals(Object otherObject) {
+        // 1.判断是否引用自身，小优化可以提前避免后面的实例比较
+        if(this == otherObject) {
+            return true;
+        }
+        // 2.比较this和otherObject是否为同一个类,此处有两种选择：
+        //   a. this.getClass()==otherObject.getClass(),各个子类中的语义不一致
+        //   b. otherObject instanceof ClassName,各个子类中的语义一致
+        if (this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+
+        // 如果步骤2中按b分支，既比较双方可以转为通用父类，则多下面一步转换
+        // 按照a分支则无需此步骤
+        // ClassName other = (ClassName) otherObject;
+        Father other = (Father) otherObject;
+
+        // 3.比较this，other的内部实例, 基本类型用==，其他类型用Objects.equals(a,b)
+        return Objects.equals(this.a, other.a) &amp;&amp; this.b == other.b;
+    }</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
       </tags>
   </entry>
   <entry>
@@ -1059,60 +1297,6 @@ public class Main {
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-28. 实现 strStr()</title>
-    <url>/2020/08/11/Leetcode-28-%E5%AE%9E%E7%8E%B0-strStr/</url>
-    <content><![CDATA[<h4 id="Leetcode-28-实现-strStr"><a href="#Leetcode-28-实现-strStr" class="headerlink" title="Leetcode-28. 实现 strStr()"></a><a href="https://leetcode-cn.com/problems/implement-strstr/" target="_blank" rel="noopener">Leetcode-28. 实现 strStr()</a></h4><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>实现 strStr() 函数。</p>
-<p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。</p>
-<p>示例 1:</p>
-<p>输入: haystack = “hello”, needle = “ll”<br>输出: 2<br>示例 2:</p>
-<p>输入: haystack = “aaaaa”, needle = “bba”<br>输出: -1<br>说明:</p>
-<p>当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
-<p>对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/implement-strstr" target="_blank" rel="noopener">https://leetcode-cn.com/problems/implement-strstr</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>遍历每一个haystack的字符，以此为起点和needle匹配，匹配成功，则返回遍历下标；否则返回-1</p>
-<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><pre><code>func strStr(haystack string, needle string) int {
-    hay_len := len(haystack)
-    ne_len := len(needle)
-    for i:=0; i &lt; hay_len-ne_len+1; i++ {
-       //判断haystack[i]开头是否和needle匹配
-       if(isStrEqual(haystack[i:], needle)){
-           return i
-       }
-    }
-    return -1
-}
-
-func isStrEqual(str1 string, str2 string) bool {
-    length := len(str2)
-    flag := true
-    for j:=0; j&lt;length ;j++ {
-        if(str1[j] != str2[j]) {
-            flag = false
-            break
-        }
-    } 
-    return flag
-}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>书写代码在一开始的时候没有注意到haystack的遍历区间是</p>
-<p>len(haystack) - len(needle)+1，遍历到尾部是没必要且麻烦的</p>
-<p>避免这种情况就是当我有了基本思路后，是会有好多漏洞的，实现方法要想一次最优且简洁就要把所有的测试用例列出来，不要光用脑子想，要写在纸上</p>
-<p>然后把脑子里的思路转成代码，和用例一一对应</p>
-<h1 id="进一步的优化（未完待补坑）"><a href="#进一步的优化（未完待补坑）" class="headerlink" title="进一步的优化（未完待补坑）"></a>进一步的优化（未完待补坑）</h1><p>上面代码的时间复杂度为O((N-L)*L)</p>
-<h2 id="优化方案一：hash省去L长度是否匹配判断"><a href="#优化方案一：hash省去L长度是否匹配判断" class="headerlink" title="优化方案一：hash省去L长度是否匹配判断"></a>优化方案一：hash省去L长度是否匹配判断</h2><p>之所以复杂是因为遍历每一字符都要比较L长度判断是否匹配</p>
-<p>这个*L可以转化为O(1)</p>
-<p>方法就是用hash值，我们对字符进行编码，生成唯一值</p>
-<p>这样每次判断匹配时就转化为计算hash值了</p>
-<h2 id="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"><a href="#优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间" class="headerlink" title="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"></a>优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间</h2><p>这个查了资料比较复杂，等以后有时间不用，挖个坑QAQ</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>LeetCode</tag>
-        <tag>简单</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-35搜索插入位置</title>
     <url>/2020/08/11/Leetcode-35%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/search-insert-position/" target="_blank" rel="noopener">Leetcode-35搜索插入位置</a></p>
@@ -1187,68 +1371,6 @@ func isStrEqual(str1 string, str2 string) bool {
         <tag>数组</tag>
         <tag>LeetCode</tag>
         <tag>简单</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-66. 加一</title>
-    <url>/2020/08/12/Leetcode-66-%E5%8A%A0%E4%B8%80/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">Leetcode-66. 加一</a></p>
-<h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p>
-<p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p>
-<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
-<p>示例 1:</p>
-<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。<br>示例 2:</p>
-<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/plus-one" target="_blank" rel="noopener">https://leetcode-cn.com/problems/plus-one</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="2-0解题思路"><a href="#2-0解题思路" class="headerlink" title="2.0解题思路"></a>2.0解题思路</h1><p>这道题比较简单，从后向前遍历找到第一个非9数字，记下标为not9first，该下标之后所有数全为0，本下标元素值+1 对异常情况值溢出做特殊处理</p>
-<h1 id="3-0实现代码"><a href="#3-0实现代码" class="headerlink" title="3.0实现代码"></a>3.0实现代码</h1><pre><code>func plusOne(digits []int) []int {
-    oldLen := len(digits)
-    not9first := oldLen-1 // 从后向前非9的第一个数
-    for ; not9first &gt;= 0 &amp;&amp; digits[not9first] == 9; not9first-- {
-        digits[not9first] = 0 // 是9就成0
-    }
-    if(not9first != -1) { // 加完没溢出
-        digits[not9first] += 1
-    }else { // 加完溢出
-        digits = append([]int{1}, digits...) // 首部赋值1
-    }
-    return digits
-}</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>LeetCode</tag>
-        <tag>简单</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JAVA中数组的常见操作</title>
-    <url>/2021/04/08/JAVA%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h1 id="一、普通数组int"><a href="#一、普通数组int" class="headerlink" title="一、普通数组int[]"></a>一、普通数组int[]</h1><h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>类似C++中的数组指针，使用等号赋值只是浅拷贝，深拷贝需要用Arrays类的如下方法</p>
-<pre><code>Static type copyOf(type a[], int length) // 深拷贝出一个新的数组
-Static type copyOfRange(type a[], int start, int end)</code></pre><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><pre><code>int[] a = new int[1000];
-Arrays.sort(a); // 使用优化后的快速排序方法对数组进行排序</code></pre><h2 id="判断是否相等"><a href="#判断是否相等" class="headerlink" title="判断是否相等"></a>判断是否相等</h2><p>直接用等号判断是判断引用是否为同一处，如果要判断具体值要用Arrays类的如下方法</p>
-<pre><code>static boolean equals(type[] a, type[] b)</code></pre><h1 id="二、泛型数组列表ArrayList-lt-type-gt"><a href="#二、泛型数组列表ArrayList-lt-type-gt" class="headerlink" title="二、泛型数组列表ArrayList&lt;type&gt;"></a>二、泛型数组列表ArrayList&lt;type&gt;</h1><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 构建</span>
-ArrayList<span class="token operator">&lt;</span>Empolyee<span class="token operator">></span> staff <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>Employee<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 声明并构造</span>
-<span class="token comment" spellcheck="true">// 增删改查</span>
-staff<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Emplyee</span><span class="token punctuation">(</span><span class="token string">"xxx"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 尾部添加元素,也可以指定位置</span>
-Employee e <span class="token operator">=</span> staff<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 删除下标为index的元素，之后所有元素前一</span>
-staff<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 将index位置元素赋值</span>
-Employee e <span class="token operator">=</span> staff<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 取指定位置元素</span>
-<span class="token comment" spellcheck="true">// 遍历</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span>Employee e <span class="token operator">:</span> staff<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
-<p>使用ArrayList存放基本类型数据需要装箱和拆箱</p>
-<pre><code>ArrayList&lt;Integer&gt; lst = new ArrayList&lt;Integer&gt;();
-lst.add(3); //等价于Integer.valueOf(3)
-int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -1387,6 +1509,40 @@ func max(arr []int) int{
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-66. 加一</title>
+    <url>/2020/08/12/Leetcode-66-%E5%8A%A0%E4%B8%80/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">Leetcode-66. 加一</a></p>
+<h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p>
+<p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p>
+<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
+<p>示例 1:</p>
+<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。<br>示例 2:</p>
+<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/plus-one" target="_blank" rel="noopener">https://leetcode-cn.com/problems/plus-one</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="2-0解题思路"><a href="#2-0解题思路" class="headerlink" title="2.0解题思路"></a>2.0解题思路</h1><p>这道题比较简单，从后向前遍历找到第一个非9数字，记下标为not9first，该下标之后所有数全为0，本下标元素值+1 对异常情况值溢出做特殊处理</p>
+<h1 id="3-0实现代码"><a href="#3-0实现代码" class="headerlink" title="3.0实现代码"></a>3.0实现代码</h1><pre><code>func plusOne(digits []int) []int {
+    oldLen := len(digits)
+    not9first := oldLen-1 // 从后向前非9的第一个数
+    for ; not9first &gt;= 0 &amp;&amp; digits[not9first] == 9; not9first-- {
+        digits[not9first] = 0 // 是9就成0
+    }
+    if(not9first != -1) { // 加完没溢出
+        digits[not9first] += 1
+    }else { // 加完溢出
+        digits = append([]int{1}, digits...) // 首部赋值1
+    }
+    return digits
+}</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Sakura主题添加背景切换功能</title>
     <url>/2020/12/16/Sakura%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%83%8C%E6%99%AF%E5%88%87%E6%8D%A2%E5%8A%9F%E8%83%BD/</url>
     <content><![CDATA[<p>参考博客:<a href="https://cuitianyu.site/Sakura-config-home-20200901.html" target="_blank" rel="noopener">https://cuitianyu.site/Sakura-config-home-20200901.html</a></p>
@@ -1456,6 +1612,60 @@ func max(arr []int) int{
       </categories>
   </entry>
   <entry>
+    <title>Leetcode-28. 实现 strStr()</title>
+    <url>/2020/08/11/Leetcode-28-%E5%AE%9E%E7%8E%B0-strStr/</url>
+    <content><![CDATA[<h4 id="Leetcode-28-实现-strStr"><a href="#Leetcode-28-实现-strStr" class="headerlink" title="Leetcode-28. 实现 strStr()"></a><a href="https://leetcode-cn.com/problems/implement-strstr/" target="_blank" rel="noopener">Leetcode-28. 实现 strStr()</a></h4><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>实现 strStr() 函数。</p>
+<p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。</p>
+<p>示例 1:</p>
+<p>输入: haystack = “hello”, needle = “ll”<br>输出: 2<br>示例 2:</p>
+<p>输入: haystack = “aaaaa”, needle = “bba”<br>输出: -1<br>说明:</p>
+<p>当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
+<p>对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/implement-strstr" target="_blank" rel="noopener">https://leetcode-cn.com/problems/implement-strstr</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>遍历每一个haystack的字符，以此为起点和needle匹配，匹配成功，则返回遍历下标；否则返回-1</p>
+<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><pre><code>func strStr(haystack string, needle string) int {
+    hay_len := len(haystack)
+    ne_len := len(needle)
+    for i:=0; i &lt; hay_len-ne_len+1; i++ {
+       //判断haystack[i]开头是否和needle匹配
+       if(isStrEqual(haystack[i:], needle)){
+           return i
+       }
+    }
+    return -1
+}
+
+func isStrEqual(str1 string, str2 string) bool {
+    length := len(str2)
+    flag := true
+    for j:=0; j&lt;length ;j++ {
+        if(str1[j] != str2[j]) {
+            flag = false
+            break
+        }
+    } 
+    return flag
+}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>书写代码在一开始的时候没有注意到haystack的遍历区间是</p>
+<p>len(haystack) - len(needle)+1，遍历到尾部是没必要且麻烦的</p>
+<p>避免这种情况就是当我有了基本思路后，是会有好多漏洞的，实现方法要想一次最优且简洁就要把所有的测试用例列出来，不要光用脑子想，要写在纸上</p>
+<p>然后把脑子里的思路转成代码，和用例一一对应</p>
+<h1 id="进一步的优化（未完待补坑）"><a href="#进一步的优化（未完待补坑）" class="headerlink" title="进一步的优化（未完待补坑）"></a>进一步的优化（未完待补坑）</h1><p>上面代码的时间复杂度为O((N-L)*L)</p>
+<h2 id="优化方案一：hash省去L长度是否匹配判断"><a href="#优化方案一：hash省去L长度是否匹配判断" class="headerlink" title="优化方案一：hash省去L长度是否匹配判断"></a>优化方案一：hash省去L长度是否匹配判断</h2><p>之所以复杂是因为遍历每一字符都要比较L长度判断是否匹配</p>
+<p>这个*L可以转化为O(1)</p>
+<p>方法就是用hash值，我们对字符进行编码，生成唯一值</p>
+<p>这样每次判断匹配时就转化为计算hash值了</p>
+<h2 id="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"><a href="#优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间" class="headerlink" title="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"></a>优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间</h2><p>这个查了资料比较复杂，等以后有时间不用，挖个坑QAQ</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Sakura添加在线和博主聊天功能</title>
     <url>/2020/12/16/Sakura%E6%B7%BB%E5%8A%A0%E5%9C%A8%E7%BA%BF%E5%92%8C%E5%8D%9A%E4%B8%BB%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/</url>
     <content><![CDATA[<p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104295156" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104295156</a></p>
@@ -1474,227 +1684,6 @@ func max(arr []int) int{
       <categories>
         <category>技术</category>
       </categories>
-  </entry>
-  <entry>
-    <title>MarkDown快速查询转移字符</title>
-    <url>/2021/05/25/MarkDown%E5%BF%AB%E9%80%9F%E6%9F%A5%E8%AF%A2%E8%BD%AC%E7%A7%BB%E5%AD%97%E7%AC%A6/</url>
-    <content><![CDATA[<h1 id="MarkDown快速查询转移字符"><a href="#MarkDown快速查询转移字符" class="headerlink" title="MarkDown快速查询转移字符"></a>MarkDown快速查询转移字符</h1><h1 id="公式块部分"><a href="#公式块部分" class="headerlink" title="公式块部分"></a>公式块部分</h1><p>举例</p>
-<pre><code>$$
-dp[i]=
-\begin{cases}
-
-    计算式1     &amp;计算式条件  \\换行
-    计算式2    &amp;计算式条件  \\换行
-\end{cases}
-$$</code></pre><p>详细表格</p>
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th>\begin{cases}     内容    \end{cases}</th>
-<th>大公式表达式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">公式块</td>
-<td>\big</td>
-<td>[ //比较大的左中括号</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td>\bigg[</td>
-<td>//再大一点</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td>\Big[</td>
-<td>//比big大一点</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td>\Bigg[</td>
-<td>//比bigg大一点</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td>a_2  a下标2            a^3 a上标3</td>
-<td>上标下标</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td>\sum ：∑  \int ：∫  \oint ：∮  \prod：∏</td>
-<td>求和、求导</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td>\alpha： α  \beta： β  \gamma：γ  \Phi ： Φ  \Omega：Ω  \Delta： Δ  \delta： δ</td>
-<td>希腊字母</td>
-</tr>
-</tbody></table>
-<h1 id="代码块部分"><a href="#代码块部分" class="headerlink" title="代码块部分"></a>代码块部分</h1><h1 id="文本部分"><a href="#文本部分" class="headerlink" title="文本部分"></a>文本部分</h1><table>
-<thead>
-<tr>
-<th>&amp;nbsp;     或者    键盘全角模式空格键</th>
-<th>空格</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>&lt;sup&gt;xxx&lt;/sup&gt;</strong></td>
-<td><strong>上标</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>&lt;sub&gt;xxx&lt;/sub&gt;</strong></td>
-<td><strong>下标</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>30&amp;deg;</strong></td>
-<td><strong>角度符号30&deg;</strong></td>
-<td></td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>资料整理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Golang日志第三方库的使用</title>
-    <url>/2021/05/20/Golang%E6%97%A5%E5%BF%97%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="1-第三方日志库的对比"><a href="#1-第三方日志库的对比" class="headerlink" title="1.第三方日志库的对比"></a>1.第三方日志库的对比</h1><h1 id="2-Zap"><a href="#2-Zap" class="headerlink" title="2.Zap"></a>2.Zap</h1><h2 id="2-1简单实例-会把日志打印到控制台"><a href="#2-1简单实例-会把日志打印到控制台" class="headerlink" title="2.1简单实例-会把日志打印到控制台"></a>2.1简单实例-会把日志打印到控制台</h2><pre><code>//1.快速创建Zap.logger的方法，使用预先写好的配置创建日志变量
-//NewExample(Option...)
-//NewDevelopment(Option...)
-//NewProduction
-logger, _ := zap.NewProduction() 
-
-defer logger.Sync() // flushes buffer, if any
-//2.创建日志对象后可以打印日志了，有两种打印日志的方式
-//2.1效率低一点，但自由度更高
-sugar := logger.Sugar()
-sugar.Infow(&quot;failed to fetch URL&quot;,
-  // Structured context as loosely typed key-value pairs.
-  &quot;url&quot;, url,
-  &quot;attempt&quot;, 3,
-  &quot;backoff&quot;, time.Second,
-)
-sugar.Infof(&quot;Failed to fetch URL: %s&quot;, url)
-//2.2效率高一点，要指定类型
-defer logger.Sync()
-logger.Info(&quot;failed to fetch URL&quot;,
-  // Structured context as strongly typed Field values.
-  zap.String(&quot;url&quot;, url),
-  zap.Int(&quot;attempt&quot;, 3),
-  zap.Duration(&quot;backoff&quot;, time.Second),
-)
-</code></pre><h2 id="2-2定义自己的logger-打印到指定文件"><a href="#2-2定义自己的logger-打印到指定文件" class="headerlink" title="2.2定义自己的logger-打印到指定文件"></a>2.2定义自己的logger-打印到指定文件</h2><pre><code>//使用zap.New创建自定义的日志变量
-//func New(core zapcore.Core, options ...Option) *Logger
-
-
-//zapcore.Core可以使用zapcore.NewCore，如果需要不同级别日志输出到不同文件使用zapcore.NewTee(Core...)放入多个core
-需要需要三个配置
-//  Encoder编码器(日志格式)：可以使用预先设置的配置  zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig()),除此之外还有zapcore.NewConsoleEncoder(EncoderConfig)等配置
-//  WriterSyncer(日志输出位置):zapcore.AddSync(io.Writer)将打开的文件传入
-//  LogLevel(哪些日志级别的日志将被打印): 可以直接使用提供好的日志级别，也可以定制zap.LevelEnablerFunc(func(lvl zapcore.Level) bool) 传入一个函数返回bool用于判断日志级别是否需要被打印
-
-//1.创建Encode日志格式
-    encoder := zapcore.NewConsoleEncoder(zapcore.EncoderConfig{
-        MessageKey:  &quot;msg&quot;,
-        LevelKey:    &quot;level&quot;,
-        EncodeLevel: zapcore.CapitalLevelEncoder,
-        TimeKey:     &quot;ts&quot;,
-        EncodeTime: func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
-            enc.AppendString(fmt.Sprintf(&quot;%d%02d%02d_%02d%02d%02d&quot;, t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second()))
-        },
-        CallerKey:    &quot;file&quot;,
-        EncodeCaller: zapcore.ShortCallerEncoder,
-        EncodeDuration: func(d time.Duration, enc zapcore.PrimitiveArrayEncoder) {
-            enc.AppendInt64(int64(d) / 1000000)
-        },
-    })
-//2.创建writer日志输出位置
-      file, err := os.OpenFile(logPath, os.O_CREATE|os.O_APPEND|os.O_RDWR, 0744)
-      if err != nil {
-          return     fmt.Errorf(&quot;log file open file ,err:%v&quot;, err)
-      }
-    writer := apcore.AddSync(writer)
-//3.创建logLevel日志输出范围
-
-    // 实现判断日志等级的interface (其实 zapcore.*Level 自身就是 interface)，创建出的level等价于zapcore.InfoLevel
-    level := zap.LevelEnablerFunc(func(lvl zapcore.Level) bool {
-        return lvl &gt;= zapcore.InfoLevel
-    })
-
-
-    // 4.创建具体core
-        zapcore.NewCore(encoder, writer, level)
-
-        // 如果要是不同级别日志放到不同文件，用NewTee
-    // core := zapcore.NewTee(
-    //   zapcore.NewCore(encoder, writer, level),
-    //   zapcore.NewCore(encoder2, writer2, level2)
-    // )
-// 创建logger，可以加入可选项
-    logger = zap.New(core, zap.AddCaller()) // 需要传入 zap.AddCaller() 才会显示打日志点的文件名和行数</code></pre><h1 id="3-文件日志切割第三方库"><a href="#3-文件日志切割第三方库" class="headerlink" title="3.文件日志切割第三方库"></a>3.文件日志切割第三方库</h1><table>
-<thead>
-<tr>
-<th>仓库</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a href="https://github.com/natefinch" target="_blank" rel="noopener">natefinch</a>/<strong><a href="https://github.com/natefinch/lumberjack" target="_blank" rel="noopener">lumberjack</a></strong></td>
-<td>按文件大小自动切割</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://github.com/lestrrat-go" target="_blank" rel="noopener">lestrrat-go</a>/<strong><a href="https://github.com/lestrrat-go/file-rotatelogs" target="_blank" rel="noopener">file-rotatelogs</a></strong></td>
-<td>按找时间自动切割</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<pre><code>    /* 日志轮转相关函数
-    Filename: 日志文件的位置
-    MaxSize：在进行切割之前，日志文件的最大大小（以MB为单位）
-    MaxBackups：保留旧文件的最大个数
-    MaxAges：保留旧文件的最大天数
-    Compress：是否压缩/归档旧文件
-    */
-    writer := &amp;lumberjack.Logger{
-        Filename:   logPath,
-        MaxSize:    100,
-        MaxBackups: 5,
-        MaxAge:     5,
-        Compress:   false,
-    }</code></pre><pre><code>    /* 日志轮转相关函数
-    `WithLinkName` 为最新的日志建立软连接
-    `WithRotationTime` 设置日志分割的时间，隔多久分割一次
-    WithMaxAge 和 WithRotationCount二者只能设置一个
-    `WithMaxAge` 设置文件清理前的最长保存时间
-    `WithRotationCount` 设置文件清理前最多保存的个数
-    */
-    writer, err := rotatelogs.New(
-        logPath+&quot;.%Y-%m-%d-%H:%M&quot;,
-        rotatelogs.WithLinkName(logPath),
-        rotatelogs.WithMaxAge(time.Duration(24)*time.Hour),
-        rotatelogs.WithRotationTime(time.Duration(60)*time.Hour),
-    )</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Golang</tag>
-      </tags>
   </entry>
   <entry>
     <title>Linux常用命令整理</title>
@@ -1902,6 +1891,42 @@ logger.Info(&quot;failed to fetch URL&quot;,
 ]]></content>
   </entry>
   <entry>
+    <title>Redis常用命令整理</title>
+    <url>/2021/04/01/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h1 id="0-前言及Redis的链接"><a href="#0-前言及Redis的链接" class="headerlink" title="0.前言及Redis的链接"></a>0.前言及Redis的链接</h1><p>redis缓存数据库，主要存放key-value键值对，其中key为字符串，value可为多种类型<strong>字符串</strong>、<strong>列表</strong>、<strong>集合</strong>、<strong>字典</strong></p>
+<h1 id="1-设置字符串"><a href="#1-设置字符串" class="headerlink" title="1.设置字符串"></a>1.设置字符串</h1><pre><code>set key value
+get key value</code></pre><h1 id="2-设置列表"><a href="#2-设置列表" class="headerlink" title="2.设置列表"></a>2.设置列表</h1><pre><code>lpsuh key childElement // 头部插入
+lpop  key // 头部删除
+lrang key 0 10 // 从头部开始查询到10
+
+// 注：尾部操作则将lpush替换成rpush
+// 头部插入的下表说明，头部入A、B、C
+下标:  0、  1、   2
+元素:  A、  B、   C
+下标:  -3、 -2、  -1</code></pre><h1 id="3-设置集合"><a href="#3-设置集合" class="headerlink" title="3.设置集合"></a>3.设置集合</h1><p>集合分为无序集合和有序集合(元素含权重)，集合元素个数为2的32次方-1个</p>
+<p>无序集合</p>
+<pre><code>sadd key member  // 添加元素
+smemebers key    // 查询所有元素
+scard key        // 获取集合中元素个数
+sdiff key1 key2  // 差集
+sinter key1 key2 // 集合的交集运算
+sunion key1 key2 // 集合的补集</code></pre><p>有序集合（元素含权重）</p>
+<pre><code>将sadd改为zadd极为有序集合
+zadd key score member // 添加元素，score为元素权重</code></pre><h1 id="4-key的其他操作（移除、过期时间、检测）"><a href="#4-key的其他操作（移除、过期时间、检测）" class="headerlink" title="4.key的其他操作（移除、过期时间、检测）"></a>4.key的其他操作（移除、过期时间、检测）</h1><pre><code>del key   // 删除key
+exist key // 检测key是否存在
+type key // 查看key类型
+expire   // 设置过期时间
+persist key // 持久化key，移除key过期时间
+ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和订阅"><a href="#5-Redis发布和订阅" class="headerlink" title="5.Redis发布和订阅"></a>5.Redis发布和订阅</h1><h1 id="6-Redis事务"><a href="#6-Redis事务" class="headerlink" title="6.Redis事务"></a>6.Redis事务</h1><h1 id="7-Redis脚本"><a href="#7-Redis脚本" class="headerlink" title="7.Redis脚本"></a>7.Redis脚本</h1>]]></content>
+      <categories>
+        <category>技术</category>
+        <category>主题</category>
+      </categories>
+      <tags>
+        <tag>Reids</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo+valine搭建博客评论系统</title>
     <url>/2021/03/19/hexo+valine%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<h1 id="hexo-valine搭建博客评论系统"><a href="#hexo-valine搭建博客评论系统" class="headerlink" title="hexo+valine搭建博客评论系统"></a>hexo+valine搭建博客评论系统</h1><p>1.注册LeanCloud</p>
@@ -1963,39 +1988,82 @@ rss: /atom.xml</code></pre>]]></content>
       </categories>
   </entry>
   <entry>
-    <title>Java中祖先类Object提供的基础方法</title>
-    <url>/2021/04/09/Java%E4%B8%AD%E7%A5%96%E5%85%88%E7%B1%BBObject%E6%8F%90%E4%BE%9B%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<table>
+    <title>MarkDown快速查询转移字符</title>
+    <url>/2021/05/25/MarkDown%E5%BF%AB%E9%80%9F%E6%9F%A5%E8%AF%A2%E8%BD%AC%E7%A7%BB%E5%AD%97%E7%AC%A6/</url>
+    <content><![CDATA[<h1 id="MarkDown快速查询转移字符"><a href="#MarkDown快速查询转移字符" class="headerlink" title="MarkDown快速查询转移字符"></a>MarkDown快速查询转移字符</h1><h1 id="公式块部分"><a href="#公式块部分" class="headerlink" title="公式块部分"></a>公式块部分</h1><p>举例</p>
+<pre><code>$$
+dp[i]=
+\begin{cases}
+
+    计算式1     &amp;计算式条件  \\换行
+    计算式2    &amp;计算式条件  \\换行
+\end{cases}
+$$</code></pre><p>详细表格</p>
+<table>
 <thead>
 <tr>
-<th>函数声明</th>
-<th>Object中作用</th>
-<th>子类重写作用</th>
+<th align="left"></th>
+<th>\begin{cases}     内容    \end{cases}</th>
+<th>大公式表达式</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>boolean <strong>equals</strong> (Object other)</td>
-<td>两个对象的引用是否相等，而非其实例域</td>
-<td>比较子类的两个对象其内容是否相等</td>
+<td align="left">公式块</td>
+<td>\big</td>
+<td>[ //比较大的左中括号</td>
 </tr>
 <tr>
-<td>String hashCode()</td>
-<td>由对象导出的散列码</td>
+<td align="left"></td>
+<td>\bigg[</td>
+<td>//再大一点</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>\Big[</td>
+<td>//比big大一点</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>\Bigg[</td>
+<td>//比bigg大一点</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>a_2  a下标2            a^3 a上标3</td>
+<td>上标下标</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>\sum ：∑  \int ：∫  \oint ：∮  \prod：∏</td>
+<td>求和、求导</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>\alpha： α  \beta： β  \gamma：γ  \Phi ： Φ  \Omega：Ω  \Delta： Δ  \delta： δ</td>
+<td>希腊字母</td>
+</tr>
+</tbody></table>
+<h1 id="代码块部分"><a href="#代码块部分" class="headerlink" title="代码块部分"></a>代码块部分</h1><h1 id="文本部分"><a href="#文本部分" class="headerlink" title="文本部分"></a>文本部分</h1><table>
+<thead>
+<tr>
+<th>&amp;nbsp;     或者    键盘全角模式空格键</th>
+<th>空格</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>&lt;sup&gt;xxx&lt;/sup&gt;</strong></td>
+<td><strong>上标</strong></td>
 <td></td>
 </tr>
 <tr>
-<td>String <strong>toString</strong> ()</td>
-<td>返回对象类名和散列码</td>
-<td>方便打印对象变量的实际内容，在JAVA语句中+x或x可以自动转为x.toString()</td>
-</tr>
-<tr>
-<td>Class getClass ()</td>
-<td>返回包含对象信息的类对象</td>
+<td><strong>&lt;sub&gt;xxx&lt;/sub&gt;</strong></td>
+<td><strong>下标</strong></td>
 <td></td>
 </tr>
 <tr>
-<td>String getName()</td>
-<td>获取类名字</td>
+<td><strong>30&amp;deg;</strong></td>
+<td><strong>角度符号30&deg;</strong></td>
 <td></td>
 </tr>
 </tbody></table>
@@ -2004,7 +2072,202 @@ rss: /atom.xml</code></pre>]]></content>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>JAVA</tag>
+        <tag>资料整理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang包管理工具介绍</title>
+    <url>/2021/03/31/golang%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<p>参考博客</p>
+<p>Go管理工具的使用</p>
+<h1 id="0-没有包管理工具的情况"><a href="#0-没有包管理工具的情况" class="headerlink" title="0.没有包管理工具的情况"></a>0.没有包管理工具的情况</h1><h2 id="0-1寻找依赖的路径："><a href="#0-1寻找依赖的路径：" class="headerlink" title="0.1寻找依赖的路径："></a>0.1寻找依赖的路径：</h2><p>1⃣️在GOROOT目录下查找</p>
+<p>2⃣️在GOPATH/src下面查找包</p>
+<h2 id="0-2获取依赖"><a href="#0-2获取依赖" class="headerlink" title="0.2获取依赖"></a>0.2获取依赖</h2><pre><code>go get 依赖地址 // 依赖包会存放到gopath下面两个位置，pkg里面.a文件和src下面的.go文件</code></pre><h1 id="1-govendor"><a href="#1-govendor" class="headerlink" title="1.govendor"></a>1.govendor</h1><h2 id="1-1管理方式"><a href="#1-1管理方式" class="headerlink" title="1.1管理方式"></a>1.1管理方式</h2><p>寻找依赖的路径：</p>
+<p>1⃣️在$GOPATH/src/当前包文件/vendor目录</p>
+<p>2⃣️向当前包目录的上级目录查找知道找到src下的vendor</p>
+<p>3⃣️在GOROOT目录下查找</p>
+<p>4⃣️在GOPATH下面查找包</p>
+<h2 id="1-2安装"><a href="#1-2安装" class="headerlink" title="1.2安装"></a>1.2安装</h2><pre><code>go get -u github.com/kardianos/govendor</code></pre><p>安装完成后为方便使用加入到环境变量</p>
+<pre><code>export PATH=&quot;$GOPATH/bin:$PATH&quot;</code></pre><h2 id="1-3使用"><a href="#1-3使用" class="headerlink" title="1.3使用"></a>1.3使用</h2><p>0⃣️如果不是从git上拉取已有vendor.json的项目，而是<strong>本地新建项目</strong>，则要初始化本地项目</p>
+<p>初始化项目目录，生成vendor目录和vendor.json文件</p>
+<pre><code>govendor init</code></pre><p>1⃣️下载项目依赖，这里以引入</p>
+<p>依赖为例</p>
+<p>从远程拉去下来依赖并放入当前vendor文件夹，记录到vendor.json,在gopath下不会有依赖包</p>
+<pre><code>govendor fetch &quot;包链接&quot;
+// 举例：govendor fetch &quot;github.com/labstack/echo/...&quot;  //这里三个点表示文件夹下的所有文件，或者echo后面不要有斜杠，标识拉取项目</code></pre><p>🐻踩坑：i.对于无法从网上下载下里的包，只能从git上自己手动下载，放到vendor下面 ii.有时需要加上三个点标识所有文件，不然会下载下一个空文件夹</p>
+<p>2⃣️提交到<strong>git上只需要提交vendor.json</strong>即可,不需要把所有的vendor依赖文件夹提交上去</p>
+<p>从git上拉起他人项目，项目中含有vendor.json文件，通过如下命令安装依赖包</p>
+<pre><code>govendor sync</code></pre><h2 id="1-4其他"><a href="#1-4其他" class="headerlink" title="1.4其他"></a>1.4其他</h2><p>常用命令</p>
+<pre><code>govendor list // 列出代码中所有被引用到的包及其状态</code></pre><pre><code>govendor fetch // 从远程仓库添加或更新某个包</code></pre><table>
+<thead>
+<tr>
+<th>子命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>init</td>
+<td>初始化一个新项目，生成vendor文件夹</td>
+</tr>
+<tr>
+<td>list</td>
+<td>根据当前项目文件的import列出所有依赖包</td>
+</tr>
+<tr>
+<td>add</td>
+<td></td>
+</tr>
+<tr>
+<td>update</td>
+<td></td>
+</tr>
+<tr>
+<td>remove</td>
+<td></td>
+</tr>
+<tr>
+<td>status</td>
+<td></td>
+</tr>
+<tr>
+<td>fetch</td>
+<td>从远程仓库拉取依赖包</td>
+</tr>
+<tr>
+<td>sync</td>
+<td></td>
+</tr>
+<tr>
+<td>migrate</td>
+<td></td>
+</tr>
+<tr>
+<td>get</td>
+<td></td>
+</tr>
+<tr>
+<td>license</td>
+<td></td>
+</tr>
+<tr>
+<td>shell</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>状态参数</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>缩写</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+local</td>
+<td>l</td>
+<td>本地包，即项目内部编写的包</td>
+</tr>
+<tr>
+<td>+external</td>
+<td>e</td>
+<td>外部包，即在 <code>GOPATH</code> 中、却不在项目 <code>vendor</code> 目录</td>
+</tr>
+<tr>
+<td>+vendor</td>
+<td>v</td>
+<td>已在 <code>vendor</code> 目录下的包</td>
+</tr>
+<tr>
+<td>+std</td>
+<td>s</td>
+<td>标准库里的包</td>
+</tr>
+<tr>
+<td>+excluded</td>
+<td>x</td>
+<td>明确被排除的外部包</td>
+</tr>
+<tr>
+<td>+unused</td>
+<td>u</td>
+<td>未使用的包，即在 <code>vendor</code> 目录下，但项目中并未引用到</td>
+</tr>
+<tr>
+<td>+missing</td>
+<td>m</td>
+<td>被引用了但却找不到的包</td>
+</tr>
+<tr>
+<td>+program</td>
+<td>p</td>
+<td>主程序包，即可被编译为执行文件的包</td>
+</tr>
+<tr>
+<td>+outside</td>
+<td></td>
+<td>相当于状态为 <code>+external +missing</code></td>
+</tr>
+<tr>
+<td>+all</td>
+<td></td>
+<td>所有包</td>
+</tr>
+</tbody></table>
+<p>支持状态参数的子命令有：<code>list</code>、<code>add</code>、<code>update</code>、<code>remove</code>、<code>fetch</code></p>
+<h1 id="2-gomod"><a href="#2-gomod" class="headerlink" title="2.gomod"></a>2.gomod</h1><p>前沿:go1.13版本会默认开启mod，1.11版本后才支持mod</p>
+<h2 id="2-0前期准备-设置go环境参数使其支持mod"><a href="#2-0前期准备-设置go环境参数使其支持mod" class="headerlink" title="2.0前期准备,设置go环境参数使其支持mod"></a>2.0前期准备,设置go环境参数使其支持mod</h2><pre><code>go env -w GO111MODULE=on // 启用go mod，之后可以用go env 命令展示一下go的配置</code></pre><h2 id="2-1管理方式"><a href="#2-1管理方式" class="headerlink" title="2.1管理方式"></a>2.1管理方式</h2><p>模块:多个包package的集合</p>
+<p>当<code>GO111MODULE</code>=<code>on</code>时，那么就会使用<code>modules</code>功能:这种模式下，<code>$GOPATH</code>不再作为build时导入的角色，依赖包会存放在<code>$GOPATH/pkg/mod</code>目录下。工程中的依赖包也会从此目录下查找.</p>
+<h2 id="2-2初始化一个新项目"><a href="#2-2初始化一个新项目" class="headerlink" title="2.2初始化一个新项目"></a>2.2初始化一个新项目</h2><pre><code>go mod init &lt;项目名&gt; //项目名不填写则是gopath/src后的相对路径名，填的话一般为github.com/your name/project name</code></pre><h2 id="2-3添加依赖"><a href="#2-3添加依赖" class="headerlink" title="2.3添加依赖"></a>2.3添加依赖</h2><h3 id="a-先编写程序improt依赖包"><a href="#a-先编写程序improt依赖包" class="headerlink" title="a.先编写程序improt依赖包"></a>a.先编写程序improt依赖包</h3><p>其实当go run执行时会自动下载依赖包，当然也可以不运行而是只去下载依赖包</p>
+<h3 id="b-下载依赖包"><a href="#b-下载依赖包" class="headerlink" title="b.下载依赖包"></a>b.下载依赖包</h3><pre><code>go mod tidy     // 检测并下载本项目的module所依赖的文件，同时会移除不需要的模块</code></pre><p>依赖包的存放位置是$GoPath/pkg/mod/</p>
+<h3 id="C-修改go-mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝"><a href="#C-修改go-mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝" class="headerlink" title="C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝"></a>C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝</h3><p>例如go.mod的内容乳腺癌</p>
+<pre><code>replace example.com/project/foo =&gt; ../foo</code></pre><h3 id="d-go-mod文件的介绍"><a href="#d-go-mod文件的介绍" class="headerlink" title="d.go.mod文件的介绍"></a>d.go.mod文件的介绍</h3><p>go.mod 提供了module, require、replace和exclude 四个命令</p>
+<ul>
+<li><code>module</code> 语句指定包的名字（路径）</li>
+<li><code>require</code> 语句指定的依赖项模块</li>
+<li><code>replace</code> 语句可以替换依赖项模块</li>
+<li><code>exclude</code> 语句可以忽略依赖项模块</li>
+</ul>
+<h2 id="2-4其他命令"><a href="#2-4其他命令" class="headerlink" title="2.4其他命令"></a>2.4其他命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vendor</td>
+<td>将依赖复制到vendor下</td>
+</tr>
+<tr>
+<td>graph</td>
+<td>打印模块依赖图</td>
+</tr>
+<tr>
+<td>verify</td>
+<td>验证依赖是否正确</td>
+</tr>
+<tr>
+<td>edit</td>
+<td>编辑go.mod文件</td>
+</tr>
+<tr>
+<td>download</td>
+<td>下载私有仓库的依赖到本地cache</td>
+</tr>
+</tbody></table>
+<p>🐻在国内访问<code>golang.org/x</code>的各个包都需要翻墙，你可以在<code>go.mod</code>中使用<code>replace</code>替换成github上对应的库。形式如下：</p>
+<pre><code>replace (
+    golang.org/x/crypto v0.0.0-20180820150726-614d502a4dac =&gt; github.com/golang/crypto v0.0.0-20180820150726-614d502a4dac
+    golang.org/x/net v0.0.0-20180821023952-922f4815f713 =&gt; github.com/golang/net v0.0.0-20180826012351-8a410e7b638d
+    golang.org/x/text v0.3.0 =&gt; github.com/golang/text v0.3.0
+)</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>包管理工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2060,6 +2323,25 @@ cd 解压后的文件夹</code></pre><h2 id="3-执行命令安装nginx"><a href=
       </tags>
   </entry>
   <entry>
+    <title>mac快捷键整理</title>
+    <url>/2021/05/25/mac%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h1 id="基本快捷键"><a href="#基本快捷键" class="headerlink" title="基本快捷键"></a>基本快捷键</h1><h2 id="1、通用操作"><a href="#1、通用操作" class="headerlink" title="1、通用操作"></a>1、通用操作</h2><p>Command是Mac里最重要的修饰键，在大多数情况下相当于Windows下的Ctrl。所以以下最基本操作很好理解：</p>
+<p>Command-Z 撤销　<br>Command-X 剪切　　<br>Command-C 拷贝（Copy）　　<br>Command-V 粘贴　　<br>Command-A 全选（All）　　<br>Command-S 保存（Save)　　<br>Command-F 查找（Find）</p>
+<h2 id="2-截图"><a href="#2-截图" class="headerlink" title="2.截图"></a>2.截图</h2><p>Command-Shift-4 截取所选屏幕区域到一个文件　　<br>Command-Shift-3 截取全部屏幕到文件　　<br>Command-Shift-Control-3 截取全部屏幕到剪贴板　　<br>Command-Shift-4 截取所选屏幕区域到一个文件，或追加按空格键仅捕捉一个窗口　　<br>Command-Shift-Control-4 截取所选屏幕区域到剪贴板，或按空格键仅捕捉一个窗</p>
+<h2 id="3、在应用程序中："><a href="#3、在应用程序中：" class="headerlink" title="3、在应用程序中："></a>3、在应用程序中：</h2><p>Command-Option-esc 打开强制退出窗口　　<br>Command-H 隐藏（Hide）当前正在运行的应用程序窗口　　<br>Command-Option-H 隐藏（Hide）其他应用程序窗口　　<br>Command-Q 退出（Quit）最前面的应用程序　　<br>Command-Shift-Z 重做，也就是撤销的逆向操作　　<br>Command-Tab 在打开的应用程序列表中转到下一个最近使用的应用程序，相当于Windows中（Alt+Tab）　　<br>Command-Option-esc 打开“强制退出”窗口，如果有应用程序无响应，可在窗口列表中选择强制退出</p>
+<h2 id="4、文本处理："><a href="#4、文本处理：" class="headerlink" title="4、文本处理："></a>4、文本处理：</h2><p>Command-右箭头 将光标移至当前行的行尾　　<br>Command-B 切换所选文字粗体（Bold）显示　　<br>fn-Delete 相当于PC全尺寸键盘上的Delete，也就是向后删除　　<br>fn-上箭头 向上滚动一页（Page Up）　　<br>fn-下箭头 向下滚动一页（Page Down）　　<br>fn-左箭头 滚动至文稿开头（Home）　　<br>fn-右箭头 滚动至文稿末尾（End）　　<br>Command-右箭头 将光标移至当前行的行尾　　<br>Command-左箭头 将光标移至当前行的行首　　<br>Command-下箭头 将光标移至文稿末尾　　<br>Command-上箭头 将光标移至文稿开头　　<br>Option-右箭头 将光标移至下一个单词的末尾　　<br>Option-左箭头 将光标移至上一个单词的开头　　<br>Control-A 移至行或段落的开头</p>
+<h2 id="5、在Finder中："><a href="#5、在Finder中：" class="headerlink" title="5、在Finder中："></a>5、在Finder中：</h2><p>Command-Option-V 剪切文件　　<br>Command-Shift-N 新建文件夹（New）　　<br>Command-Shift-G 调出窗口，可输入绝对路径直达文件夹（Go）　　<br>return 这个其实不算快捷键，点击文件，按下可重命名文件　　<br>Command-O 打开所选项。在Mac里打开文件不像Windows里直接按Enter　　<br>Command-Option-V 作用相当于Windows里的文件剪切。在其它位置上对文件复制（Command-C），在目的位置按下这个快捷键，文件将被剪切到此位置　　<br>Command-上箭头 打开包含当前文件夹的文件夹，相当于Windows里的“向上”　　<br>Command-Delete 将文件移至废纸篓　　<br>Command-Shift-Delete 清倒废纸篓　　<br>空格键 快速查看选中的文件，也就是预览功能</p>
+<h2 id="6、在浏览器中："><a href="#6、在浏览器中：" class="headerlink" title="6、在浏览器中："></a>6、在浏览器中：</h2><p>Control-Tab 转向下一个标签页　　<br>Command-L 光标直接跳至地址栏　　<br>Control-Tab 转向下一个标签页　　<br>Control-Shift-Tab 转向上一个标签页　　<br>Command-加号或等号 放大页面　　<br>Command-减号 缩小页面</p>
+<h2 id="7-Mac启动与关机时的快捷键："><a href="#7-Mac启动与关机时的快捷键：" class="headerlink" title="7.Mac启动与关机时的快捷键："></a>7.Mac启动与关机时的快捷键：</h2><p>Command-Option-P-R 重置NVRAM　　<br>Option 开机后立即按下，将显示启动管理器，如果Mac装有双系统或者插有启动U盘，可在启动管理器中选择启动盘　　<br>Command-R 开机后立即按下，可打开OS X的恢复功能（Recovery）　　<br>Command-Option-P-R 开机后立即按下，重置NVRAM。有些时候电脑会出现些小问题，重置NVRAM是你除了重新启动，尝试修复的第一选择。　　<br>Command-Option-Control-电源按钮 退出所有应用程序，允许你进行文稿储存，然后关机　　<br>按住电源按钮5秒 强制Mac关机</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>资料整理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mac迁移软件经历</title>
     <url>/2021/03/20/mac%E8%BF%81%E7%A7%BB%E8%BD%AF%E4%BB%B6%E7%BB%8F%E5%8E%86/</url>
     <content><![CDATA[<p>Mac工作软件安装踩坑记录</p>
@@ -2086,38 +2368,6 @@ cd 解压后的文件夹</code></pre><h2 id="3-执行命令安装nginx"><a href=
       </categories>
       <tags>
         <tag>软件安装</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java重写完美的equals方法</title>
-    <url>/2021/04/09/Java%E9%87%8D%E5%86%99%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>示例代码：</p>
-<pre><code>    @Override
-    public boolean equals(Object otherObject) {
-        // 1.判断是否引用自身，小优化可以提前避免后面的实例比较
-        if(this == otherObject) {
-            return true;
-        }
-        // 2.比较this和otherObject是否为同一个类,此处有两种选择：
-        //   a. this.getClass()==otherObject.getClass(),各个子类中的语义不一致
-        //   b. otherObject instanceof ClassName,各个子类中的语义一致
-        if (this.getClass() != otherObject.getClass()) {
-            return false;
-        }
-
-        // 如果步骤2中按b分支，既比较双方可以转为通用父类，则多下面一步转换
-        // 按照a分支则无需此步骤
-        // ClassName other = (ClassName) otherObject;
-        Father other = (Father) otherObject;
-
-        // 3.比较this，other的内部实例, 基本类型用==，其他类型用Objects.equals(a,b)
-        return Objects.equals(this.a, other.a) &amp;&amp; this.b == other.b;
-    }</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
       </tags>
   </entry>
   <entry>
@@ -2464,36 +2714,6 @@ static char *ngx_http_hello_counter(ngx_conf_t *cf, ngx_command_t *cmd, void *co
       </tags>
   </entry>
   <entry>
-    <title>个人博客的分类和标签</title>
-    <url>/2021/05/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/</url>
-    <content><![CDATA[<h2 id="分类和标签"><a href="#分类和标签" class="headerlink" title="分类和标签"></a>分类和标签</h2><p>只有文章支持分类和标签，您可以在 Front-matter 中设置。在其他系统中，分类和标签听起来很接近，但是在 Hexo 中两者有着明显的差别：分类具有顺序性和层次性，也就是说 <code>Foo, Bar</code> 不等于 <code>Bar, Foo</code>；而标签没有顺序和层次。</p>
-<pre><code>categories:
-- Diary
-tags:
-- PS3
-- Games</code></pre><blockquote>
-<p>分类方法的分歧</p>
-<p>如果您有过使用 WordPress 的经验，就很容易误解 Hexo 的分类方式。WordPress 支持对一篇文章设置多个分类，而且这些分类可以是同级的，也可以是父子分类。但是 Hexo 不支持指定多个同级分类。下面的指定方法：</p>
-<pre><code>categories:
-  - Diary
-  - Life</code></pre><p>会使分类<code>Life</code>成为<code>Diary</code>的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。</p>
-<p>如果你需要为文章添加多个分类，可以尝试以下 list 中的方法。</p>
-<pre><code>categories:
-- [Diary, PlayStation]
-- [Diary, Games]
-- [Life]</code></pre><p>此时这篇文章同时包括三个分类： <code>PlayStation</code> 和 <code>Games</code> 分别都是父分类 <code>Diary</code> 的子分类，同时 <code>Life</code> 是一个没有子分类的分类。</p>
-</blockquote>
-<h2 id="1-当前博客的分类"><a href="#1-当前博客的分类" class="headerlink" title="1.当前博客的分类"></a>1.当前博客的分类</h2><p>技术、生活、才艺、期望、纪念</p>
-<h2 id="2-当前博客的标签"><a href="#2-当前博客的标签" class="headerlink" title="2.当前博客的标签"></a>2.当前博客的标签</h2><p>悦读、主题美化、LeetCode、MarkDown、Sakura、nginx、web、linux、多线程、感悟、数组、文件读取、简单、算法、黑科技、博客归类、资料整理</p>
-]]></content>
-      <categories>
-        <category>主题</category>
-      </categories>
-      <tags>
-        <tag>博客归类</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>主题博客增加天气插件</title>
     <url>/2021/03/08/%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E5%A4%A9%E6%B0%94%E6%8F%92%E4%BB%B6/</url>
     <content><![CDATA[<p>效果预览：</p>
@@ -2603,6 +2823,101 @@ $$</code></pre><p>详细表格</p>
       </categories>
       <tags>
         <tag>MarkDown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>主题美化添加自己的书单页面</title>
+    <url>/2020/12/18/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B9%A6%E5%8D%95%E9%A1%B5%E9%9D%A2/</url>
+    <content><![CDATA[<p>参考</p>
+<p><a href="https://blog.csdn.net/qq_44846853/article/details/104563887" target="_blank" rel="noopener">https://blog.csdn.net/qq_44846853/article/details/104563887</a></p>
+<h1 id="0-准备安装hexo-douban插件"><a href="#0-准备安装hexo-douban插件" class="headerlink" title="0.准备安装hexo-douban插件"></a>0.准备安装hexo-douban插件</h1><pre><code>npm install hexo-douban --save    </code></pre><h1 id="1-修改主站目录-非主题目录-的-config-yml"><a href="#1-修改主站目录-非主题目录-的-config-yml" class="headerlink" title="1.修改主站目录(非主题目录)的_config.yml"></a>1.修改主站目录(非主题目录)的_config.yml</h1><p>博客目录/_config.yml下新建books.ejs</p>
+<p>内容如下</p>
+<pre><code>douban: 
+  user: 252345665    #这个需要修改为你个人的id  
+  builtin: false   #如果想生成豆瓣页面，这个需要设置为true
+  book: 
+      title: &#39;This is my book title&#39; 
+      quote: &#39;This is my book quote&#39; 
+  movie: 
+      title: &#39;This is my movie title&#39; 
+      quote: &#39;This is my movie quote&#39; 
+  game: 
+      title: &#39;This is my game title&#39; 
+      quote: &#39;This is my game quote&#39; 
+  timeout: 10000</code></pre><p>说明:</p>
+<ul>
+<li><strong>user</strong>:：你的豆瓣ID。打开豆瓣，登入账户，然后在右上角点击 ”个人主页“，这时候地址栏的URL大概是这样：<a href="https://yafine-blog.cn/go.html?url=aHR0cHM6Ly93d3cuZG91YmFuLmNvbS9wZW9wbGUveHh4eHh4Lw==" target="_blank" rel="noopener">https://www.douban.com/people/xxxxxx/</a> ，其中的”xxxxxx”就是你的个人ID了。</li>
+<li><strong>builtin</strong>：是否将生成页面的功能嵌入 <code>hexo s</code> 和 <code>hexo g</code> 中，默认是 <code>false</code> ，另一可选项为 <code>true</code> 。</li>
+<li><strong>title</strong>： 该页面的标题。</li>
+<li><strong>quote</strong>： 写在页面开头的一段话,支持html语法。</li>
+<li><strong>timeout</strong>： 爬取数据的超时时间，默认是 10000ms，如果在使用时发现报了超时的错(ETIMEOUT)可以把这个数据设置的大一点。</li>
+</ul>
+<h1 id="2-在导航处增加入口"><a href="#2-在导航处增加入口" class="headerlink" title="2.在导航处增加入口"></a>2.在导航处增加入口</h1><p>博客目录/themes/sakura/_config.yml中加入书单、电影的入口   /books    /movies</p>
+<pre><code>  清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
+    书单: {path: /books/, fa: fa-th-list faa-bounce }, 
+    番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
+    歌单: {path: /music/, fa: fa-headphones },
+    电影: {path: /movies/, fa: fa-headphones },
+    图集: {path: /tags/图集/, fa: fa-photo },
+    娱乐: {path: /dinoswords, fa: fa-gamepad }
+  } }</code></pre><p>这个时候已经可以进入第5步验证，不过如果想自定义书单页面样式的话要3、4步</p>
+<h1 id="3-适配sakura主题"><a href="#3-适配sakura主题" class="headerlink" title="3.适配sakura主题"></a>3.适配sakura主题</h1><p>博客目录/themes/sakura/layout/下  增加文件 douban.ejs</p>
+<pre><code>&lt;div class=&quot;blank&quot; style=&quot;padding-top: 75px;&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pattern-center &quot;&gt;
+  &lt;div class=&quot;pattern-attachment-img&quot;&gt;
+    &lt;% if (page.photos) { %&gt;
+    &lt;img src=&quot;&lt;%= page.photos %&gt;&quot; src=&quot;&lt;%- theme.lazyloadImg %&gt;&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot; class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot; style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
+    &lt;% } else { %&gt;
+      &lt;img src=&quot;&lt;%= theme.bg[Math.floor(Math.random() * theme.bg.length + 1)-1] %&gt;&quot; src=&quot;&lt;%- theme.lazyloadImg %&gt;&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot; class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot; style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
+    &lt;% } %&gt;
+    &lt;header class=&quot;pattern-header &quot;&gt;
+      &lt;h1 class=&quot;entry-title&quot;&gt;悦读&lt;/h1&gt;
+    &lt;/header&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;content&quot; class=&quot;site-content&quot;&gt;
+  &lt;div id=&quot;main&quot;&gt;
+    &lt;div id=&quot;main-part&quot;&gt;
+      &lt;div class=&quot;card&quot;&gt; 
+            &lt;div class=&quot;card-content&quot; style=&quot;padding: 30px&quot;&gt; 
+                &lt;h1 style=&quot;margin: 10px 0 10px 0px;&quot;&gt;&lt;%= page.title %&gt;&lt;/h1&gt; 
+                &lt;%- page.content %&gt; 
+            &lt;/div&gt; 
+        &lt;/div&gt; 
+
+
+
+        &lt;section class=&quot;author-profile&quot;&gt;
+          &lt;div class=&quot;info&quot; itemprop=&quot;author&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/Person&quot;&gt;
+            &lt;a href=&quot;/about/&quot; class=&quot;profile gravatar&quot;&gt;&lt;img src=&quot;&lt;%- (theme.cdn || &#39;&#39;) + theme.avatar%&gt;&quot; itemprop=&quot;image&quot; alt=&quot;hojun&quot; height=&quot;70&quot; width=&quot;70&quot;&gt;&lt;/a&gt;
+            &lt;div class=&quot;meta&quot;&gt;
+              &lt;span class=&quot;title&quot;&gt;Author&lt;/span&gt;
+              &lt;h3 itemprop=&quot;name&quot;&gt;
+              &lt;a href=&quot;&lt;%- theme.url%&gt;&quot; itemprop=&quot;url&quot; rel=&quot;author&quot;&gt;&lt;%- config.author %&gt;&lt;/a&gt;
+              &lt;/h3&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;p id=&quot;showStr&quot;&gt;&lt;/p&gt;
+        &lt;/section&gt;
+      &lt;/div&gt;   
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><h1 id="4-修改插件默认应用的模板"><a href="#4-修改插件默认应用的模板" class="headerlink" title="4.修改插件默认应用的模板"></a>4.修改插件默认应用的模板</h1><p>然后在博客站点目录下的<code>node_modules</code>文件夹下找到<code>hexo-douban/lib</code>，文件夹下有三个js文件，分别为：<code>books-generator.js</code> 、<code>games-generator.js</code> 、<code>movies-generator.js</code>，用文本编辑器打开这三个文件，并将其文件内容末尾的代码修改为一下内容：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/* 原文件内容为 layout: [`page`, `post`] ，将其修改为下面的内容*/</span>
+layout<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token template-string"><span class="token string">`douban`</span></span><span class="token punctuation">]</span></code></pre>
+<h1 id="5-运行插件生成相应界面"><a href="#5-运行插件生成相应界面" class="headerlink" title="5.运行插件生成相应界面"></a>5.运行插件生成相应界面</h1><pre class=" language-bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo douban -bgm <span class="token operator">&amp;&amp;</span> hexo g <span class="token operator">&amp;&amp;</span> hexo s</code></pre>
+<p>这时页面localhost:4000/books   或   localhost:4000/movies 可以看到界面了</p>
+<p><strong>PS:以下是可选的命令参数：</strong></p>
+<pre class=" language-bash"><code class="language-bash">-h, --help    <span class="token comment" spellcheck="true"># 帮助页面</span>
+-b, --books   <span class="token comment" spellcheck="true"># 只生成书单页面</span>
+-g, --games   <span class="token comment" spellcheck="true"># 只生成游戏页面</span>
+-m, --movies  <span class="token comment" spellcheck="true"># 只生成电影页面</span></code></pre>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
       </tags>
   </entry>
   <entry>
@@ -3305,101 +3620,6 @@ body.themespring .denglong {
       </categories>
   </entry>
   <entry>
-    <title>主题美化添加自己的书单页面</title>
-    <url>/2020/12/18/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B9%A6%E5%8D%95%E9%A1%B5%E9%9D%A2/</url>
-    <content><![CDATA[<p>参考</p>
-<p><a href="https://blog.csdn.net/qq_44846853/article/details/104563887" target="_blank" rel="noopener">https://blog.csdn.net/qq_44846853/article/details/104563887</a></p>
-<h1 id="0-准备安装hexo-douban插件"><a href="#0-准备安装hexo-douban插件" class="headerlink" title="0.准备安装hexo-douban插件"></a>0.准备安装hexo-douban插件</h1><pre><code>npm install hexo-douban --save    </code></pre><h1 id="1-修改主站目录-非主题目录-的-config-yml"><a href="#1-修改主站目录-非主题目录-的-config-yml" class="headerlink" title="1.修改主站目录(非主题目录)的_config.yml"></a>1.修改主站目录(非主题目录)的_config.yml</h1><p>博客目录/_config.yml下新建books.ejs</p>
-<p>内容如下</p>
-<pre><code>douban: 
-  user: 252345665    #这个需要修改为你个人的id  
-  builtin: false   #如果想生成豆瓣页面，这个需要设置为true
-  book: 
-      title: &#39;This is my book title&#39; 
-      quote: &#39;This is my book quote&#39; 
-  movie: 
-      title: &#39;This is my movie title&#39; 
-      quote: &#39;This is my movie quote&#39; 
-  game: 
-      title: &#39;This is my game title&#39; 
-      quote: &#39;This is my game quote&#39; 
-  timeout: 10000</code></pre><p>说明:</p>
-<ul>
-<li><strong>user</strong>:：你的豆瓣ID。打开豆瓣，登入账户，然后在右上角点击 ”个人主页“，这时候地址栏的URL大概是这样：<a href="https://yafine-blog.cn/go.html?url=aHR0cHM6Ly93d3cuZG91YmFuLmNvbS9wZW9wbGUveHh4eHh4Lw==" target="_blank" rel="noopener">https://www.douban.com/people/xxxxxx/</a> ，其中的”xxxxxx”就是你的个人ID了。</li>
-<li><strong>builtin</strong>：是否将生成页面的功能嵌入 <code>hexo s</code> 和 <code>hexo g</code> 中，默认是 <code>false</code> ，另一可选项为 <code>true</code> 。</li>
-<li><strong>title</strong>： 该页面的标题。</li>
-<li><strong>quote</strong>： 写在页面开头的一段话,支持html语法。</li>
-<li><strong>timeout</strong>： 爬取数据的超时时间，默认是 10000ms，如果在使用时发现报了超时的错(ETIMEOUT)可以把这个数据设置的大一点。</li>
-</ul>
-<h1 id="2-在导航处增加入口"><a href="#2-在导航处增加入口" class="headerlink" title="2.在导航处增加入口"></a>2.在导航处增加入口</h1><p>博客目录/themes/sakura/_config.yml中加入书单、电影的入口   /books    /movies</p>
-<pre><code>  清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
-    书单: {path: /books/, fa: fa-th-list faa-bounce }, 
-    番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
-    歌单: {path: /music/, fa: fa-headphones },
-    电影: {path: /movies/, fa: fa-headphones },
-    图集: {path: /tags/图集/, fa: fa-photo },
-    娱乐: {path: /dinoswords, fa: fa-gamepad }
-  } }</code></pre><p>这个时候已经可以进入第5步验证，不过如果想自定义书单页面样式的话要3、4步</p>
-<h1 id="3-适配sakura主题"><a href="#3-适配sakura主题" class="headerlink" title="3.适配sakura主题"></a>3.适配sakura主题</h1><p>博客目录/themes/sakura/layout/下  增加文件 douban.ejs</p>
-<pre><code>&lt;div class=&quot;blank&quot; style=&quot;padding-top: 75px;&quot;&gt;
-&lt;/div&gt;
-&lt;div class=&quot;pattern-center &quot;&gt;
-  &lt;div class=&quot;pattern-attachment-img&quot;&gt;
-    &lt;% if (page.photos) { %&gt;
-    &lt;img src=&quot;&lt;%= page.photos %&gt;&quot; src=&quot;&lt;%- theme.lazyloadImg %&gt;&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot; class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot; style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
-    &lt;% } else { %&gt;
-      &lt;img src=&quot;&lt;%= theme.bg[Math.floor(Math.random() * theme.bg.length + 1)-1] %&gt;&quot; src=&quot;&lt;%- theme.lazyloadImg %&gt;&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot; class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot; style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
-    &lt;% } %&gt;
-    &lt;header class=&quot;pattern-header &quot;&gt;
-      &lt;h1 class=&quot;entry-title&quot;&gt;悦读&lt;/h1&gt;
-    &lt;/header&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&quot;content&quot; class=&quot;site-content&quot;&gt;
-  &lt;div id=&quot;main&quot;&gt;
-    &lt;div id=&quot;main-part&quot;&gt;
-      &lt;div class=&quot;card&quot;&gt; 
-            &lt;div class=&quot;card-content&quot; style=&quot;padding: 30px&quot;&gt; 
-                &lt;h1 style=&quot;margin: 10px 0 10px 0px;&quot;&gt;&lt;%= page.title %&gt;&lt;/h1&gt; 
-                &lt;%- page.content %&gt; 
-            &lt;/div&gt; 
-        &lt;/div&gt; 
-
-
-
-        &lt;section class=&quot;author-profile&quot;&gt;
-          &lt;div class=&quot;info&quot; itemprop=&quot;author&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/Person&quot;&gt;
-            &lt;a href=&quot;/about/&quot; class=&quot;profile gravatar&quot;&gt;&lt;img src=&quot;&lt;%- (theme.cdn || &#39;&#39;) + theme.avatar%&gt;&quot; itemprop=&quot;image&quot; alt=&quot;hojun&quot; height=&quot;70&quot; width=&quot;70&quot;&gt;&lt;/a&gt;
-            &lt;div class=&quot;meta&quot;&gt;
-              &lt;span class=&quot;title&quot;&gt;Author&lt;/span&gt;
-              &lt;h3 itemprop=&quot;name&quot;&gt;
-              &lt;a href=&quot;&lt;%- theme.url%&gt;&quot; itemprop=&quot;url&quot; rel=&quot;author&quot;&gt;&lt;%- config.author %&gt;&lt;/a&gt;
-              &lt;/h3&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-          &lt;p id=&quot;showStr&quot;&gt;&lt;/p&gt;
-        &lt;/section&gt;
-      &lt;/div&gt;   
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre><h1 id="4-修改插件默认应用的模板"><a href="#4-修改插件默认应用的模板" class="headerlink" title="4.修改插件默认应用的模板"></a>4.修改插件默认应用的模板</h1><p>然后在博客站点目录下的<code>node_modules</code>文件夹下找到<code>hexo-douban/lib</code>，文件夹下有三个js文件，分别为：<code>books-generator.js</code> 、<code>games-generator.js</code> 、<code>movies-generator.js</code>，用文本编辑器打开这三个文件，并将其文件内容末尾的代码修改为一下内容：</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/* 原文件内容为 layout: [`page`, `post`] ，将其修改为下面的内容*/</span>
-layout<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token template-string"><span class="token string">`douban`</span></span><span class="token punctuation">]</span></code></pre>
-<h1 id="5-运行插件生成相应界面"><a href="#5-运行插件生成相应界面" class="headerlink" title="5.运行插件生成相应界面"></a>5.运行插件生成相应界面</h1><pre class=" language-bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo douban -bgm <span class="token operator">&amp;&amp;</span> hexo g <span class="token operator">&amp;&amp;</span> hexo s</code></pre>
-<p>这时页面localhost:4000/books   或   localhost:4000/movies 可以看到界面了</p>
-<p><strong>PS:以下是可选的命令参数：</strong></p>
-<pre class=" language-bash"><code class="language-bash">-h, --help    <span class="token comment" spellcheck="true"># 帮助页面</span>
--b, --books   <span class="token comment" spellcheck="true"># 只生成书单页面</span>
--g, --games   <span class="token comment" spellcheck="true"># 只生成游戏页面</span>
--m, --movies  <span class="token comment" spellcheck="true"># 只生成电影页面</span></code></pre>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用主题的个人插件在文章中插入B站外链视频和图片</title>
     <url>/2020/12/18/%E4%BD%BF%E7%94%A8%E4%B8%BB%E9%A2%98%E7%9A%84%E4%B8%AA%E4%BA%BA%E6%8F%92%E4%BB%B6%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5B%E7%AB%99%E5%A4%96%E9%93%BE%E8%A7%86%E9%A2%91%E5%92%8C%E5%9B%BE%E7%89%87/</url>
     <content><![CDATA[<h2 id="写文章配置"><a href="#写文章配置" class="headerlink" title="写文章配置"></a>写文章配置</h2><p>主题集成了个人插件hexo-tag-bili和hexo-tag-fancybox_img。其中hexo-tag-bili用来在文章或单页面中插入B站外链视频，使用语法如下：</p>
@@ -3464,6 +3684,36 @@ layout<span class="token punctuation">:</span> <span class="token punctuation">[
       </categories>
       <tags>
         <tag>主题美化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人博客的分类和标签</title>
+    <url>/2021/05/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/</url>
+    <content><![CDATA[<h2 id="分类和标签"><a href="#分类和标签" class="headerlink" title="分类和标签"></a>分类和标签</h2><p>只有文章支持分类和标签，您可以在 Front-matter 中设置。在其他系统中，分类和标签听起来很接近，但是在 Hexo 中两者有着明显的差别：分类具有顺序性和层次性，也就是说 <code>Foo, Bar</code> 不等于 <code>Bar, Foo</code>；而标签没有顺序和层次。</p>
+<pre><code>categories:
+- Diary
+tags:
+- PS3
+- Games</code></pre><blockquote>
+<p>分类方法的分歧</p>
+<p>如果您有过使用 WordPress 的经验，就很容易误解 Hexo 的分类方式。WordPress 支持对一篇文章设置多个分类，而且这些分类可以是同级的，也可以是父子分类。但是 Hexo 不支持指定多个同级分类。下面的指定方法：</p>
+<pre><code>categories:
+  - Diary
+  - Life</code></pre><p>会使分类<code>Life</code>成为<code>Diary</code>的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。</p>
+<p>如果你需要为文章添加多个分类，可以尝试以下 list 中的方法。</p>
+<pre><code>categories:
+- [Diary, PlayStation]
+- [Diary, Games]
+- [Life]</code></pre><p>此时这篇文章同时包括三个分类： <code>PlayStation</code> 和 <code>Games</code> 分别都是父分类 <code>Diary</code> 的子分类，同时 <code>Life</code> 是一个没有子分类的分类。</p>
+</blockquote>
+<h2 id="1-当前博客的分类"><a href="#1-当前博客的分类" class="headerlink" title="1.当前博客的分类"></a>1.当前博客的分类</h2><p>技术、生活、才艺、期望、纪念</p>
+<h2 id="2-当前博客的标签"><a href="#2-当前博客的标签" class="headerlink" title="2.当前博客的标签"></a>2.当前博客的标签</h2><p>悦读、主题美化、LeetCode、MarkDown、Sakura、nginx、web、linux、多线程、感悟、数组、文件读取、简单、算法、黑科技、博客归类、资料整理</p>
+]]></content>
+      <categories>
+        <category>主题</category>
+      </categories>
+      <tags>
+        <tag>博客归类</tag>
       </tags>
   </entry>
   <entry>
@@ -5082,18 +5332,6 @@ PhotoVerifyPassword:
       </tags>
   </entry>
   <entry>
-    <title>增加文章贡献日历</title>
-    <url>/2020/12/11/%E5%A2%9E%E5%8A%A0%E6%96%87%E7%AB%A0%E8%B4%A1%E7%8C%AE%E6%97%A5%E5%8E%86/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/cungudafa/article/details/106420842" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/106420842</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何调整顶部导航栏的整体长度以放入更多导航项</title>
     <url>/2020/12/17/%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F%E7%9A%84%E6%95%B4%E4%BD%93%E9%95%BF%E5%BA%A6%E4%BB%A5%E6%94%BE%E5%85%A5%E6%9B%B4%E5%A4%9A%E5%AF%BC%E8%88%AA%E9%A1%B9/</url>
     <content><![CDATA[<p>修改主题目录/source/css/style.css文件   搜到如下内容按自己需要修改</p>
@@ -5116,19 +5354,6 @@ PhotoVerifyPassword:
       <categories>
         <category>技术</category>
       </categories>
-  </entry>
-  <entry>
-    <title>将博客网站生成手机app获取下载安装码</title>
-    <url>/2020/12/17/%E5%B0%86%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E6%89%8B%E6%9C%BAapp%E8%8E%B7%E5%8F%96%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E7%A0%81/</url>
-    <content><![CDATA[<p>一门App网站   <a href="https://www.yimenapp.com/" target="_blank" rel="noopener">https://www.yimenapp.com/</a></p>
-<p>这个比较靠谱，实惠</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>黑科技</tag>
-      </tags>
   </entry>
   <entry>
     <title>给博客添加小游戏界面谷歌恐龙小游戏加强版</title>
@@ -5164,6 +5389,19 @@ PhotoVerifyPassword:
       </categories>
   </entry>
   <entry>
+    <title>将博客网站生成手机app获取下载安装码</title>
+    <url>/2020/12/17/%E5%B0%86%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E6%89%8B%E6%9C%BAapp%E8%8E%B7%E5%8F%96%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E7%A0%81/</url>
+    <content><![CDATA[<p>一门App网站   <a href="https://www.yimenapp.com/" target="_blank" rel="noopener">https://www.yimenapp.com/</a></p>
+<p>这个比较靠谱，实惠</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>黑科技</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>编程开发技术学习资源整理</title>
     <url>/2021/02/26/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<h1 id="0-大纲概览"><a href="#0-大纲概览" class="headerlink" title="0.大纲概览"></a>0.大纲概览</h1><p>主要介绍一下，本片文章涉及到的内容</p>
@@ -5183,6 +5421,18 @@ PhotoVerifyPassword:
       </categories>
       <tags>
         <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>增加文章贡献日历</title>
+    <url>/2020/12/11/%E5%A2%9E%E5%8A%A0%E6%96%87%E7%AB%A0%E8%B4%A1%E7%8C%AE%E6%97%A5%E5%8E%86/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/cungudafa/article/details/106420842" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/106420842</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
       </tags>
   </entry>
   <entry>
@@ -5208,256 +5458,6 @@ PhotoVerifyPassword:
       </categories>
       <tags>
         <tag>小目标</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>golang包管理工具介绍</title>
-    <url>/2021/03/31/golang%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<p>参考博客</p>
-<p>Go管理工具的使用</p>
-<h1 id="0-没有包管理工具的情况"><a href="#0-没有包管理工具的情况" class="headerlink" title="0.没有包管理工具的情况"></a>0.没有包管理工具的情况</h1><h2 id="0-1寻找依赖的路径："><a href="#0-1寻找依赖的路径：" class="headerlink" title="0.1寻找依赖的路径："></a>0.1寻找依赖的路径：</h2><p>1⃣️在GOROOT目录下查找</p>
-<p>2⃣️在GOPATH/src下面查找包</p>
-<h2 id="0-2获取依赖"><a href="#0-2获取依赖" class="headerlink" title="0.2获取依赖"></a>0.2获取依赖</h2><pre><code>go get 依赖地址 // 依赖包会存放到gopath下面两个位置，pkg里面.a文件和src下面的.go文件</code></pre><h1 id="1-govendor"><a href="#1-govendor" class="headerlink" title="1.govendor"></a>1.govendor</h1><h2 id="1-1管理方式"><a href="#1-1管理方式" class="headerlink" title="1.1管理方式"></a>1.1管理方式</h2><p>寻找依赖的路径：</p>
-<p>1⃣️在$GOPATH/src/当前包文件/vendor目录</p>
-<p>2⃣️向当前包目录的上级目录查找知道找到src下的vendor</p>
-<p>3⃣️在GOROOT目录下查找</p>
-<p>4⃣️在GOPATH下面查找包</p>
-<h2 id="1-2安装"><a href="#1-2安装" class="headerlink" title="1.2安装"></a>1.2安装</h2><pre><code>go get -u github.com/kardianos/govendor</code></pre><p>安装完成后为方便使用加入到环境变量</p>
-<pre><code>export PATH=&quot;$GOPATH/bin:$PATH&quot;</code></pre><h2 id="1-3使用"><a href="#1-3使用" class="headerlink" title="1.3使用"></a>1.3使用</h2><p>0⃣️如果不是从git上拉取已有vendor.json的项目，而是<strong>本地新建项目</strong>，则要初始化本地项目</p>
-<p>初始化项目目录，生成vendor目录和vendor.json文件</p>
-<pre><code>govendor init</code></pre><p>1⃣️下载项目依赖，这里以引入</p>
-<p>依赖为例</p>
-<p>从远程拉去下来依赖并放入当前vendor文件夹，记录到vendor.json,在gopath下不会有依赖包</p>
-<pre><code>govendor fetch &quot;包链接&quot;
-// 举例：govendor fetch &quot;github.com/labstack/echo/...&quot;  //这里三个点表示文件夹下的所有文件，或者echo后面不要有斜杠，标识拉取项目</code></pre><p>🐻踩坑：i.对于无法从网上下载下里的包，只能从git上自己手动下载，放到vendor下面 ii.有时需要加上三个点标识所有文件，不然会下载下一个空文件夹</p>
-<p>2⃣️提交到<strong>git上只需要提交vendor.json</strong>即可,不需要把所有的vendor依赖文件夹提交上去</p>
-<p>从git上拉起他人项目，项目中含有vendor.json文件，通过如下命令安装依赖包</p>
-<pre><code>govendor sync</code></pre><h2 id="1-4其他"><a href="#1-4其他" class="headerlink" title="1.4其他"></a>1.4其他</h2><p>常用命令</p>
-<pre><code>govendor list // 列出代码中所有被引用到的包及其状态</code></pre><pre><code>govendor fetch // 从远程仓库添加或更新某个包</code></pre><table>
-<thead>
-<tr>
-<th>子命令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>init</td>
-<td>初始化一个新项目，生成vendor文件夹</td>
-</tr>
-<tr>
-<td>list</td>
-<td>根据当前项目文件的import列出所有依赖包</td>
-</tr>
-<tr>
-<td>add</td>
-<td></td>
-</tr>
-<tr>
-<td>update</td>
-<td></td>
-</tr>
-<tr>
-<td>remove</td>
-<td></td>
-</tr>
-<tr>
-<td>status</td>
-<td></td>
-</tr>
-<tr>
-<td>fetch</td>
-<td>从远程仓库拉取依赖包</td>
-</tr>
-<tr>
-<td>sync</td>
-<td></td>
-</tr>
-<tr>
-<td>migrate</td>
-<td></td>
-</tr>
-<tr>
-<td>get</td>
-<td></td>
-</tr>
-<tr>
-<td>license</td>
-<td></td>
-</tr>
-<tr>
-<td>shell</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>状态参数</p>
-<table>
-<thead>
-<tr>
-<th>状态</th>
-<th>缩写</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>+local</td>
-<td>l</td>
-<td>本地包，即项目内部编写的包</td>
-</tr>
-<tr>
-<td>+external</td>
-<td>e</td>
-<td>外部包，即在 <code>GOPATH</code> 中、却不在项目 <code>vendor</code> 目录</td>
-</tr>
-<tr>
-<td>+vendor</td>
-<td>v</td>
-<td>已在 <code>vendor</code> 目录下的包</td>
-</tr>
-<tr>
-<td>+std</td>
-<td>s</td>
-<td>标准库里的包</td>
-</tr>
-<tr>
-<td>+excluded</td>
-<td>x</td>
-<td>明确被排除的外部包</td>
-</tr>
-<tr>
-<td>+unused</td>
-<td>u</td>
-<td>未使用的包，即在 <code>vendor</code> 目录下，但项目中并未引用到</td>
-</tr>
-<tr>
-<td>+missing</td>
-<td>m</td>
-<td>被引用了但却找不到的包</td>
-</tr>
-<tr>
-<td>+program</td>
-<td>p</td>
-<td>主程序包，即可被编译为执行文件的包</td>
-</tr>
-<tr>
-<td>+outside</td>
-<td></td>
-<td>相当于状态为 <code>+external +missing</code></td>
-</tr>
-<tr>
-<td>+all</td>
-<td></td>
-<td>所有包</td>
-</tr>
-</tbody></table>
-<p>支持状态参数的子命令有：<code>list</code>、<code>add</code>、<code>update</code>、<code>remove</code>、<code>fetch</code></p>
-<h1 id="2-gomod"><a href="#2-gomod" class="headerlink" title="2.gomod"></a>2.gomod</h1><p>前沿:go1.13版本会默认开启mod，1.11版本后才支持mod</p>
-<h2 id="2-0前期准备-设置go环境参数使其支持mod"><a href="#2-0前期准备-设置go环境参数使其支持mod" class="headerlink" title="2.0前期准备,设置go环境参数使其支持mod"></a>2.0前期准备,设置go环境参数使其支持mod</h2><pre><code>go env -w GO111MODULE=on // 启用go mod，之后可以用go env 命令展示一下go的配置</code></pre><h2 id="2-1管理方式"><a href="#2-1管理方式" class="headerlink" title="2.1管理方式"></a>2.1管理方式</h2><p>模块:多个包package的集合</p>
-<p>当<code>GO111MODULE</code>=<code>on</code>时，那么就会使用<code>modules</code>功能:这种模式下，<code>$GOPATH</code>不再作为build时导入的角色，依赖包会存放在<code>$GOPATH/pkg/mod</code>目录下。工程中的依赖包也会从此目录下查找.</p>
-<h2 id="2-2初始化一个新项目"><a href="#2-2初始化一个新项目" class="headerlink" title="2.2初始化一个新项目"></a>2.2初始化一个新项目</h2><pre><code>go mod init &lt;项目名&gt; //项目名不填写则是gopath/src后的相对路径名，填的话一般为github.com/your name/project name</code></pre><h2 id="2-3添加依赖"><a href="#2-3添加依赖" class="headerlink" title="2.3添加依赖"></a>2.3添加依赖</h2><h3 id="a-先编写程序improt依赖包"><a href="#a-先编写程序improt依赖包" class="headerlink" title="a.先编写程序improt依赖包"></a>a.先编写程序improt依赖包</h3><p>其实当go run执行时会自动下载依赖包，当然也可以不运行而是只去下载依赖包</p>
-<h3 id="b-下载依赖包"><a href="#b-下载依赖包" class="headerlink" title="b.下载依赖包"></a>b.下载依赖包</h3><pre><code>go mod tidy     // 检测并下载本项目的module所依赖的文件，同时会移除不需要的模块</code></pre><p>依赖包的存放位置是$GoPath/pkg/mod/</p>
-<h3 id="C-修改go-mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝"><a href="#C-修改go-mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝" class="headerlink" title="C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝"></a>C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝</h3><p>例如go.mod的内容乳腺癌</p>
-<pre><code>replace example.com/project/foo =&gt; ../foo</code></pre><h3 id="d-go-mod文件的介绍"><a href="#d-go-mod文件的介绍" class="headerlink" title="d.go.mod文件的介绍"></a>d.go.mod文件的介绍</h3><p>go.mod 提供了module, require、replace和exclude 四个命令</p>
-<ul>
-<li><code>module</code> 语句指定包的名字（路径）</li>
-<li><code>require</code> 语句指定的依赖项模块</li>
-<li><code>replace</code> 语句可以替换依赖项模块</li>
-<li><code>exclude</code> 语句可以忽略依赖项模块</li>
-</ul>
-<h2 id="2-4其他命令"><a href="#2-4其他命令" class="headerlink" title="2.4其他命令"></a>2.4其他命令</h2><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>vendor</td>
-<td>将依赖复制到vendor下</td>
-</tr>
-<tr>
-<td>graph</td>
-<td>打印模块依赖图</td>
-</tr>
-<tr>
-<td>verify</td>
-<td>验证依赖是否正确</td>
-</tr>
-<tr>
-<td>edit</td>
-<td>编辑go.mod文件</td>
-</tr>
-<tr>
-<td>download</td>
-<td>下载私有仓库的依赖到本地cache</td>
-</tr>
-</tbody></table>
-<p>🐻在国内访问<code>golang.org/x</code>的各个包都需要翻墙，你可以在<code>go.mod</code>中使用<code>replace</code>替换成github上对应的库。形式如下：</p>
-<pre><code>replace (
-    golang.org/x/crypto v0.0.0-20180820150726-614d502a4dac =&gt; github.com/golang/crypto v0.0.0-20180820150726-614d502a4dac
-    golang.org/x/net v0.0.0-20180821023952-922f4815f713 =&gt; github.com/golang/net v0.0.0-20180826012351-8a410e7b638d
-    golang.org/x/text v0.3.0 =&gt; github.com/golang/text v0.3.0
-)</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>包管理工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mac快捷键整理</title>
-    <url>/2021/05/25/mac%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<h1 id="基本快捷键"><a href="#基本快捷键" class="headerlink" title="基本快捷键"></a>基本快捷键</h1><h2 id="1、通用操作"><a href="#1、通用操作" class="headerlink" title="1、通用操作"></a>1、通用操作</h2><p>Command是Mac里最重要的修饰键，在大多数情况下相当于Windows下的Ctrl。所以以下最基本操作很好理解：</p>
-<p>Command-Z 撤销　<br>Command-X 剪切　　<br>Command-C 拷贝（Copy）　　<br>Command-V 粘贴　　<br>Command-A 全选（All）　　<br>Command-S 保存（Save)　　<br>Command-F 查找（Find）</p>
-<h2 id="2-截图"><a href="#2-截图" class="headerlink" title="2.截图"></a>2.截图</h2><p>Command-Shift-4 截取所选屏幕区域到一个文件　　<br>Command-Shift-3 截取全部屏幕到文件　　<br>Command-Shift-Control-3 截取全部屏幕到剪贴板　　<br>Command-Shift-4 截取所选屏幕区域到一个文件，或追加按空格键仅捕捉一个窗口　　<br>Command-Shift-Control-4 截取所选屏幕区域到剪贴板，或按空格键仅捕捉一个窗</p>
-<h2 id="3、在应用程序中："><a href="#3、在应用程序中：" class="headerlink" title="3、在应用程序中："></a>3、在应用程序中：</h2><p>Command-Option-esc 打开强制退出窗口　　<br>Command-H 隐藏（Hide）当前正在运行的应用程序窗口　　<br>Command-Option-H 隐藏（Hide）其他应用程序窗口　　<br>Command-Q 退出（Quit）最前面的应用程序　　<br>Command-Shift-Z 重做，也就是撤销的逆向操作　　<br>Command-Tab 在打开的应用程序列表中转到下一个最近使用的应用程序，相当于Windows中（Alt+Tab）　　<br>Command-Option-esc 打开“强制退出”窗口，如果有应用程序无响应，可在窗口列表中选择强制退出</p>
-<h2 id="4、文本处理："><a href="#4、文本处理：" class="headerlink" title="4、文本处理："></a>4、文本处理：</h2><p>Command-右箭头 将光标移至当前行的行尾　　<br>Command-B 切换所选文字粗体（Bold）显示　　<br>fn-Delete 相当于PC全尺寸键盘上的Delete，也就是向后删除　　<br>fn-上箭头 向上滚动一页（Page Up）　　<br>fn-下箭头 向下滚动一页（Page Down）　　<br>fn-左箭头 滚动至文稿开头（Home）　　<br>fn-右箭头 滚动至文稿末尾（End）　　<br>Command-右箭头 将光标移至当前行的行尾　　<br>Command-左箭头 将光标移至当前行的行首　　<br>Command-下箭头 将光标移至文稿末尾　　<br>Command-上箭头 将光标移至文稿开头　　<br>Option-右箭头 将光标移至下一个单词的末尾　　<br>Option-左箭头 将光标移至上一个单词的开头　　<br>Control-A 移至行或段落的开头</p>
-<h2 id="5、在Finder中："><a href="#5、在Finder中：" class="headerlink" title="5、在Finder中："></a>5、在Finder中：</h2><p>Command-Option-V 剪切文件　　<br>Command-Shift-N 新建文件夹（New）　　<br>Command-Shift-G 调出窗口，可输入绝对路径直达文件夹（Go）　　<br>return 这个其实不算快捷键，点击文件，按下可重命名文件　　<br>Command-O 打开所选项。在Mac里打开文件不像Windows里直接按Enter　　<br>Command-Option-V 作用相当于Windows里的文件剪切。在其它位置上对文件复制（Command-C），在目的位置按下这个快捷键，文件将被剪切到此位置　　<br>Command-上箭头 打开包含当前文件夹的文件夹，相当于Windows里的“向上”　　<br>Command-Delete 将文件移至废纸篓　　<br>Command-Shift-Delete 清倒废纸篓　　<br>空格键 快速查看选中的文件，也就是预览功能</p>
-<h2 id="6、在浏览器中："><a href="#6、在浏览器中：" class="headerlink" title="6、在浏览器中："></a>6、在浏览器中：</h2><p>Control-Tab 转向下一个标签页　　<br>Command-L 光标直接跳至地址栏　　<br>Control-Tab 转向下一个标签页　　<br>Control-Shift-Tab 转向上一个标签页　　<br>Command-加号或等号 放大页面　　<br>Command-减号 缩小页面</p>
-<h2 id="7-Mac启动与关机时的快捷键："><a href="#7-Mac启动与关机时的快捷键：" class="headerlink" title="7.Mac启动与关机时的快捷键："></a>7.Mac启动与关机时的快捷键：</h2><p>Command-Option-P-R 重置NVRAM　　<br>Option 开机后立即按下，将显示启动管理器，如果Mac装有双系统或者插有启动U盘，可在启动管理器中选择启动盘　　<br>Command-R 开机后立即按下，可打开OS X的恢复功能（Recovery）　　<br>Command-Option-P-R 开机后立即按下，重置NVRAM。有些时候电脑会出现些小问题，重置NVRAM是你除了重新启动，尝试修复的第一选择。　　<br>Command-Option-Control-电源按钮 退出所有应用程序，允许你进行文稿储存，然后关机　　<br>按住电源按钮5秒 强制Mac关机</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>资料整理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Redis常用命令整理</title>
-    <url>/2021/04/01/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<h1 id="0-前言及Redis的链接"><a href="#0-前言及Redis的链接" class="headerlink" title="0.前言及Redis的链接"></a>0.前言及Redis的链接</h1><p>redis缓存数据库，主要存放key-value键值对，其中key为字符串，value可为多种类型<strong>字符串</strong>、<strong>列表</strong>、<strong>集合</strong>、<strong>字典</strong></p>
-<h1 id="1-设置字符串"><a href="#1-设置字符串" class="headerlink" title="1.设置字符串"></a>1.设置字符串</h1><pre><code>set key value
-get key value</code></pre><h1 id="2-设置列表"><a href="#2-设置列表" class="headerlink" title="2.设置列表"></a>2.设置列表</h1><pre><code>lpsuh key childElement // 头部插入
-lpop  key // 头部删除
-lrang key 0 10 // 从头部开始查询到10
-
-// 注：尾部操作则将lpush替换成rpush
-// 头部插入的下表说明，头部入A、B、C
-下标:  0、  1、   2
-元素:  A、  B、   C
-下标:  -3、 -2、  -1</code></pre><h1 id="3-设置集合"><a href="#3-设置集合" class="headerlink" title="3.设置集合"></a>3.设置集合</h1><p>集合分为无序集合和有序集合(元素含权重)，集合元素个数为2的32次方-1个</p>
-<p>无序集合</p>
-<pre><code>sadd key member  // 添加元素
-smemebers key    // 查询所有元素
-scard key        // 获取集合中元素个数
-sdiff key1 key2  // 差集
-sinter key1 key2 // 集合的交集运算
-sunion key1 key2 // 集合的补集</code></pre><p>有序集合（元素含权重）</p>
-<pre><code>将sadd改为zadd极为有序集合
-zadd key score member // 添加元素，score为元素权重</code></pre><h1 id="4-key的其他操作（移除、过期时间、检测）"><a href="#4-key的其他操作（移除、过期时间、检测）" class="headerlink" title="4.key的其他操作（移除、过期时间、检测）"></a>4.key的其他操作（移除、过期时间、检测）</h1><pre><code>del key   // 删除key
-exist key // 检测key是否存在
-type key // 查看key类型
-expire   // 设置过期时间
-persist key // 持久化key，移除key过期时间
-ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和订阅"><a href="#5-Redis发布和订阅" class="headerlink" title="5.Redis发布和订阅"></a>5.Redis发布和订阅</h1><h1 id="6-Redis事务"><a href="#6-Redis事务" class="headerlink" title="6.Redis事务"></a>6.Redis事务</h1><h1 id="7-Redis脚本"><a href="#7-Redis脚本" class="headerlink" title="7.Redis脚本"></a>7.Redis脚本</h1>]]></content>
-      <categories>
-        <category>技术</category>
-        <category>主题</category>
-      </categories>
-      <tags>
-        <tag>Reids</tag>
       </tags>
   </entry>
   <entry>
