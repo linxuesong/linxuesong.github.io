@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>58信天翁训练活动</title>
+    <url>/2020/08/15/58%E4%BF%A1%E5%A4%A9%E7%BF%81%E8%AE%AD%E7%BB%83%E6%B4%BB%E5%8A%A8/</url>
+    <content><![CDATA[<p>校招新入职训练活动：</p>
+<p>时间悄悄地从手里溜走，或许我已不再年轻，不再可以懵懂无知。转眼入职一月有余，一个人一段过往，一个人一段羁绊。我们走走停停，历风雨、经风霜，有过彩红有过微笑有过眼泪，我大多生命都在厌恶着世界、逃离着生活，试过爱世界，试过把自己关在自己的心里，我办不到，像是躲进心里的黑屋，外面的人熙熙攘攘，他们的声音、行动，你看在眼里停入耳中却无法组织进入心中。哭泣的心灵渴望陪伴和安慰，心声一次次一遍遍告诉自己去得到爱，然而生活中无法感受爱。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C++读取文件到内存中流程含示例</title>
     <url>/2020/12/26/C-%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E6%B5%81%E7%A8%8B%E5%90%AB%E7%A4%BA%E4%BE%8B/</url>
     <content><![CDATA[<h1 id="一、示例说明"><a href="#一、示例说明" class="headerlink" title="一、示例说明"></a>一、示例说明</h1><p>程序输入为种子用户ID数据集合，每一行包括用户ID和256维用户特征，用户特征数据类型为浮点型数据（存在部分数据用科学计数法表示的情况，比如1.4283673760891302E-4），所有数据分隔符为逗号，ID处于第1个位置，其它256维特征按照顺序处于2-257个位置。其中1-128维为连续性特征，数据都大于等于0小于等于1，余下129-256维为分类型特征经过one-hot处理过后的稀疏数据，数据都为0或者1。如下格式：<br><em>ID0001,0.1,0,0.56,…,0,1</em></p>
@@ -279,48 +292,6 @@ int main(int argc, char *argv[])
       </tags>
   </entry>
   <entry>
-    <title>58信天翁训练活动</title>
-    <url>/2020/08/15/58%E4%BF%A1%E5%A4%A9%E7%BF%81%E8%AE%AD%E7%BB%83%E6%B4%BB%E5%8A%A8/</url>
-    <content><![CDATA[<p>校招新入职训练活动：</p>
-<p>时间悄悄地从手里溜走，或许我已不再年轻，不再可以懵懂无知。转眼入职一月有余，一个人一段过往，一个人一段羁绊。我们走走停停，历风雨、经风霜，有过彩红有过微笑有过眼泪，我大多生命都在厌恶着世界、逃离着生活，试过爱世界，试过把自己关在自己的心里，我办不到，像是躲进心里的黑屋，外面的人熙熙攘攘，他们的声音、行动，你看在眼里停入耳中却无法组织进入心中。哭泣的心灵渴望陪伴和安慰，心声一次次一遍遍告诉自己去得到爱，然而生活中无法感受爱。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>感悟</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo-Sakura如何博客迁移到不同电脑</title>
-    <url>/2020/08/11/Hexo-Sakura%E5%A6%82%E4%BD%95%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E4%B8%8D%E5%90%8C%E7%94%B5%E8%84%91/</url>
-    <content><![CDATA[<h1 id="Hexo-Sakura博客迁移前期准备"><a href="#Hexo-Sakura博客迁移前期准备" class="headerlink" title="Hexo-Sakura博客迁移前期准备"></a>Hexo-Sakura博客迁移前期准备</h1><p>1.将所有的博客项目文件(可以在执行hexo clean 后，这样文件少一点)上传到GitHub的仓库</p>
-<p>这里是上传到<a href="https://github.com/linxuesong" target="_blank" rel="noopener">linxuesong</a> / <strong><a href="https://github.com/linxuesong/linxuesong.github.io" target="_blank" rel="noopener">linxuesong.github.io</a></strong>的hexo分支</p>
-<p>下面开始迁移：</p>
-<h1 id="步骤一：本地初始化hexo博客环境"><a href="#步骤一：本地初始化hexo博客环境" class="headerlink" title="步骤一：本地初始化hexo博客环境"></a>步骤一：本地初始化hexo博客环境</h1><p>详见hexo搭建个人博客教程</p>
-<p>要求：hexo s后可以本地看到默认页面</p>
-<h1 id="步骤二：用我们上传的博客项目文件替换初始化的默认文件"><a href="#步骤二：用我们上传的博客项目文件替换初始化的默认文件" class="headerlink" title="步骤二：用我们上传的博客项目文件替换初始化的默认文件"></a>步骤二：用我们上传的博客项目文件替换初始化的默认文件</h1><p>1.下载上传的所有博客项目文件</p>
-<p>2.替换默认文件</p>
-<h1 id="步骤三：启用需插件功能"><a href="#步骤三：启用需插件功能" class="headerlink" title="步骤三：启用需插件功能"></a>步骤三：启用需插件功能</h1><p>下载不同功能所需对应的hexo插件</p>
-<p>1.本地搜索功能</p>
-<pre><code>npm install hexo-generator-json-content --save</code></pre><p>2.启用自定义代码块背景</p>
-<pre><code>npm i -S hexo-prism-plugin</code></pre><p>如何选用hexo-prism-plugin的代码块样式主题，可以本站搜索</p>
-<p>3.添加RSS订阅的网站</p>
-<p><a href="https://blog.csdn.net/cungudafa/article/details/104320396" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104320396</a></p>
-<p>4.添加豆瓣hexo-douban插件生成书单、电影等页面</p>
-<pre><code>npm install hexo-douban --save    </code></pre><p>然后在博客站点目录下的<code>node_modules</code>文件夹下找到<code>hexo-douban/lib</code>，文件夹下有三个js文件，分别为：<code>books-generator.js</code> 、<code>games-generator.js</code> 、<code>movies-generator.js</code>，用文本编辑器打开这三个文件，并将其文件内容末尾的代码修改为一下内容：</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/* 原文件内容为 layout: [`page`, `post`] ，将其修改为下面的内容*/</span>
-layout<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token template-string"><span class="token string">`douban`</span></span><span class="token punctuation">]</span></code></pre>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
-        <tag>Sakura</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Golang日志第三方库的使用</title>
     <url>/2021/05/20/Golang%E6%97%A5%E5%BF%97%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h1 id="1-第三方日志库的对比"><a href="#1-第三方日志库的对比" class="headerlink" title="1.第三方日志库的对比"></a>1.第三方日志库的对比</h1><h1 id="2-Zap"><a href="#2-Zap" class="headerlink" title="2.Zap"></a>2.Zap</h1><h2 id="2-1简单实例-会把日志打印到控制台"><a href="#2-1简单实例-会把日志打印到控制台" class="headerlink" title="2.1简单实例-会把日志打印到控制台"></a>2.1简单实例-会把日志打印到控制台</h2><pre><code>//1.快速创建Zap.logger的方法，使用预先写好的配置创建日志变量
@@ -451,6 +422,35 @@ logger.Info(&quot;failed to fetch URL&quot;,
       </categories>
       <tags>
         <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo-Sakura如何博客迁移到不同电脑</title>
+    <url>/2020/08/11/Hexo-Sakura%E5%A6%82%E4%BD%95%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E4%B8%8D%E5%90%8C%E7%94%B5%E8%84%91/</url>
+    <content><![CDATA[<h1 id="Hexo-Sakura博客迁移前期准备"><a href="#Hexo-Sakura博客迁移前期准备" class="headerlink" title="Hexo-Sakura博客迁移前期准备"></a>Hexo-Sakura博客迁移前期准备</h1><p>1.将所有的博客项目文件(可以在执行hexo clean 后，这样文件少一点)上传到GitHub的仓库</p>
+<p>这里是上传到<a href="https://github.com/linxuesong" target="_blank" rel="noopener">linxuesong</a> / <strong><a href="https://github.com/linxuesong/linxuesong.github.io" target="_blank" rel="noopener">linxuesong.github.io</a></strong>的hexo分支</p>
+<p>下面开始迁移：</p>
+<h1 id="步骤一：本地初始化hexo博客环境"><a href="#步骤一：本地初始化hexo博客环境" class="headerlink" title="步骤一：本地初始化hexo博客环境"></a>步骤一：本地初始化hexo博客环境</h1><p>详见hexo搭建个人博客教程</p>
+<p>要求：hexo s后可以本地看到默认页面</p>
+<h1 id="步骤二：用我们上传的博客项目文件替换初始化的默认文件"><a href="#步骤二：用我们上传的博客项目文件替换初始化的默认文件" class="headerlink" title="步骤二：用我们上传的博客项目文件替换初始化的默认文件"></a>步骤二：用我们上传的博客项目文件替换初始化的默认文件</h1><p>1.下载上传的所有博客项目文件</p>
+<p>2.替换默认文件</p>
+<h1 id="步骤三：启用需插件功能"><a href="#步骤三：启用需插件功能" class="headerlink" title="步骤三：启用需插件功能"></a>步骤三：启用需插件功能</h1><p>下载不同功能所需对应的hexo插件</p>
+<p>1.本地搜索功能</p>
+<pre><code>npm install hexo-generator-json-content --save</code></pre><p>2.启用自定义代码块背景</p>
+<pre><code>npm i -S hexo-prism-plugin</code></pre><p>如何选用hexo-prism-plugin的代码块样式主题，可以本站搜索</p>
+<p>3.添加RSS订阅的网站</p>
+<p><a href="https://blog.csdn.net/cungudafa/article/details/104320396" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104320396</a></p>
+<p>4.添加豆瓣hexo-douban插件生成书单、电影等页面</p>
+<pre><code>npm install hexo-douban --save    </code></pre><p>然后在博客站点目录下的<code>node_modules</code>文件夹下找到<code>hexo-douban/lib</code>，文件夹下有三个js文件，分别为：<code>books-generator.js</code> 、<code>games-generator.js</code> 、<code>movies-generator.js</code>，用文本编辑器打开这三个文件，并将其文件内容末尾的代码修改为一下内容：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/* 原文件内容为 layout: [`page`, `post`] ，将其修改为下面的内容*/</span>
+layout<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token template-string"><span class="token string">`douban`</span></span><span class="token punctuation">]</span></code></pre>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
+        <tag>Sakura</tag>
       </tags>
   </entry>
   <entry>
@@ -770,45 +770,21 @@ links:
       </tags>
   </entry>
   <entry>
-    <title>JAVA异常机制</title>
-    <url>/2021/04/14/JAVA%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<h1 id="一、异常"><a href="#一、异常" class="headerlink" title="一、异常"></a>一、异常</h1><p>异常有两种选择：throws和catch，一种是抛给调用者，另一种是在本方法中捕获处理。</p>
-<p>选择标准：如果知道如何处理就catch，不知道如何处理就throws</p>
-<p>异常种类：Throwable是父类，                   <br/>                    1⃣️Error子类是系统错误不可控，所以不用抛出、不用处理<br/>                    2⃣️Exception/RuntimeException是可控的要被控制,我们的代码不应有数组越界等错误<br>                    3⃣️Exception/IOException是文件读写错误，类加载错误<br/></p>
-<p>1⃣️2⃣️是不需要throws和catech的，3⃣️是需要throws或catch的,并且如果throws要列出所有可能抛出的IOException</p>
-<pre><code>public static void func1() throws IOException {//列出所有可能抛出的的IOException
-  try{
-     //检测代码
-  }catch(FileNotFoundException | UnKonwHostException) {
-      // 处理捕获异常
-      throw new ServeletException(&quot;xx&quot;); //也可以再次抛出异常
-  }finally {
-      //最后一定执行的代码，常做一些关闭文件，释放资源的事情， 对于close也可能爆出异常，对此可以用带资源的try语句，保证最后关闭资源
-  }
-}</code></pre><h1 id="二、日志"><a href="#二、日志" class="headerlink" title="二、日志"></a>二、日志</h1><p>将提示信息按照不同级别打印到指定文件中</p>
-<h2 id="1-JDK的Logging"><a href="#1-JDK的Logging" class="headerlink" title="1.JDK的Logging"></a>1.JDK的Logging</h2><pre><code>import java.io.UnsupportedEncodingException;
-import java.util.logging.Logger;
-public class Main {
-    public static void main(String[] args) 
-        Logger logger = Logger.getLogger(Main.class.getName());
-        logger.info(&quot;Start process...&quot;);
-        try {
-            &quot;&quot;.getBytes(&quot;invalidCharsetName&quot;);
-        } catch (UnsupportedEncodingException e) {
-            // TODO: 使用logger.severe()打印异常
-        }
-        logger.info(&quot;Process end.&quot;);
-    }
-}</code></pre><p>如果要打印到指定文件需要修改配置文件，JVM启动时传递的参数-Djava.util.logging.config.file=config-file-name</p>
-<h2 id="2-Commons-Logging和Log4j"><a href="#2-Commons-Logging和Log4j" class="headerlink" title="2.Commons Logging和Log4j"></a>2.Commons Logging和Log4j</h2><p>参考<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264739436350112" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1264739436350112</a></p>
-<h2 id="3-SLF4J和Logback"><a href="#3-SLF4J和Logback" class="headerlink" title="3.SLF4J和Logback"></a>3.SLF4J和Logback</h2><p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176</a></p>
-]]></content>
+    <title>JAVA String和StringBuilder常用方法</title>
+    <url>/2021/04/08/JAVA-String%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="一、String不可变字符串"><a href="#一、String不可变字符串" class="headerlink" title="一、String不可变字符串"></a>一、String不可变字符串</h1><h2 id="1-int-compareTo-String-other-比较两字符串大小"><a href="#1-int-compareTo-String-other-比较两字符串大小" class="headerlink" title="1.int compareTo(String other) 比较两字符串大小"></a>1.int compareTo(String other) 比较两字符串大小</h2><h2 id="2-boolean-equals-Object-object-比较两字符串是否其内容一致"><a href="#2-boolean-equals-Object-object-比较两字符串是否其内容一致" class="headerlink" title="2.boolean equals(Object object)比较两字符串是否其内容一致"></a>2.boolean equals(Object object)比较两字符串是否其内容一致</h2><p>==比较运算符比较的是引用位置是否相等，而非其内容</p>
+<h2 id="3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true"><a href="#3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true" class="headerlink" title="3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true"></a>3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true</h2><h2 id="4-int-indexOf-String-str-返回与指定字符串匹配的首个位置"><a href="#4-int-indexOf-String-str-返回与指定字符串匹配的首个位置" class="headerlink" title="4.int indexOf(String str)返回与指定字符串匹配的首个位置"></a>4.int indexOf(String str)返回与指定字符串匹配的首个位置</h2><p>如果还要其他要求，是有函数重载的</p>
+<h2 id="5-int-length-字符串长度"><a href="#5-int-length-字符串长度" class="headerlink" title="5.int length()字符串长度"></a>5.int length()字符串长度</h2><h2 id="6-String-toLowerCase-和String-toUpperCase-大小写转换"><a href="#6-String-toLowerCase-和String-toUpperCase-大小写转换" class="headerlink" title="6.String toLowerCase()和String toUpperCase()大小写转换"></a>6.String toLowerCase()和String toUpperCase()大小写转换</h2><h2 id="7-String-trim-删除原始字符串头部和尾部的空格"><a href="#7-String-trim-删除原始字符串头部和尾部的空格" class="headerlink" title="7.String trim()删除原始字符串头部和尾部的空格"></a>7.String trim()删除原始字符串头部和尾部的空格</h2><p>更多方法可以参考Java的官网api文档</p>
+<h1 id="二、StringBuilder"><a href="#二、StringBuilder" class="headerlink" title="二、StringBuilder"></a>二、StringBuilder</h1><p>string问题是每次做字符串拼接都会产生一个新的String对象，这样既耗时又费空间</p>
+<p>使用StringBuilder则可以避免这个问题发生</p>
+<h2 id="1-String-toString-转为字符串"><a href="#1-String-toString-转为字符串" class="headerlink" title="1.String toString()转为字符串"></a>1.String toString()转为字符串</h2><h2 id="2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传"><a href="#2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传" class="headerlink" title="2.StringBuilder insert(int offset， String str) 指定位置插入自负传"></a>2.StringBuilder insert(int offset， String str) 指定位置插入自负传</h2><h2 id="3-void-setCharAt-int-i，-char-c-设置指定位置字符"><a href="#3-void-setCharAt-int-i，-char-c-设置指定位置字符" class="headerlink" title="3.void setCharAt(int i， char c)设置指定位置字符"></a>3.void setCharAt(int i， char c)设置指定位置字符</h2><h2 id="4-StringBuilder-append（String-str）追加字符串在尾部"><a href="#4-StringBuilder-append（String-str）追加字符串在尾部" class="headerlink" title="4.StringBuilder append（String str）追加字符串在尾部"></a>4.StringBuilder append（String str）追加字符串在尾部</h2>]]></content>
       <categories>
         <category>技术</category>
+        <category>主题</category>
       </categories>
       <tags>
-        <tag>异常</tag>
-        <tag>java</tag>
+        <tag>JAVA</tag>
+        <tag>String</tag>
       </tags>
   </entry>
   <entry>
@@ -854,6 +830,89 @@ public class Main {
       </categories>
       <tags>
         <tag>JAVA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-26删除数组中重复项</title>
+    <url>/2020/08/11/LeetCode-26%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<p>示例 1:</p>
+<p>给定数组 nums = [1,1,2], </p>
+<p>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p>
+<p>你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p>
+<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p>
+<p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p>
+<p>你不需要考虑数组中超出新长度后面的元素。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>双指针法：存放非重复元素的指针(0开始)   寻找下一个非重复元素的指针(1开始)</p>
+<p>寻找指针：遍历数组找到 下一个不重复元素(和已存放的元素不相等)，找到后存入非重复指针</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><pre><code>func removeDuplicates(nums []int) int {
+    if(len(nums) == 1) {
+        return 1
+    }
+    //bef最大不重复项  cur当前遍历元素
+    bef := 0
+    for cur := 1; cur &lt; len(nums); cur++ {
+        if(nums[bef] != nums[cur]) {
+            bef++
+            nums[bef] = nums[cur]
+        }
+    }    
+    return bef+1  
+}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一开始的思路是相邻元素两两比较，不同则后续元素前移一位，数组长度减1</p>
+<p>，时间复杂度为O(n方)。</p>
+<p>缺点就是每次不同移动n个元素，双指针法就是一指针存放，一指针寻找，只移动一个元素，更快</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JAVA异常机制</title>
+    <url>/2021/04/14/JAVA%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<h1 id="一、异常"><a href="#一、异常" class="headerlink" title="一、异常"></a>一、异常</h1><p>异常有两种选择：throws和catch，一种是抛给调用者，另一种是在本方法中捕获处理。</p>
+<p>选择标准：如果知道如何处理就catch，不知道如何处理就throws</p>
+<p>异常种类：Throwable是父类，                   <br/>                    1⃣️Error子类是系统错误不可控，所以不用抛出、不用处理<br/>                    2⃣️Exception/RuntimeException是可控的要被控制,我们的代码不应有数组越界等错误<br>                    3⃣️Exception/IOException是文件读写错误，类加载错误<br/></p>
+<p>1⃣️2⃣️是不需要throws和catech的，3⃣️是需要throws或catch的,并且如果throws要列出所有可能抛出的IOException</p>
+<pre><code>public static void func1() throws IOException {//列出所有可能抛出的的IOException
+  try{
+     //检测代码
+  }catch(FileNotFoundException | UnKonwHostException) {
+      // 处理捕获异常
+      throw new ServeletException(&quot;xx&quot;); //也可以再次抛出异常
+  }finally {
+      //最后一定执行的代码，常做一些关闭文件，释放资源的事情， 对于close也可能爆出异常，对此可以用带资源的try语句，保证最后关闭资源
+  }
+}</code></pre><h1 id="二、日志"><a href="#二、日志" class="headerlink" title="二、日志"></a>二、日志</h1><p>将提示信息按照不同级别打印到指定文件中</p>
+<h2 id="1-JDK的Logging"><a href="#1-JDK的Logging" class="headerlink" title="1.JDK的Logging"></a>1.JDK的Logging</h2><pre><code>import java.io.UnsupportedEncodingException;
+import java.util.logging.Logger;
+public class Main {
+    public static void main(String[] args) 
+        Logger logger = Logger.getLogger(Main.class.getName());
+        logger.info(&quot;Start process...&quot;);
+        try {
+            &quot;&quot;.getBytes(&quot;invalidCharsetName&quot;);
+        } catch (UnsupportedEncodingException e) {
+            // TODO: 使用logger.severe()打印异常
+        }
+        logger.info(&quot;Process end.&quot;);
+    }
+}</code></pre><p>如果要打印到指定文件需要修改配置文件，JVM启动时传递的参数-Djava.util.logging.config.file=config-file-name</p>
+<h2 id="2-Commons-Logging和Log4j"><a href="#2-Commons-Logging和Log4j" class="headerlink" title="2.Commons Logging和Log4j"></a>2.Commons Logging和Log4j</h2><p>参考<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264739436350112" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1264739436350112</a></p>
+<h2 id="3-SLF4J和Logback"><a href="#3-SLF4J和Logback" class="headerlink" title="3.SLF4J和Logback"></a>3.SLF4J和Logback</h2><p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>异常</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -966,65 +1025,6 @@ public class Main {
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-26删除数组中重复项</title>
-    <url>/2020/08/11/LeetCode-26%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
-<p>示例 1:</p>
-<p>给定数组 nums = [1,1,2], </p>
-<p>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p>
-<p>你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p>
-<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p>
-<p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p>
-<p>你不需要考虑数组中超出新长度后面的元素。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>双指针法：存放非重复元素的指针(0开始)   寻找下一个非重复元素的指针(1开始)</p>
-<p>寻找指针：遍历数组找到 下一个不重复元素(和已存放的元素不相等)，找到后存入非重复指针</p>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><pre><code>func removeDuplicates(nums []int) int {
-    if(len(nums) == 1) {
-        return 1
-    }
-    //bef最大不重复项  cur当前遍历元素
-    bef := 0
-    for cur := 1; cur &lt; len(nums); cur++ {
-        if(nums[bef] != nums[cur]) {
-            bef++
-            nums[bef] = nums[cur]
-        }
-    }    
-    return bef+1  
-}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一开始的思路是相邻元素两两比较，不同则后续元素前移一位，数组长度减1</p>
-<p>，时间复杂度为O(n方)。</p>
-<p>缺点就是每次不同移动n个元素，双指针法就是一指针存放，一指针寻找，只移动一个元素，更快</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>LeetCode</tag>
-        <tag>简单</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JAVA String和StringBuilder常用方法</title>
-    <url>/2021/04/08/JAVA-String%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="一、String不可变字符串"><a href="#一、String不可变字符串" class="headerlink" title="一、String不可变字符串"></a>一、String不可变字符串</h1><h2 id="1-int-compareTo-String-other-比较两字符串大小"><a href="#1-int-compareTo-String-other-比较两字符串大小" class="headerlink" title="1.int compareTo(String other) 比较两字符串大小"></a>1.int compareTo(String other) 比较两字符串大小</h2><h2 id="2-boolean-equals-Object-object-比较两字符串是否其内容一致"><a href="#2-boolean-equals-Object-object-比较两字符串是否其内容一致" class="headerlink" title="2.boolean equals(Object object)比较两字符串是否其内容一致"></a>2.boolean equals(Object object)比较两字符串是否其内容一致</h2><p>==比较运算符比较的是引用位置是否相等，而非其内容</p>
-<h2 id="3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true"><a href="#3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true" class="headerlink" title="3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true"></a>3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true</h2><h2 id="4-int-indexOf-String-str-返回与指定字符串匹配的首个位置"><a href="#4-int-indexOf-String-str-返回与指定字符串匹配的首个位置" class="headerlink" title="4.int indexOf(String str)返回与指定字符串匹配的首个位置"></a>4.int indexOf(String str)返回与指定字符串匹配的首个位置</h2><p>如果还要其他要求，是有函数重载的</p>
-<h2 id="5-int-length-字符串长度"><a href="#5-int-length-字符串长度" class="headerlink" title="5.int length()字符串长度"></a>5.int length()字符串长度</h2><h2 id="6-String-toLowerCase-和String-toUpperCase-大小写转换"><a href="#6-String-toLowerCase-和String-toUpperCase-大小写转换" class="headerlink" title="6.String toLowerCase()和String toUpperCase()大小写转换"></a>6.String toLowerCase()和String toUpperCase()大小写转换</h2><h2 id="7-String-trim-删除原始字符串头部和尾部的空格"><a href="#7-String-trim-删除原始字符串头部和尾部的空格" class="headerlink" title="7.String trim()删除原始字符串头部和尾部的空格"></a>7.String trim()删除原始字符串头部和尾部的空格</h2><p>更多方法可以参考Java的官网api文档</p>
-<h1 id="二、StringBuilder"><a href="#二、StringBuilder" class="headerlink" title="二、StringBuilder"></a>二、StringBuilder</h1><p>string问题是每次做字符串拼接都会产生一个新的String对象，这样既耗时又费空间</p>
-<p>使用StringBuilder则可以避免这个问题发生</p>
-<h2 id="1-String-toString-转为字符串"><a href="#1-String-toString-转为字符串" class="headerlink" title="1.String toString()转为字符串"></a>1.String toString()转为字符串</h2><h2 id="2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传"><a href="#2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传" class="headerlink" title="2.StringBuilder insert(int offset， String str) 指定位置插入自负传"></a>2.StringBuilder insert(int offset， String str) 指定位置插入自负传</h2><h2 id="3-void-setCharAt-int-i，-char-c-设置指定位置字符"><a href="#3-void-setCharAt-int-i，-char-c-设置指定位置字符" class="headerlink" title="3.void setCharAt(int i， char c)设置指定位置字符"></a>3.void setCharAt(int i， char c)设置指定位置字符</h2><h2 id="4-StringBuilder-append（String-str）追加字符串在尾部"><a href="#4-StringBuilder-append（String-str）追加字符串在尾部" class="headerlink" title="4.StringBuilder append（String str）追加字符串在尾部"></a>4.StringBuilder append（String str）追加字符串在尾部</h2>]]></content>
-      <categories>
-        <category>技术</category>
-        <category>主题</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-        <tag>String</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-119.杨辉三角 II</title>
     <url>/2020/09/01/LeetCode119.%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%20II/</url>
     <content><![CDATA[<h4 id="LeetCode119-杨辉三角-II"><a href="#LeetCode119-杨辉三角-II" class="headerlink" title="LeetCode119. 杨辉三角 II"></a><a href="https://leetcode-cn.com/problems/pascals-triangle-ii/" target="_blank" rel="noopener">LeetCode119. 杨辉三角 II</a></h4><h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个非负索引 <em>k</em>，其中 <em>k</em> ≤ 33，返回杨辉三角的第 <em>k</em> 行。</p>
@@ -1127,38 +1127,6 @@ int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
       <tags>
         <tag>JAVA</tag>
         <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java重写完美的equals方法</title>
-    <url>/2021/04/09/Java%E9%87%8D%E5%86%99%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>示例代码：</p>
-<pre><code>    @Override
-    public boolean equals(Object otherObject) {
-        // 1.判断是否引用自身，小优化可以提前避免后面的实例比较
-        if(this == otherObject) {
-            return true;
-        }
-        // 2.比较this和otherObject是否为同一个类,此处有两种选择：
-        //   a. this.getClass()==otherObject.getClass(),各个子类中的语义不一致
-        //   b. otherObject instanceof ClassName,各个子类中的语义一致
-        if (this.getClass() != otherObject.getClass()) {
-            return false;
-        }
-
-        // 如果步骤2中按b分支，既比较双方可以转为通用父类，则多下面一步转换
-        // 按照a分支则无需此步骤
-        // ClassName other = (ClassName) otherObject;
-        Father other = (Father) otherObject;
-
-        // 3.比较this，other的内部实例, 基本类型用==，其他类型用Objects.equals(a,b)
-        return Objects.equals(this.a, other.a) &amp;&amp; this.b == other.b;
-    }</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
       </tags>
   </entry>
   <entry>
@@ -1297,6 +1265,60 @@ int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-28. 实现 strStr()</title>
+    <url>/2020/08/11/Leetcode-28-%E5%AE%9E%E7%8E%B0-strStr/</url>
+    <content><![CDATA[<h4 id="Leetcode-28-实现-strStr"><a href="#Leetcode-28-实现-strStr" class="headerlink" title="Leetcode-28. 实现 strStr()"></a><a href="https://leetcode-cn.com/problems/implement-strstr/" target="_blank" rel="noopener">Leetcode-28. 实现 strStr()</a></h4><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>实现 strStr() 函数。</p>
+<p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。</p>
+<p>示例 1:</p>
+<p>输入: haystack = “hello”, needle = “ll”<br>输出: 2<br>示例 2:</p>
+<p>输入: haystack = “aaaaa”, needle = “bba”<br>输出: -1<br>说明:</p>
+<p>当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
+<p>对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/implement-strstr" target="_blank" rel="noopener">https://leetcode-cn.com/problems/implement-strstr</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>遍历每一个haystack的字符，以此为起点和needle匹配，匹配成功，则返回遍历下标；否则返回-1</p>
+<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><pre><code>func strStr(haystack string, needle string) int {
+    hay_len := len(haystack)
+    ne_len := len(needle)
+    for i:=0; i &lt; hay_len-ne_len+1; i++ {
+       //判断haystack[i]开头是否和needle匹配
+       if(isStrEqual(haystack[i:], needle)){
+           return i
+       }
+    }
+    return -1
+}
+
+func isStrEqual(str1 string, str2 string) bool {
+    length := len(str2)
+    flag := true
+    for j:=0; j&lt;length ;j++ {
+        if(str1[j] != str2[j]) {
+            flag = false
+            break
+        }
+    } 
+    return flag
+}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>书写代码在一开始的时候没有注意到haystack的遍历区间是</p>
+<p>len(haystack) - len(needle)+1，遍历到尾部是没必要且麻烦的</p>
+<p>避免这种情况就是当我有了基本思路后，是会有好多漏洞的，实现方法要想一次最优且简洁就要把所有的测试用例列出来，不要光用脑子想，要写在纸上</p>
+<p>然后把脑子里的思路转成代码，和用例一一对应</p>
+<h1 id="进一步的优化（未完待补坑）"><a href="#进一步的优化（未完待补坑）" class="headerlink" title="进一步的优化（未完待补坑）"></a>进一步的优化（未完待补坑）</h1><p>上面代码的时间复杂度为O((N-L)*L)</p>
+<h2 id="优化方案一：hash省去L长度是否匹配判断"><a href="#优化方案一：hash省去L长度是否匹配判断" class="headerlink" title="优化方案一：hash省去L长度是否匹配判断"></a>优化方案一：hash省去L长度是否匹配判断</h2><p>之所以复杂是因为遍历每一字符都要比较L长度判断是否匹配</p>
+<p>这个*L可以转化为O(1)</p>
+<p>方法就是用hash值，我们对字符进行编码，生成唯一值</p>
+<p>这样每次判断匹配时就转化为计算hash值了</p>
+<h2 id="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"><a href="#优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间" class="headerlink" title="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"></a>优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间</h2><p>这个查了资料比较复杂，等以后有时间不用，挖个坑QAQ</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-35搜索插入位置</title>
     <url>/2020/08/11/Leetcode-35%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/search-insert-position/" target="_blank" rel="noopener">Leetcode-35搜索插入位置</a></p>
@@ -1374,47 +1396,30 @@ int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>Leetcode88. 合并两个有序数组</title>
-    <url>/2020/08/12/Leetcode88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/merge-sorted-array/" target="_blank" rel="noopener">Leetcode-88. 合并两个有序数组</a></p>
-<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。</p>
-<p>说明:</p>
-<p>初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。<br>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。</p>
-<p>示例:</p>
-<p>输入:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3</p>
-<p>输出: [1,2,2,3,5,6]</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/merge-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-sorted-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>注：直接写最优思路了，想看思考过程的可以看最后的总结部分</p>
-<p>数组一nums1有最后n个空余位置，利用这点</p>
-<p>三个变量</p>
-<p>cur1 = m-1 数组一数字的尾部<br>cur2 = n-1 数组二的尾部<br>maxV_site = m+n-1 数组一最后的尾部，存放cur1、cur2较大者</p>
-<p>依次比较，逐个放入</p>
-<h1 id="3-实现代码"><a href="#3-实现代码" class="headerlink" title="3.实现代码"></a>3.实现代码</h1><pre><code>func merge(nums1 []int, m int, nums2 []int, n int)  {
-    var(
-        cur1 = m-1
-        cur2 = n-1
-        maxV_site = m+n-1 // 存放当前两数组的最大值应放入nums1的位置
-    )
-
-    for ;cur1 &gt;= 0 &amp;&amp; cur2 &gt;= 0; {
-        if(nums1[cur1] &gt; nums2[cur2]) {
-            nums1[maxV_site] = nums1[cur1]
-            cur1--
-        }else {
-            nums1[maxV_site] = nums2[cur2]            
-            cur2--
-        }
-        maxV_site--
+    <title>Leetcode-66. 加一</title>
+    <url>/2020/08/12/Leetcode-66-%E5%8A%A0%E4%B8%80/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">Leetcode-66. 加一</a></p>
+<h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p>
+<p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p>
+<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
+<p>示例 1:</p>
+<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。<br>示例 2:</p>
+<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/plus-one" target="_blank" rel="noopener">https://leetcode-cn.com/problems/plus-one</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="2-0解题思路"><a href="#2-0解题思路" class="headerlink" title="2.0解题思路"></a>2.0解题思路</h1><p>这道题比较简单，从后向前遍历找到第一个非9数字，记下标为not9first，该下标之后所有数全为0，本下标元素值+1 对异常情况值溢出做特殊处理</p>
+<h1 id="3-0实现代码"><a href="#3-0实现代码" class="headerlink" title="3.0实现代码"></a>3.0实现代码</h1><pre><code>func plusOne(digits []int) []int {
+    oldLen := len(digits)
+    not9first := oldLen-1 // 从后向前非9的第一个数
+    for ; not9first &gt;= 0 &amp;&amp; digits[not9first] == 9; not9first-- {
+        digits[not9first] = 0 // 是9就成0
     }
-    // 一个数组遍历完了 cur2 或 cur1有一个为-1   cur1==-1 把数组二剩下的放前面    cur2==-1不用动，数组一已经在前面了
-    for ; cur2 &gt;=0; cur2-- {
-        nums1[cur2] = nums2[cur2]
+    if(not9first != -1) { // 加完没溢出
+        digits[not9first] += 1
+    }else { // 加完溢出
+        digits = append([]int{1}, digits...) // 首部赋值1
     }
-}</code></pre><h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h1><p>一开始想到从头遍历，比较后要插入数组二元素则让数组一的每个元素后移一位  复杂度为O(n²)</p>
-<p>进一步想问题在要移动每一位，如果要是不移动的话直接放要把数组一的元素替代，可以把被替代的数组一元素临时暂存起来，我们想是不是只用保存一次数组一的元素就可以了呢</p>
-<p>最终从尾部遍历，省去了进步临时保存变量的问题</p>
-<p>题外话：思想一开始还有一个往归并排序申请O(n)空间的方式，但一想都给了空间了就没再深想下去。有了一个思路后大致想一下时间复杂度，不可取后立即斩断，集中精神想其他方法</p>
-]]></content>
+    return digits
+}</code></pre>]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1509,30 +1514,47 @@ func max(arr []int) int{
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-66. 加一</title>
-    <url>/2020/08/12/Leetcode-66-%E5%8A%A0%E4%B8%80/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">Leetcode-66. 加一</a></p>
-<h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p>
-<p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p>
-<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
-<p>示例 1:</p>
-<p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。<br>示例 2:</p>
-<p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/plus-one" target="_blank" rel="noopener">https://leetcode-cn.com/problems/plus-one</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="2-0解题思路"><a href="#2-0解题思路" class="headerlink" title="2.0解题思路"></a>2.0解题思路</h1><p>这道题比较简单，从后向前遍历找到第一个非9数字，记下标为not9first，该下标之后所有数全为0，本下标元素值+1 对异常情况值溢出做特殊处理</p>
-<h1 id="3-0实现代码"><a href="#3-0实现代码" class="headerlink" title="3.0实现代码"></a>3.0实现代码</h1><pre><code>func plusOne(digits []int) []int {
-    oldLen := len(digits)
-    not9first := oldLen-1 // 从后向前非9的第一个数
-    for ; not9first &gt;= 0 &amp;&amp; digits[not9first] == 9; not9first-- {
-        digits[not9first] = 0 // 是9就成0
+    <title>Leetcode88. 合并两个有序数组</title>
+    <url>/2020/08/12/Leetcode88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/merge-sorted-array/" target="_blank" rel="noopener">Leetcode-88. 合并两个有序数组</a></p>
+<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。</p>
+<p>说明:</p>
+<p>初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。<br>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。</p>
+<p>示例:</p>
+<p>输入:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3</p>
+<p>输出: [1,2,2,3,5,6]</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/merge-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-sorted-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>注：直接写最优思路了，想看思考过程的可以看最后的总结部分</p>
+<p>数组一nums1有最后n个空余位置，利用这点</p>
+<p>三个变量</p>
+<p>cur1 = m-1 数组一数字的尾部<br>cur2 = n-1 数组二的尾部<br>maxV_site = m+n-1 数组一最后的尾部，存放cur1、cur2较大者</p>
+<p>依次比较，逐个放入</p>
+<h1 id="3-实现代码"><a href="#3-实现代码" class="headerlink" title="3.实现代码"></a>3.实现代码</h1><pre><code>func merge(nums1 []int, m int, nums2 []int, n int)  {
+    var(
+        cur1 = m-1
+        cur2 = n-1
+        maxV_site = m+n-1 // 存放当前两数组的最大值应放入nums1的位置
+    )
+
+    for ;cur1 &gt;= 0 &amp;&amp; cur2 &gt;= 0; {
+        if(nums1[cur1] &gt; nums2[cur2]) {
+            nums1[maxV_site] = nums1[cur1]
+            cur1--
+        }else {
+            nums1[maxV_site] = nums2[cur2]            
+            cur2--
+        }
+        maxV_site--
     }
-    if(not9first != -1) { // 加完没溢出
-        digits[not9first] += 1
-    }else { // 加完溢出
-        digits = append([]int{1}, digits...) // 首部赋值1
+    // 一个数组遍历完了 cur2 或 cur1有一个为-1   cur1==-1 把数组二剩下的放前面    cur2==-1不用动，数组一已经在前面了
+    for ; cur2 &gt;=0; cur2-- {
+        nums1[cur2] = nums2[cur2]
     }
-    return digits
-}</code></pre>]]></content>
+}</code></pre><h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h1><p>一开始想到从头遍历，比较后要插入数组二元素则让数组一的每个元素后移一位  复杂度为O(n²)</p>
+<p>进一步想问题在要移动每一位，如果要是不移动的话直接放要把数组一的元素替代，可以把被替代的数组一元素临时暂存起来，我们想是不是只用保存一次数组一的元素就可以了呢</p>
+<p>最终从尾部遍历，省去了进步临时保存变量的问题</p>
+<p>题外话：思想一开始还有一个往归并排序申请O(n)空间的方式，但一想都给了空间了就没再深想下去。有了一个思路后大致想一下时间复杂度，不可取后立即斩断，集中精神想其他方法</p>
+]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1540,6 +1562,38 @@ func max(arr []int) int{
         <tag>数组</tag>
         <tag>LeetCode</tag>
         <tag>简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java重写完美的equals方法</title>
+    <url>/2021/04/09/Java%E9%87%8D%E5%86%99%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>示例代码：</p>
+<pre><code>    @Override
+    public boolean equals(Object otherObject) {
+        // 1.判断是否引用自身，小优化可以提前避免后面的实例比较
+        if(this == otherObject) {
+            return true;
+        }
+        // 2.比较this和otherObject是否为同一个类,此处有两种选择：
+        //   a. this.getClass()==otherObject.getClass(),各个子类中的语义不一致
+        //   b. otherObject instanceof ClassName,各个子类中的语义一致
+        if (this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+
+        // 如果步骤2中按b分支，既比较双方可以转为通用父类，则多下面一步转换
+        // 按照a分支则无需此步骤
+        // ClassName other = (ClassName) otherObject;
+        Father other = (Father) otherObject;
+
+        // 3.比较this，other的内部实例, 基本类型用==，其他类型用Objects.equals(a,b)
+        return Objects.equals(this.a, other.a) &amp;&amp; this.b == other.b;
+    }</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
       </tags>
   </entry>
   <entry>
@@ -1607,80 +1661,6 @@ func max(arr []int) int{
     $(&#39;.headertop-bar&#39;).removeClass(&#39;headertop-bar&#39;).addClass(&#39;headertop-bar-sakura&#39;)
     $(&#39;#banner_wave_1&#39;).addClass(&#39;banner_wave_hide_fit_skin&#39;)</code></pre><p>替换其中所有图片的url即可完成更换。</p>
 ]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Leetcode-28. 实现 strStr()</title>
-    <url>/2020/08/11/Leetcode-28-%E5%AE%9E%E7%8E%B0-strStr/</url>
-    <content><![CDATA[<h4 id="Leetcode-28-实现-strStr"><a href="#Leetcode-28-实现-strStr" class="headerlink" title="Leetcode-28. 实现 strStr()"></a><a href="https://leetcode-cn.com/problems/implement-strstr/" target="_blank" rel="noopener">Leetcode-28. 实现 strStr()</a></h4><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>实现 strStr() 函数。</p>
-<p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。</p>
-<p>示例 1:</p>
-<p>输入: haystack = “hello”, needle = “ll”<br>输出: 2<br>示例 2:</p>
-<p>输入: haystack = “aaaaa”, needle = “bba”<br>输出: -1<br>说明:</p>
-<p>当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
-<p>对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/implement-strstr" target="_blank" rel="noopener">https://leetcode-cn.com/problems/implement-strstr</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>遍历每一个haystack的字符，以此为起点和needle匹配，匹配成功，则返回遍历下标；否则返回-1</p>
-<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><pre><code>func strStr(haystack string, needle string) int {
-    hay_len := len(haystack)
-    ne_len := len(needle)
-    for i:=0; i &lt; hay_len-ne_len+1; i++ {
-       //判断haystack[i]开头是否和needle匹配
-       if(isStrEqual(haystack[i:], needle)){
-           return i
-       }
-    }
-    return -1
-}
-
-func isStrEqual(str1 string, str2 string) bool {
-    length := len(str2)
-    flag := true
-    for j:=0; j&lt;length ;j++ {
-        if(str1[j] != str2[j]) {
-            flag = false
-            break
-        }
-    } 
-    return flag
-}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>书写代码在一开始的时候没有注意到haystack的遍历区间是</p>
-<p>len(haystack) - len(needle)+1，遍历到尾部是没必要且麻烦的</p>
-<p>避免这种情况就是当我有了基本思路后，是会有好多漏洞的，实现方法要想一次最优且简洁就要把所有的测试用例列出来，不要光用脑子想，要写在纸上</p>
-<p>然后把脑子里的思路转成代码，和用例一一对应</p>
-<h1 id="进一步的优化（未完待补坑）"><a href="#进一步的优化（未完待补坑）" class="headerlink" title="进一步的优化（未完待补坑）"></a>进一步的优化（未完待补坑）</h1><p>上面代码的时间复杂度为O((N-L)*L)</p>
-<h2 id="优化方案一：hash省去L长度是否匹配判断"><a href="#优化方案一：hash省去L长度是否匹配判断" class="headerlink" title="优化方案一：hash省去L长度是否匹配判断"></a>优化方案一：hash省去L长度是否匹配判断</h2><p>之所以复杂是因为遍历每一字符都要比较L长度判断是否匹配</p>
-<p>这个*L可以转化为O(1)</p>
-<p>方法就是用hash值，我们对字符进行编码，生成唯一值</p>
-<p>这样每次判断匹配时就转化为计算hash值了</p>
-<h2 id="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"><a href="#优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间" class="headerlink" title="优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间"></a>优化方案二：KMP字典匹配方法不用遍历源字符串每个字符了，节省时间</h2><p>这个查了资料比较复杂，等以后有时间不用，挖个坑QAQ</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>LeetCode</tag>
-        <tag>简单</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Sakura添加在线和博主聊天功能</title>
-    <url>/2020/12/16/Sakura%E6%B7%BB%E5%8A%A0%E5%9C%A8%E7%BA%BF%E5%92%8C%E5%8D%9A%E4%B8%BB%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/</url>
-    <content><![CDATA[<p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104295156" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104295156</a></p>
-<h1 id="添加-DaoVoice-在线聊天功能"><a href="#添加-DaoVoice-在线聊天功能" class="headerlink" title="添加 DaoVoice 在线聊天功能"></a>添加 <a href="http://www.daovoice.io/" target="_blank" rel="noopener">DaoVoice</a> 在线聊天功能</h1><p>效果展示</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201216202906.png" alt="image-20201216202904581"></p>
-<h2 id="1-官网注册账号获取appid修改conifg文件"><a href="#1-官网注册账号获取appid修改conifg文件" class="headerlink" title="1.官网注册账号获取appid修改conifg文件"></a>1.官网注册账号获取appid修改conifg文件</h2><p>前往 <a href="http://www.daovoice.io/" target="_blank" rel="noopener">DaoVoice</a> 官网注册并且获取 <code>app_id</code>，并将 <code>app_id</code> 填入主题的 <code>_config.yml</code> 文件中。</p>
-<pre><code>daovoice:
-  enable: true
-  daovoice_app_id: 7e5676fe ##这里替换成你DaoVoice上的appid</code></pre><h2 id="2-在footer-ejs文件末尾中添加"><a href="#2-在footer-ejs文件末尾中添加" class="headerlink" title="2.在footer.ejs文件末尾中添加"></a>2.在footer.ejs文件末尾中添加</h2><pre><code>  &lt;script&gt;
-  (function(i,s,o,g,r,a,m){i[&quot;DaoVoiceObject&quot;]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset=&quot;utf-8&quot;;m.parentNode.insertBefore(a,m)})(window,document,&quot;script&quot;,(&#39;https:&#39; == document.location.protocol ? &#39;https:&#39; : &#39;http:&#39;) + &quot;//widget.daovoice.io/widget/&lt;%= theme.daovoice.daovoice_app_id%&gt;.js&quot;,&quot;daovoice&quot;);
-    daovoice(&#39;init&#39;, {
-      app_id: &quot;&lt;%= theme.daovoice.daovoice_app_id%&gt;&quot;
-    });
-    daovoice(&#39;update&#39;);</code></pre><h2 id="3-配置自己喜欢的聊天样式"><a href="#3-配置自己喜欢的聊天样式" class="headerlink" title="3.配置自己喜欢的聊天样式"></a>3.配置自己喜欢的聊天样式</h2><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201216202754.png" alt="image-20201216202746421"></p>
-<h2 id="4-可以绑定微信-邮箱-如果有人发消息会邮箱-微信消息提醒-在官网查看"><a href="#4-可以绑定微信-邮箱-如果有人发消息会邮箱-微信消息提醒-在官网查看" class="headerlink" title="4.可以绑定微信\邮箱,如果有人发消息会邮箱\微信消息提醒,在官网查看"></a>4.可以绑定微信\邮箱,如果有人发消息会邮箱\微信消息提醒,在官网查看</h2>]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1877,6 +1857,26 @@ func isStrEqual(str1 string, str2 string) bool {
       </tags>
   </entry>
   <entry>
+    <title>Sakura添加在线和博主聊天功能</title>
+    <url>/2020/12/16/Sakura%E6%B7%BB%E5%8A%A0%E5%9C%A8%E7%BA%BF%E5%92%8C%E5%8D%9A%E4%B8%BB%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104295156" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104295156</a></p>
+<h1 id="添加-DaoVoice-在线聊天功能"><a href="#添加-DaoVoice-在线聊天功能" class="headerlink" title="添加 DaoVoice 在线聊天功能"></a>添加 <a href="http://www.daovoice.io/" target="_blank" rel="noopener">DaoVoice</a> 在线聊天功能</h1><p>效果展示</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201216202906.png" alt="image-20201216202904581"></p>
+<h2 id="1-官网注册账号获取appid修改conifg文件"><a href="#1-官网注册账号获取appid修改conifg文件" class="headerlink" title="1.官网注册账号获取appid修改conifg文件"></a>1.官网注册账号获取appid修改conifg文件</h2><p>前往 <a href="http://www.daovoice.io/" target="_blank" rel="noopener">DaoVoice</a> 官网注册并且获取 <code>app_id</code>，并将 <code>app_id</code> 填入主题的 <code>_config.yml</code> 文件中。</p>
+<pre><code>daovoice:
+  enable: true
+  daovoice_app_id: 7e5676fe ##这里替换成你DaoVoice上的appid</code></pre><h2 id="2-在footer-ejs文件末尾中添加"><a href="#2-在footer-ejs文件末尾中添加" class="headerlink" title="2.在footer.ejs文件末尾中添加"></a>2.在footer.ejs文件末尾中添加</h2><pre><code>  &lt;script&gt;
+  (function(i,s,o,g,r,a,m){i[&quot;DaoVoiceObject&quot;]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset=&quot;utf-8&quot;;m.parentNode.insertBefore(a,m)})(window,document,&quot;script&quot;,(&#39;https:&#39; == document.location.protocol ? &#39;https:&#39; : &#39;http:&#39;) + &quot;//widget.daovoice.io/widget/&lt;%= theme.daovoice.daovoice_app_id%&gt;.js&quot;,&quot;daovoice&quot;);
+    daovoice(&#39;init&#39;, {
+      app_id: &quot;&lt;%= theme.daovoice.daovoice_app_id%&gt;&quot;
+    });
+    daovoice(&#39;update&#39;);</code></pre><h2 id="3-配置自己喜欢的聊天样式"><a href="#3-配置自己喜欢的聊天样式" class="headerlink" title="3.配置自己喜欢的聊天样式"></a>3.配置自己喜欢的聊天样式</h2><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201216202754.png" alt="image-20201216202746421"></p>
+<h2 id="4-可以绑定微信-邮箱-如果有人发消息会邮箱-微信消息提醒-在官网查看"><a href="#4-可以绑定微信-邮箱-如果有人发消息会邮箱-微信消息提醒-在官网查看" class="headerlink" title="4.可以绑定微信\邮箱,如果有人发消息会邮箱\微信消息提醒,在官网查看"></a>4.可以绑定微信\邮箱,如果有人发消息会邮箱\微信消息提醒,在官网查看</h2>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/03/19/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
@@ -1889,42 +1889,6 @@ func isStrEqual(str1 string, str2 string) bool {
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Redis常用命令整理</title>
-    <url>/2021/04/01/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<h1 id="0-前言及Redis的链接"><a href="#0-前言及Redis的链接" class="headerlink" title="0.前言及Redis的链接"></a>0.前言及Redis的链接</h1><p>redis缓存数据库，主要存放key-value键值对，其中key为字符串，value可为多种类型<strong>字符串</strong>、<strong>列表</strong>、<strong>集合</strong>、<strong>字典</strong></p>
-<h1 id="1-设置字符串"><a href="#1-设置字符串" class="headerlink" title="1.设置字符串"></a>1.设置字符串</h1><pre><code>set key value
-get key value</code></pre><h1 id="2-设置列表"><a href="#2-设置列表" class="headerlink" title="2.设置列表"></a>2.设置列表</h1><pre><code>lpsuh key childElement // 头部插入
-lpop  key // 头部删除
-lrang key 0 10 // 从头部开始查询到10
-
-// 注：尾部操作则将lpush替换成rpush
-// 头部插入的下表说明，头部入A、B、C
-下标:  0、  1、   2
-元素:  A、  B、   C
-下标:  -3、 -2、  -1</code></pre><h1 id="3-设置集合"><a href="#3-设置集合" class="headerlink" title="3.设置集合"></a>3.设置集合</h1><p>集合分为无序集合和有序集合(元素含权重)，集合元素个数为2的32次方-1个</p>
-<p>无序集合</p>
-<pre><code>sadd key member  // 添加元素
-smemebers key    // 查询所有元素
-scard key        // 获取集合中元素个数
-sdiff key1 key2  // 差集
-sinter key1 key2 // 集合的交集运算
-sunion key1 key2 // 集合的补集</code></pre><p>有序集合（元素含权重）</p>
-<pre><code>将sadd改为zadd极为有序集合
-zadd key score member // 添加元素，score为元素权重</code></pre><h1 id="4-key的其他操作（移除、过期时间、检测）"><a href="#4-key的其他操作（移除、过期时间、检测）" class="headerlink" title="4.key的其他操作（移除、过期时间、检测）"></a>4.key的其他操作（移除、过期时间、检测）</h1><pre><code>del key   // 删除key
-exist key // 检测key是否存在
-type key // 查看key类型
-expire   // 设置过期时间
-persist key // 持久化key，移除key过期时间
-ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和订阅"><a href="#5-Redis发布和订阅" class="headerlink" title="5.Redis发布和订阅"></a>5.Redis发布和订阅</h1><h1 id="6-Redis事务"><a href="#6-Redis事务" class="headerlink" title="6.Redis事务"></a>6.Redis事务</h1><h1 id="7-Redis脚本"><a href="#7-Redis脚本" class="headerlink" title="7.Redis脚本"></a>7.Redis脚本</h1>]]></content>
-      <categories>
-        <category>技术</category>
-        <category>主题</category>
-      </categories>
-      <tags>
-        <tag>Reids</tag>
-      </tags>
   </entry>
   <entry>
     <title>hexo+valine搭建博客评论系统</title>
@@ -1944,48 +1908,6 @@ v_appKey: mgOpfzbkHYqU92CV4IDlAUHQ</code></pre><p>5.记得在Leancloud -&gt; 设
 <p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104281764" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104281764</a></p>
 <p>PS:可以在<a href="https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了" target="_blank" rel="noopener">https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>hexo博客添加友链检测界面UptimeRobot+CupSatus</title>
-    <url>/2021/02/03/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE%E6%A3%80%E6%B5%8B%E7%95%8C%E9%9D%A2UptimeRobot-CupSatus/</url>
-    <content><![CDATA[<h1 id="0-效果展示"><a href="#0-效果展示" class="headerlink" title="0.效果展示"></a>0.效果展示</h1><h1 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h1><p>a.注册UptimeRobot账号，将自己的网站和要检测的网站或者账号加上去</p>
-<p>b.去<a href="https://github.com/izoyo/Cup网址下载CupStatus页面" target="_blank" rel="noopener">https://github.com/izoyo/Cup网址下载CupStatus页面</a></p>
-<h1 id="2-应用到自己的hexo博客上"><a href="#2-应用到自己的hexo博客上" class="headerlink" title="2.应用到自己的hexo博客上"></a>2.应用到自己的hexo博客上</h1><p>hexo new page “friendlink_status” 页面</p>
-<p>在source/friendlink_status/中把CupSatus的所有文件放进去，目录如下</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210203180649.png" alt="image-20210203180642121"></p>
-<p>按照开源项目CupSatus中说的把js/config.js中的key替换成自己upTimeRobot账号下对应的api key即可</p>
-<p>然后在博客目录/config.yml  注意不是主题目录下的那个配置文件</p>
-<p>加入skip-render:   -friendlink_status/**  不使用主题的layout.ejs渲染这个页面</p>
-<p>在主题的配置文件中菜单导航栏上加入这个页面即可</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>hexo增加RSS订阅功能</title>
-    <url>/2020/12/04/hexo%E5%A2%9E%E5%8A%A0RSS%E8%AE%A2%E9%98%85%E5%8A%9F%E8%83%BD/</url>
-    <content><![CDATA[<h1 id="Hexo增加RSS订阅"><a href="#Hexo增加RSS订阅" class="headerlink" title="Hexo增加RSS订阅"></a>Hexo增加RSS订阅</h1><h2 id="RSS介绍"><a href="#RSS介绍" class="headerlink" title="RSS介绍"></a>RSS介绍</h2><p>生成自己网站的聚合信息，让别人去订阅供其收获你自己的最新消息 ——有了RSS后别人可以关注了你的最新博客动态了</p>
-<h2 id="向自己主题中添加RSS功能步骤"><a href="#向自己主题中添加RSS功能步骤" class="headerlink" title="向自己主题中添加RSS功能步骤"></a>向自己主题中添加RSS功能步骤</h2><h3 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="1.安装插件"></a>1.安装插件</h3><pre><code>npm install hexo-generator-feed</code></pre><h3 id="2-主题配置文件中增加"><a href="#2-主题配置文件中增加" class="headerlink" title="2.主题配置文件中增加"></a>2.主题配置文件中增加</h3><pre><code># Extensions
-## Plugins: http://hexo.io/plugins/
-#RSS订阅
-plugin:
- hexo-generator-feed
-#Feed Atom
-feed:
-  type: atom #RSS的类型(atom/rss2)
-  path: atom.xml #文件路径,默认是atom.xml/rss2.xml
-  limit: 20 #展示文章的数量,使用0或则false代表展示全部
-  hub:
-  content: #在RSS文件中是否包含内容 ,有3个值 true/false默认不填为false
-  content_limit: 140 #指定内容的长度作为摘要,仅仅在上面content设置为false和没有自定义的描述出现
-  content_limit_delim: &#39; &#39; #上面截取描述的分隔符,截取内容是以指定的这个分隔符作为截取结束的标志.在达到规定的内容长度之前最后出现的这个分隔符之前的内容,，防止从中间截断.
-  order_by: -date
-  icon: #icon.png</code></pre><h3 id="3-themes-sakura-config-yml"><a href="#3-themes-sakura-config-yml" class="headerlink" title="3.themes\sakura_config.yml"></a>3.themes\sakura_config.yml</h3><pre><code># 简易信息聚合,站点共享
-rss: /atom.xml</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
   </entry>
   <entry>
     <title>MarkDown快速查询转移字符</title>
@@ -2074,6 +1996,84 @@ $$</code></pre><p>详细表格</p>
       <tags>
         <tag>资料整理</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>hexo增加RSS订阅功能</title>
+    <url>/2020/12/04/hexo%E5%A2%9E%E5%8A%A0RSS%E8%AE%A2%E9%98%85%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<h1 id="Hexo增加RSS订阅"><a href="#Hexo增加RSS订阅" class="headerlink" title="Hexo增加RSS订阅"></a>Hexo增加RSS订阅</h1><h2 id="RSS介绍"><a href="#RSS介绍" class="headerlink" title="RSS介绍"></a>RSS介绍</h2><p>生成自己网站的聚合信息，让别人去订阅供其收获你自己的最新消息 ——有了RSS后别人可以关注了你的最新博客动态了</p>
+<h2 id="向自己主题中添加RSS功能步骤"><a href="#向自己主题中添加RSS功能步骤" class="headerlink" title="向自己主题中添加RSS功能步骤"></a>向自己主题中添加RSS功能步骤</h2><h3 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="1.安装插件"></a>1.安装插件</h3><pre><code>npm install hexo-generator-feed</code></pre><h3 id="2-主题配置文件中增加"><a href="#2-主题配置文件中增加" class="headerlink" title="2.主题配置文件中增加"></a>2.主题配置文件中增加</h3><pre><code># Extensions
+## Plugins: http://hexo.io/plugins/
+#RSS订阅
+plugin:
+ hexo-generator-feed
+#Feed Atom
+feed:
+  type: atom #RSS的类型(atom/rss2)
+  path: atom.xml #文件路径,默认是atom.xml/rss2.xml
+  limit: 20 #展示文章的数量,使用0或则false代表展示全部
+  hub:
+  content: #在RSS文件中是否包含内容 ,有3个值 true/false默认不填为false
+  content_limit: 140 #指定内容的长度作为摘要,仅仅在上面content设置为false和没有自定义的描述出现
+  content_limit_delim: &#39; &#39; #上面截取描述的分隔符,截取内容是以指定的这个分隔符作为截取结束的标志.在达到规定的内容长度之前最后出现的这个分隔符之前的内容,，防止从中间截断.
+  order_by: -date
+  icon: #icon.png</code></pre><h3 id="3-themes-sakura-config-yml"><a href="#3-themes-sakura-config-yml" class="headerlink" title="3.themes\sakura_config.yml"></a>3.themes\sakura_config.yml</h3><pre><code># 简易信息聚合,站点共享
+rss: /atom.xml</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Redis常用命令整理</title>
+    <url>/2021/04/01/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h1 id="0-前言及Redis的链接"><a href="#0-前言及Redis的链接" class="headerlink" title="0.前言及Redis的链接"></a>0.前言及Redis的链接</h1><p>redis缓存数据库，主要存放key-value键值对，其中key为字符串，value可为多种类型<strong>字符串</strong>、<strong>列表</strong>、<strong>集合</strong>、<strong>字典</strong></p>
+<h1 id="1-设置字符串"><a href="#1-设置字符串" class="headerlink" title="1.设置字符串"></a>1.设置字符串</h1><pre><code>set key value
+get key value</code></pre><h1 id="2-设置列表"><a href="#2-设置列表" class="headerlink" title="2.设置列表"></a>2.设置列表</h1><pre><code>lpsuh key childElement // 头部插入
+lpop  key // 头部删除
+lrang key 0 10 // 从头部开始查询到10
+
+// 注：尾部操作则将lpush替换成rpush
+// 头部插入的下表说明，头部入A、B、C
+下标:  0、  1、   2
+元素:  A、  B、   C
+下标:  -3、 -2、  -1</code></pre><h1 id="3-设置集合"><a href="#3-设置集合" class="headerlink" title="3.设置集合"></a>3.设置集合</h1><p>集合分为无序集合和有序集合(元素含权重)，集合元素个数为2的32次方-1个</p>
+<p>无序集合</p>
+<pre><code>sadd key member  // 添加元素
+smemebers key    // 查询所有元素
+scard key        // 获取集合中元素个数
+sdiff key1 key2  // 差集
+sinter key1 key2 // 集合的交集运算
+sunion key1 key2 // 集合的补集</code></pre><p>有序集合（元素含权重）</p>
+<pre><code>将sadd改为zadd极为有序集合
+zadd key score member // 添加元素，score为元素权重</code></pre><h1 id="4-key的其他操作（移除、过期时间、检测）"><a href="#4-key的其他操作（移除、过期时间、检测）" class="headerlink" title="4.key的其他操作（移除、过期时间、检测）"></a>4.key的其他操作（移除、过期时间、检测）</h1><pre><code>del key   // 删除key
+exist key // 检测key是否存在
+type key // 查看key类型
+expire   // 设置过期时间
+persist key // 持久化key，移除key过期时间
+ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和订阅"><a href="#5-Redis发布和订阅" class="headerlink" title="5.Redis发布和订阅"></a>5.Redis发布和订阅</h1><h1 id="6-Redis事务"><a href="#6-Redis事务" class="headerlink" title="6.Redis事务"></a>6.Redis事务</h1><h1 id="7-Redis脚本"><a href="#7-Redis脚本" class="headerlink" title="7.Redis脚本"></a>7.Redis脚本</h1>]]></content>
+      <categories>
+        <category>技术</category>
+        <category>主题</category>
+      </categories>
+      <tags>
+        <tag>Reids</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo博客添加友链检测界面UptimeRobot+CupSatus</title>
+    <url>/2021/02/03/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE%E6%A3%80%E6%B5%8B%E7%95%8C%E9%9D%A2UptimeRobot-CupSatus/</url>
+    <content><![CDATA[<h1 id="0-效果展示"><a href="#0-效果展示" class="headerlink" title="0.效果展示"></a>0.效果展示</h1><h1 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h1><p>a.注册UptimeRobot账号，将自己的网站和要检测的网站或者账号加上去</p>
+<p>b.去<a href="https://github.com/izoyo/Cup网址下载CupStatus页面" target="_blank" rel="noopener">https://github.com/izoyo/Cup网址下载CupStatus页面</a></p>
+<h1 id="2-应用到自己的hexo博客上"><a href="#2-应用到自己的hexo博客上" class="headerlink" title="2.应用到自己的hexo博客上"></a>2.应用到自己的hexo博客上</h1><p>hexo new page “friendlink_status” 页面</p>
+<p>在source/friendlink_status/中把CupSatus的所有文件放进去，目录如下</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210203180649.png" alt="image-20210203180642121"></p>
+<p>按照开源项目CupSatus中说的把js/config.js中的key替换成自己upTimeRobot账号下对应的api key即可</p>
+<p>然后在博客目录/config.yml  注意不是主题目录下的那个配置文件</p>
+<p>加入skip-render:   -friendlink_status/**  不使用主题的layout.ejs渲染这个页面</p>
+<p>在主题的配置文件中菜单导航栏上加入这个页面即可</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
   </entry>
   <entry>
     <title>golang包管理工具介绍</title>
@@ -2271,6 +2271,25 @@ $$</code></pre><p>详细表格</p>
       </tags>
   </entry>
   <entry>
+    <title>mac快捷键整理</title>
+    <url>/2021/05/25/mac%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h1 id="基本快捷键"><a href="#基本快捷键" class="headerlink" title="基本快捷键"></a>基本快捷键</h1><h2 id="1、通用操作"><a href="#1、通用操作" class="headerlink" title="1、通用操作"></a>1、通用操作</h2><p>Command是Mac里最重要的修饰键，在大多数情况下相当于Windows下的Ctrl。所以以下最基本操作很好理解：</p>
+<p>Command-Z 撤销　<br>Command-X 剪切　　<br>Command-C 拷贝（Copy）　　<br>Command-V 粘贴　　<br>Command-A 全选（All）　　<br>Command-S 保存（Save)　　<br>Command-F 查找（Find）</p>
+<h2 id="2-截图"><a href="#2-截图" class="headerlink" title="2.截图"></a>2.截图</h2><p>Command-Shift-4 截取所选屏幕区域到一个文件　　<br>Command-Shift-3 截取全部屏幕到文件　　<br>Command-Shift-Control-3 截取全部屏幕到剪贴板　　<br>Command-Shift-4 截取所选屏幕区域到一个文件，或追加按空格键仅捕捉一个窗口　　<br>Command-Shift-Control-4 截取所选屏幕区域到剪贴板，或按空格键仅捕捉一个窗</p>
+<h2 id="3、在应用程序中："><a href="#3、在应用程序中：" class="headerlink" title="3、在应用程序中："></a>3、在应用程序中：</h2><p>Command-Option-esc 打开强制退出窗口　　<br>Command-H 隐藏（Hide）当前正在运行的应用程序窗口　　<br>Command-Option-H 隐藏（Hide）其他应用程序窗口　　<br>Command-Q 退出（Quit）最前面的应用程序　　<br>Command-Shift-Z 重做，也就是撤销的逆向操作　　<br>Command-Tab 在打开的应用程序列表中转到下一个最近使用的应用程序，相当于Windows中（Alt+Tab）　　<br>Command-Option-esc 打开“强制退出”窗口，如果有应用程序无响应，可在窗口列表中选择强制退出</p>
+<h2 id="4、文本处理："><a href="#4、文本处理：" class="headerlink" title="4、文本处理："></a>4、文本处理：</h2><p>Command-右箭头 将光标移至当前行的行尾　　<br>Command-B 切换所选文字粗体（Bold）显示　　<br>fn-Delete 相当于PC全尺寸键盘上的Delete，也就是向后删除　　<br>fn-上箭头 向上滚动一页（Page Up）　　<br>fn-下箭头 向下滚动一页（Page Down）　　<br>fn-左箭头 滚动至文稿开头（Home）　　<br>fn-右箭头 滚动至文稿末尾（End）　　<br>Command-右箭头 将光标移至当前行的行尾　　<br>Command-左箭头 将光标移至当前行的行首　　<br>Command-下箭头 将光标移至文稿末尾　　<br>Command-上箭头 将光标移至文稿开头　　<br>Option-右箭头 将光标移至下一个单词的末尾　　<br>Option-左箭头 将光标移至上一个单词的开头　　<br>Control-A 移至行或段落的开头</p>
+<h2 id="5、在Finder中："><a href="#5、在Finder中：" class="headerlink" title="5、在Finder中："></a>5、在Finder中：</h2><p>Command-Option-V 剪切文件　　<br>Command-Shift-N 新建文件夹（New）　　<br>Command-Shift-G 调出窗口，可输入绝对路径直达文件夹（Go）　　<br>return 这个其实不算快捷键，点击文件，按下可重命名文件　　<br>Command-O 打开所选项。在Mac里打开文件不像Windows里直接按Enter　　<br>Command-Option-V 作用相当于Windows里的文件剪切。在其它位置上对文件复制（Command-C），在目的位置按下这个快捷键，文件将被剪切到此位置　　<br>Command-上箭头 打开包含当前文件夹的文件夹，相当于Windows里的“向上”　　<br>Command-Delete 将文件移至废纸篓　　<br>Command-Shift-Delete 清倒废纸篓　　<br>空格键 快速查看选中的文件，也就是预览功能</p>
+<h2 id="6、在浏览器中："><a href="#6、在浏览器中：" class="headerlink" title="6、在浏览器中："></a>6、在浏览器中：</h2><p>Control-Tab 转向下一个标签页　　<br>Command-L 光标直接跳至地址栏　　<br>Control-Tab 转向下一个标签页　　<br>Control-Shift-Tab 转向上一个标签页　　<br>Command-加号或等号 放大页面　　<br>Command-减号 缩小页面</p>
+<h2 id="7-Mac启动与关机时的快捷键："><a href="#7-Mac启动与关机时的快捷键：" class="headerlink" title="7.Mac启动与关机时的快捷键："></a>7.Mac启动与关机时的快捷键：</h2><p>Command-Option-P-R 重置NVRAM　　<br>Option 开机后立即按下，将显示启动管理器，如果Mac装有双系统或者插有启动U盘，可在启动管理器中选择启动盘　　<br>Command-R 开机后立即按下，可打开OS X的恢复功能（Recovery）　　<br>Command-Option-P-R 开机后立即按下，重置NVRAM。有些时候电脑会出现些小问题，重置NVRAM是你除了重新启动，尝试修复的第一选择。　　<br>Command-Option-Control-电源按钮 退出所有应用程序，允许你进行文稿储存，然后关机　　<br>按住电源按钮5秒 强制Mac关机</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>资料整理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx安装过程及相关使用命令</title>
     <url>/2020/12/21/nginx%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E5%8F%8A%E7%9B%B8%E5%85%B3%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="一、安装过程"><a href="#一、安装过程" class="headerlink" title="一、安装过程"></a>一、安装过程</h1><p>Nginx安装过程</p>
@@ -2320,25 +2339,6 @@ cd 解压后的文件夹</code></pre><h2 id="3-执行命令安装nginx"><a href=
       </categories>
       <tags>
         <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mac快捷键整理</title>
-    <url>/2021/05/25/mac%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<h1 id="基本快捷键"><a href="#基本快捷键" class="headerlink" title="基本快捷键"></a>基本快捷键</h1><h2 id="1、通用操作"><a href="#1、通用操作" class="headerlink" title="1、通用操作"></a>1、通用操作</h2><p>Command是Mac里最重要的修饰键，在大多数情况下相当于Windows下的Ctrl。所以以下最基本操作很好理解：</p>
-<p>Command-Z 撤销　<br>Command-X 剪切　　<br>Command-C 拷贝（Copy）　　<br>Command-V 粘贴　　<br>Command-A 全选（All）　　<br>Command-S 保存（Save)　　<br>Command-F 查找（Find）</p>
-<h2 id="2-截图"><a href="#2-截图" class="headerlink" title="2.截图"></a>2.截图</h2><p>Command-Shift-4 截取所选屏幕区域到一个文件　　<br>Command-Shift-3 截取全部屏幕到文件　　<br>Command-Shift-Control-3 截取全部屏幕到剪贴板　　<br>Command-Shift-4 截取所选屏幕区域到一个文件，或追加按空格键仅捕捉一个窗口　　<br>Command-Shift-Control-4 截取所选屏幕区域到剪贴板，或按空格键仅捕捉一个窗</p>
-<h2 id="3、在应用程序中："><a href="#3、在应用程序中：" class="headerlink" title="3、在应用程序中："></a>3、在应用程序中：</h2><p>Command-Option-esc 打开强制退出窗口　　<br>Command-H 隐藏（Hide）当前正在运行的应用程序窗口　　<br>Command-Option-H 隐藏（Hide）其他应用程序窗口　　<br>Command-Q 退出（Quit）最前面的应用程序　　<br>Command-Shift-Z 重做，也就是撤销的逆向操作　　<br>Command-Tab 在打开的应用程序列表中转到下一个最近使用的应用程序，相当于Windows中（Alt+Tab）　　<br>Command-Option-esc 打开“强制退出”窗口，如果有应用程序无响应，可在窗口列表中选择强制退出</p>
-<h2 id="4、文本处理："><a href="#4、文本处理：" class="headerlink" title="4、文本处理："></a>4、文本处理：</h2><p>Command-右箭头 将光标移至当前行的行尾　　<br>Command-B 切换所选文字粗体（Bold）显示　　<br>fn-Delete 相当于PC全尺寸键盘上的Delete，也就是向后删除　　<br>fn-上箭头 向上滚动一页（Page Up）　　<br>fn-下箭头 向下滚动一页（Page Down）　　<br>fn-左箭头 滚动至文稿开头（Home）　　<br>fn-右箭头 滚动至文稿末尾（End）　　<br>Command-右箭头 将光标移至当前行的行尾　　<br>Command-左箭头 将光标移至当前行的行首　　<br>Command-下箭头 将光标移至文稿末尾　　<br>Command-上箭头 将光标移至文稿开头　　<br>Option-右箭头 将光标移至下一个单词的末尾　　<br>Option-左箭头 将光标移至上一个单词的开头　　<br>Control-A 移至行或段落的开头</p>
-<h2 id="5、在Finder中："><a href="#5、在Finder中：" class="headerlink" title="5、在Finder中："></a>5、在Finder中：</h2><p>Command-Option-V 剪切文件　　<br>Command-Shift-N 新建文件夹（New）　　<br>Command-Shift-G 调出窗口，可输入绝对路径直达文件夹（Go）　　<br>return 这个其实不算快捷键，点击文件，按下可重命名文件　　<br>Command-O 打开所选项。在Mac里打开文件不像Windows里直接按Enter　　<br>Command-Option-V 作用相当于Windows里的文件剪切。在其它位置上对文件复制（Command-C），在目的位置按下这个快捷键，文件将被剪切到此位置　　<br>Command-上箭头 打开包含当前文件夹的文件夹，相当于Windows里的“向上”　　<br>Command-Delete 将文件移至废纸篓　　<br>Command-Shift-Delete 清倒废纸篓　　<br>空格键 快速查看选中的文件，也就是预览功能</p>
-<h2 id="6、在浏览器中："><a href="#6、在浏览器中：" class="headerlink" title="6、在浏览器中："></a>6、在浏览器中：</h2><p>Control-Tab 转向下一个标签页　　<br>Command-L 光标直接跳至地址栏　　<br>Control-Tab 转向下一个标签页　　<br>Control-Shift-Tab 转向上一个标签页　　<br>Command-加号或等号 放大页面　　<br>Command-减号 缩小页面</p>
-<h2 id="7-Mac启动与关机时的快捷键："><a href="#7-Mac启动与关机时的快捷键：" class="headerlink" title="7.Mac启动与关机时的快捷键："></a>7.Mac启动与关机时的快捷键：</h2><p>Command-Option-P-R 重置NVRAM　　<br>Option 开机后立即按下，将显示启动管理器，如果Mac装有双系统或者插有启动U盘，可在启动管理器中选择启动盘　　<br>Command-R 开机后立即按下，可打开OS X的恢复功能（Recovery）　　<br>Command-Option-P-R 开机后立即按下，重置NVRAM。有些时候电脑会出现些小问题，重置NVRAM是你除了重新启动，尝试修复的第一选择。　　<br>Command-Option-Control-电源按钮 退出所有应用程序，允许你进行文稿储存，然后关机　　<br>按住电源按钮5秒 强制Mac关机</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>资料整理</tag>
       </tags>
   </entry>
   <entry>
@@ -2686,6 +2686,56 @@ static char *ngx_http_hello_counter(ngx_conf_t *cf, ngx_command_t *cmd, void *co
       </tags>
   </entry>
   <entry>
+    <title>个人博客的分类和标签</title>
+    <url>/2021/05/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/</url>
+    <content><![CDATA[<h2 id="分类和标签"><a href="#分类和标签" class="headerlink" title="分类和标签"></a>分类和标签</h2><p>只有文章支持分类和标签，您可以在 Front-matter 中设置。在其他系统中，分类和标签听起来很接近，但是在 Hexo 中两者有着明显的差别：分类具有顺序性和层次性，也就是说 <code>Foo, Bar</code> 不等于 <code>Bar, Foo</code>；而标签没有顺序和层次。</p>
+<pre><code>categories:
+- Diary
+tags:
+- PS3
+- Games</code></pre><blockquote>
+<p>分类方法的分歧</p>
+<p>如果您有过使用 WordPress 的经验，就很容易误解 Hexo 的分类方式。WordPress 支持对一篇文章设置多个分类，而且这些分类可以是同级的，也可以是父子分类。但是 Hexo 不支持指定多个同级分类。下面的指定方法：</p>
+<pre><code>categories:
+  - Diary
+  - Life</code></pre><p>会使分类<code>Life</code>成为<code>Diary</code>的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。</p>
+<p>如果你需要为文章添加多个分类，可以尝试以下 list 中的方法。</p>
+<pre><code>categories:
+- [Diary, PlayStation]
+- [Diary, Games]
+- [Life]</code></pre><p>此时这篇文章同时包括三个分类： <code>PlayStation</code> 和 <code>Games</code> 分别都是父分类 <code>Diary</code> 的子分类，同时 <code>Life</code> 是一个没有子分类的分类。</p>
+</blockquote>
+<h2 id="1-当前博客的分类"><a href="#1-当前博客的分类" class="headerlink" title="1.当前博客的分类"></a>1.当前博客的分类</h2><p>技术、生活、才艺、期望、纪念</p>
+<h2 id="2-当前博客的标签"><a href="#2-当前博客的标签" class="headerlink" title="2.当前博客的标签"></a>2.当前博客的标签</h2><p>悦读、主题美化、LeetCode、MarkDown、Sakura、nginx、web、linux、多线程、感悟、数组、文件读取、简单、算法、黑科技、博客归类、资料整理</p>
+]]></content>
+      <categories>
+        <category>主题</category>
+      </categories>
+      <tags>
+        <tag>博客归类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>主题优化增加网页百度统计功能</title>
+    <url>/2021/06/04/%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E5%A2%9E%E5%8A%A0%E7%BD%91%E9%A1%B5%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<p>1.开通百度统计账号</p>
+<p>2.获取跟踪代码</p>
+<p>3.将跟踪代码放到head末尾位置<br>本主题的head路径为themes/Sakura/layout/_partial/head.ejs</p>
+<p>TODO: 继续优化将其变成一个站点配置功能，使用指定的百度提供代码中的key作为区分不同的统计</p>
+<pre><code># Baidu Analytics ID
+baidu_analytics: 上面步骤中记录的百度统计里用户的key值。</code></pre><p>4.效果截图</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/image-20210604200116710.png" alt="image-20210604200116710"></p>
+<p>参考代码<a href="http://www.jcsama.com/2016/01/25/hexo-baido-analytics/" target="_blank" rel="noopener">http://www.jcsama.com/2016/01/25/hexo-baido-analytics/</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>主题</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu中apt-get安装的默认路径</title>
     <url>/2021/03/01/ubuntu%E4%B8%ADapt-get%E5%AE%89%E8%A3%85%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84/</url>
     <content><![CDATA[<p>博客源地址：<a href="https://blog.csdn.net/yanhx1204/article/details/54893581" target="_blank" rel="noopener">https://blog.csdn.net/yanhx1204/article/details/54893581</a></p>
@@ -2711,6 +2761,59 @@ static char *ngx_http_hello_counter(ngx_conf_t *cf, ngx_command_t *cmd, void *co
       </categories>
       <tags>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>protobuf学习整理</title>
+    <url>/2021/06/03/protobuf%E5%AD%A6%E4%B9%A0%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h1 id="一、ProtoBuf简介"><a href="#一、ProtoBuf简介" class="headerlink" title="一、ProtoBuf简介"></a>一、ProtoBuf简介</h1><p>语言平台无关的、灵活、高效、自动化的序列化机制</p>
+<p>类似协议：XML、JSON</p>
+<p>区别点：<u>XML、JSON关注人类可读性，通常用于双方交互的协议；ProtoBuf更关注压缩效率、传输速度，人类可读性差(指序列化之后的文件)</u></p>
+<h1 id="二、如何用？"><a href="#二、如何用？" class="headerlink" title="二、如何用？"></a>二、如何用？</h1><h2 id="2-1golang语言"><a href="#2-1golang语言" class="headerlink" title="2.1golang语言"></a>2.1golang语言</h2><h3 id="2-1-0环境准备"><a href="#2-1-0环境准备" class="headerlink" title="2.1.0环境准备"></a>2.1.0环境准备</h3><p>需要如下两个工具</p>
+<p>1.<strong>protoc</strong>:可以执行不同语言的api，生成不同语言版本的结构体文件</p>
+<p>2.<strong>protoc-gen-go</strong>:go版本的生成程序可以生成go语言的结构体</p>
+<p>以上工具不同版本生成的文件是不一样的，所以安需要下载指定版本</p>
+<p>安装最新版本</p>
+<pre><code>1.安装最新的protoc-gen-go, 在gopath路径下执行如下命令
+go get github.com/golang/protobuf/protoc-gen-go // protoc-gen-go会安到$gopath/bin下,如果自己下载编译，也要放到这个路径下
+2.安装最新的protobuf
+https://github.com/protocolbuffers/protobuf/releases //下载后解压，可以做其他的部分</code></pre><hr>
+<p>安装之前的版本</p>
+<pre><code>1.安装之前版本的protoc-gen-go, 在gopath路径下执行如下命令
+GIT_TAG=&quot;v1.2.0&quot;
+go get -d -u github.com/golang/protobuf/protoc-gen-go
+git -C &quot;$(go env GOPATH)&quot;/src/github.com/golang/protobuf
+checkout $GIT_TAG
+go install github.com/golang/protobuf/protoc-gen-go
+2.安装之前版本的protobuf
+https://github.com/protocolbuffers/protobuf/releases</code></pre><h3 id="2-2-1准备原协议-proto文件"><a href="#2-2-1准备原协议-proto文件" class="headerlink" title="2.2.1准备原协议.proto文件"></a>2.2.1准备原协议.proto文件</h3><pre><code>message xxx {
+  // 字段规则：required -&gt; 字段只能也必须出现 1 次
+  // 字段规则：optional -&gt; 字段可出现 0 次或1次
+  // 字段规则：repeated -&gt; 字段可出现任意多次（包括 0）
+  // 类型：int32、int64、sint32、sint64、string、32-bit ....
+  // 字段编号：0 ~ 536870911（除去 19000 到 19999 之间的数字）
+  字段规则 类型 名称 = 字段编号;
+}</code></pre><pre><code>// 例1: 在 xxx.proto 文件中定义 Example1 message  
+// 包含五个字段，依次为string,bytes,EmbeddedMessage自定义结构体,repeatedInt32Val,repeatedStringVal
+message Example1 {
+    optional string stringVal = 1;
+    optional bytes bytesVal = 2;
+    message EmbeddedMessage {
+        int32 int32Val = 1;
+        string stringVal = 2;
+    }
+    optional EmbeddedMessage embeddedExample1 = 3;
+    repeated int32 repeatedInt32Val = 4;
+    repeated string repeatedStringVal = 5;
+}</code></pre><h3 id="2-2-3生成proto-go文件"><a href="#2-2-3生成proto-go文件" class="headerlink" title="2.2.3生成proto.go文件"></a>2.2.3生成proto.go文件</h3><pre><code>protoc --go_out={输出位置} {.proto文件路径}
+// 例如  protobuf包解压路径/src/protoc --go_out=. msg.proto
+//protoc如果没有加入到/usr/local/bin</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>protobuf</tag>
+        <tag>go</tag>
       </tags>
   </entry>
   <entry>
@@ -2826,93 +2929,51 @@ $$</code></pre><p>详细表格</p>
       </tags>
   </entry>
   <entry>
-    <title>主题美化添加自己的书单页面</title>
-    <url>/2020/12/18/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B9%A6%E5%8D%95%E9%A1%B5%E9%9D%A2/</url>
-    <content><![CDATA[<p>参考</p>
-<p><a href="https://blog.csdn.net/qq_44846853/article/details/104563887" target="_blank" rel="noopener">https://blog.csdn.net/qq_44846853/article/details/104563887</a></p>
-<h1 id="0-准备安装hexo-douban插件"><a href="#0-准备安装hexo-douban插件" class="headerlink" title="0.准备安装hexo-douban插件"></a>0.准备安装hexo-douban插件</h1><pre><code>npm install hexo-douban --save    </code></pre><h1 id="1-修改主站目录-非主题目录-的-config-yml"><a href="#1-修改主站目录-非主题目录-的-config-yml" class="headerlink" title="1.修改主站目录(非主题目录)的_config.yml"></a>1.修改主站目录(非主题目录)的_config.yml</h1><p>博客目录/_config.yml下新建books.ejs</p>
-<p>内容如下</p>
-<pre><code>douban: 
-  user: 252345665    #这个需要修改为你个人的id  
-  builtin: false   #如果想生成豆瓣页面，这个需要设置为true
-  book: 
-      title: &#39;This is my book title&#39; 
-      quote: &#39;This is my book quote&#39; 
-  movie: 
-      title: &#39;This is my movie title&#39; 
-      quote: &#39;This is my movie quote&#39; 
-  game: 
-      title: &#39;This is my game title&#39; 
-      quote: &#39;This is my game quote&#39; 
-  timeout: 10000</code></pre><p>说明:</p>
-<ul>
-<li><strong>user</strong>:：你的豆瓣ID。打开豆瓣，登入账户，然后在右上角点击 ”个人主页“，这时候地址栏的URL大概是这样：<a href="https://yafine-blog.cn/go.html?url=aHR0cHM6Ly93d3cuZG91YmFuLmNvbS9wZW9wbGUveHh4eHh4Lw==" target="_blank" rel="noopener">https://www.douban.com/people/xxxxxx/</a> ，其中的”xxxxxx”就是你的个人ID了。</li>
-<li><strong>builtin</strong>：是否将生成页面的功能嵌入 <code>hexo s</code> 和 <code>hexo g</code> 中，默认是 <code>false</code> ，另一可选项为 <code>true</code> 。</li>
-<li><strong>title</strong>： 该页面的标题。</li>
-<li><strong>quote</strong>： 写在页面开头的一段话,支持html语法。</li>
-<li><strong>timeout</strong>： 爬取数据的超时时间，默认是 10000ms，如果在使用时发现报了超时的错(ETIMEOUT)可以把这个数据设置的大一点。</li>
-</ul>
-<h1 id="2-在导航处增加入口"><a href="#2-在导航处增加入口" class="headerlink" title="2.在导航处增加入口"></a>2.在导航处增加入口</h1><p>博客目录/themes/sakura/_config.yml中加入书单、电影的入口   /books    /movies</p>
-<pre><code>  清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
-    书单: {path: /books/, fa: fa-th-list faa-bounce }, 
-    番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
-    歌单: {path: /music/, fa: fa-headphones },
-    电影: {path: /movies/, fa: fa-headphones },
-    图集: {path: /tags/图集/, fa: fa-photo },
-    娱乐: {path: /dinoswords, fa: fa-gamepad }
-  } }</code></pre><p>这个时候已经可以进入第5步验证，不过如果想自定义书单页面样式的话要3、4步</p>
-<h1 id="3-适配sakura主题"><a href="#3-适配sakura主题" class="headerlink" title="3.适配sakura主题"></a>3.适配sakura主题</h1><p>博客目录/themes/sakura/layout/下  增加文件 douban.ejs</p>
-<pre><code>&lt;div class=&quot;blank&quot; style=&quot;padding-top: 75px;&quot;&gt;
-&lt;/div&gt;
-&lt;div class=&quot;pattern-center &quot;&gt;
-  &lt;div class=&quot;pattern-attachment-img&quot;&gt;
-    &lt;% if (page.photos) { %&gt;
-    &lt;img src=&quot;&lt;%= page.photos %&gt;&quot; src=&quot;&lt;%- theme.lazyloadImg %&gt;&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot; class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot; style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
-    &lt;% } else { %&gt;
-      &lt;img src=&quot;&lt;%= theme.bg[Math.floor(Math.random() * theme.bg.length + 1)-1] %&gt;&quot; src=&quot;&lt;%- theme.lazyloadImg %&gt;&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot; class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot; style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
-    &lt;% } %&gt;
-    &lt;header class=&quot;pattern-header &quot;&gt;
-      &lt;h1 class=&quot;entry-title&quot;&gt;悦读&lt;/h1&gt;
-    &lt;/header&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&quot;content&quot; class=&quot;site-content&quot;&gt;
-  &lt;div id=&quot;main&quot;&gt;
-    &lt;div id=&quot;main-part&quot;&gt;
-      &lt;div class=&quot;card&quot;&gt; 
-            &lt;div class=&quot;card-content&quot; style=&quot;padding: 30px&quot;&gt; 
-                &lt;h1 style=&quot;margin: 10px 0 10px 0px;&quot;&gt;&lt;%= page.title %&gt;&lt;/h1&gt; 
-                &lt;%- page.content %&gt; 
-            &lt;/div&gt; 
-        &lt;/div&gt; 
-
-
-
-        &lt;section class=&quot;author-profile&quot;&gt;
-          &lt;div class=&quot;info&quot; itemprop=&quot;author&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/Person&quot;&gt;
-            &lt;a href=&quot;/about/&quot; class=&quot;profile gravatar&quot;&gt;&lt;img src=&quot;&lt;%- (theme.cdn || &#39;&#39;) + theme.avatar%&gt;&quot; itemprop=&quot;image&quot; alt=&quot;hojun&quot; height=&quot;70&quot; width=&quot;70&quot;&gt;&lt;/a&gt;
-            &lt;div class=&quot;meta&quot;&gt;
-              &lt;span class=&quot;title&quot;&gt;Author&lt;/span&gt;
-              &lt;h3 itemprop=&quot;name&quot;&gt;
-              &lt;a href=&quot;&lt;%- theme.url%&gt;&quot; itemprop=&quot;url&quot; rel=&quot;author&quot;&gt;&lt;%- config.author %&gt;&lt;/a&gt;
-              &lt;/h3&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-          &lt;p id=&quot;showStr&quot;&gt;&lt;/p&gt;
-        &lt;/section&gt;
-      &lt;/div&gt;   
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre><h1 id="4-修改插件默认应用的模板"><a href="#4-修改插件默认应用的模板" class="headerlink" title="4.修改插件默认应用的模板"></a>4.修改插件默认应用的模板</h1><p>然后在博客站点目录下的<code>node_modules</code>文件夹下找到<code>hexo-douban/lib</code>，文件夹下有三个js文件，分别为：<code>books-generator.js</code> 、<code>games-generator.js</code> 、<code>movies-generator.js</code>，用文本编辑器打开这三个文件，并将其文件内容末尾的代码修改为一下内容：</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/* 原文件内容为 layout: [`page`, `post`] ，将其修改为下面的内容*/</span>
-layout<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token template-string"><span class="token string">`douban`</span></span><span class="token punctuation">]</span></code></pre>
-<h1 id="5-运行插件生成相应界面"><a href="#5-运行插件生成相应界面" class="headerlink" title="5.运行插件生成相应界面"></a>5.运行插件生成相应界面</h1><pre class=" language-bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo douban -bgm <span class="token operator">&amp;&amp;</span> hexo g <span class="token operator">&amp;&amp;</span> hexo s</code></pre>
-<p>这时页面localhost:4000/books   或   localhost:4000/movies 可以看到界面了</p>
-<p><strong>PS:以下是可选的命令参数：</strong></p>
-<pre class=" language-bash"><code class="language-bash">-h, --help    <span class="token comment" spellcheck="true"># 帮助页面</span>
--b, --books   <span class="token comment" spellcheck="true"># 只生成书单页面</span>
--g, --games   <span class="token comment" spellcheck="true"># 只生成游戏页面</span>
--m, --movies  <span class="token comment" spellcheck="true"># 只生成电影页面</span></code></pre>
-]]></content>
+    <title>主题美化添加文章阅读计数统计和网站运行事件</title>
+    <url>/2020/12/26/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E8%AE%A1%E6%95%B0%E7%BB%9F%E8%AE%A1/</url>
+    <content><![CDATA[<p>在主题目录/layout/_partial/footer.ejs中<br>&lt;div class=”footer-device”&gt;和&lt;div class=”site-info”&gt;的下面之间加入如下代码</p>
+<pre><code> &lt;!-- 网站数据统计 --&gt;
+        &lt;div class=&quot;footer-device&quot;&gt;
+          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;
+            &lt;span style=&quot;color: #ff9999;padding-left: 20px;&quot;&gt;
+                &lt;!-- 网站运行时间统计 --&gt;
+                &lt;i class=&quot;fa fa-clock-o&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+                &lt;span id=&quot;time&quot; align=&quot;center&quot;&gt;载入时间中...&lt;/span&gt;
+                &lt;script&gt;
+                var now = new Date(); 
+                function createtime() { 
+                      var grt= new Date(&quot;&lt;%- theme.siteBuildingTime %&gt;&quot;);//在此处修改你的建站时间
+                      now.setTime(now.getTime()+250); 
+                      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                      if(String(hnum).length ==1 ){hnum = &quot;0&quot; + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = &quot;0&quot; + mnum;} 
+                      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = &quot;0&quot; + snum;} 
+                      document.getElementById(&quot;time&quot;).innerHTML = &quot;小破站在各种灾难中苟活了 &quot;+ dnum +&quot; 天 &quot;+hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;      
+                  } 
+                  setInterval(&quot;createtime()&quot;,250);
+                &lt;/script&gt;
+            &lt;/span&gt; 
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;footer-device&quot;&gt;
+          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;
+            &lt;span style=&quot;color: #b9b9b9;padding-left: 20px;&quot;&gt;
+              &lt;!-- 全网站字数统计wordcount --&gt;
+              &lt;i class=&quot;fa fa-line-chart&quot;  aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt; 博客全站共: &lt;span class=&quot;post-count&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;%= totalcount(site) %&gt;&lt;/span&gt;字&lt;/span&gt;
+              &lt;!-- 不蒜子网页计数器 --&gt;
+              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalTraffic) { %&gt;
+              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-fire&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;总访问量： &lt;span id=&quot;busuanzi_value_site_pv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;次&lt;/span&gt;
+              &lt;/span&gt;
+              &lt;% } %&gt;
+              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalNumberOfvisitors) { %&gt;
+              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-user&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;总访问人数： &lt;span id=&quot;busuanzi_value_site_uv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;人&lt;/span&gt;
+              &lt;/span&gt;
+              &lt;% } %&gt;
+            &lt;/span&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;</code></pre>]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -3634,86 +3695,98 @@ body.themespring .denglong {
       </categories>
   </entry>
   <entry>
-    <title>主题美化添加文章阅读计数统计和网站运行事件</title>
-    <url>/2020/12/26/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E8%AE%A1%E6%95%B0%E7%BB%9F%E8%AE%A1/</url>
-    <content><![CDATA[<p>在主题目录/layout/_partial/footer.ejs中<br>&lt;div class=”footer-device”&gt;和&lt;div class=”site-info”&gt;的下面之间加入如下代码</p>
-<pre><code> &lt;!-- 网站数据统计 --&gt;
-        &lt;div class=&quot;footer-device&quot;&gt;
-          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;
-            &lt;span style=&quot;color: #ff9999;padding-left: 20px;&quot;&gt;
-                &lt;!-- 网站运行时间统计 --&gt;
-                &lt;i class=&quot;fa fa-clock-o&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
-                &lt;span id=&quot;time&quot; align=&quot;center&quot;&gt;载入时间中...&lt;/span&gt;
-                &lt;script&gt;
-                var now = new Date(); 
-                function createtime() { 
-                      var grt= new Date(&quot;&lt;%- theme.siteBuildingTime %&gt;&quot;);//在此处修改你的建站时间
-                      now.setTime(now.getTime()+250); 
-                      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-                      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-                      if(String(hnum).length ==1 ){hnum = &quot;0&quot; + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-                      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = &quot;0&quot; + mnum;} 
-                      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-                      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = &quot;0&quot; + snum;} 
-                      document.getElementById(&quot;time&quot;).innerHTML = &quot;小破站在各种灾难中苟活了 &quot;+ dnum +&quot; 天 &quot;+hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;      
-                  } 
-                  setInterval(&quot;createtime()&quot;,250);
-                &lt;/script&gt;
-            &lt;/span&gt; 
-          &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;footer-device&quot;&gt;
-          &lt;p style=&quot;font-family: &#39;Ubuntu&#39;, sans-serif;&quot;&gt;
-            &lt;span style=&quot;color: #b9b9b9;padding-left: 20px;&quot;&gt;
-              &lt;!-- 全网站字数统计wordcount --&gt;
-              &lt;i class=&quot;fa fa-line-chart&quot;  aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt; 博客全站共: &lt;span class=&quot;post-count&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;%= totalcount(site) %&gt;&lt;/span&gt;字&lt;/span&gt;
-              &lt;!-- 不蒜子网页计数器 --&gt;
-              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalTraffic) { %&gt;
-              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-fire&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;总访问量： &lt;span id=&quot;busuanzi_value_site_pv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;次&lt;/span&gt;
-              &lt;/span&gt;
-              &lt;% } %&gt;
-              &lt;% if (theme.busuanziStatistics &amp;&amp; theme.busuanziStatistics.totalNumberOfvisitors) { %&gt;
-              &lt;span style=&quot;padding-left: 20px;&quot;&gt;&lt;i class=&quot;fa fa-user&quot; aria-hidden=&quot;true&quot; style=&quot;color: #ff9999;display:inline-block&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;总访问人数： &lt;span id=&quot;busuanzi_value_site_uv&quot; style=&quot;color:#ff9999;&quot;&gt;&lt;/span&gt;人&lt;/span&gt;
-              &lt;/span&gt;
-              &lt;% } %&gt;
-            &lt;/span&gt;
-          &lt;/p&gt;
-        &lt;/div&gt;</code></pre>]]></content>
+    <title>主题美化添加自己的书单页面</title>
+    <url>/2020/12/18/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B9%A6%E5%8D%95%E9%A1%B5%E9%9D%A2/</url>
+    <content><![CDATA[<p>参考</p>
+<p><a href="https://blog.csdn.net/qq_44846853/article/details/104563887" target="_blank" rel="noopener">https://blog.csdn.net/qq_44846853/article/details/104563887</a></p>
+<h1 id="0-准备安装hexo-douban插件"><a href="#0-准备安装hexo-douban插件" class="headerlink" title="0.准备安装hexo-douban插件"></a>0.准备安装hexo-douban插件</h1><pre><code>npm install hexo-douban --save    </code></pre><h1 id="1-修改主站目录-非主题目录-的-config-yml"><a href="#1-修改主站目录-非主题目录-的-config-yml" class="headerlink" title="1.修改主站目录(非主题目录)的_config.yml"></a>1.修改主站目录(非主题目录)的_config.yml</h1><p>博客目录/_config.yml下新建books.ejs</p>
+<p>内容如下</p>
+<pre><code>douban: 
+  user: 252345665    #这个需要修改为你个人的id  
+  builtin: false   #如果想生成豆瓣页面，这个需要设置为true
+  book: 
+      title: &#39;This is my book title&#39; 
+      quote: &#39;This is my book quote&#39; 
+  movie: 
+      title: &#39;This is my movie title&#39; 
+      quote: &#39;This is my movie quote&#39; 
+  game: 
+      title: &#39;This is my game title&#39; 
+      quote: &#39;This is my game quote&#39; 
+  timeout: 10000</code></pre><p>说明:</p>
+<ul>
+<li><strong>user</strong>:：你的豆瓣ID。打开豆瓣，登入账户，然后在右上角点击 ”个人主页“，这时候地址栏的URL大概是这样：<a href="https://yafine-blog.cn/go.html?url=aHR0cHM6Ly93d3cuZG91YmFuLmNvbS9wZW9wbGUveHh4eHh4Lw==" target="_blank" rel="noopener">https://www.douban.com/people/xxxxxx/</a> ，其中的”xxxxxx”就是你的个人ID了。</li>
+<li><strong>builtin</strong>：是否将生成页面的功能嵌入 <code>hexo s</code> 和 <code>hexo g</code> 中，默认是 <code>false</code> ，另一可选项为 <code>true</code> 。</li>
+<li><strong>title</strong>： 该页面的标题。</li>
+<li><strong>quote</strong>： 写在页面开头的一段话,支持html语法。</li>
+<li><strong>timeout</strong>： 爬取数据的超时时间，默认是 10000ms，如果在使用时发现报了超时的错(ETIMEOUT)可以把这个数据设置的大一点。</li>
+</ul>
+<h1 id="2-在导航处增加入口"><a href="#2-在导航处增加入口" class="headerlink" title="2.在导航处增加入口"></a>2.在导航处增加入口</h1><p>博客目录/themes/sakura/_config.yml中加入书单、电影的入口   /books    /movies</p>
+<pre><code>  清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
+    书单: {path: /books/, fa: fa-th-list faa-bounce }, 
+    番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
+    歌单: {path: /music/, fa: fa-headphones },
+    电影: {path: /movies/, fa: fa-headphones },
+    图集: {path: /tags/图集/, fa: fa-photo },
+    娱乐: {path: /dinoswords, fa: fa-gamepad }
+  } }</code></pre><p>这个时候已经可以进入第5步验证，不过如果想自定义书单页面样式的话要3、4步</p>
+<h1 id="3-适配sakura主题"><a href="#3-适配sakura主题" class="headerlink" title="3.适配sakura主题"></a>3.适配sakura主题</h1><p>博客目录/themes/sakura/layout/下  增加文件 douban.ejs</p>
+<pre><code>&lt;div class=&quot;blank&quot; style=&quot;padding-top: 75px;&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pattern-center &quot;&gt;
+  &lt;div class=&quot;pattern-attachment-img&quot;&gt;
+    &lt;% if (page.photos) { %&gt;
+    &lt;img src=&quot;&lt;%= page.photos %&gt;&quot; src=&quot;&lt;%- theme.lazyloadImg %&gt;&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot; class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot; style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
+    &lt;% } else { %&gt;
+      &lt;img src=&quot;&lt;%= theme.bg[Math.floor(Math.random() * theme.bg.length + 1)-1] %&gt;&quot; src=&quot;&lt;%- theme.lazyloadImg %&gt;&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot; class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot; style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
+    &lt;% } %&gt;
+    &lt;header class=&quot;pattern-header &quot;&gt;
+      &lt;h1 class=&quot;entry-title&quot;&gt;悦读&lt;/h1&gt;
+    &lt;/header&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;content&quot; class=&quot;site-content&quot;&gt;
+  &lt;div id=&quot;main&quot;&gt;
+    &lt;div id=&quot;main-part&quot;&gt;
+      &lt;div class=&quot;card&quot;&gt; 
+            &lt;div class=&quot;card-content&quot; style=&quot;padding: 30px&quot;&gt; 
+                &lt;h1 style=&quot;margin: 10px 0 10px 0px;&quot;&gt;&lt;%= page.title %&gt;&lt;/h1&gt; 
+                &lt;%- page.content %&gt; 
+            &lt;/div&gt; 
+        &lt;/div&gt; 
+
+
+
+        &lt;section class=&quot;author-profile&quot;&gt;
+          &lt;div class=&quot;info&quot; itemprop=&quot;author&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/Person&quot;&gt;
+            &lt;a href=&quot;/about/&quot; class=&quot;profile gravatar&quot;&gt;&lt;img src=&quot;&lt;%- (theme.cdn || &#39;&#39;) + theme.avatar%&gt;&quot; itemprop=&quot;image&quot; alt=&quot;hojun&quot; height=&quot;70&quot; width=&quot;70&quot;&gt;&lt;/a&gt;
+            &lt;div class=&quot;meta&quot;&gt;
+              &lt;span class=&quot;title&quot;&gt;Author&lt;/span&gt;
+              &lt;h3 itemprop=&quot;name&quot;&gt;
+              &lt;a href=&quot;&lt;%- theme.url%&gt;&quot; itemprop=&quot;url&quot; rel=&quot;author&quot;&gt;&lt;%- config.author %&gt;&lt;/a&gt;
+              &lt;/h3&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;p id=&quot;showStr&quot;&gt;&lt;/p&gt;
+        &lt;/section&gt;
+      &lt;/div&gt;   
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><h1 id="4-修改插件默认应用的模板"><a href="#4-修改插件默认应用的模板" class="headerlink" title="4.修改插件默认应用的模板"></a>4.修改插件默认应用的模板</h1><p>然后在博客站点目录下的<code>node_modules</code>文件夹下找到<code>hexo-douban/lib</code>，文件夹下有三个js文件，分别为：<code>books-generator.js</code> 、<code>games-generator.js</code> 、<code>movies-generator.js</code>，用文本编辑器打开这三个文件，并将其文件内容末尾的代码修改为一下内容：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/* 原文件内容为 layout: [`page`, `post`] ，将其修改为下面的内容*/</span>
+layout<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token template-string"><span class="token string">`douban`</span></span><span class="token punctuation">]</span></code></pre>
+<h1 id="5-运行插件生成相应界面"><a href="#5-运行插件生成相应界面" class="headerlink" title="5.运行插件生成相应界面"></a>5.运行插件生成相应界面</h1><pre class=" language-bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo douban -bgm <span class="token operator">&amp;&amp;</span> hexo g <span class="token operator">&amp;&amp;</span> hexo s</code></pre>
+<p>这时页面localhost:4000/books   或   localhost:4000/movies 可以看到界面了</p>
+<p><strong>PS:以下是可选的命令参数：</strong></p>
+<pre class=" language-bash"><code class="language-bash">-h, --help    <span class="token comment" spellcheck="true"># 帮助页面</span>
+-b, --books   <span class="token comment" spellcheck="true"># 只生成书单页面</span>
+-g, --games   <span class="token comment" spellcheck="true"># 只生成游戏页面</span>
+-m, --movies  <span class="token comment" spellcheck="true"># 只生成电影页面</span></code></pre>
+]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
         <tag>主题美化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>个人博客的分类和标签</title>
-    <url>/2021/05/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/</url>
-    <content><![CDATA[<h2 id="分类和标签"><a href="#分类和标签" class="headerlink" title="分类和标签"></a>分类和标签</h2><p>只有文章支持分类和标签，您可以在 Front-matter 中设置。在其他系统中，分类和标签听起来很接近，但是在 Hexo 中两者有着明显的差别：分类具有顺序性和层次性，也就是说 <code>Foo, Bar</code> 不等于 <code>Bar, Foo</code>；而标签没有顺序和层次。</p>
-<pre><code>categories:
-- Diary
-tags:
-- PS3
-- Games</code></pre><blockquote>
-<p>分类方法的分歧</p>
-<p>如果您有过使用 WordPress 的经验，就很容易误解 Hexo 的分类方式。WordPress 支持对一篇文章设置多个分类，而且这些分类可以是同级的，也可以是父子分类。但是 Hexo 不支持指定多个同级分类。下面的指定方法：</p>
-<pre><code>categories:
-  - Diary
-  - Life</code></pre><p>会使分类<code>Life</code>成为<code>Diary</code>的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。</p>
-<p>如果你需要为文章添加多个分类，可以尝试以下 list 中的方法。</p>
-<pre><code>categories:
-- [Diary, PlayStation]
-- [Diary, Games]
-- [Life]</code></pre><p>此时这篇文章同时包括三个分类： <code>PlayStation</code> 和 <code>Games</code> 分别都是父分类 <code>Diary</code> 的子分类，同时 <code>Life</code> 是一个没有子分类的分类。</p>
-</blockquote>
-<h2 id="1-当前博客的分类"><a href="#1-当前博客的分类" class="headerlink" title="1.当前博客的分类"></a>1.当前博客的分类</h2><p>技术、生活、才艺、期望、纪念</p>
-<h2 id="2-当前博客的标签"><a href="#2-当前博客的标签" class="headerlink" title="2.当前博客的标签"></a>2.当前博客的标签</h2><p>悦读、主题美化、LeetCode、MarkDown、Sakura、nginx、web、linux、多线程、感悟、数组、文件读取、简单、算法、黑科技、博客归类、资料整理</p>
-]]></content>
-      <categories>
-        <category>主题</category>
-      </categories>
-      <tags>
-        <tag>博客归类</tag>
       </tags>
   </entry>
   <entry>
@@ -3841,6 +3914,717 @@ var vm = new Vue({
       <categories>
         <category>技术</category>
       </categories>
+  </entry>
+  <entry>
+    <title>博客美化增加瀑布流相册</title>
+    <url>/2021/01/26/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E7%80%91%E5%B8%83%E6%B5%81%E7%9B%B8%E5%86%8C/</url>
+    <content><![CDATA[<p>参考链接:</p>
+<p>来源: itsNekoDeng<br>文章作者: NekoDeng<br>文章链接: <a href="https://nekodeng.gitee.io/posts/waterfall-flow-photo-album.html#toc-heading-9" target="_blank" rel="noopener">https://nekodeng.gitee.io/posts/waterfall-flow-photo-album.html#toc-heading-9</a></p>
+<p>自己经过修改后移植到sakura主题</p>
+<h1 id="1-增加相册界面和相册详情页面"><a href="#1-增加相册界面和相册详情页面" class="headerlink" title="1.增加相册界面和相册详情页面"></a>1.增加相册界面和相册详情页面</h1><h2 id="1-1新建gallery界面-相册概览"><a href="#1-1新建gallery界面-相册概览" class="headerlink" title="1.1新建gallery界面(相册概览)"></a>1.1新建gallery界面(相册概览)</h2><pre><code>hexo new &quot;gallery&quot;</code></pre><p>在博客目录/source/gallery可以看到index.md文件，修改内容如下</p>
+<pre><code>---
+title: gallery
+comments: false
+date: 2021-01-25 19:40:18
+keywords:
+description:
+photos:
+layout: &quot;gallery&quot;
+---</code></pre><p>1.2增加相册详情页</p>
+<p>在博客目录创建/source/gallery/test/index.md</p>
+<p>创test文件夹</p>
+<p><img src="C:%5CUsers%5Clinxuesong%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210126193135392.png" alt="image-20210126193135392"></p>
+<p>及其下面的index.md文件<img src="C:%5CUsers%5Clinxuesong%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210126193145171.png" alt="image-20210126193145171"></p>
+<p>index内容为</p>
+<pre><code>---
+title: test
+date: 2020-10-02 23:00:17 
+type: &quot;galleries&quot; 
+layout: &quot;galleries&quot; 
+password:
+---</code></pre><h2 id="1-2相册加密功能（选用）"><a href="#1-2相册加密功能（选用）" class="headerlink" title="1.2相册加密功能（选用）"></a>1.2相册加密功能（选用）</h2><p>在上面<code>index.md</code>文件中，可以实现加密功能，加密使用<code>SHA256</code>加密，所以在加密前需要先将你的密码转换成<code>SHA256格式</code>然后输入到最上面的创建相片页面的index.md的<code>password</code>里面。至于SHA256加密，请自行网上搜索在线生成，例如: <a href="http://www.ttmd5.com/hash.php?type=9" target="_blank" rel="noopener">http://www.ttmd5.com/hash.php?type=9</a></p>
+<h3 id="编辑主题导航栏加入相册按钮"><a href="#编辑主题导航栏加入相册按钮" class="headerlink" title="编辑主题导航栏加入相册按钮"></a>编辑主题导航栏加入相册按钮</h3><h1 id="2-新增布局样式文件"><a href="#2-新增布局样式文件" class="headerlink" title="2.新增布局样式文件"></a>2.新增布局样式文件</h1><p>在博客目录/themes/sakura/layout/位置下新增两个文件gallery.ejs、galleries.ejs</p>
+<p>这两个布局样式引用了<a href="https://github.com/feimosi/baguetteBox.js中的js和css样式文件，感兴趣可以自行参考" target="_blank" rel="noopener">https://github.com/feimosi/baguetteBox.js中的js和css样式文件，感兴趣可以自行参考</a></p>
+<p>文件内容分别如下:</p>
+<p>gallery.ejs</p>
+<pre><code>[{
+    &quot;name&quot;: &quot;test&quot;,
+    &quot;cover&quot;: &quot;https://i.loli.net/2020/10/05/kBcvAf7INgMLaem.jpg&quot;,
+    &quot;date&quot;: &quot;2017-10&quot;,
+    &quot;description&quot;: &quot;test&quot;,
+    &quot;url_name&quot;: &quot;test&quot;,
+    &quot;album&quot;: [{
+        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/qtOevHpw5XImS1J.jpg&quot;,
+        &quot;title&quot;: &quot;test&quot;,
+        &quot;describe&quot;: &quot;test&quot;
+    }, {
+        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg&quot;,
+        &quot;title&quot;: &quot;test&quot;,
+        &quot;describe&quot;: &quot;test&quot;
+    }, {
+        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg&quot;,
+        &quot;title&quot;: &quot;test&quot;,
+        &quot;describe&quot;: &quot;test&quot;
+    }]
+}]</code></pre><p>galleries.ejs</p>
+<pre><code>&lt;!-- 加密功能 --&gt;
+&lt;% if (theme.PhotoVerifyPassword.enable) { %&gt;
+    &lt;script src=&quot;&lt;%- theme.libs.js.crypto %&gt;&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        (function() {
+            let pwd = &#39;&lt;%- page.password %&gt;&#39;;
+
+            if (pwd &amp;&amp; pwd.length &gt; 0) {
+                if (pwd !== CryptoJS.SHA256(prompt(&#39;&lt;%- theme.PhotoVerifyPassword.promptMessage %&gt;&#39;)).toString(CryptoJS.enc.Hex)) {
+                    alert(&#39;&lt;%- theme.PhotoVerifyPassword.errorMessage %&gt;&#39;);
+                    location.href = &#39;&lt;%- url_for(&quot;/&quot;)  %&gt;&#39;;
+                }
+            }
+        })();
+    &lt;/script&gt;
+&lt;% } %&gt;
+
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%- theme.libs.css.baguetteBoxCss %&gt;&quot;&gt;
+&lt;!-- 该主题自带的lightGallery.js在图片多的时候会很卡，所以弃用，使用了一个我在网上找的baguetteBox，很轻量级，就是功能少了点 --&gt;
+&lt;script src=&quot;&lt;%- theme.libs.js.baguetteBoxJs %&gt;&quot;&gt;&lt;/script&gt; 
+&lt;style&gt;    
+    .my-gallery .photo img {
+        transition: all 0.6s ease-in-out; 
+    }     
+    .my-gallery .photo:hover img {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }      
+    .my-gallery {
+        margin: 20px auto;
+    }   
+    .miaoshus .title {
+        font-family: MV Boli;
+    }
+    .miaoshus {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 75%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+        font-size: 16px;
+        margin: 24px auto 12px;
+
+    }
+    body.dark .miaoshus {
+        background: 0 0;
+        border: 1px dashed #888;
+    }
+    body {
+        overflow: visible!important;
+    }
+    .box {
+            position: relative;
+        }
+    .box img {
+        width: 350px;
+        vertical-align: top;
+        padding: 8px;
+        border-radius: 10px;
+        transition: all 0.5s;
+    }
+    .box img:hover {
+        transform: scale(1.05);
+    }
+    .page-footer {
+        display: none
+    }
+    body {
+        overflow-y: visible!important;
+    }
+    header {
+        background-color: #000;
+    }
+    .biaotiss {
+            font-family: MV Boli;
+        }   
+    @media only screen and (max-width: 1058px) {
+        .box {
+            margin-left: 145px;
+        }
+    }
+    @media only screen and (max-width: 770px) {
+        .box {
+            margin-left: 15px;
+        }
+    }
+    @media only screen and (max-width: 500px) {
+        #previous-button, #next-button {
+            display: none;
+        }
+    }
+    @media only screen and (max-width: 380px) {
+        .box {
+            margin-left: -5px;
+        }
+    }
+    @media only screen and (max-width: 323px) {
+        .box img {
+            width: 296px;
+            left: 0;
+        }
+    }
+&lt;/style&gt;
+
+&lt;div class=&quot;tag-title center-align&quot;&gt;
+    &lt;div class=&quot;miaoshus&quot;&gt;
+        &lt;div class=&quot;title center-align&quot;&gt;
+            “ &lt;% if (is_home() &amp;&amp; config.subtitle &amp;&amp; config.subtitle.length &gt; 0) { %&gt;
+                &lt;%= config.subtitle %&gt;
+            &lt;% } else { %&gt;
+                &lt;%= page.title %&gt;
+            &lt;% } %&gt; ”
+        &lt;/div&gt;
+        “ &lt;%- theme.gallery.title %&gt; ”
+        “ 这里有光影流年，还有两朵穿衣裳的云，相拥在明天的河岸。”
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 相册 --&gt;
+&lt;section class=&quot;gallery&quot;&gt;
+    &lt;div id=&quot;myGallery&quot; class=&quot;my-gallery&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;box&quot;&gt;
+            &lt;% if (site.data &amp;&amp; site.data.gallery) { %&gt;
+                &lt;% var galleries = site.data.gallery; 
+                    var pageTitle = page.title;
+                    function getCurrentGallery(galleries, pageTitle) {
+                        for (let i = 0; i &lt; galleries.length; i++) {
+                            if (galleries[i][&#39;name&#39;] == pageTitle) {
+                                return galleries[i];
+                            }
+                        }
+                    }
+                    var currentGallery = getCurrentGallery(galleries, pageTitle);
+                    var photos = currentGallery.album;
+                %&gt;
+                &lt;% for (var i = 0, len = photos.length; i &lt; len; i++) { %&gt;
+                    &lt;% var my_album = photos[i]; %&gt;                   
+                        &lt;a href=&quot;&lt;%- my_album.img_url %&gt;&quot; data-caption=&quot;&lt;%- my_album.title %&gt;&quot;&gt;
+                            &lt;img class=&quot;mat&quot; src=&quot;/medias/loading.svg&quot; data-src=&quot;&lt;%- my_album.img_url %&gt;&quot; alt=&quot;img&quot;+&lt;%- i %&gt; &gt;
+                        &lt;/a&gt;                   
+                &lt;% } %&gt;
+            &lt;% } %&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+&lt;script&gt;
+    $(function () {
+        // 获取图片的宽度(200px)
+        let imgWidth = $(&#39;.mat&#39;).outerWidth(); // 200
+        waterfallHandler();
+        // 瀑布流处理
+        function waterfallHandler() {
+            // 获取图片的列数
+            let column = parseInt($(window).width() / imgWidth);
+            // 高度数组
+            let heightArr = [];
+            for(let i=0; i&lt;column; i++) {
+                heightArr[i] = 0;
+            }
+            // 遍历所有图片进行定位处理
+            $.each($(&#39;.mat&#39;), function (index, item) {
+                // 当前元素的高度
+                let itemHeight = $(item).outerHeight();
+                // 高度数组最小的高度
+                let minHeight = Math.min(...heightArr);
+                // 高度数组最小的高度的索引
+                let minIndex = heightArr.indexOf(minHeight);
+
+                $(item).css({
+                    position: &#39;absolute&#39;,
+                    top: minHeight + &#39;px&#39;,
+                    left: minIndex * imgWidth + &#39;px&#39;
+                });
+                heightArr[minIndex] += itemHeight;
+            });
+        }
+        // 窗口大小改变
+        $(window).resize(function () {
+            waterfallHandler();
+        });
+    });
+&lt;/script&gt;
+&lt;script&gt;
+    baguetteBox.run(&#39;.gallery&#39;, {
+        // 配置参数
+        buttons:Boolean,//是否显示导航按钮。
+        noScrollbars:true,//是否在显示时隐藏滚动条。
+        titleTag:true,//是否使用图片上的title属性作为图片标题
+        async:false,//是否异步加载文件。
+    });
+
+    start()
+        $(window).on(&#39;scroll&#39;, function(){
+        start();
+    })
+
+    function start(){
+          //.not(&#39;[data-isLoaded]&#39;)选中已加载的图片不需要重新加载
+        $(&#39;.gallery img&#39;).not(&#39;[data-isLoaded]&#39;).each(function(){
+            var $node = $(this)
+            if( isShow($node) ){
+                loadImg($node);
+            }
+        });
+    }
+
+    //判断一个元素是不是出现在窗口(视野)
+    function isShow($node){
+        return $node.offset().top &lt;= $(window).height() + $(window).scrollTop();
+    }
+    //加载图片
+    function loadImg($img){
+    //.attr(值)
+    //.attr(属性名称,值)
+        $img.attr(&#39;src&#39;, $img.attr(&#39;data-src&#39;)); //把data-src的值 赋值给src
+        $img.attr(&#39;data-isLoaded&#39;, 1);//已加载的图片做标记
+    }
+&lt;/script&gt;</code></pre><h1 id="3-增加具体的相册图片"><a href="#3-增加具体的相册图片" class="headerlink" title="3.增加具体的相册图片"></a>3.增加具体的相册图片</h1><p>博客目录/source/_data/位置下(如果没有_data文件夹创建)</p>
+<h2 id="3-1创建gallery-json文件，其内容为"><a href="#3-1创建gallery-json文件，其内容为" class="headerlink" title="3.1创建gallery.json文件，其内容为:"></a>3.1创建gallery.json文件，其内容为:</h2><pre><code>[{
+    &quot;name&quot;: &quot;test&quot;,
+    &quot;cover&quot;: &quot;https://i.loli.net/2020/10/05/kBcvAf7INgMLaem.jpg&quot;,
+    &quot;date&quot;: &quot;2017-10&quot;,
+    &quot;description&quot;: &quot;test&quot;,
+    &quot;url_name&quot;: &quot;test&quot;,
+    &quot;album&quot;: [{
+        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/qtOevHpw5XImS1J.jpg&quot;,
+        &quot;title&quot;: &quot;test&quot;,
+        &quot;describe&quot;: &quot;test&quot;
+    }, {
+        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg&quot;,
+        &quot;title&quot;: &quot;test&quot;,
+        &quot;describe&quot;: &quot;test&quot;
+    }, {
+        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg&quot;,
+        &quot;title&quot;: &quot;test&quot;,
+        &quot;describe&quot;: &quot;test&quot;
+    }]
+}]</code></pre><p>注:到目前位置检查一下</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210126194427.png" alt="image-20210126194426182"></p>
+<p>我们之后如果要新加自己的相册，名称也要统一<br>1.json文件中新加  2.创相册详情文件夹 3.修改index的title</p>
+<h1 id="4-主页面导航菜单增加相册"><a href="#4-主页面导航菜单增加相册" class="headerlink" title="4.主页面导航菜单增加相册"></a>4.主页面导航菜单增加相册</h1><p>博客目录/themes/sakura/_config.yml</p>
+<h2 id="4-1增加导航"><a href="#4-1增加导航" class="headerlink" title="4.1增加导航"></a>4.1增加导航</h2><pre><code> 清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
+    书单: {path: /books/, fa: fa-th-list faa-bounce }, 
+    番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
+    歌单: {path: /music/, fa: fa-headphones },
+    电影: {path: /movies/, fa: fa-video-camera },
+    游戏: {path: /games/, fa: fa-gamepad },
+    图集: {path: /gallery/, fa: fa-photo },</code></pre><h2 id="4-2增加相册配置"><a href="#4-2增加相册配置" class="headerlink" title="4.2增加相册配置"></a>4.2增加相册配置</h2><pre><code># 增加了相册页面 
+gallery: 
+  title: 光影流年 #标题 
+  icon: fa #这个显示相册页面的图标 
+  icon2: fa #这个显示自己的具体相册里面的相册的图标
+PhotoVerifyPassword: 
+  enable: true 
+  promptMessage: 该相册已加密，请输入密码访问 
+  errorMessage: 密码错误，将返回主页！
+</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>增加文章统计折线图、饼状图</title>
+    <url>/2020/12/18/%E5%A2%9E%E5%8A%A0%E6%96%87%E7%AB%A0%E7%BB%9F%E8%AE%A1%E6%8A%98%E7%BA%BF%E5%9B%BE%E3%80%81%E9%A5%BC%E7%8A%B6%E5%9B%BE/</url>
+    <content><![CDATA[<h3 id="1-sakura-layout-analytics-ejs"><a href="#1-sakura-layout-analytics-ejs" class="headerlink" title="1.sakura/layout/analytics.ejs"></a>1.sakura/layout/analytics.ejs</h3><pre><code>&lt;div class=&quot;pattern-center-blank&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pattern-center &quot;&gt;
+    &lt;div class=&quot;pattern-attachment-img&quot;&gt;
+        &lt;img src=&quot;https://cdn.jsdelivr.net/gh/drew233/cdn/20200303155335.webp&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot;
+            class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot;
+            style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
+    &lt;/div&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #contentss {
+            position: relative;
+            width: 800px;
+            height: 900px;
+            max-height: 1200px;
+            text-align: center;
+            border: 0;
+            color: rgba(0, 0, 0, .87);
+            background: rgba(255, 255, 255, .8);
+            background-size: cover;
+            margin: 0 auto;
+        }
+    &lt;/style&gt;
+    &lt;header class=&quot;pattern-header &quot;&gt;
+        &lt;h1 class=&quot;entry-title&quot;&gt;
+            文章数据统计&lt;/h1&gt;
+    &lt;/header&gt;
+&lt;/div&gt;
+&lt;div id=&quot;contentss&quot;&gt;
+    &lt;%- partial(&#39;_widget/post-charts&#39;) %&gt;
+&lt;/div&gt;</code></pre><h3 id="2-sakura-layout-widget-post-charts"><a href="#2-sakura-layout-widget-post-charts" class="headerlink" title="2.sakura/layout/_widget/post-charts"></a>2.sakura/layout/_widget/post-charts</h3><pre><code>&lt;style type=&quot;text/css&quot;&gt;
+    #posts-chart,
+    #categories-chart,
+    #tags-chart {
+        width: 100%;
+        height: 300px;
+        margin: 0.5rem auto;
+        padding: 0.5rem;
+    }
+&lt;/style&gt;
+
+&lt;div id=&quot;postCharts&quot; class=&quot;post-charts&quot;&gt;
+    &lt;div class=&quot;title center-align&quot; data-aos=&quot;zoom-in-up&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;chart col s12 m6 l4&quot; data-aos=&quot;zoom-in-up&quot;&gt;
+            &lt;div id=&quot;posts-chart&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;chart col s12 m6 l4&quot; data-aos=&quot;zoom-in-up&quot;&gt;
+            &lt;div id=&quot;categories-chart&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;chart col s12 m6 l4&quot; data-aos=&quot;zoom-in-up&quot;&gt;
+            &lt;div id=&quot;tags-chart&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;%= theme.libs.js.echarts %&gt;&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    var postsChart = echarts.init(document.getElementById(&#39;posts-chart&#39;));
+    var categoriesChart = echarts.init(document.getElementById(&#39;categories-chart&#39;));
+    var tagsChart = echarts.init(document.getElementById(&#39;tags-chart&#39;));
+
+    &lt;%
+    /* calculate postsOption data. */
+    var startDate = moment().subtract(1, &#39;years&#39;).startOf(&#39;month&#39;);
+    var endDate = moment().endOf(&#39;month&#39;);
+
+    var monthMap = new Map();
+    var dayTime = 3600 * 24 * 1000;
+    for (var time = startDate; time &lt;= endDate; time += dayTime) {
+        var month = moment(time).format(&#39;YYYY-MM&#39;);
+        if (!monthMap.has(month)) {
+            monthMap.set(month, 0);
+        }
+    }
+
+    // post and count map.
+    site.posts.forEach(function (post) {
+        var month = post.date.format(&#39;YYYY-MM&#39;);
+        if (monthMap.has(month)) {
+            monthMap.set(month, monthMap.get(month) + 1);
+        }
+    });
+
+    // xAxis data and yAxis data.
+    var monthArr = JSON.stringify([...monthMap.keys()]);
+    var monthValueArr = JSON.stringify([...monthMap.values()]); %&gt;
+
+    var postsOption = {
+        title: {
+            text: &#39;文章发布统计图&#39;,
+            top: 0,
+            x: &#39;center&#39;
+        },
+        tooltip: {
+            trigger: &#39;axis&#39;
+        },
+        xAxis: {
+            type: &#39;category&#39;,
+            data: &lt;%- monthArr %&gt;
+        },
+        yAxis: {
+            type: &#39;value&#39;,
+        },
+        series: [{
+            name: &#39;&lt;%- __(&quot;postsNumberName&quot;)  %&gt;&#39;,
+            type: &#39;line&#39;,
+            color: [&#39;#6772e5&#39;],
+            data: &lt;%- monthValueArr %&gt; ,
+            markPoint: {
+                symbolSize: 45,
+                color: [&#39;#fa755a&#39;, &#39;#3ecf8e&#39;, &#39;#82d3f4&#39;],
+                data: [{
+                    type: &#39;max&#39;,
+                    itemStyle: {
+                        color: [&#39;#3ecf8e&#39;]
+                    },
+                    name: &#39;&lt;%- __(&quot;maximum&quot;)  %&gt;&#39;
+                }, {
+                    type: &#39;min&#39;,
+                    itemStyle: {
+                        color: [&#39;#fa755a&#39;]
+                    },
+                    name: &#39;&lt;%- __(&quot;minimum&quot;)  %&gt;&#39;
+                }]
+            },
+            markLine: {
+                itemStyle: {
+                    color: [&#39;#ab47bc&#39;]
+                },
+                data: [{
+                    type: &#39;average&#39;,
+                    name: &#39;&lt;%- __(&quot;average&quot;)  %&gt;&#39;
+                }]
+            }
+        }]
+    };
+
+    &lt;%
+    /* calculate categoriesOption data. */
+    var categoryArr = [];
+    site.categories.map(function (category) {
+        categoryArr.push({
+            &#39;name&#39;: category.name,
+            &#39;value&#39;: category.length
+        })
+    });
+
+    var categoryArrJson = JSON.stringify(categoryArr); %&gt;
+
+    var categoriesOption = {
+        title: {
+            text: &#39;文章分类统计图&#39;,
+            top: 1,
+            x: &#39;center&#39;
+        },
+        tooltip: {
+            trigger: &#39;item&#39;,
+            formatter: &quot;{a} &lt;br/&gt;{b} : {c} ({d}%)&quot;
+        },
+        series: [{
+            name: &#39;&lt;%- __(&quot;categories&quot;)  %&gt;&#39;,
+            type: &#39;pie&#39;,
+            radius: &#39;50%&#39;,
+            color: [&#39;#6772e5&#39;, &#39;#ff9e0f&#39;, &#39;#fa755a&#39;, &#39;#3ecf8e&#39;, &#39;#82d3f4&#39;, &#39;#ab47bc&#39;, &#39;#525f7f&#39;, &#39;#f51c47&#39;,
+                &#39;#26A69A&#39;
+            ],
+            data: &lt;%- categoryArrJson %&gt; ,
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: &#39;rgba(0, 0, 0, 0.5)&#39;
+                }
+            }
+        }]
+    };
+
+    &lt;%
+    /* calculate tagsOption data. */
+    // get all tags name and count,then order by length desc.
+    var tagArr = [];
+    site.tags.map(function (tag) {
+        tagArr.push({
+            &#39;name&#39;: tag.name,
+            &#39;value&#39;: tag.length
+        });
+    });
+    tagArr.sort((a, b) =&gt; {
+        return b.value - a.value
+    });
+
+    // get Top 10 tags name and count.
+    var tagNameArr = [];
+    var tagCountArr = [];
+    for (var i = 0, len = Math.min(tagArr.length, 10); i &lt; len; i++) {
+        tagNameArr.push(tagArr[i].name);
+        tagCountArr.push(tagArr[i].value);
+    }
+
+    var tagNameArrJson = JSON.stringify(tagNameArr);
+    var tagCountArrJson = JSON.stringify(tagCountArr); %&gt;
+
+    var tagsOption = {
+        title: {
+            text: &#39;Top10标签统计图 &#39;,
+            top: 2,
+            x: &#39;center&#39;
+        },
+        tooltip: {},
+        xAxis: [{
+            type: &#39;category&#39;,
+            data: &lt;%- tagNameArrJson %&gt;
+        }],
+        yAxis: [{
+            type: &#39;value&#39;
+        }],
+        series: [{
+            type: &#39;bar&#39;,
+            color: [&#39;#82d3f4&#39;],
+            barWidth: 18,
+            data: &lt;%- tagCountArrJson %&gt; ,
+            markPoint: {
+                symbolSize: 45,
+                data: [{
+                    type: &#39;max&#39;,
+                    itemStyle: {
+                        color: [&#39;#3ecf8e&#39;]
+                    },
+                    name: &#39;&lt;%- __(&quot;maximum&quot;)  %&gt;&#39;
+                }, {
+                    type: &#39;min&#39;,
+                    itemStyle: {
+                        color: [&#39;#fa755a&#39;]
+                    },
+                    name: &#39;&lt;%- __(&quot;minimum&quot;)  %&gt;&#39;
+                }],
+            },
+            markLine: {
+                itemStyle: {
+                    color: [&#39;#ab47bc&#39;]
+                },
+                data: [{
+                    type: &#39;average&#39;,
+                    name: &#39;&lt;%- __(&quot;average&quot;)  %&gt;&#39;
+                }]
+            }
+        }]
+    };
+
+    // render the charts
+    postsChart.setOption(postsOption);
+    categoriesChart.setOption(categoriesOption);
+    tagsChart.setOption(tagsOption);
+&lt;/script&gt;</code></pre><h3 id="3-hexo-new-page-analytics"><a href="#3-hexo-new-page-analytics" class="headerlink" title="3.hexo new page analytics"></a>3.hexo new page analytics</h3><p>layout设置成analytics</p>
+<p>在主题配置文件中导航栏加入path: /analytics</p>
+<h3 id="4-添加echart-js的引用"><a href="#4-添加echart-js的引用" class="headerlink" title="4.添加echart.js的引用"></a>4.添加echart.js的引用</h3><p>在主题配置文件的最后加上,因为post-charts.ejs引用到了echart的js代码</p>
+<pre><code>libs:
+  css:
+    googlefonts: https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC
+    style: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/style.css #/css/style.css # 
+    lib: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/lib.min.css
+    font: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/font.css
+    insight: /css/insight.css
+    tags: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/tags.css
+    fancybox: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/jquery.fancybox.min.css
+    sharejs: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/sharejs.css
+    tocbot: https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css
+    live2d_widget: https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css
+    logo:
+      enable: true # 自定义logo
+      logo: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/logo.css
+      logo_fonts: https://cdn.jsdelivr.net/gh/cungudafa/cdn/fonts/LOGO/logo.css
+  js:
+    jquery: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+    linkcard: /js/linkcard.js
+    lib: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/lib.min.js
+    clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
+    InsightSearch: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/InsightSearch.js
+    sakura_app: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/sakura-app.js  #/js/sakura-app.js
+    busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js 
+    fancybox: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/jquery.fancybox.min.js
+    echarts: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/echarts.min.js
+    valine: https://unpkg.com/valine/dist/Valine.min.js
+    sakura_petal: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js #other
+    hititle: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js 
+    KeyBlock: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/noSomeKey.js #按键屏蔽,不能F12调试和查看源代码
+    sakura_petals: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js  #仅在首页花瓣飘落（大内存）
+    snow_petals: https://cdn.jsdelivr.net/gh/Yafine/cdn@2.5/source/js/snow1.js
+    piao: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/piao.js #飘动彩带
+    live2d_widget: https://cdn.jsdelivr.net/gh/cungudafa/cdn/live2d-widget/autoload.js
+    word: https://cdn.jsdelivr.net/gh/wallleap/cdn/js/shehuizhuyi.js #点击出现字效
+    love: https://cdn.jsdelivr.net/gh/wallleap/cdn/js/love.js #点击出现爱心
+    cursor: https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.1.2/js/cursor.js # 星星跟随坠落(大内存)</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>增加文章贡献日历</title>
+    <url>/2020/12/11/%E5%A2%9E%E5%8A%A0%E6%96%87%E7%AB%A0%E8%B4%A1%E7%8C%AE%E6%97%A5%E5%8E%86/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/cungudafa/article/details/106420842" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/106420842</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>回溯算法刷题整理总结</title>
+    <url>/2021/01/20/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E6%95%B4%E7%90%86%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="一、回溯算法理解"><a href="#一、回溯算法理解" class="headerlink" title="一、回溯算法理解"></a>一、回溯算法理解</h1><p>本质是以深度遍历的方式遍历决策树</p>
+<p>但因为没有具体的TreeNode构成树，所以回溯与DFS遍历树很像，但不同的是回溯要多一步退回选择的操作</p>
+<p>典型问题:全排列、N皇后问题</p>
+<p>回溯算法的构成要素:</p>
+<p>①选择列表</p>
+<p>②已选路径或已做出的选择(trace或used)</p>
+<p>③结束条件</p>
+<p>回溯算法的模板如下:</p>
+<pre><code>def backTrace(已选路径, 选择列表) {
+    if(结束条件) {
+        return ; // 对于return 如果只问是否有解则返回bool即可;如果要所有的解则用全局变量数组保存所有找到的解
+    }
+
+    for 某选择:选择列表 {
+        if(不必要选择) {
+            continue;
+        }
+        做选择:某选择加入已选路径，下一步选择列表是否变化
+        backTrace(已选路径, 选择列表)
+        回退选择:某选择退出已选路径，回退后选择列表是否需要恢复
+    }
+}</code></pre><p>回溯算法的思路如下:</p>
+<p>画决策树，决策树节点的属性就是 选择和当前路径  我们的backTrace函数在树的各个节点游走，知道遇到结束条件</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何调整顶部导航栏的整体长度以放入更多导航项</title>
+    <url>/2020/12/17/%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F%E7%9A%84%E6%95%B4%E4%BD%93%E9%95%BF%E5%BA%A6%E4%BB%A5%E6%94%BE%E5%85%A5%E6%9B%B4%E5%A4%9A%E5%AF%BC%E8%88%AA%E9%A1%B9/</url>
+    <content><![CDATA[<p>修改主题目录/source/css/style.css文件   搜到如下内容按自己需要修改</p>
+<p> 属性：    min-width越大一行所容纳的个数越多</p>
+<p>​                left:值越大离左侧的距离越远，这里是以整个屏幕的百分比进行衡量的</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201217161018.png" alt="image-20201217161004995"></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>主题美化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每页文章结尾出增加标签云展示</title>
+    <url>/2020/12/11/%E6%AF%8F%E9%A1%B5%E6%96%87%E7%AB%A0%E7%BB%93%E5%B0%BE%E5%87%BA%E5%A2%9E%E5%8A%A0%E6%A0%87%E7%AD%BE%E4%BA%91%E5%B1%95%E7%A4%BA/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/cungudafa/article/details/104616500" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104616500</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>将博客网站生成手机app获取下载安装码</title>
+    <url>/2020/12/17/%E5%B0%86%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E6%89%8B%E6%9C%BAapp%E8%8E%B7%E5%8F%96%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E7%A0%81/</url>
+    <content><![CDATA[<p>一门App网站   <a href="https://www.yimenapp.com/" target="_blank" rel="noopener">https://www.yimenapp.com/</a></p>
+<p>这个比较靠谱，实惠</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>黑科技</tag>
+      </tags>
   </entry>
   <entry>
     <title>博客增加建站日志页面</title>
@@ -4670,692 +5454,6 @@ var vm = new Vue({
       </tags>
   </entry>
   <entry>
-    <title>博客美化增加瀑布流相册</title>
-    <url>/2021/01/26/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E5%A2%9E%E5%8A%A0%E7%80%91%E5%B8%83%E6%B5%81%E7%9B%B8%E5%86%8C/</url>
-    <content><![CDATA[<p>参考链接:</p>
-<p>来源: itsNekoDeng<br>文章作者: NekoDeng<br>文章链接: <a href="https://nekodeng.gitee.io/posts/waterfall-flow-photo-album.html#toc-heading-9" target="_blank" rel="noopener">https://nekodeng.gitee.io/posts/waterfall-flow-photo-album.html#toc-heading-9</a></p>
-<p>自己经过修改后移植到sakura主题</p>
-<h1 id="1-增加相册界面和相册详情页面"><a href="#1-增加相册界面和相册详情页面" class="headerlink" title="1.增加相册界面和相册详情页面"></a>1.增加相册界面和相册详情页面</h1><h2 id="1-1新建gallery界面-相册概览"><a href="#1-1新建gallery界面-相册概览" class="headerlink" title="1.1新建gallery界面(相册概览)"></a>1.1新建gallery界面(相册概览)</h2><pre><code>hexo new &quot;gallery&quot;</code></pre><p>在博客目录/source/gallery可以看到index.md文件，修改内容如下</p>
-<pre><code>---
-title: gallery
-comments: false
-date: 2021-01-25 19:40:18
-keywords:
-description:
-photos:
-layout: &quot;gallery&quot;
----</code></pre><p>1.2增加相册详情页</p>
-<p>在博客目录创建/source/gallery/test/index.md</p>
-<p>创test文件夹</p>
-<p><img src="C:%5CUsers%5Clinxuesong%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210126193135392.png" alt="image-20210126193135392"></p>
-<p>及其下面的index.md文件<img src="C:%5CUsers%5Clinxuesong%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210126193145171.png" alt="image-20210126193145171"></p>
-<p>index内容为</p>
-<pre><code>---
-title: test
-date: 2020-10-02 23:00:17 
-type: &quot;galleries&quot; 
-layout: &quot;galleries&quot; 
-password:
----</code></pre><h2 id="1-2相册加密功能（选用）"><a href="#1-2相册加密功能（选用）" class="headerlink" title="1.2相册加密功能（选用）"></a>1.2相册加密功能（选用）</h2><p>在上面<code>index.md</code>文件中，可以实现加密功能，加密使用<code>SHA256</code>加密，所以在加密前需要先将你的密码转换成<code>SHA256格式</code>然后输入到最上面的创建相片页面的index.md的<code>password</code>里面。至于SHA256加密，请自行网上搜索在线生成，例如: <a href="http://www.ttmd5.com/hash.php?type=9" target="_blank" rel="noopener">http://www.ttmd5.com/hash.php?type=9</a></p>
-<h3 id="编辑主题导航栏加入相册按钮"><a href="#编辑主题导航栏加入相册按钮" class="headerlink" title="编辑主题导航栏加入相册按钮"></a>编辑主题导航栏加入相册按钮</h3><h1 id="2-新增布局样式文件"><a href="#2-新增布局样式文件" class="headerlink" title="2.新增布局样式文件"></a>2.新增布局样式文件</h1><p>在博客目录/themes/sakura/layout/位置下新增两个文件gallery.ejs、galleries.ejs</p>
-<p>这两个布局样式引用了<a href="https://github.com/feimosi/baguetteBox.js中的js和css样式文件，感兴趣可以自行参考" target="_blank" rel="noopener">https://github.com/feimosi/baguetteBox.js中的js和css样式文件，感兴趣可以自行参考</a></p>
-<p>文件内容分别如下:</p>
-<p>gallery.ejs</p>
-<pre><code>[{
-    &quot;name&quot;: &quot;test&quot;,
-    &quot;cover&quot;: &quot;https://i.loli.net/2020/10/05/kBcvAf7INgMLaem.jpg&quot;,
-    &quot;date&quot;: &quot;2017-10&quot;,
-    &quot;description&quot;: &quot;test&quot;,
-    &quot;url_name&quot;: &quot;test&quot;,
-    &quot;album&quot;: [{
-        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/qtOevHpw5XImS1J.jpg&quot;,
-        &quot;title&quot;: &quot;test&quot;,
-        &quot;describe&quot;: &quot;test&quot;
-    }, {
-        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg&quot;,
-        &quot;title&quot;: &quot;test&quot;,
-        &quot;describe&quot;: &quot;test&quot;
-    }, {
-        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg&quot;,
-        &quot;title&quot;: &quot;test&quot;,
-        &quot;describe&quot;: &quot;test&quot;
-    }]
-}]</code></pre><p>galleries.ejs</p>
-<pre><code>&lt;!-- 加密功能 --&gt;
-&lt;% if (theme.PhotoVerifyPassword.enable) { %&gt;
-    &lt;script src=&quot;&lt;%- theme.libs.js.crypto %&gt;&quot;&gt;&lt;/script&gt;
-    &lt;script&gt;
-        (function() {
-            let pwd = &#39;&lt;%- page.password %&gt;&#39;;
-
-            if (pwd &amp;&amp; pwd.length &gt; 0) {
-                if (pwd !== CryptoJS.SHA256(prompt(&#39;&lt;%- theme.PhotoVerifyPassword.promptMessage %&gt;&#39;)).toString(CryptoJS.enc.Hex)) {
-                    alert(&#39;&lt;%- theme.PhotoVerifyPassword.errorMessage %&gt;&#39;);
-                    location.href = &#39;&lt;%- url_for(&quot;/&quot;)  %&gt;&#39;;
-                }
-            }
-        })();
-    &lt;/script&gt;
-&lt;% } %&gt;
-
-
-&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%- theme.libs.css.baguetteBoxCss %&gt;&quot;&gt;
-&lt;!-- 该主题自带的lightGallery.js在图片多的时候会很卡，所以弃用，使用了一个我在网上找的baguetteBox，很轻量级，就是功能少了点 --&gt;
-&lt;script src=&quot;&lt;%- theme.libs.js.baguetteBoxJs %&gt;&quot;&gt;&lt;/script&gt; 
-&lt;style&gt;    
-    .my-gallery .photo img {
-        transition: all 0.6s ease-in-out; 
-    }     
-    .my-gallery .photo:hover img {
-        opacity: 0.6;
-        transform: scale(1.05);
-    }      
-    .my-gallery {
-        margin: 20px auto;
-    }   
-    .miaoshus .title {
-        font-family: MV Boli;
-    }
-    .miaoshus {
-        padding: 20px;
-        border: 1px dashed #e6e6e6;
-        color: #969696;
-        position: relative;
-        display: inline-block;
-        width: 75%;
-        background: #fbfbfb50;
-        border-radius: 10px;
-        font-size: 16px;
-        margin: 24px auto 12px;
-
-    }
-    body.dark .miaoshus {
-        background: 0 0;
-        border: 1px dashed #888;
-    }
-    body {
-        overflow: visible!important;
-    }
-    .box {
-            position: relative;
-        }
-    .box img {
-        width: 350px;
-        vertical-align: top;
-        padding: 8px;
-        border-radius: 10px;
-        transition: all 0.5s;
-    }
-    .box img:hover {
-        transform: scale(1.05);
-    }
-    .page-footer {
-        display: none
-    }
-    body {
-        overflow-y: visible!important;
-    }
-    header {
-        background-color: #000;
-    }
-    .biaotiss {
-            font-family: MV Boli;
-        }   
-    @media only screen and (max-width: 1058px) {
-        .box {
-            margin-left: 145px;
-        }
-    }
-    @media only screen and (max-width: 770px) {
-        .box {
-            margin-left: 15px;
-        }
-    }
-    @media only screen and (max-width: 500px) {
-        #previous-button, #next-button {
-            display: none;
-        }
-    }
-    @media only screen and (max-width: 380px) {
-        .box {
-            margin-left: -5px;
-        }
-    }
-    @media only screen and (max-width: 323px) {
-        .box img {
-            width: 296px;
-            left: 0;
-        }
-    }
-&lt;/style&gt;
-
-&lt;div class=&quot;tag-title center-align&quot;&gt;
-    &lt;div class=&quot;miaoshus&quot;&gt;
-        &lt;div class=&quot;title center-align&quot;&gt;
-            “ &lt;% if (is_home() &amp;&amp; config.subtitle &amp;&amp; config.subtitle.length &gt; 0) { %&gt;
-                &lt;%= config.subtitle %&gt;
-            &lt;% } else { %&gt;
-                &lt;%= page.title %&gt;
-            &lt;% } %&gt; ”
-        &lt;/div&gt;
-        “ &lt;%- theme.gallery.title %&gt; ”
-        “ 这里有光影流年，还有两朵穿衣裳的云，相拥在明天的河岸。”
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- 相册 --&gt;
-&lt;section class=&quot;gallery&quot;&gt;
-    &lt;div id=&quot;myGallery&quot; class=&quot;my-gallery&quot;&gt;
-        &lt;div class=&quot;row&quot;&gt;
-            &lt;div class=&quot;box&quot;&gt;
-            &lt;% if (site.data &amp;&amp; site.data.gallery) { %&gt;
-                &lt;% var galleries = site.data.gallery; 
-                    var pageTitle = page.title;
-                    function getCurrentGallery(galleries, pageTitle) {
-                        for (let i = 0; i &lt; galleries.length; i++) {
-                            if (galleries[i][&#39;name&#39;] == pageTitle) {
-                                return galleries[i];
-                            }
-                        }
-                    }
-                    var currentGallery = getCurrentGallery(galleries, pageTitle);
-                    var photos = currentGallery.album;
-                %&gt;
-                &lt;% for (var i = 0, len = photos.length; i &lt; len; i++) { %&gt;
-                    &lt;% var my_album = photos[i]; %&gt;                   
-                        &lt;a href=&quot;&lt;%- my_album.img_url %&gt;&quot; data-caption=&quot;&lt;%- my_album.title %&gt;&quot;&gt;
-                            &lt;img class=&quot;mat&quot; src=&quot;/medias/loading.svg&quot; data-src=&quot;&lt;%- my_album.img_url %&gt;&quot; alt=&quot;img&quot;+&lt;%- i %&gt; &gt;
-                        &lt;/a&gt;                   
-                &lt;% } %&gt;
-            &lt;% } %&gt;
-        &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/section&gt;
-&lt;script&gt;
-    $(function () {
-        // 获取图片的宽度(200px)
-        let imgWidth = $(&#39;.mat&#39;).outerWidth(); // 200
-        waterfallHandler();
-        // 瀑布流处理
-        function waterfallHandler() {
-            // 获取图片的列数
-            let column = parseInt($(window).width() / imgWidth);
-            // 高度数组
-            let heightArr = [];
-            for(let i=0; i&lt;column; i++) {
-                heightArr[i] = 0;
-            }
-            // 遍历所有图片进行定位处理
-            $.each($(&#39;.mat&#39;), function (index, item) {
-                // 当前元素的高度
-                let itemHeight = $(item).outerHeight();
-                // 高度数组最小的高度
-                let minHeight = Math.min(...heightArr);
-                // 高度数组最小的高度的索引
-                let minIndex = heightArr.indexOf(minHeight);
-
-                $(item).css({
-                    position: &#39;absolute&#39;,
-                    top: minHeight + &#39;px&#39;,
-                    left: minIndex * imgWidth + &#39;px&#39;
-                });
-                heightArr[minIndex] += itemHeight;
-            });
-        }
-        // 窗口大小改变
-        $(window).resize(function () {
-            waterfallHandler();
-        });
-    });
-&lt;/script&gt;
-&lt;script&gt;
-    baguetteBox.run(&#39;.gallery&#39;, {
-        // 配置参数
-        buttons:Boolean,//是否显示导航按钮。
-        noScrollbars:true,//是否在显示时隐藏滚动条。
-        titleTag:true,//是否使用图片上的title属性作为图片标题
-        async:false,//是否异步加载文件。
-    });
-
-    start()
-        $(window).on(&#39;scroll&#39;, function(){
-        start();
-    })
-
-    function start(){
-          //.not(&#39;[data-isLoaded]&#39;)选中已加载的图片不需要重新加载
-        $(&#39;.gallery img&#39;).not(&#39;[data-isLoaded]&#39;).each(function(){
-            var $node = $(this)
-            if( isShow($node) ){
-                loadImg($node);
-            }
-        });
-    }
-
-    //判断一个元素是不是出现在窗口(视野)
-    function isShow($node){
-        return $node.offset().top &lt;= $(window).height() + $(window).scrollTop();
-    }
-    //加载图片
-    function loadImg($img){
-    //.attr(值)
-    //.attr(属性名称,值)
-        $img.attr(&#39;src&#39;, $img.attr(&#39;data-src&#39;)); //把data-src的值 赋值给src
-        $img.attr(&#39;data-isLoaded&#39;, 1);//已加载的图片做标记
-    }
-&lt;/script&gt;</code></pre><h1 id="3-增加具体的相册图片"><a href="#3-增加具体的相册图片" class="headerlink" title="3.增加具体的相册图片"></a>3.增加具体的相册图片</h1><p>博客目录/source/_data/位置下(如果没有_data文件夹创建)</p>
-<h2 id="3-1创建gallery-json文件，其内容为"><a href="#3-1创建gallery-json文件，其内容为" class="headerlink" title="3.1创建gallery.json文件，其内容为:"></a>3.1创建gallery.json文件，其内容为:</h2><pre><code>[{
-    &quot;name&quot;: &quot;test&quot;,
-    &quot;cover&quot;: &quot;https://i.loli.net/2020/10/05/kBcvAf7INgMLaem.jpg&quot;,
-    &quot;date&quot;: &quot;2017-10&quot;,
-    &quot;description&quot;: &quot;test&quot;,
-    &quot;url_name&quot;: &quot;test&quot;,
-    &quot;album&quot;: [{
-        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/qtOevHpw5XImS1J.jpg&quot;,
-        &quot;title&quot;: &quot;test&quot;,
-        &quot;describe&quot;: &quot;test&quot;
-    }, {
-        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg&quot;,
-        &quot;title&quot;: &quot;test&quot;,
-        &quot;describe&quot;: &quot;test&quot;
-    }, {
-        &quot;img_url&quot;: &quot;https://i.loli.net/2020/10/05/4acvniMKTx8euqp.jpg&quot;,
-        &quot;title&quot;: &quot;test&quot;,
-        &quot;describe&quot;: &quot;test&quot;
-    }]
-}]</code></pre><p>注:到目前位置检查一下</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210126194427.png" alt="image-20210126194426182"></p>
-<p>我们之后如果要新加自己的相册，名称也要统一<br>1.json文件中新加  2.创相册详情文件夹 3.修改index的title</p>
-<h1 id="4-主页面导航菜单增加相册"><a href="#4-主页面导航菜单增加相册" class="headerlink" title="4.主页面导航菜单增加相册"></a>4.主页面导航菜单增加相册</h1><p>博客目录/themes/sakura/_config.yml</p>
-<h2 id="4-1增加导航"><a href="#4-1增加导航" class="headerlink" title="4.1增加导航"></a>4.1增加导航</h2><pre><code> 清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
-    书单: {path: /books/, fa: fa-th-list faa-bounce }, 
-    番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
-    歌单: {path: /music/, fa: fa-headphones },
-    电影: {path: /movies/, fa: fa-video-camera },
-    游戏: {path: /games/, fa: fa-gamepad },
-    图集: {path: /gallery/, fa: fa-photo },</code></pre><h2 id="4-2增加相册配置"><a href="#4-2增加相册配置" class="headerlink" title="4.2增加相册配置"></a>4.2增加相册配置</h2><pre><code># 增加了相册页面 
-gallery: 
-  title: 光影流年 #标题 
-  icon: fa #这个显示相册页面的图标 
-  icon2: fa #这个显示自己的具体相册里面的相册的图标
-PhotoVerifyPassword: 
-  enable: true 
-  promptMessage: 该相册已加密，请输入密码访问 
-  errorMessage: 密码错误，将返回主页！
-</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>回溯算法刷题整理总结</title>
-    <url>/2021/01/20/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E6%95%B4%E7%90%86%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h1 id="一、回溯算法理解"><a href="#一、回溯算法理解" class="headerlink" title="一、回溯算法理解"></a>一、回溯算法理解</h1><p>本质是以深度遍历的方式遍历决策树</p>
-<p>但因为没有具体的TreeNode构成树，所以回溯与DFS遍历树很像，但不同的是回溯要多一步退回选择的操作</p>
-<p>典型问题:全排列、N皇后问题</p>
-<p>回溯算法的构成要素:</p>
-<p>①选择列表</p>
-<p>②已选路径或已做出的选择(trace或used)</p>
-<p>③结束条件</p>
-<p>回溯算法的模板如下:</p>
-<pre><code>def backTrace(已选路径, 选择列表) {
-    if(结束条件) {
-        return ; // 对于return 如果只问是否有解则返回bool即可;如果要所有的解则用全局变量数组保存所有找到的解
-    }
-
-    for 某选择:选择列表 {
-        if(不必要选择) {
-            continue;
-        }
-        做选择:某选择加入已选路径，下一步选择列表是否变化
-        backTrace(已选路径, 选择列表)
-        回退选择:某选择退出已选路径，回退后选择列表是否需要恢复
-    }
-}</code></pre><p>回溯算法的思路如下:</p>
-<p>画决策树，决策树节点的属性就是 选择和当前路径  我们的backTrace函数在树的各个节点游走，知道遇到结束条件</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>增加文章统计折线图、饼状图</title>
-    <url>/2020/12/18/%E5%A2%9E%E5%8A%A0%E6%96%87%E7%AB%A0%E7%BB%9F%E8%AE%A1%E6%8A%98%E7%BA%BF%E5%9B%BE%E3%80%81%E9%A5%BC%E7%8A%B6%E5%9B%BE/</url>
-    <content><![CDATA[<h3 id="1-sakura-layout-analytics-ejs"><a href="#1-sakura-layout-analytics-ejs" class="headerlink" title="1.sakura/layout/analytics.ejs"></a>1.sakura/layout/analytics.ejs</h3><pre><code>&lt;div class=&quot;pattern-center-blank&quot;&gt;
-&lt;/div&gt;
-&lt;div class=&quot;pattern-center &quot;&gt;
-    &lt;div class=&quot;pattern-attachment-img&quot;&gt;
-        &lt;img src=&quot;https://cdn.jsdelivr.net/gh/drew233/cdn/20200303155335.webp&quot; data-src=&quot;&lt;%= page.photos %&gt;&quot;
-            class=&quot;lazyload&quot; onerror=&quot;imgError(this,3)&quot;
-            style=&quot;width: 100%; height: 100%; object-fit: cover; pointer-events: none;&quot;&gt;
-    &lt;/div&gt;
-    &lt;style type=&quot;text/css&quot;&gt;
-        #contentss {
-            position: relative;
-            width: 800px;
-            height: 900px;
-            max-height: 1200px;
-            text-align: center;
-            border: 0;
-            color: rgba(0, 0, 0, .87);
-            background: rgba(255, 255, 255, .8);
-            background-size: cover;
-            margin: 0 auto;
-        }
-    &lt;/style&gt;
-    &lt;header class=&quot;pattern-header &quot;&gt;
-        &lt;h1 class=&quot;entry-title&quot;&gt;
-            文章数据统计&lt;/h1&gt;
-    &lt;/header&gt;
-&lt;/div&gt;
-&lt;div id=&quot;contentss&quot;&gt;
-    &lt;%- partial(&#39;_widget/post-charts&#39;) %&gt;
-&lt;/div&gt;</code></pre><h3 id="2-sakura-layout-widget-post-charts"><a href="#2-sakura-layout-widget-post-charts" class="headerlink" title="2.sakura/layout/_widget/post-charts"></a>2.sakura/layout/_widget/post-charts</h3><pre><code>&lt;style type=&quot;text/css&quot;&gt;
-    #posts-chart,
-    #categories-chart,
-    #tags-chart {
-        width: 100%;
-        height: 300px;
-        margin: 0.5rem auto;
-        padding: 0.5rem;
-    }
-&lt;/style&gt;
-
-&lt;div id=&quot;postCharts&quot; class=&quot;post-charts&quot;&gt;
-    &lt;div class=&quot;title center-align&quot; data-aos=&quot;zoom-in-up&quot;&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;chart col s12 m6 l4&quot; data-aos=&quot;zoom-in-up&quot;&gt;
-            &lt;div id=&quot;posts-chart&quot;&gt;&lt;/div&gt;
-        &lt;/div&gt;
-
-        &lt;div class=&quot;chart col s12 m6 l4&quot; data-aos=&quot;zoom-in-up&quot;&gt;
-            &lt;div id=&quot;categories-chart&quot;&gt;&lt;/div&gt;
-        &lt;/div&gt;
-
-        &lt;div class=&quot;chart col s12 m6 l4&quot; data-aos=&quot;zoom-in-up&quot;&gt;
-            &lt;div id=&quot;tags-chart&quot;&gt;&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;%= theme.libs.js.echarts %&gt;&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-    var postsChart = echarts.init(document.getElementById(&#39;posts-chart&#39;));
-    var categoriesChart = echarts.init(document.getElementById(&#39;categories-chart&#39;));
-    var tagsChart = echarts.init(document.getElementById(&#39;tags-chart&#39;));
-
-    &lt;%
-    /* calculate postsOption data. */
-    var startDate = moment().subtract(1, &#39;years&#39;).startOf(&#39;month&#39;);
-    var endDate = moment().endOf(&#39;month&#39;);
-
-    var monthMap = new Map();
-    var dayTime = 3600 * 24 * 1000;
-    for (var time = startDate; time &lt;= endDate; time += dayTime) {
-        var month = moment(time).format(&#39;YYYY-MM&#39;);
-        if (!monthMap.has(month)) {
-            monthMap.set(month, 0);
-        }
-    }
-
-    // post and count map.
-    site.posts.forEach(function (post) {
-        var month = post.date.format(&#39;YYYY-MM&#39;);
-        if (monthMap.has(month)) {
-            monthMap.set(month, monthMap.get(month) + 1);
-        }
-    });
-
-    // xAxis data and yAxis data.
-    var monthArr = JSON.stringify([...monthMap.keys()]);
-    var monthValueArr = JSON.stringify([...monthMap.values()]); %&gt;
-
-    var postsOption = {
-        title: {
-            text: &#39;文章发布统计图&#39;,
-            top: 0,
-            x: &#39;center&#39;
-        },
-        tooltip: {
-            trigger: &#39;axis&#39;
-        },
-        xAxis: {
-            type: &#39;category&#39;,
-            data: &lt;%- monthArr %&gt;
-        },
-        yAxis: {
-            type: &#39;value&#39;,
-        },
-        series: [{
-            name: &#39;&lt;%- __(&quot;postsNumberName&quot;)  %&gt;&#39;,
-            type: &#39;line&#39;,
-            color: [&#39;#6772e5&#39;],
-            data: &lt;%- monthValueArr %&gt; ,
-            markPoint: {
-                symbolSize: 45,
-                color: [&#39;#fa755a&#39;, &#39;#3ecf8e&#39;, &#39;#82d3f4&#39;],
-                data: [{
-                    type: &#39;max&#39;,
-                    itemStyle: {
-                        color: [&#39;#3ecf8e&#39;]
-                    },
-                    name: &#39;&lt;%- __(&quot;maximum&quot;)  %&gt;&#39;
-                }, {
-                    type: &#39;min&#39;,
-                    itemStyle: {
-                        color: [&#39;#fa755a&#39;]
-                    },
-                    name: &#39;&lt;%- __(&quot;minimum&quot;)  %&gt;&#39;
-                }]
-            },
-            markLine: {
-                itemStyle: {
-                    color: [&#39;#ab47bc&#39;]
-                },
-                data: [{
-                    type: &#39;average&#39;,
-                    name: &#39;&lt;%- __(&quot;average&quot;)  %&gt;&#39;
-                }]
-            }
-        }]
-    };
-
-    &lt;%
-    /* calculate categoriesOption data. */
-    var categoryArr = [];
-    site.categories.map(function (category) {
-        categoryArr.push({
-            &#39;name&#39;: category.name,
-            &#39;value&#39;: category.length
-        })
-    });
-
-    var categoryArrJson = JSON.stringify(categoryArr); %&gt;
-
-    var categoriesOption = {
-        title: {
-            text: &#39;文章分类统计图&#39;,
-            top: 1,
-            x: &#39;center&#39;
-        },
-        tooltip: {
-            trigger: &#39;item&#39;,
-            formatter: &quot;{a} &lt;br/&gt;{b} : {c} ({d}%)&quot;
-        },
-        series: [{
-            name: &#39;&lt;%- __(&quot;categories&quot;)  %&gt;&#39;,
-            type: &#39;pie&#39;,
-            radius: &#39;50%&#39;,
-            color: [&#39;#6772e5&#39;, &#39;#ff9e0f&#39;, &#39;#fa755a&#39;, &#39;#3ecf8e&#39;, &#39;#82d3f4&#39;, &#39;#ab47bc&#39;, &#39;#525f7f&#39;, &#39;#f51c47&#39;,
-                &#39;#26A69A&#39;
-            ],
-            data: &lt;%- categoryArrJson %&gt; ,
-            itemStyle: {
-                emphasis: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: &#39;rgba(0, 0, 0, 0.5)&#39;
-                }
-            }
-        }]
-    };
-
-    &lt;%
-    /* calculate tagsOption data. */
-    // get all tags name and count,then order by length desc.
-    var tagArr = [];
-    site.tags.map(function (tag) {
-        tagArr.push({
-            &#39;name&#39;: tag.name,
-            &#39;value&#39;: tag.length
-        });
-    });
-    tagArr.sort((a, b) =&gt; {
-        return b.value - a.value
-    });
-
-    // get Top 10 tags name and count.
-    var tagNameArr = [];
-    var tagCountArr = [];
-    for (var i = 0, len = Math.min(tagArr.length, 10); i &lt; len; i++) {
-        tagNameArr.push(tagArr[i].name);
-        tagCountArr.push(tagArr[i].value);
-    }
-
-    var tagNameArrJson = JSON.stringify(tagNameArr);
-    var tagCountArrJson = JSON.stringify(tagCountArr); %&gt;
-
-    var tagsOption = {
-        title: {
-            text: &#39;Top10标签统计图 &#39;,
-            top: 2,
-            x: &#39;center&#39;
-        },
-        tooltip: {},
-        xAxis: [{
-            type: &#39;category&#39;,
-            data: &lt;%- tagNameArrJson %&gt;
-        }],
-        yAxis: [{
-            type: &#39;value&#39;
-        }],
-        series: [{
-            type: &#39;bar&#39;,
-            color: [&#39;#82d3f4&#39;],
-            barWidth: 18,
-            data: &lt;%- tagCountArrJson %&gt; ,
-            markPoint: {
-                symbolSize: 45,
-                data: [{
-                    type: &#39;max&#39;,
-                    itemStyle: {
-                        color: [&#39;#3ecf8e&#39;]
-                    },
-                    name: &#39;&lt;%- __(&quot;maximum&quot;)  %&gt;&#39;
-                }, {
-                    type: &#39;min&#39;,
-                    itemStyle: {
-                        color: [&#39;#fa755a&#39;]
-                    },
-                    name: &#39;&lt;%- __(&quot;minimum&quot;)  %&gt;&#39;
-                }],
-            },
-            markLine: {
-                itemStyle: {
-                    color: [&#39;#ab47bc&#39;]
-                },
-                data: [{
-                    type: &#39;average&#39;,
-                    name: &#39;&lt;%- __(&quot;average&quot;)  %&gt;&#39;
-                }]
-            }
-        }]
-    };
-
-    // render the charts
-    postsChart.setOption(postsOption);
-    categoriesChart.setOption(categoriesOption);
-    tagsChart.setOption(tagsOption);
-&lt;/script&gt;</code></pre><h3 id="3-hexo-new-page-analytics"><a href="#3-hexo-new-page-analytics" class="headerlink" title="3.hexo new page analytics"></a>3.hexo new page analytics</h3><p>layout设置成analytics</p>
-<p>在主题配置文件中导航栏加入path: /analytics</p>
-<h3 id="4-添加echart-js的引用"><a href="#4-添加echart-js的引用" class="headerlink" title="4.添加echart.js的引用"></a>4.添加echart.js的引用</h3><p>在主题配置文件的最后加上,因为post-charts.ejs引用到了echart的js代码</p>
-<pre><code>libs:
-  css:
-    googlefonts: https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC
-    style: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/style.css #/css/style.css # 
-    lib: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/lib.min.css
-    font: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/font.css
-    insight: /css/insight.css
-    tags: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/tags.css
-    fancybox: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/jquery.fancybox.min.css
-    sharejs: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/sharejs.css
-    tocbot: https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css
-    live2d_widget: https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css
-    logo:
-      enable: true # 自定义logo
-      logo: https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/logo.css
-      logo_fonts: https://cdn.jsdelivr.net/gh/cungudafa/cdn/fonts/LOGO/logo.css
-  js:
-    jquery: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
-    linkcard: /js/linkcard.js
-    lib: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/lib.min.js
-    clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
-    InsightSearch: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/InsightSearch.js
-    sakura_app: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/sakura-app.js  #/js/sakura-app.js
-    busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js 
-    fancybox: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/jquery.fancybox.min.js
-    echarts: https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/echarts.min.js
-    valine: https://unpkg.com/valine/dist/Valine.min.js
-    sakura_petal: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js #other
-    hititle: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js 
-    KeyBlock: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/noSomeKey.js #按键屏蔽,不能F12调试和查看源代码
-    sakura_petals: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js  #仅在首页花瓣飘落（大内存）
-    snow_petals: https://cdn.jsdelivr.net/gh/Yafine/cdn@2.5/source/js/snow1.js
-    piao: https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/piao.js #飘动彩带
-    live2d_widget: https://cdn.jsdelivr.net/gh/cungudafa/cdn/live2d-widget/autoload.js
-    word: https://cdn.jsdelivr.net/gh/wallleap/cdn/js/shehuizhuyi.js #点击出现字效
-    love: https://cdn.jsdelivr.net/gh/wallleap/cdn/js/love.js #点击出现爱心
-    cursor: https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.1.2/js/cursor.js # 星星跟随坠落(大内存)</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何调整顶部导航栏的整体长度以放入更多导航项</title>
-    <url>/2020/12/17/%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F%E7%9A%84%E6%95%B4%E4%BD%93%E9%95%BF%E5%BA%A6%E4%BB%A5%E6%94%BE%E5%85%A5%E6%9B%B4%E5%A4%9A%E5%AF%BC%E8%88%AA%E9%A1%B9/</url>
-    <content><![CDATA[<p>修改主题目录/source/css/style.css文件   搜到如下内容按自己需要修改</p>
-<p> 属性：    min-width越大一行所容纳的个数越多</p>
-<p>​                left:值越大离左侧的距离越远，这里是以整个屏幕的百分比进行衡量的</p>
-<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201217161018.png" alt="image-20201217161004995"></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>每页文章结尾出增加标签云展示</title>
-    <url>/2020/12/11/%E6%AF%8F%E9%A1%B5%E6%96%87%E7%AB%A0%E7%BB%93%E5%B0%BE%E5%87%BA%E5%A2%9E%E5%8A%A0%E6%A0%87%E7%AD%BE%E4%BA%91%E5%B1%95%E7%A4%BA/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/cungudafa/article/details/104616500" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104616500</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-  </entry>
-  <entry>
     <title>给博客添加小游戏界面谷歌恐龙小游戏加强版</title>
     <url>/2020/12/17/%E7%BB%99%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%B0%B7%E6%AD%8C%E6%81%90%E9%BE%99%E5%B0%8F%E6%B8%B8%E6%88%8F%E5%8A%A0%E5%BC%BA%E7%89%88/</url>
     <content><![CDATA[<p>已有的游戏界面演示链接</p>
@@ -5389,19 +5487,6 @@ PhotoVerifyPassword:
       </categories>
   </entry>
   <entry>
-    <title>将博客网站生成手机app获取下载安装码</title>
-    <url>/2020/12/17/%E5%B0%86%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E6%89%8B%E6%9C%BAapp%E8%8E%B7%E5%8F%96%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E7%A0%81/</url>
-    <content><![CDATA[<p>一门App网站   <a href="https://www.yimenapp.com/" target="_blank" rel="noopener">https://www.yimenapp.com/</a></p>
-<p>这个比较靠谱，实惠</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>黑科技</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>编程开发技术学习资源整理</title>
     <url>/2021/02/26/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<h1 id="0-大纲概览"><a href="#0-大纲概览" class="headerlink" title="0.大纲概览"></a>0.大纲概览</h1><p>主要介绍一下，本片文章涉及到的内容</p>
@@ -5421,18 +5506,6 @@ PhotoVerifyPassword:
       </categories>
       <tags>
         <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>增加文章贡献日历</title>
-    <url>/2020/12/11/%E5%A2%9E%E5%8A%A0%E6%96%87%E7%AB%A0%E8%B4%A1%E7%8C%AE%E6%97%A5%E5%8E%86/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/cungudafa/article/details/106420842" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/106420842</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>主题美化</tag>
       </tags>
   </entry>
   <entry>

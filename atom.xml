@@ -6,7 +6,7 @@
   <link href="http://linxuesong.github.io/atom.xml" rel="self"/>
   
   <link href="http://linxuesong.github.io/"/>
-  <updated>2021-05-25T07:42:46.107Z</updated>
+  <updated>2021-06-04T12:05:02.970Z</updated>
   <id>http://linxuesong.github.io/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>主题优化增加网页百度统计功能</title>
+    <link href="http://linxuesong.github.io/2021/06/04/%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E5%A2%9E%E5%8A%A0%E7%BD%91%E9%A1%B5%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD/"/>
+    <id>http://linxuesong.github.io/2021/06/04/%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E5%A2%9E%E5%8A%A0%E7%BD%91%E9%A1%B5%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD/</id>
+    <published>2021-06-04T11:56:09.000Z</published>
+    <updated>2021-06-04T12:05:02.970Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.开通百度统计账号</p><p>2.获取跟踪代码</p><p>3.将跟踪代码放到head末尾位置<br>本主题的head路径为themes/Sakura/layout/_partial/head.ejs</p><p>TODO: 继续优化将其变成一个站点配置功能，使用指定的百度提供代码中的key作为区分不同的统计</p><pre><code># Baidu Analytics IDbaidu_analytics: 上面步骤中记录的百度统计里用户的key值。</code></pre><p>4.效果截图</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/image-20210604200116710.png" alt="image-20210604200116710"></p><p>参考代码<a href="http://www.jcsama.com/2016/01/25/hexo-baido-analytics/" target="_blank" rel="noopener">http://www.jcsama.com/2016/01/25/hexo-baido-analytics/</a></p>]]></content>
+    
+    
+    <summary type="html">描述如何给hexo博客增加百度统计数据</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="主题美化" scheme="http://linxuesong.github.io/tags/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>protobuf学习整理</title>
+    <link href="http://linxuesong.github.io/2021/06/03/protobuf%E5%AD%A6%E4%B9%A0%E6%95%B4%E7%90%86/"/>
+    <id>http://linxuesong.github.io/2021/06/03/protobuf%E5%AD%A6%E4%B9%A0%E6%95%B4%E7%90%86/</id>
+    <published>2021-06-03T11:53:54.000Z</published>
+    <updated>2021-06-04T03:05:54.773Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、ProtoBuf简介"><a href="#一、ProtoBuf简介" class="headerlink" title="一、ProtoBuf简介"></a>一、ProtoBuf简介</h1><p>语言平台无关的、灵活、高效、自动化的序列化机制</p><p>类似协议：XML、JSON</p><p>区别点：<u>XML、JSON关注人类可读性，通常用于双方交互的协议；ProtoBuf更关注压缩效率、传输速度，人类可读性差(指序列化之后的文件)</u></p><h1 id="二、如何用？"><a href="#二、如何用？" class="headerlink" title="二、如何用？"></a>二、如何用？</h1><h2 id="2-1golang语言"><a href="#2-1golang语言" class="headerlink" title="2.1golang语言"></a>2.1golang语言</h2><h3 id="2-1-0环境准备"><a href="#2-1-0环境准备" class="headerlink" title="2.1.0环境准备"></a>2.1.0环境准备</h3><p>需要如下两个工具</p><p>1.<strong>protoc</strong>:可以执行不同语言的api，生成不同语言版本的结构体文件</p><p>2.<strong>protoc-gen-go</strong>:go版本的生成程序可以生成go语言的结构体</p><p>以上工具不同版本生成的文件是不一样的，所以安需要下载指定版本</p><p>安装最新版本</p><pre><code>1.安装最新的protoc-gen-go, 在gopath路径下执行如下命令go get github.com/golang/protobuf/protoc-gen-go // protoc-gen-go会安到$gopath/bin下,如果自己下载编译，也要放到这个路径下2.安装最新的protobufhttps://github.com/protocolbuffers/protobuf/releases //下载后解压，可以做其他的部分</code></pre><hr><p>安装之前的版本</p><pre><code>1.安装之前版本的protoc-gen-go, 在gopath路径下执行如下命令GIT_TAG=&quot;v1.2.0&quot;go get -d -u github.com/golang/protobuf/protoc-gen-gogit -C &quot;$(go env GOPATH)&quot;/src/github.com/golang/protobufcheckout $GIT_TAGgo install github.com/golang/protobuf/protoc-gen-go2.安装之前版本的protobufhttps://github.com/protocolbuffers/protobuf/releases</code></pre><h3 id="2-2-1准备原协议-proto文件"><a href="#2-2-1准备原协议-proto文件" class="headerlink" title="2.2.1准备原协议.proto文件"></a>2.2.1准备原协议.proto文件</h3><pre><code>message xxx {  // 字段规则：required -&gt; 字段只能也必须出现 1 次  // 字段规则：optional -&gt; 字段可出现 0 次或1次  // 字段规则：repeated -&gt; 字段可出现任意多次（包括 0）  // 类型：int32、int64、sint32、sint64、string、32-bit ....  // 字段编号：0 ~ 536870911（除去 19000 到 19999 之间的数字）  字段规则 类型 名称 = 字段编号;}</code></pre><pre><code>// 例1: 在 xxx.proto 文件中定义 Example1 message  // 包含五个字段，依次为string,bytes,EmbeddedMessage自定义结构体,repeatedInt32Val,repeatedStringValmessage Example1 {    optional string stringVal = 1;    optional bytes bytesVal = 2;    message EmbeddedMessage {        int32 int32Val = 1;        string stringVal = 2;    }    optional EmbeddedMessage embeddedExample1 = 3;    repeated int32 repeatedInt32Val = 4;    repeated string repeatedStringVal = 5;}</code></pre><h3 id="2-2-3生成proto-go文件"><a href="#2-2-3生成proto-go文件" class="headerlink" title="2.2.3生成proto.go文件"></a>2.2.3生成proto.go文件</h3><pre><code>protoc --go_out={输出位置} {.proto文件路径}// 例如  protobuf包解压路径/src/protoc --go_out=. msg.proto//protoc如果没有加入到/usr/local/bin</code></pre>]]></content>
+    
+    
+    <summary type="html">protobuf学习整理归纳</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="protobuf" scheme="http://linxuesong.github.io/tags/protobuf/"/>
+    
+    <category term="go" scheme="http://linxuesong.github.io/tags/go/"/>
+    
+  </entry>
   
   <entry>
     <title>mac快捷键整理</title>
@@ -446,51 +492,6 @@
     
     
     <category term="linux" scheme="http://linxuesong.github.io/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>编程开发技术学习资源整理</title>
-    <link href="http://linxuesong.github.io/2021/02/26/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/"/>
-    <id>http://linxuesong.github.io/2021/02/26/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</id>
-    <published>2021-02-26T06:19:14.000Z</published>
-    <updated>2021-03-19T12:49:38.730Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="0-大纲概览"><a href="#0-大纲概览" class="headerlink" title="0.大纲概览"></a>0.大纲概览</h1><p>主要介绍一下，本片文章涉及到的内容</p><p>1.编程语言,含c++、go、java</p><h1 id="1-编程语言语法"><a href="#1-编程语言语法" class="headerlink" title="1.编程语言语法"></a>1.编程语言语法</h1><h2 id="1-1-C"><a href="#1-1-C" class="headerlink" title="1.1 C++"></a>1.1 C++</h2><h2 id="1-2-Golang"><a href="#1-2-Golang" class="headerlink" title="1.2 Golang"></a>1.2 Golang</h2><p>①W3Cschool <a href="https://www.w3cschool.cn/yqbmht/7rcvwcqm.html" target="_blank" rel="noopener">https://www.w3cschool.cn/yqbmht/7rcvwcqm.html</a>    描述：前几章可以做入门使用，之后几章多了一些网络通信的编程</p><p>②<a href="https://draveness.me/golang/入门级学习" target="_blank" rel="noopener">https://draveness.me/golang/入门级学习</a></p><p>③<a href="https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/" target="_blank" rel="noopener">https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/</a> 更加底层的学习go语言，设计到汇编，内容细致，干活多</p><h2 id="1-3-Java"><a href="#1-3-Java" class="headerlink" title="1.3 Java"></a>1.3 Java</h2><h1 id="2-Linux命令速查"><a href="#2-Linux命令速查" class="headerlink" title="2.Linux命令速查"></a>2.Linux命令速查</h1><p><a href="https://blog.csdn.net/waitig1992/article/details/51884653" target="_blank" rel="noopener">https://blog.csdn.net/waitig1992/article/details/51884653</a> 描述：通过预览页快速定位到<a href="http://www.linuxdaxue.com/，快速定位把" target="_blank" rel="noopener">http://www.linuxdaxue.com/，快速定位把</a></p><h1 id="3-Nginx学习"><a href="#3-Nginx学习" class="headerlink" title="3.Nginx学习"></a>3.Nginx学习</h1><p>源码学习：</p><p><a href="https://www.kancloud.cn/digest/understandingnginx/202587" target="_blank" rel="noopener">https://www.kancloud.cn/digest/understandingnginx/202587</a> 章节式学习，有些枯燥</p><p><a href="https://segmentfault.com/a/1190000016922188" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016922188</a> 单独对nginx配置文件解析过程进行的分析</p><h1 id="4-算法"><a href="#4-算法" class="headerlink" title="4.算法"></a>4.算法</h1><p><a href="https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结" target="_blank" rel="noopener">https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结</a></p>]]></content>
-    
-    
-    <summary type="html">常用技术学习资源的分享，包含编程语言、硬盘数据库、内存数据库、网络编程框架</summary>
-    
-    
-    
-    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    <category term="资源" scheme="http://linxuesong.github.io/categories/%E8%B5%84%E6%BA%90/"/>
-    
-    
-    <category term="nginx" scheme="http://linxuesong.github.io/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo博客添加友链检测界面UptimeRobot+CupSatus</title>
-    <link href="http://linxuesong.github.io/2021/02/03/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE%E6%A3%80%E6%B5%8B%E7%95%8C%E9%9D%A2UptimeRobot-CupSatus/"/>
-    <id>http://linxuesong.github.io/2021/02/03/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%8F%8B%E9%93%BE%E6%A3%80%E6%B5%8B%E7%95%8C%E9%9D%A2UptimeRobot-CupSatus/</id>
-    <published>2021-02-03T10:01:58.000Z</published>
-    <updated>2021-03-19T12:49:38.727Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="0-效果展示"><a href="#0-效果展示" class="headerlink" title="0.效果展示"></a>0.效果展示</h1><h1 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h1><p>a.注册UptimeRobot账号，将自己的网站和要检测的网站或者账号加上去</p><p>b.去<a href="https://github.com/izoyo/Cup网址下载CupStatus页面" target="_blank" rel="noopener">https://github.com/izoyo/Cup网址下载CupStatus页面</a></p><h1 id="2-应用到自己的hexo博客上"><a href="#2-应用到自己的hexo博客上" class="headerlink" title="2.应用到自己的hexo博客上"></a>2.应用到自己的hexo博客上</h1><p>hexo new page “friendlink_status” 页面</p><p>在source/friendlink_status/中把CupSatus的所有文件放进去，目录如下</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210203180649.png" alt="image-20210203180642121"></p><p>按照开源项目CupSatus中说的把js/config.js中的key替换成自己upTimeRobot账号下对应的api key即可</p><p>然后在博客目录/config.yml  注意不是主题目录下的那个配置文件</p><p>加入skip-render:   -friendlink_status/**  不使用主题的layout.ejs渲染这个页面</p><p>在主题的配置文件中菜单导航栏上加入这个页面即可</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;0-效果展示&quot;&gt;&lt;a href=&quot;#0-效果展示&quot; class=&quot;headerlink&quot; title=&quot;0.效果展示&quot;&gt;&lt;/a&gt;0.效果展示&lt;/h1&gt;&lt;h1 id=&quot;1-前期准备&quot;&gt;&lt;a href=&quot;#1-前期准备&quot; class=&quot;headerlink&quot; titl</summary>
-      
-    
-    
-    
-    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
     
   </entry>
   
