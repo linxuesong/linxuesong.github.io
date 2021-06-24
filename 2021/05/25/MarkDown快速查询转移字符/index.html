@@ -567,7 +567,7 @@ WIDGET = {
             <span class="post-time">
               <span class="post-meta-item-icon">
                 <i class="fa fa-book"></i>
-                <span class="post-count">181字</span>
+                <span class="post-count">337字</span>
               </span>
             </span>
             
@@ -612,71 +612,93 @@ $$</code></pre><p>详细表格</p>
 <table>
 <thead>
 <tr>
-<th align="left"></th>
-<th>\begin{cases}     内容    \end{cases}</th>
-<th>大公式表达式</th>
+<th align="left">公式块</th>
+<th align="left">\begin{cases}     内容    \end{cases}</th>
+<th align="left">大公式表达式</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">公式块</td>
-<td>\big</td>
-<td>[ //比较大的左中括号</td>
+<td align="left"></td>
+<td align="left">\big</td>
+<td align="left">[ //比较大的左中括号</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td>\bigg[</td>
-<td>//再大一点</td>
+<td align="left">\bigg[</td>
+<td align="left">//再大一点</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td>\Big[</td>
-<td>//比big大一点</td>
+<td align="left">\Big[</td>
+<td align="left">//比big大一点</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td>\Bigg[</td>
-<td>//比bigg大一点</td>
+<td align="left">\Bigg[</td>
+<td align="left">//比bigg大一点</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td>a_2  a下标2            a^3 a上标3</td>
-<td>上标下标</td>
+<td align="left">a_2  a下标2            a^3 a上标3</td>
+<td align="left">上标下标</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td>\sum ：∑  \int ：∫  \oint ：∮  \prod：∏</td>
-<td>求和、求导</td>
+<td align="left">\sum ：∑  \int ：∫  \oint ：∮  \prod：∏</td>
+<td align="left">求和、求导</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td>\alpha： α  \beta： β  \gamma：γ  \Phi ： Φ  \Omega：Ω  \Delta： Δ  \delta： δ</td>
-<td>希腊字母</td>
+<td align="left">\alpha： α  \beta： β  \gamma：γ  \Phi ： Φ  \Omega：Ω  \Delta： Δ  \delta： δ</td>
+<td align="left">希腊字母</td>
 </tr>
 </tbody></table>
-<h1 id="代码块部分"><a href="#代码块部分" class="headerlink" title="代码块部分"></a>代码块部分</h1><h1 id="文本部分"><a href="#文本部分" class="headerlink" title="文本部分"></a>文本部分</h1><table>
-<thead>
-<tr>
-<th>&amp;nbsp;     或者    键盘全角模式空格键</th>
-<th>空格</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>&lt;sup&gt;xxx&lt;/sup&gt;</strong></td>
-<td><strong>上标</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>&lt;sub&gt;xxx&lt;/sub&gt;</strong></td>
-<td><strong>下标</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>30&amp;deg;</strong></td>
-<td><strong>角度符号30&deg;</strong></td>
-<td></td>
-</tr>
-</tbody></table>
+<h1 id="代码块部分"><a href="#代码块部分" class="headerlink" title="代码块部分"></a>代码块部分</h1><h1 id="文本部分"><a href="#文本部分" class="headerlink" title="文本部分"></a>文本部分</h1><br/>
+
+<table border="1">
+  <caption>MarkDown文本转移</caption>
+  <tr>
+    <th style="text-align:center;">输入文本</th>
+    <th style="text-align:center;">显示内容</th>
+  </tr>
+  <tr>
+    <td style="text-align:center;">&amp;nbsp;   或者    键盘全角模式空格键</td>
+    <td style="text-align:center;">空格</td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">&lt;sup&gt;xxx&lt;/sup&gt;</td>
+    <td style="text-align:center;">上标</td>
+  </tr>
+    <tr>
+    <td style="text-align:center;">&lt;sub&gt;xxx&lt;/sub&gt;</td>
+    <td style="text-align:center;">下标</td>
+  </tr>
+    <tr>
+    <td style="text-align:center;">30&amp;deg;</td>
+    <td style="text-align:center;">角度符号30&deg;</td>
+  </tr>
+</table>
+
+<br/>
+
+<h1 id="表格部分"><a href="#表格部分" class="headerlink" title="表格部分"></a>表格部分</h1><p>如果markdown语法对应的表格在hexo上无法显示可以直接插入html代码</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">border</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>caption</span><span class="token punctuation">></span></span>MarkDown文本转移<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>caption</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>标题1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>标题2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>行1列1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>行1列2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>行2列1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>行2列2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>、
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span></code></pre>
+<p><strong>1.如何表格中要加入需要转移的内容可以访问<a href="https://www.sojson.com/rehtml" target="_blank" rel="noopener">https://www.sojson.com/rehtml</a></strong></p>
+<p><strong>2.style=”text-align:center;” 在tb、th标签中加入样式控制对齐方式</strong></p>
 
         </div>
         <!-- .entry-content -->
@@ -708,7 +730,7 @@ $$</code></pre><p>详细表格</p>
                   <div class="tag-cloud-title">
                   </div>
                   <div class="tag-cloud-tags">
-                  <a href="/tags/C/" style="font-size: 10px; color: #f38181">C++</a> <a href="/tags/Go/" style="font-size: 10px; color: #f38181">Go</a> <a href="/tags/Golang/" style="font-size: 10px; color: #f38181">Golang</a> <a href="/tags/JAVA/" style="font-size: 15px; color: #c4b1aa">JAVA</a> <a href="/tags/LeetCode/" style="font-size: 16.67px; color: #b4c1b8">LeetCode</a> <a href="/tags/MarkDown/" style="font-size: 10px; color: #f38181">MarkDown</a> <a href="/tags/Reids/" style="font-size: 10px; color: #f38181">Reids</a> <a href="/tags/Sakura/" style="font-size: 13.33px; color: #d4a19c">Sakura</a> <a href="/tags/String/" style="font-size: 10px; color: #f38181">String</a> <a href="/tags/go/" style="font-size: 10px; color: #f38181">go</a> <a href="/tags/java/" style="font-size: 10px; color: #f38181">java</a> <a href="/tags/linux/" style="font-size: 11.67px; color: #e3918f">linux</a> <a href="/tags/mac%E8%BD%AF%E4%BB%B6/" style="font-size: 10px; color: #f38181">mac软件</a> <a href="/tags/nginx/" style="font-size: 13.33px; color: #d4a19c">nginx</a> <a href="/tags/protobuf/" style="font-size: 10px; color: #f38181">protobuf</a> <a href="/tags/sakura/" style="font-size: 10px; color: #f38181">sakura</a> <a href="/tags/web/" style="font-size: 10px; color: #f38181">web</a> <a href="/tags/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/" style="font-size: 20px; color: #95e1d3">主题美化</a> <a href="/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px; color: #f38181">包管理工具</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BD%92%E7%B1%BB/" style="font-size: 10px; color: #f38181">博客归类</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px; color: #f38181">多线程</a> <a href="/tags/%E5%B0%8F%E7%9B%AE%E6%A0%87/" style="font-size: 10px; color: #f38181">小目标</a> <a href="/tags/%E5%BC%82%E5%B8%B8/" style="font-size: 10px; color: #f38181">异常</a> <a href="/tags/%E6%82%A6%E8%AF%BB/" style="font-size: 10px; color: #f38181">悦读</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 10px; color: #f38181">感悟</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 18.33px; color: #a5d1c5">数组</a> <a href="/tags/%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/" style="font-size: 10px; color: #f38181">文件读取</a> <a href="/tags/%E7%AE%80%E5%8D%95/" style="font-size: 16.67px; color: #b4c1b8">简单</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 11.67px; color: #e3918f">算法</a> <a href="/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/" style="font-size: 13.33px; color: #d4a19c">资料整理</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" style="font-size: 10px; color: #f38181">软件安装</a> <a href="/tags/%E9%BB%91%E7%A7%91%E6%8A%80/" style="font-size: 10px; color: #f38181">黑科技</a>
+                  <a href="/tags/C/" style="font-size: 10px; color: #f38181">C++</a> <a href="/tags/Go/" style="font-size: 10px; color: #f38181">Go</a> <a href="/tags/Golang/" style="font-size: 11.67px; color: #e3918f">Golang</a> <a href="/tags/JAVA/" style="font-size: 15px; color: #c4b1aa">JAVA</a> <a href="/tags/LeetCode/" style="font-size: 16.67px; color: #b4c1b8">LeetCode</a> <a href="/tags/MarkDown/" style="font-size: 10px; color: #f38181">MarkDown</a> <a href="/tags/Reids/" style="font-size: 10px; color: #f38181">Reids</a> <a href="/tags/Sakura/" style="font-size: 13.33px; color: #d4a19c">Sakura</a> <a href="/tags/String/" style="font-size: 10px; color: #f38181">String</a> <a href="/tags/go/" style="font-size: 10px; color: #f38181">go</a> <a href="/tags/java/" style="font-size: 10px; color: #f38181">java</a> <a href="/tags/linux/" style="font-size: 11.67px; color: #e3918f">linux</a> <a href="/tags/mac%E8%BD%AF%E4%BB%B6/" style="font-size: 10px; color: #f38181">mac软件</a> <a href="/tags/nginx/" style="font-size: 13.33px; color: #d4a19c">nginx</a> <a href="/tags/protobuf/" style="font-size: 10px; color: #f38181">protobuf</a> <a href="/tags/sakura/" style="font-size: 10px; color: #f38181">sakura</a> <a href="/tags/web/" style="font-size: 10px; color: #f38181">web</a> <a href="/tags/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/" style="font-size: 20px; color: #95e1d3">主题美化</a> <a href="/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px; color: #f38181">包管理工具</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BD%92%E7%B1%BB/" style="font-size: 10px; color: #f38181">博客归类</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px; color: #f38181">多线程</a> <a href="/tags/%E5%B0%8F%E7%9B%AE%E6%A0%87/" style="font-size: 10px; color: #f38181">小目标</a> <a href="/tags/%E5%BC%82%E5%B8%B8/" style="font-size: 10px; color: #f38181">异常</a> <a href="/tags/%E6%82%A6%E8%AF%BB/" style="font-size: 10px; color: #f38181">悦读</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 10px; color: #f38181">感悟</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 18.33px; color: #a5d1c5">数组</a> <a href="/tags/%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/" style="font-size: 10px; color: #f38181">文件读取</a> <a href="/tags/%E7%AE%80%E5%8D%95/" style="font-size: 16.67px; color: #b4c1b8">简单</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 11.67px; color: #e3918f">算法</a> <a href="/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/" style="font-size: 13.33px; color: #d4a19c">资料整理</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" style="font-size: 10px; color: #f38181">软件安装</a> <a href="/tags/%E9%BB%91%E7%A7%91%E6%8A%80/" style="font-size: 10px; color: #f38181">黑科技</a>
                   </div>
 
                 </div>
@@ -870,7 +892,7 @@ $$</code></pre><p>详细表格</p>
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">54.7k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">55.7k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>

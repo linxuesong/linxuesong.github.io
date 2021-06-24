@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">dinoswords | 楓の葉小窝</title>
+  <title itemprop="name">Go性能分析工具 | 楓の葉小窝</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -526,98 +526,254 @@ WIDGET = {
 	<!-- 和风天气-->
 </header>
 
-        <div class="pattern-center-blank"></div>
-  
-  <div id="content" class="site-content">
-    <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
-      <main class="content">
-    <div class="container">
-        <div class="card">
-            <div class="card-content">
-                <div class="note info">
-                    操作介绍：<br>
-                    开始游戏：首先点击屏幕 <br>
-                    跳跃：注意是“点击屏幕” ！<br>
-                    道具：跳跃后捡到的道具，使用下方对应26字母键盘键<br>
-                    支持手机，电脑，等设备玩耍，点击屏幕开始和跳跃。
-                </div>
-                <hr>
-                <iframe width="100%" height="488px" src="https://aidn.jp/mikutap/"  frameborder="no" border="0"  scrolling="no" marginwidth="0" marginheight="0" ></iframe>
-                </div>
-    </div>
-</div>
-</main>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
 
-
-
-
-
-<main class="content">
-    <div class="container">
-        <div class="card">
-            <div class="card-content">
-                <div class="note info">
-                    操作介绍：<br>
-                    开始游戏：首先点击屏幕 <br>
-                    跳跃：注意是“点击屏幕” ！<br>
-                    道具：跳跃后捡到的道具，使用下方对应26字母键盘键<br>
-                    支持手机，电脑，等设备玩耍，点击屏幕开始和跳跃。
-                </div>
-                <hr>
-                <iframe width="100%" height="488px" src="https://dinoswords.gg/"  frameborder="no" border="0"  scrolling="no" marginwidth="0" marginheight="0" ></iframe>
-            </div>
-        </div>
-     </div>
-</main>
-
-
-
-
-
-
-
-
-
-
-      <!-- .entry-content -->
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <img class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/鬼刃/200929110029-3-1200.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/鬼刃/200929110029-3-1200.jpg">
+    </img>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Go性能分析工具</h1>
+      <p class="entry-census">
+        <span>
+          <a href="linxuesong.github.io">
+            <img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="linxuesong.github.io">linxuesong</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-6-17<span class="bull">
+        ·</span>
       
-      <div class="single-reward">
-        <div class="reward-open">赏
-          <div class="reward-main">
-            <ul class="reward-row">
-              <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/donate/AliPayQR.jpg"></li>
-              <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/donate/WeChanSQ.jpg"></li>
-            </ul>
+         	  
+	        <!-- 安装插件npm install hexo-wordcount --save -->
+			<!--本篇文章浏览访客人数统计 -->   
+            <span class="post-meta-item" >
+                <span class="post-meta-item-icon">
+                    <i class="iconfont icon-attention"></i>
+                </span>
+			        <span id="busuanzi_value_page_pv"></span>
+				<span class="post-meta-item-text">次阅读</span>	
+			
+            <span class="bull">·</span>
+			
+			<!--本篇文章文字数统计 -->
+            <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-book"></i>
+                <span class="post-count">793字</span>
+              </span>
+            </span>
+            
+			<span class="bull">·</span>
+            
+            <!-本篇文章预计阅读时间-->			
+            <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-coffee"></i>
+                <span class="post-meta-item-text">预计</span>
+                <span class="post-count">3分钟</span>
+              </span>
+            </span>
+            
+		 
+			
+			
+	  
+	  
+	  
+	  
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>一、GODEBUG参数<br>特别方便，无需下载第三方工具，无需修改程序 代码</p>
+<p>分析协程调度情况</p>
+<p><a href="https://segmentfault.com/a/1190000020108079" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020108079</a></p>
+<h1 id="二、Trace"><a href="#二、Trace" class="headerlink" title="二、Trace"></a>二、Trace</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>无需下载第三方工具，需要修改程序代码</p>
+<p><a href="https://segmentfault.com/a/1190000019736288" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019736288</a></p>
+<h2 id="如何用"><a href="#如何用" class="headerlink" title="如何用"></a>如何用</h2><p>修改代码,加入trace</p>
+<pre><code>import (
+    &quot;os&quot;
+    &quot;runtime/trace&quot;
+)
+
+func main() {
+    trace.Start(os.Stderr)
+    defer trace.Stop() //一定要这一行执行后才会有trace文件
+
+    ch := make(chan string)
+    go func() {
+        ch &lt;- &quot;EDDYCJY&quot;
+    }()
+
+    &lt;-ch
+}</code></pre><p>生成跟踪文件：</p>
+<pre class=" language-go"><code class="language-go">$ <span class="token keyword">go</span> run main<span class="token punctuation">.</span><span class="token keyword">go</span> <span class="token number">2</span><span class="token operator">></span> trace<span class="token punctuation">.</span>out <span class="token comment" spellcheck="true">//     运行生成追踪文件</span></code></pre>
+<p>分析追踪文件</p>
+<pre><code>$ go tool trace trace.out //     会启动浏览器，展示网页版分析报告</code></pre><p>分析结果说明</p>
+<p>![image-20210621110611559](/Users/linxuesong/Library/Application Support/typora-user-images/image-20210621110611559.png)</p>
+<h2 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h2><p>分析结果</p>
+<h4 id="实例1-如何分析程序耗时时间长—Scheduler-latency-profile-调度延迟概况"><a href="#实例1-如何分析程序耗时时间长—Scheduler-latency-profile-调度延迟概况" class="headerlink" title="实例1: 如何分析程序耗时时间长—Scheduler latency profile-调度延迟概况"></a>实例1: 如何分析程序耗时时间长—Scheduler latency profile-调度延迟概况</h4><p>多协程生成随机数据，随机数据做参数访问</p>
+<pre><code>var wg sync.WaitGroup // main等待所有goroutine结束
+
+func CallGetUserInfoDbatchGoVersion() {
+    rand.Seed(time.Now().UnixNano()) // 使用rand生成随机种子，**之后性能分析我们会发现这个地方有问题**
+    uidcnt := rand.Intn(50)  // 使用随机种子生成50以内随机数   **之后性能分析我们会发现这个地方有问题**
+  SCFCALL(uidcnt) // 使用生成的随机数做参数远程调用，具体处理逻辑忽略
+}
+
+func main() {
+        for j:=0;j&lt;100;j++ {
+            wg.Add(1)
+            go CallGetUserInfoDbatchGoVersion() // 开启多goroutine
+        }
+        wg.Wait()
+    log.Println(&quot;执行完毕&quot;)
+}</code></pre><p>对上面代码加上trace的分析</p>
+<pre><code>import &quot;runtime/trace&quot;
+
+var wg sync.WaitGroup // main等待所有goroutine结束
+
+func CallGetUserInfoDbatchGoVersion() {
+    rand.Seed(time.Now().UnixNano()) // 使用rand生成随机种子，**之后性能分析我们会发现这个地方有问题**
+    uidcnt := rand.Intn(50)  // 使用随机种子生成50以内随机数
+  SCFCALL(uidcnt) // 使用生成的随机数做参数远程调用，具体处理逻辑忽略
+}
+
+func main() {
+    trace.Start(f)
+    defer trace.Stop() // 注意一定要执行了trace.Stop之后才会生成分析报告
+
+        for j:=0;j&lt;100;j++ {
+            wg.Add(1)
+            go CallGetUserInfoDbatchGoVersion() // 开启多goroutine
+        }
+        wg.Wait()
+    log.Println(&quot;执行完毕&quot;)
+}</code></pre><p>结果报告中“Scheduler latency profile-调度延迟概况”如下</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/image-20210621110812103.png" alt="image-20210621110812103"></p>
+<p>可以看到锁耗时占用到了77%，看调用来自Seed(*Rand),定位到耗时函数的位置后，分析这个函数</p>
+<pre><code>func Seed(seed int64) { globalRand.Seed(seed) } // 使用了全局对象globalRand，这个对象是lockedSource，每次使用前会加锁，导致每个go routin竞争锁
+func Intn(n int) int { return globalRand.Intn(n) } // 使用全局对象，多routine会有所得竞争</code></pre><p>解决方案:正对每个go routine生成单独的Rand对象rngSource</p>
+<pre><code>func CallGetUserInfoDbatchGoVersion() {
+    r := rand.New(rand.NewSource(time.Now().UnixNano()))     //   全局对象替换成创建本地对象
+    uidcnt := r.Intn(50)  // 使用随机种子生成50以内随机数      //   全局对象替换成本地对象
+  SCFCALL(uidcnt) // 使用生成的随机数做参数远程调用，具体处理逻辑忽略
+}</code></pre><p>修改后的性能分析截图–整体耗时缩短，而且不会在随机数这里有长耗时：</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/image-20210621142726349.png" alt="image-20210621142726349"></p>
+<h1 id="三、PProf"><a href="#三、PProf" class="headerlink" title="三、PProf"></a>三、PProf</h1><p>需要下载第三方工具，需要修改程序代码</p>
+<p><a href="https://segmentfault.com/a/1190000016412013" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016412013</a></p>
+<p>使用举例</p>
+<pre><code></code></pre><p>分析结果</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/donate/WeChanSQ.jpg"></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-      <footer class="post-footer">
-        <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-        <div class="post-tags">
-        </div>
-        <div class="post-share">
-          <div class="social-share sharehidden share-component"></div>
-          <i class="iconfont show-share icon-forward"></i>
-        </div>
-      </footer><!-- .entry-footer -->
-    </article>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+
+<!--对于每一篇发布文章添加标签统计展示-->
+          <div class="post-tags">
+
+
+	<div class="tag-cloud">
+                  <div class="tag-cloud-title">
+                  </div>
+                  <div class="tag-cloud-tags">
+                  <a href="/tags/C/" style="font-size: 10px; color: #f38181">C++</a> <a href="/tags/Go/" style="font-size: 10px; color: #f38181">Go</a> <a href="/tags/Golang/" style="font-size: 11.67px; color: #e3918f">Golang</a> <a href="/tags/JAVA/" style="font-size: 15px; color: #c4b1aa">JAVA</a> <a href="/tags/LeetCode/" style="font-size: 16.67px; color: #b4c1b8">LeetCode</a> <a href="/tags/MarkDown/" style="font-size: 10px; color: #f38181">MarkDown</a> <a href="/tags/Reids/" style="font-size: 10px; color: #f38181">Reids</a> <a href="/tags/Sakura/" style="font-size: 13.33px; color: #d4a19c">Sakura</a> <a href="/tags/String/" style="font-size: 10px; color: #f38181">String</a> <a href="/tags/go/" style="font-size: 10px; color: #f38181">go</a> <a href="/tags/java/" style="font-size: 10px; color: #f38181">java</a> <a href="/tags/linux/" style="font-size: 11.67px; color: #e3918f">linux</a> <a href="/tags/mac%E8%BD%AF%E4%BB%B6/" style="font-size: 10px; color: #f38181">mac软件</a> <a href="/tags/nginx/" style="font-size: 13.33px; color: #d4a19c">nginx</a> <a href="/tags/protobuf/" style="font-size: 10px; color: #f38181">protobuf</a> <a href="/tags/sakura/" style="font-size: 10px; color: #f38181">sakura</a> <a href="/tags/web/" style="font-size: 10px; color: #f38181">web</a> <a href="/tags/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/" style="font-size: 20px; color: #95e1d3">主题美化</a> <a href="/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px; color: #f38181">包管理工具</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BD%92%E7%B1%BB/" style="font-size: 10px; color: #f38181">博客归类</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px; color: #f38181">多线程</a> <a href="/tags/%E5%B0%8F%E7%9B%AE%E6%A0%87/" style="font-size: 10px; color: #f38181">小目标</a> <a href="/tags/%E5%BC%82%E5%B8%B8/" style="font-size: 10px; color: #f38181">异常</a> <a href="/tags/%E6%82%A6%E8%AF%BB/" style="font-size: 10px; color: #f38181">悦读</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 10px; color: #f38181">感悟</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 18.33px; color: #a5d1c5">数组</a> <a href="/tags/%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/" style="font-size: 10px; color: #f38181">文件读取</a> <a href="/tags/%E7%AE%80%E5%8D%95/" style="font-size: 16.67px; color: #b4c1b8">简单</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 11.67px; color: #e3918f">算法</a> <a href="/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/" style="font-size: 13.33px; color: #d4a19c">资料整理</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" style="font-size: 10px; color: #f38181">软件安装</a> <a href="/tags/%E9%BB%91%E7%A7%91%E6%8A%80/" style="font-size: 10px; color: #f38181">黑科技</a>
+                  </div>
+
+                </div>
+
+          </div>
+<!--对于每一篇发布文章添加标签统计展示-->
       <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/06/04/%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E5%A2%9E%E5%8A%A0%E7%BD%91%E9%A1%B5%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/鬼刃/200929110029-3-1200.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/鬼刃/200929110029-3-1200.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                主题优化增加网页百度统计功能</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "RmgA0rMeKIWWIkhSTpqhV4oG-gzGzoHsz",
+        appKey: "iwivlkfT6bGJRQS74SaKYjal",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="/about/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/avatar.jpg" itemprop="image" alt="lean" height="70" width="70"></a>
+          <a href="linxuesong.github.io" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/avatar.jpg" itemprop="image" alt="linxuesong" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="https://linxuesong.github.io" itemprop="url" rel="author">lean</a>
+            <a href="linxuesong.github.io" itemprop="url" rel="author">linxuesong</a>
             </h3>
           </div>
         </div>
         <hr>
-        <p><i class="iconfont icon-write"></i>Live your life with passion! With some drive!</p>
+        <p><i class="iconfont icon-write"></i>一个好奇的人</p>
       </section>
+    </main><!-- #main -->
   </div><!-- #primary -->
 </div>
+
+
+
     </div>
 
     <div class="ins-search">
