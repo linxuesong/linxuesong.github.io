@@ -6,7 +6,7 @@
   <link href="http://linxuesong.github.io/atom.xml" rel="self"/>
   
   <link href="http://linxuesong.github.io/"/>
-  <updated>2021-06-22T02:04:02.985Z</updated>
+  <updated>2021-07-06T13:09:58.499Z</updated>
   <id>http://linxuesong.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo博客推广计划，如何让更多人知道</title>
+    <link href="http://linxuesong.github.io/2021/07/06/hexo%E5%8D%9A%E5%AE%A2%E6%8E%A8%E5%B9%BF%E8%AE%A1%E5%88%92%EF%BC%8C%E5%A6%82%E4%BD%95%E8%AE%A9%E6%9B%B4%E5%A4%9A%E4%BA%BA%E7%9F%A5%E9%81%93/"/>
+    <id>http://linxuesong.github.io/2021/07/06/hexo%E5%8D%9A%E5%AE%A2%E6%8E%A8%E5%B9%BF%E8%AE%A1%E5%88%92%EF%BC%8C%E5%A6%82%E4%BD%95%E8%AE%A9%E6%9B%B4%E5%A4%9A%E4%BA%BA%E7%9F%A5%E9%81%93/</id>
+    <published>2021-07-06T13:08:12.000Z</published>
+    <updated>2021-07-06T13:09:58.499Z</updated>
+    
+    <content type="html"><![CDATA[<p>搜索如何将自己的站点加入到百度、谷歌等搜索引擎，让更多的人发现你</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;搜索如何将自己的站点加入到百度、谷歌等搜索引擎，让更多的人发现你&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="hexo" scheme="http://linxuesong.github.io/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>Go性能分析工具</title>
@@ -112,7 +139,7 @@
     <link href="http://linxuesong.github.io/2021/05/25/MarkDown%E5%BF%AB%E9%80%9F%E6%9F%A5%E8%AF%A2%E8%BD%AC%E7%A7%BB%E5%AD%97%E7%AC%A6/"/>
     <id>http://linxuesong.github.io/2021/05/25/MarkDown%E5%BF%AB%E9%80%9F%E6%9F%A5%E8%AF%A2%E8%BD%AC%E7%A7%BB%E5%AD%97%E7%AC%A6/</id>
     <published>2021-05-25T06:13:33.000Z</published>
-    <updated>2021-06-24T09:34:35.285Z</updated>
+    <updated>2021-06-24T12:12:52.857Z</updated>
     
     <content type="html"><![CDATA[<h1 id="MarkDown快速查询转移字符"><a href="#MarkDown快速查询转移字符" class="headerlink" title="MarkDown快速查询转移字符"></a>MarkDown快速查询转移字符</h1><h1 id="公式块部分"><a href="#公式块部分" class="headerlink" title="公式块部分"></a>公式块部分</h1><p>举例</p><pre><code>$$dp[i]=\begin{cases}    计算式1     &amp;计算式条件  \\换行    计算式2    &amp;计算式条件  \\换行\end{cases}$$</code></pre><p>详细表格</p><table><thead><tr><th align="left">公式块</th><th align="left">\begin{cases}     内容    \end{cases}</th><th align="left">大公式表达式</th></tr></thead><tbody><tr><td align="left"></td><td align="left">\big</td><td align="left">[ //比较大的左中括号</td></tr><tr><td align="left"></td><td align="left">\bigg[</td><td align="left">//再大一点</td></tr><tr><td align="left"></td><td align="left">\Big[</td><td align="left">//比big大一点</td></tr><tr><td align="left"></td><td align="left">\Bigg[</td><td align="left">//比bigg大一点</td></tr><tr><td align="left"></td><td align="left">a_2  a下标2            a^3 a上标3</td><td align="left">上标下标</td></tr><tr><td align="left"></td><td align="left">\sum ：∑  \int ：∫  \oint ：∮  \prod：∏</td><td align="left">求和、求导</td></tr><tr><td align="left"></td><td align="left">\alpha： α  \beta： β  \gamma：γ  \Phi ： Φ  \Omega：Ω  \Delta： Δ  \delta： δ</td><td align="left">希腊字母</td></tr></tbody></table><h1 id="代码块部分"><a href="#代码块部分" class="headerlink" title="代码块部分"></a>代码块部分</h1><h1 id="文本部分"><a href="#文本部分" class="headerlink" title="文本部分"></a>文本部分</h1><br/><table border="1">  <caption>MarkDown文本转移</caption>  <tr>    <th style="text-align:center;">输入文本</th>    <th style="text-align:center;">显示内容</th>  </tr>  <tr>    <td style="text-align:center;">&amp;nbsp;   或者    键盘全角模式空格键</td>    <td style="text-align:center;">空格</td>  </tr>  <tr>    <td style="text-align:center;">&lt;sup&gt;xxx&lt;/sup&gt;</td>    <td style="text-align:center;">上标</td>  </tr>    <tr>    <td style="text-align:center;">&lt;sub&gt;xxx&lt;/sub&gt;</td>    <td style="text-align:center;">下标</td>  </tr>    <tr>    <td style="text-align:center;">30&amp;deg;</td>    <td style="text-align:center;">角度符号30&deg;</td>  </tr></table><br/><h1 id="表格部分"><a href="#表格部分" class="headerlink" title="表格部分"></a>表格部分</h1><p>如果markdown语法对应的表格在hexo上无法显示可以直接插入html代码</p><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">border</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>caption</span><span class="token punctuation">></span></span>MarkDown文本转移<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>caption</span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>标题1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>标题2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>行1列1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>行1列2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>行2列1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>行2列2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>、<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span></code></pre><p><strong>1.如何表格中要加入需要转移的内容可以访问<a href="https://www.sojson.com/rehtml" target="_blank" rel="noopener">https://www.sojson.com/rehtml</a></strong></p><p><strong>2.style=”text-align:center;” 在tb、th标签中加入样式控制对齐方式</strong></p>]]></content>
     
@@ -287,9 +314,9 @@
     <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="数组" scheme="http://linxuesong.github.io/tags/%E6%95%B0%E7%BB%84/"/>
-    
     <category term="JAVA" scheme="http://linxuesong.github.io/tags/JAVA/"/>
+    
+    <category term="数组" scheme="http://linxuesong.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
@@ -373,18 +400,19 @@
   </entry>
   
   <entry>
-    <title>mac配置iterm2</title>
+    <title>mac自带终端美化不用iterm2</title>
     <link href="http://linxuesong.github.io/2021/03/20/mac%E9%85%8D%E7%BD%AEiterm2/"/>
     <id>http://linxuesong.github.io/2021/03/20/mac%E9%85%8D%E7%BD%AEiterm2/</id>
     <published>2021-03-20T03:27:45.000Z</published>
-    <updated>2021-03-20T03:33:32.680Z</updated>
+    <updated>2021-06-29T08:25:21.826Z</updated>
     
-    <content type="html"><![CDATA[<p>参考链接：晨旭OvO原创文章<a href="https://blog.csdn.net/a1228136188/article/details/109092435" target="_blank" rel="noopener">https://blog.csdn.net/a1228136188/article/details/109092435</a></p>]]></content>
+    <content type="html"><![CDATA[<p>参考链接：</p><p>晨旭OvO原创文章<a href="https://blog.csdn.net/a1228136188/article/details/109092435" target="_blank" rel="noopener">https://blog.csdn.net/a1228136188/article/details/109092435</a></p><p>本文为CSDN博主「DuebassLei」<a href="https://blog.csdn.net/m0_37903882/article/details/112655290" target="_blank" rel="noopener">https://blog.csdn.net/m0_37903882/article/details/112655290</a><br><a href="https://blog.csdn.net/m0_37903882/article/details/112655290" target="_blank" rel="noopener">https://blog.csdn.net/m0_37903882/article/details/112655290</a></p><h1 id="前沿："><a href="#前沿：" class="headerlink" title="前沿："></a>前沿：</h1><p>mac终端的使用，这里只使用系统自带的终端+oh my zsh，无iterm2、hyper等</p><ul><li>使用iterm2的好处是配置界面丰富主题多，有支持lz、sz的方法</li><li>不使用iterm2的好处是省去一个软件，配置也不算是麻烦</li></ul><p>最终效果如下<br><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/image-20210628202141022.png" alt="image-20210628202141022"></p><p>设置步骤如下</p><h1 id="1-下载zsh、oh-my-zsh"><a href="#1-下载zsh、oh-my-zsh" class="headerlink" title="1.下载zsh、oh-my-zsh"></a>1.下载zsh、oh-my-zsh</h1><h2 id="Zsh"><a href="#Zsh" class="headerlink" title="Zsh"></a>Zsh</h2><pre><code>// a 安装yum install -y zsh// b 查看zsh --version// c shell由bash变为zshchsh -s /bin/zsh// d 验证 #重新查看目前默认的shell,已经变为bin/zshecho $SHELL</code></pre><h2 id="Oh-my-Zsh"><a href="#Oh-my-Zsh" class="headerlink" title="Oh-my-Zsh"></a>Oh-my-Zsh</h2><pre><code>sh -c &quot;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></pre><h1 id="2-配置zsh"><a href="#2-配置zsh" class="headerlink" title="2.配置zsh"></a>2.配置zsh</h1><h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><pre><code>vi ～/.zshrc</code></pre><h2 id="配置文件修改如下"><a href="#配置文件修改如下" class="headerlink" title="配置文件修改如下"></a>配置文件修改如下</h2><pre><code># 1.Path to your oh-my-zsh installation. on-my-zsh命令成为zsh命令export TERM=&quot;xterm-256color&quot;export ZSH=&quot;/root/.oh-my-zsh&quot;#default  2.设置主题为powerlevel9k#ZSH_THEME=&quot;robbyrussell&quot;ZSH_THEME=&quot;powerlevel9k/powerlevel9k&quot;# 3.plugins=(git)  改为  plugins=(git zsh-syntax-highlighting zsh-autosuggestions)plugins=(git zsh-syntax-highlighting zsh-autosuggestions)source $ZSH/oh-my-zsh.sh     </code></pre><h1 id="3-根据配置添加所需资源"><a href="#3-根据配置添加所需资源" class="headerlink" title="3.根据配置添加所需资源"></a>3.根据配置添加所需资源</h1><h2 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h2><pre><code>git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k</code></pre><h2 id="安装主题powerline字体"><a href="#安装主题powerline字体" class="headerlink" title="安装主题powerline字体"></a>安装主题powerline字体</h2><pre><code># 下载git clone https://github.com/powerline/fonts.git# 进入文件夹并安装cd fonts./install.sh</code></pre><h2 id="安装-Awesome-Terminal-Fonts字体"><a href="#安装-Awesome-Terminal-Fonts字体" class="headerlink" title="安装 Awesome-Terminal Fonts字体"></a>安装 Awesome-Terminal Fonts字体</h2><pre><code>git clone https://github.com/gabrielelana/awesome-terminal-fonts.gitcd awesome-terminal-fonts./install.sh</code></pre><h2 id="安装nerd-fonts显示图标"><a href="#安装nerd-fonts显示图标" class="headerlink" title="安装nerd-fonts显示图标"></a>安装nerd-fonts显示图标</h2><pre><code>#下载git clone https://github.com/ryanoasis/nerd-fonts.git#安装同上</code></pre><h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><pre><code># 代码高亮安装zsh-syntax-highlightinggit clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting# 自动补全命令git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions</code></pre><h1 id="4-更新配置文件"><a href="#4-更新配置文件" class="headerlink" title="4.更新配置文件"></a>4.更新配置文件</h1><pre><code>source .zshrc</code></pre><p>关闭重启终端</p><p>如果发现报错说明第三步 配置所需资源安装不成功 </p><p>问题一：如果最后配置完显示乱码，一定是终端展示的字体问题<br><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/image-20210629162452973.png" alt="image-20210629162452973"></p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/image-20210629162518157.png" alt="image-20210629162518157"></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;参考链接：晨旭OvO原创文章&lt;a href=&quot;https://blog.csdn.net/a1228136188/article/details/109092435&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/</summary>
+    <summary type="html">&lt;p&gt;参考链接：&lt;/p&gt;
+&lt;p&gt;晨旭OvO原创文章&lt;a href=&quot;https://blog.csdn.net/a1228136188/article/details/109092435&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.c</summary>
       
     
     
@@ -424,26 +452,6 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://linxuesong.github.io/2021/03/19/hello-world/"/>
-    <id>http://linxuesong.github.io/2021/03/19/hello-world/</id>
-    <published>2021-03-19T12:49:38.727Z</published>
-    <updated>2021-03-19T12:49:38.727Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>hexo+valine搭建博客评论系统</title>
     <link href="http://linxuesong.github.io/2021/03/19/hexo+valine%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/"/>
     <id>http://linxuesong.github.io/2021/03/19/hexo+valine%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</id>
@@ -464,29 +472,22 @@
   </entry>
   
   <entry>
-    <title>主题博客增加天气插件</title>
-    <link href="http://linxuesong.github.io/2021/03/08/%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E5%A4%A9%E6%B0%94%E6%8F%92%E4%BB%B6/"/>
-    <id>http://linxuesong.github.io/2021/03/08/%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E5%A4%A9%E6%B0%94%E6%8F%92%E4%BB%B6/</id>
-    <published>2021-03-08T07:57:56.000Z</published>
-    <updated>2021-03-19T12:49:38.728Z</updated>
+    <title>Hello World</title>
+    <link href="http://linxuesong.github.io/2021/03/19/hello-world/"/>
+    <id>http://linxuesong.github.io/2021/03/19/hello-world/</id>
+    <published>2021-03-19T12:49:38.727Z</published>
+    <updated>2021-03-19T12:49:38.727Z</updated>
     
-    <content type="html"><![CDATA[<p>效果预览：</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210308160128.png" alt="image-20210308160120253"></p><h2 id="1-注册和风天气账号"><a href="#1-注册和风天气账号" class="headerlink" title="1.注册和风天气账号"></a>1.注册和风天气账号</h2><p>官方网址如下<a href="https://www.qweather.com/" target="_blank" rel="noopener">https://www.qweather.com/</a></p><h2 id="2-导入生成的插件代码"><a href="#2-导入生成的插件代码" class="headerlink" title="2.导入生成的插件代码"></a>2.导入生成的插件代码</h2><p>博客目录\themes\Sakura\layout_partial\header.ejs     嵌入到代码的最尾部</p>]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;效果预览：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210308160128.png&quot; alt=&quot;image-202103081601</summary>
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.</summary>
       
     
     
     
-    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="主题美化" scheme="http://linxuesong.github.io/tags/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
-    
-    <category term="sakura" scheme="http://linxuesong.github.io/tags/sakura/"/>
     
   </entry>
   
