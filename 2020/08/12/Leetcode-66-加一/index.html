@@ -608,15 +608,15 @@ WIDGET = {
         
         <div class="entry-content">
           <p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">Leetcode-66. 加一</a></p>
-<h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p>
+<h1><span id="10题目描述">1.0题目描述</span></h1><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p>
 <p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p>
 <p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
 <p>示例 1:</p>
 <p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。<br>示例 2:</p>
 <p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/plus-one" target="_blank" rel="noopener">https://leetcode-cn.com/problems/plus-one</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="2-0解题思路"><a href="#2-0解题思路" class="headerlink" title="2.0解题思路"></a>2.0解题思路</h1><p>这道题比较简单，从后向前遍历找到第一个非9数字，记下标为not9first，该下标之后所有数全为0，本下标元素值+1 对异常情况值溢出做特殊处理</p>
-<h1 id="3-0实现代码"><a href="#3-0实现代码" class="headerlink" title="3.0实现代码"></a>3.0实现代码</h1><pre><code>func plusOne(digits []int) []int {
+<h1><span id="20解题思路">2.0解题思路</span></h1><p>这道题比较简单，从后向前遍历找到第一个非9数字，记下标为not9first，该下标之后所有数全为0，本下标元素值+1 对异常情况值溢出做特殊处理</p>
+<h1><span id="30实现代码">3.0实现代码</span></h1><pre><code>func plusOne(digits []int) []int {
     oldLen := len(digits)
     not9first := oldLen-1 // 从后向前非9的第一个数
     for ; not9first &gt;= 0 &amp;&amp; digits[not9first] == 9; not9first-- {
@@ -747,7 +747,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -759,10 +759,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -822,7 +822,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -851,7 +851,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

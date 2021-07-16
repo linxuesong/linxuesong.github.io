@@ -551,7 +551,7 @@ WIDGET = {
           </header>
         
         <div class="entry-content">
-          <h4 id="Leetcode-118-杨辉三角"><a href="#Leetcode-118-杨辉三角" class="headerlink" title="Leetcode-118. 杨辉三角"></a><a href="https://leetcode-cn.com/problems/pascals-triangle/" target="_blank" rel="noopener">Leetcode-118. 杨辉三角</a></h4><h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个非负整数 <em>numRows，*生成杨辉三角的前 *numRows</em> 行。</p>
+          <h4><span id="leetcode-118-杨辉三角"></span></h4><h1><span id="10题目描述">1.0题目描述</span></h1><p>给定一个非负整数 <em>numRows，*生成杨辉三角的前 *numRows</em> 行。</p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif" alt="img"></p>
 <p>在杨辉三角中，每个数是它左上方和右上方的数的和。</p>
 <p><strong>示例:</strong></p>
@@ -563,8 +563,8 @@ WIDGET = {
    [1,2,1],
   [1,3,3,1],
  [1,4,6,4,1]
-]</code></pre><h1 id="2-0解题思路"><a href="#2-0解题思路" class="headerlink" title="2.0解题思路"></a>2.0解题思路</h1><p>和题目描述那个图的过程一样，比较简单</p>
-<h1 id="3-0代码"><a href="#3-0代码" class="headerlink" title="3.0代码"></a>3.0代码</h1><pre><code>func generate(numRows int) [][]int {
+]</code></pre><h1><span id="20解题思路">2.0解题思路</span></h1><p>和题目描述那个图的过程一样，比较简单</p>
+<h1><span id="30代码">3.0代码</span></h1><pre><code>func generate(numRows int) [][]int {
     if(numRows &lt;= 0) {
         return nil
     }
@@ -583,7 +583,7 @@ WIDGET = {
         result[i] = next
     }
     return result
-}</code></pre><h1 id="4-0总结"><a href="#4-0总结" class="headerlink" title="4.0总结"></a>4.0总结</h1><p>1.第一版代码的问题，变量起名比较乱，建议修改优化一下<br>2.多维切片的创建，和初始化  如果不make无疑是nil<br>①make([][]int, x)<br>②for arr := range arrs<br>    arr:= make([]int, y)</p>
+}</code></pre><h1><span id="40总结">4.0总结</span></h1><p>1.第一版代码的问题，变量起名比较乱，建议修改优化一下<br>2.多维切片的创建，和初始化  如果不make无疑是nil<br>①make([][]int, x)<br>②for arr := range arrs<br>    arr:= make([]int, y)</p>
 
         </div>
         <!-- .entry-content -->
@@ -630,15 +630,15 @@ WIDGET = {
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/08/11/Hexo-Sakura%E5%A6%82%E4%BD%95%E5%86%99%E6%96%B0%E5%8D%9A%E5%AE%A2/" rel="prev">
+            <a href="/2020/08/11/LeetCode-26%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E9%A1%B9/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(1).jpg.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(1).jpg.webp">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                Hexo-Sakura如何写新博客</h3>
+                LeetCode-26删除数组中重复项</h3>
                 <hr>
               </div>
             </a>
@@ -648,15 +648,15 @@ WIDGET = {
           
             <div class="post-nepre half next">
           
-            <a href="/2020/08/11/LeetCode-26%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E9%A1%B9/" rel="next">
+            <a href="/2020/08/11/Hexo-Sakura%E5%A6%82%E4%BD%95%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E4%B8%8D%E5%90%8C%E7%94%B5%E8%84%91/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/犬夜叉/201204113622-8-1200.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/犬夜叉/201204113622-8-1200.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                LeetCode-26删除数组中重复项</h3>
+                Hexo-Sakura如何博客迁移到不同电脑</h3>
                 <hr>
               </div>
             </a>
@@ -703,7 +703,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -715,10 +715,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -778,7 +778,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -807,7 +807,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

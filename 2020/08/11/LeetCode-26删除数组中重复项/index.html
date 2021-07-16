@@ -551,7 +551,7 @@ WIDGET = {
           </header>
         
         <div class="entry-content">
-          <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+          <h1><span id="题目描述">题目描述</span></h1><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
 <p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
 <p>示例 1:</p>
 <p>给定数组 nums = [1,1,2], </p>
@@ -561,9 +561,9 @@ WIDGET = {
 <p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p>
 <p>你不需要考虑数组中超出新长度后面的元素。</p>
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>双指针法：存放非重复元素的指针(0开始)   寻找下一个非重复元素的指针(1开始)</p>
+<h1><span id="解题思路">解题思路</span></h1><p>双指针法：存放非重复元素的指针(0开始)   寻找下一个非重复元素的指针(1开始)</p>
 <p>寻找指针：遍历数组找到 下一个不重复元素(和已存放的元素不相等)，找到后存入非重复指针</p>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><pre><code>func removeDuplicates(nums []int) int {
+<h1><span id="代码实现">代码实现</span></h1><pre><code>func removeDuplicates(nums []int) int {
     if(len(nums) == 1) {
         return 1
     }
@@ -576,7 +576,7 @@ WIDGET = {
         }
     }    
     return bef+1  
-}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一开始的思路是相邻元素两两比较，不同则后续元素前移一位，数组长度减1</p>
+}</code></pre><h1><span id="总结">总结</span></h1><p>一开始的思路是相邻元素两两比较，不同则后续元素前移一位，数组长度减1</p>
 <p>，时间复杂度为O(n方)。</p>
 <p>缺点就是每次不同移动n个元素，双指针法就是一指针存放，一指针寻找，只移动一个元素，更快</p>
 
@@ -625,15 +625,15 @@ WIDGET = {
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/08/11/Leetcode-118.%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/" rel="prev">
+            <a href="/2020/08/11/Hexo-Sakura%E5%A6%82%E4%BD%95%E5%86%99%E6%96%B0%E5%8D%9A%E5%AE%A2/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(1).jpg.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(1).jpg.webp">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                Leetcode-118. 杨辉三角</h3>
+                Hexo-Sakura如何写新博客</h3>
                 <hr>
               </div>
             </a>
@@ -643,15 +643,15 @@ WIDGET = {
           
             <div class="post-nepre half next">
           
-            <a href="/2020/08/11/Hexo-Sakura%E5%A6%82%E4%BD%95%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E4%B8%8D%E5%90%8C%E7%94%B5%E8%84%91/" rel="next">
+            <a href="/2020/08/11/Leetcode-118.%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/犬夜叉/201204113622-8-1200.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/犬夜叉/201204113622-8-1200.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                Hexo-Sakura如何博客迁移到不同电脑</h3>
+                Leetcode-118. 杨辉三角</h3>
                 <hr>
               </div>
             </a>
@@ -698,7 +698,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -710,10 +710,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -773,7 +773,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -802,7 +802,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

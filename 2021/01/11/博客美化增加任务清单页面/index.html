@@ -608,10 +608,10 @@ WIDGET = {
         
         <div class="entry-content">
           <p>参考链接:<a href="https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1" target="_blank" rel="noopener">https://nekodeng.gitee.io/posts/todolist-page.html#toc-heading-1</a></p>
-<h1 id="1-新建todolist页面"><a href="#1-新建todolist页面" class="headerlink" title="1.新建todolist页面"></a>1.新建todolist页面</h1><pre><code>hexo new page &quot;todolist&quot;</code></pre><h1 id="2-配置该页面跳过渲染"><a href="#2-配置该页面跳过渲染" class="headerlink" title="2.配置该页面跳过渲染"></a>2.配置该页面跳过渲染</h1><p>这次添加的页面是一个html页面，需要配置跳过渲染后不会使用主题的layout对网页进行渲染</p>
+<h1><span id="1新建todolist页面">1.新建todolist页面</span></h1><pre><code>hexo new page &quot;todolist&quot;</code></pre><h1><span id="2配置该页面跳过渲染">2.配置该页面跳过渲染</span></h1><p>这次添加的页面是一个html页面，需要配置跳过渲染后不会使用主题的layout对网页进行渲染</p>
 <p>在主站的配置文件的skip:render种配置</p>
 <pre><code>skip_render: 
-- &quot;todolist/**&quot;</code></pre><h1 id="3-修改todolist界面"><a href="#3-修改todolist界面" class="headerlink" title="3.修改todolist界面"></a>3.修改todolist界面</h1><p>博客目录下/source/todolist/index.md 改为index.html， 文件内容如下:</p>
+- &quot;todolist/**&quot;</code></pre><h1><span id="3修改todolist界面">3.修改todolist界面</span></h1><p>博客目录下/source/todolist/index.md 改为index.html， 文件内容如下:</p>
 <pre><code>&lt;!DOCTYPE html&gt; 
 &lt;html lang=&quot;en&quot;&gt; 
     &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;title&gt;Title&lt;/title&gt; &lt;script src=&quot;https://cdn.bootcss.com/vue/2.6.10/vue.min.js&quot;&gt;&lt;/script&gt; &lt;style&gt; body{ margin:0;background-color:#fafafa;font:14px &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif} h2{margin:0;font-size:12px} a{color:#000;text-decoration:none} input{outline:0} button{margin:0;padding:0;border:0;background:0;font-size:100%;vertical-align:baseline;font-family:inherit;font-weight:inherit;color:inherit;outline:0} ul{padding:0;margin:0;list-style:none} .page-top{width:100%;height:40px;background-color:#db4c3f} .page-content{width:50%;margin:0 auto} .page-content h2{line-height:40px;font-size:18px;color:#fff} .main{width:50%;margin:0 auto;box-sizing:border-box} .task-input{width:99%;height:30px;outline:0;border:1px solid #ccc} .task-count{display:flex;margin:10px 0} .task-count li{padding-left:10px;flex:1;color:#dd4b39} .task-count li:nth-child(1){padding:5px 0 0 10px} .action{text-align:center;display:flex} .action a{margin:0 10px;flex:1;padding:5px 0;color:#777} .action a:nth-child(3){margin-right:0} .active{border-bottom: 2px solid #629A9C} .tasks{background-color:#fff}.no-task-tip{padding:10px 0 10px 10px;display:block;border-bottom:1px solid #ededed;color:#777}.big-title{color:#222}.todo-list{margin:0;padding:0;list-style:none} .todo-list li{ position:relative; font-size:16px; border-left: 5px solid #629A9C; box-shadow: 0 1px 2px rgba(0,0,0,0.07); margin-bottom: 16px; } .todo-list li:hover{background-color:#fafafa} .todo-list li.editing{border-bottom:0;padding:0;} .todo-list li.editing .edit{display:block;padding:13px 17px 12px 17px;margin:0 0 0 43px} .todo-list li.editing .view{display:none} .toggle{ text-align:center; width:16px; height:16px; position:absolute; top:2px; left: 15px; bottom:0; margin:auto 0; cursor: pointer; } .todo-list li label{ white-space:pre-line; word-break:break-all; padding:15px 60px 15px 15px; margin-left:45px; display:block; line-height:1.2; transition:color .4s } .todo-list li.completed label{ color:#d9d9d9; text-decoration:line-through } .todo-list li .destroy{ display:none; text-align:center; width:16px; height:16px; position:absolute; top:0; right:15px; bottom:10px; margin:auto 0; cursor: pointer; font-size:28px; color:#cc9a9a; transition:color .2s ease-out } .todo-list li .destroy:hover{color:#af5b5e} .todo-list li .destroy:after{content:&#39;×&#39;} .todo-list li:hover .destroy{display:block} .todo-list li .edit{display:none} .todo-list li.editing:last-child{margin-bottom:-1px} &lt;/style&gt; &lt;/head&gt; 
@@ -844,7 +844,7 @@ var vm = new Vue({
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -856,10 +856,10 @@ var vm = new Vue({
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -919,7 +919,7 @@ var vm = new Vue({
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -948,7 +948,16 @@ var vm = new Vue({
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

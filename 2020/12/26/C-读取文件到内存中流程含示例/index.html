@@ -607,14 +607,14 @@ WIDGET = {
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="一、示例说明"><a href="#一、示例说明" class="headerlink" title="一、示例说明"></a>一、示例说明</h1><p>程序输入为种子用户ID数据集合，每一行包括用户ID和256维用户特征，用户特征数据类型为浮点型数据（存在部分数据用科学计数法表示的情况，比如1.4283673760891302E-4），所有数据分隔符为逗号，ID处于第1个位置，其它256维特征按照顺序处于2-257个位置。其中1-128维为连续性特征，数据都大于等于0小于等于1，余下129-256维为分类型特征经过one-hot处理过后的稀疏数据，数据都为0或者1。如下格式：<br><em>ID0001,0.1,0,0.56,…,0,1</em></p>
+          <h1><span id="一-示例说明">一、示例说明</span></h1><p>程序输入为种子用户ID数据集合，每一行包括用户ID和256维用户特征，用户特征数据类型为浮点型数据（存在部分数据用科学计数法表示的情况，比如1.4283673760891302E-4），所有数据分隔符为逗号，ID处于第1个位置，其它256维特征按照顺序处于2-257个位置。其中1-128维为连续性特征，数据都大于等于0小于等于1，余下129-256维为分类型特征经过one-hot处理过后的稀疏数据，数据都为0或者1。如下格式：<br><em>ID0001,0.1,0,0.56,…,0,1</em></p>
 <p>保存变量的结构体如下：</p>
 <pre><code>typedef struct User{
     string id;
     float fv[128];
     int iv[128];
 };</code></pre><p>计划读取文件每一行记录一个User变量的成员，元素1为id，元素2<del>129为fv,元素130</del>257为iv</p>
-<h1 id="二、读取文件代码"><a href="#二、读取文件代码" class="headerlink" title="二、读取文件代码"></a>二、读取文件代码</h1><p>示例代码:</p>
+<h1><span id="二-读取文件代码">二、读取文件代码</span></h1><p>示例代码:</p>
 <pre><code>#include &lt;QCoreApplication&gt;
 #include &lt;fstream&gt;
 #include &lt;sstream&gt;
@@ -660,7 +660,7 @@ int main(int argc, char *argv[])
     seedf.close();
     return a.exec();
 }
-</code></pre><h1 id="三、涉及到的知识总结"><a href="#三、涉及到的知识总结" class="headerlink" title="三、涉及到的知识总结"></a>三、涉及到的知识总结</h1><h2 id="1-fstream"><a href="#1-fstream" class="headerlink" title="1.fstream"></a>1.fstream</h2><p>作用：主要用于读写文件</p>
+</code></pre><h1><span id="三-涉及到的知识总结">三、涉及到的知识总结</span></h1><h2><span id="1fstream">1.fstream</span></h2><p>作用：主要用于读写文件</p>
 <p>定义:fstream f;</p>
 <p>类继承关系如图:</p>
 <p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20201226114456.png" alt="image-20201226114448172"></p>
@@ -676,7 +676,7 @@ int main(int argc, char *argv[])
 </thead>
 <tbody><tr>
 <td><strong>open</strong></td>
-<td>( const char * filename,  os_base::openmode mode = ios_base::in | ios_base::out )<br />// 文件路径和打开方式,打开方式可以省略</td>
+<td>( const char * filename,  os_base::openmode mode = ios_base::in | ios_base::out )<br>// 文件路径和打开方式,打开方式可以省略</td>
 <td>无</td>
 <td>以指定的方式打开文件</td>
 </tr>
@@ -713,13 +713,13 @@ int main(int argc, char *argv[])
 <tr>
 <td><em>tellg()和tellp()*</em></td>
 <td></td>
-<td>pos_type<br />就是一个int</td>
+<td>pos_type<br>就是一个int</td>
 <td>返回当前读出流\写入流的get、put指针位置</td>
 </tr>
 <tr>
 <td><em>seekg()和seekp()*</em></td>
-<td>重载一:pos_type<br />重载二：(off_type offset, seekdir direction)</td>
-<td>pos_type<br />就是一个int</td>
+<td>重载一:pos_type<br>重载二：(off_type offset, seekdir direction)</td>
+<td>pos_type<br>就是一个int</td>
 <td>设置读出流\写入流的get、put指针位置</td>
 </tr>
 </tbody></table>
@@ -734,7 +734,7 @@ while(!myfile.eof()) { // 直到遇到文件结束符
     getline(myfile, tmp); // 取一行
     arrs.push_back(tmp);
 }
-myfile.close();</code></pre><h2 id="2-getline"><a href="#2-getline" class="headerlink" title="2.getline"></a>2.getline</h2><p>作用:  读取输入流到内存中知道遇到指定的分隔符，默认分隔符为’\n’所以默认时读取一整行</p>
+myfile.close();</code></pre><h2><span id="2getline">2.getline</span></h2><p>作用:  读取输入流到内存中知道遇到指定的分隔符，默认分隔符为’\n’所以默认时读取一整行</p>
 <p>函数原型</p>
 <pre><code>/**
 *pram1 输入流
@@ -742,7 +742,7 @@ myfile.close();</code></pre><h2 id="2-getline"><a href="#2-getline" class="heade
 *pram3 分隔符\n,会读取输入流知道遇到分割符，遇到分割符之后停止读取并把分隔符跳过
 */
 istream&amp; getline (istream&amp; is, string&amp; str, char delim = &#39;\n&#39;);</code></pre><p>简单示例</p>
-<h1 id="四、多线程读取大文件实现（仍旧为完善）-此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件"><a href="#四、多线程读取大文件实现（仍旧为完善）-此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件" class="headerlink" title="四、多线程读取大文件实现（仍旧为完善） 此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件"></a>四、多线程读取大文件实现（仍旧为完善） 此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件</h1><p>思路:大文件分隔若干份(cpu有几个核)文件块，对于每一部分以start和end作为标志<br>seekg设置不同的读取起始位置，每个文件从不同的起始位置读，读到end</p>
+<h1><span id="四-多线程读取大文件实现仍旧为完善-此方法因为文件流的偏移量为int所以最多可以偏移4g的文件">四、多线程读取大文件实现（仍旧为完善） 此方法因为文件流的偏移量为int，所以最多可以偏移4G的文件</span></h1><p>思路:大文件分隔若干份(cpu有几个核)文件块，对于每一部分以start和end作为标志<br>seekg设置不同的读取起始位置，每个文件从不同的起始位置读，读到end</p>
 <p>需要注意的是我们在读取变量时start可能不是正好的位置，需要对其进行处理,这里是先读取完本行到行末，得到一行结束位置</p>
 <p>代码如下</p>
 <pre><code>#include &lt;QCoreApplication&gt;
@@ -872,7 +872,7 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-</code></pre><h1 id="五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象"><a href="#五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象" class="headerlink" title="五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象"></a>五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象</h1>
+</code></pre><h1><span id="五-大于4g文件的读取文件内存映射winodws下用handle创建内存映射对象">五、大于4G文件的读取，文件内存映射winodws下用handle创建内存映射对象</span></h1>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -991,7 +991,7 @@ int main(int argc, char *argv[])
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -1003,10 +1003,10 @@ int main(int argc, char *argv[])
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -1066,7 +1066,7 @@ int main(int argc, char *argv[])
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -1095,7 +1095,16 @@ int main(int argc, char *argv[])
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

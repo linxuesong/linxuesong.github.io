@@ -610,7 +610,7 @@ WIDGET = {
           <p>参考链接:</p>
 <p>来源: itsNekoDeng<br>文章作者: NekoDeng<br>文章链接: <a href="https://nekodeng.gitee.io/posts/waterfall-flow-photo-album.html#toc-heading-9" target="_blank" rel="noopener">https://nekodeng.gitee.io/posts/waterfall-flow-photo-album.html#toc-heading-9</a></p>
 <p>自己经过修改后移植到sakura主题</p>
-<h1 id="1-增加相册界面和相册详情页面"><a href="#1-增加相册界面和相册详情页面" class="headerlink" title="1.增加相册界面和相册详情页面"></a>1.增加相册界面和相册详情页面</h1><h2 id="1-1新建gallery界面-相册概览"><a href="#1-1新建gallery界面-相册概览" class="headerlink" title="1.1新建gallery界面(相册概览)"></a>1.1新建gallery界面(相册概览)</h2><pre><code>hexo new &quot;gallery&quot;</code></pre><p>在博客目录/source/gallery可以看到index.md文件，修改内容如下</p>
+<h1><span id="1增加相册界面和相册详情页面">1.增加相册界面和相册详情页面</span></h1><h2><span id="11新建gallery界面相册概览">1.1新建gallery界面(相册概览)</span></h2><pre><code>hexo new &quot;gallery&quot;</code></pre><p>在博客目录/source/gallery可以看到index.md文件，修改内容如下</p>
 <pre><code>---
 title: gallery
 comments: false
@@ -631,8 +631,8 @@ date: 2020-10-02 23:00:17
 type: &quot;galleries&quot; 
 layout: &quot;galleries&quot; 
 password:
----</code></pre><h2 id="1-2相册加密功能（选用）"><a href="#1-2相册加密功能（选用）" class="headerlink" title="1.2相册加密功能（选用）"></a>1.2相册加密功能（选用）</h2><p>在上面<code>index.md</code>文件中，可以实现加密功能，加密使用<code>SHA256</code>加密，所以在加密前需要先将你的密码转换成<code>SHA256格式</code>然后输入到最上面的创建相片页面的index.md的<code>password</code>里面。至于SHA256加密，请自行网上搜索在线生成，例如: <a href="http://www.ttmd5.com/hash.php?type=9" target="_blank" rel="noopener">http://www.ttmd5.com/hash.php?type=9</a></p>
-<h3 id="编辑主题导航栏加入相册按钮"><a href="#编辑主题导航栏加入相册按钮" class="headerlink" title="编辑主题导航栏加入相册按钮"></a>编辑主题导航栏加入相册按钮</h3><h1 id="2-新增布局样式文件"><a href="#2-新增布局样式文件" class="headerlink" title="2.新增布局样式文件"></a>2.新增布局样式文件</h1><p>在博客目录/themes/sakura/layout/位置下新增两个文件gallery.ejs、galleries.ejs</p>
+---</code></pre><h2><span id="12相册加密功能选用">1.2相册加密功能（选用）</span></h2><p>在上面<code>index.md</code>文件中，可以实现加密功能，加密使用<code>SHA256</code>加密，所以在加密前需要先将你的密码转换成<code>SHA256格式</code>然后输入到最上面的创建相片页面的index.md的<code>password</code>里面。至于SHA256加密，请自行网上搜索在线生成，例如: <a href="http://www.ttmd5.com/hash.php?type=9" target="_blank" rel="noopener">http://www.ttmd5.com/hash.php?type=9</a></p>
+<h3><span id="编辑主题导航栏加入相册按钮">编辑主题导航栏加入相册按钮</span></h3><h1><span id="2新增布局样式文件">2.新增布局样式文件</span></h1><p>在博客目录/themes/sakura/layout/位置下新增两个文件gallery.ejs、galleries.ejs</p>
 <p>这两个布局样式引用了<a href="https://github.com/feimosi/baguetteBox.js中的js和css样式文件，感兴趣可以自行参考" target="_blank" rel="noopener">https://github.com/feimosi/baguetteBox.js中的js和css样式文件，感兴趣可以自行参考</a></p>
 <p>文件内容分别如下:</p>
 <p>gallery.ejs</p>
@@ -879,8 +879,8 @@ password:
         $img.attr(&#39;src&#39;, $img.attr(&#39;data-src&#39;)); //把data-src的值 赋值给src
         $img.attr(&#39;data-isLoaded&#39;, 1);//已加载的图片做标记
     }
-&lt;/script&gt;</code></pre><h1 id="3-增加具体的相册图片"><a href="#3-增加具体的相册图片" class="headerlink" title="3.增加具体的相册图片"></a>3.增加具体的相册图片</h1><p>博客目录/source/_data/位置下(如果没有_data文件夹创建)</p>
-<h2 id="3-1创建gallery-json文件，其内容为"><a href="#3-1创建gallery-json文件，其内容为" class="headerlink" title="3.1创建gallery.json文件，其内容为:"></a>3.1创建gallery.json文件，其内容为:</h2><pre><code>[{
+&lt;/script&gt;</code></pre><h1><span id="3增加具体的相册图片">3.增加具体的相册图片</span></h1><p>博客目录/source/_data/位置下(如果没有_data文件夹创建)</p>
+<h2><span id="31创建galleryjson文件其内容为">3.1创建gallery.json文件，其内容为:</span></h2><pre><code>[{
     &quot;name&quot;: &quot;test&quot;,
     &quot;cover&quot;: &quot;https://i.loli.net/2020/10/05/kBcvAf7INgMLaem.jpg&quot;,
     &quot;date&quot;: &quot;2017-10&quot;,
@@ -902,14 +902,14 @@ password:
 }]</code></pre><p>注:到目前位置检查一下</p>
 <p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210126194427.png" alt="image-20210126194426182"></p>
 <p>我们之后如果要新加自己的相册，名称也要统一<br>1.json文件中新加  2.创相册详情文件夹 3.修改index的title</p>
-<h1 id="4-主页面导航菜单增加相册"><a href="#4-主页面导航菜单增加相册" class="headerlink" title="4.主页面导航菜单增加相册"></a>4.主页面导航菜单增加相册</h1><p>博客目录/themes/sakura/_config.yml</p>
-<h2 id="4-1增加导航"><a href="#4-1增加导航" class="headerlink" title="4.1增加导航"></a>4.1增加导航</h2><pre><code> 清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
+<h1><span id="4主页面导航菜单增加相册">4.主页面导航菜单增加相册</span></h1><p>博客目录/themes/sakura/_config.yml</p>
+<h2><span id="41增加导航">4.1增加导航</span></h2><pre><code> 清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
     书单: {path: /books/, fa: fa-th-list faa-bounce }, 
     番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
     歌单: {path: /music/, fa: fa-headphones },
     电影: {path: /movies/, fa: fa-video-camera },
     游戏: {path: /games/, fa: fa-gamepad },
-    图集: {path: /gallery/, fa: fa-photo },</code></pre><h2 id="4-2增加相册配置"><a href="#4-2增加相册配置" class="headerlink" title="4.2增加相册配置"></a>4.2增加相册配置</h2><pre><code># 增加了相册页面 
+    图集: {path: /gallery/, fa: fa-photo },</code></pre><h2><span id="42增加相册配置">4.2增加相册配置</span></h2><pre><code># 增加了相册页面 
 gallery: 
   title: 光影流年 #标题 
   icon: fa #这个显示相册页面的图标 
@@ -1037,7 +1037,7 @@ PhotoVerifyPassword:
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -1049,10 +1049,10 @@ PhotoVerifyPassword:
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -1112,7 +1112,7 @@ PhotoVerifyPassword:
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -1141,7 +1141,16 @@ PhotoVerifyPassword:
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

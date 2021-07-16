@@ -610,9 +610,9 @@ WIDGET = {
           <p>一、GODEBUG参数<br>特别方便，无需下载第三方工具，无需修改程序 代码</p>
 <p>分析协程调度情况</p>
 <p><a href="https://segmentfault.com/a/1190000020108079" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020108079</a></p>
-<h1 id="二、Trace"><a href="#二、Trace" class="headerlink" title="二、Trace"></a>二、Trace</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>无需下载第三方工具，需要修改程序代码</p>
+<h1><span id="二-trace">二、Trace</span></h1><h2><span id="特点">特点</span></h2><p>无需下载第三方工具，需要修改程序代码</p>
 <p><a href="https://segmentfault.com/a/1190000019736288" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019736288</a></p>
-<h2 id="如何用"><a href="#如何用" class="headerlink" title="如何用"></a>如何用</h2><p>修改代码,加入trace</p>
+<h2><span id="如何用">如何用</span></h2><p>修改代码,加入trace</p>
 <pre><code>import (
     &quot;os&quot;
     &quot;runtime/trace&quot;
@@ -633,8 +633,8 @@ func main() {
 <p>分析追踪文件</p>
 <pre><code>$ go tool trace trace.out //     会启动浏览器，展示网页版分析报告</code></pre><p>分析结果说明</p>
 <p>![image-20210621110611559](/Users/linxuesong/Library/Application Support/typora-user-images/image-20210621110611559.png)</p>
-<h2 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h2><p>分析结果</p>
-<h4 id="实例1-如何分析程序耗时时间长—Scheduler-latency-profile-调度延迟概况"><a href="#实例1-如何分析程序耗时时间长—Scheduler-latency-profile-调度延迟概况" class="headerlink" title="实例1: 如何分析程序耗时时间长—Scheduler latency profile-调度延迟概况"></a>实例1: 如何分析程序耗时时间长—Scheduler latency profile-调度延迟概况</h4><p>多协程生成随机数据，随机数据做参数访问</p>
+<h2><span id="栗子">栗子</span></h2><p>分析结果</p>
+<h4><span id="实例1-如何分析程序耗时时间长scheduler-latency-profile-调度延迟概况">实例1: 如何分析程序耗时时间长—Scheduler latency profile-调度延迟概况</span></h4><p>多协程生成随机数据，随机数据做参数访问</p>
 <pre><code>var wg sync.WaitGroup // main等待所有goroutine结束
 
 func CallGetUserInfoDbatchGoVersion() {
@@ -682,7 +682,7 @@ func Intn(n int) int { return globalRand.Intn(n) } // 使用全局对象，多ro
   SCFCALL(uidcnt) // 使用生成的随机数做参数远程调用，具体处理逻辑忽略
 }</code></pre><p>修改后的性能分析截图–整体耗时缩短，而且不会在随机数这里有长耗时：</p>
 <p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/image-20210621142726349.png" alt="image-20210621142726349"></p>
-<h1 id="三、PProf"><a href="#三、PProf" class="headerlink" title="三、PProf"></a>三、PProf</h1><p>需要下载第三方工具，需要修改程序代码</p>
+<h1><span id="三-pprof">三、PProf</span></h1><p>需要下载第三方工具，需要修改程序代码</p>
 <p><a href="https://segmentfault.com/a/1190000016412013" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016412013</a></p>
 <p>使用举例</p>
 <pre><code></code></pre><p>分析结果</p>
@@ -805,7 +805,7 @@ func Intn(n int) int { return globalRand.Intn(n) } // 使用全局对象，多ro
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -817,10 +817,10 @@ func Intn(n int) int { return globalRand.Intn(n) } // 使用全局对象，多ro
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -880,7 +880,7 @@ func Intn(n int) int { return globalRand.Intn(n) } // 使用全局对象，多ro
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -909,7 +909,16 @@ func Intn(n int) int { return globalRand.Intn(n) } // 使用全局对象，多ro
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

@@ -607,16 +607,16 @@ WIDGET = {
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="0-大纲概览"><a href="#0-大纲概览" class="headerlink" title="0.大纲概览"></a>0.大纲概览</h1><p>主要介绍一下，本片文章涉及到的内容</p>
+          <h1><span id="0大纲概览">0.大纲概览</span></h1><p>主要介绍一下，本片文章涉及到的内容</p>
 <p>1.编程语言,含c++、go、java</p>
-<h1 id="1-编程语言语法"><a href="#1-编程语言语法" class="headerlink" title="1.编程语言语法"></a>1.编程语言语法</h1><h2 id="1-1-C"><a href="#1-1-C" class="headerlink" title="1.1 C++"></a>1.1 C++</h2><h2 id="1-2-Golang"><a href="#1-2-Golang" class="headerlink" title="1.2 Golang"></a>1.2 Golang</h2><p>①W3Cschool <a href="https://www.w3cschool.cn/yqbmht/7rcvwcqm.html" target="_blank" rel="noopener">https://www.w3cschool.cn/yqbmht/7rcvwcqm.html</a>    描述：前几章可以做入门使用，之后几章多了一些网络通信的编程</p>
+<h1><span id="1编程语言语法">1.编程语言语法</span></h1><h2><span id="11-c">1.1 C++</span></h2><h2><span id="12-golang">1.2 Golang</span></h2><p>①W3Cschool <a href="https://www.w3cschool.cn/yqbmht/7rcvwcqm.html" target="_blank" rel="noopener">https://www.w3cschool.cn/yqbmht/7rcvwcqm.html</a>    描述：前几章可以做入门使用，之后几章多了一些网络通信的编程</p>
 <p>②<a href="https://draveness.me/golang/入门级学习" target="_blank" rel="noopener">https://draveness.me/golang/入门级学习</a></p>
 <p>③<a href="https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/" target="_blank" rel="noopener">https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/</a> 更加底层的学习go语言，设计到汇编，内容细致，干活多</p>
-<h2 id="1-3-Java"><a href="#1-3-Java" class="headerlink" title="1.3 Java"></a>1.3 Java</h2><h1 id="2-Linux命令速查"><a href="#2-Linux命令速查" class="headerlink" title="2.Linux命令速查"></a>2.Linux命令速查</h1><p><a href="https://blog.csdn.net/waitig1992/article/details/51884653" target="_blank" rel="noopener">https://blog.csdn.net/waitig1992/article/details/51884653</a> 描述：通过预览页快速定位到<a href="http://www.linuxdaxue.com/，快速定位把" target="_blank" rel="noopener">http://www.linuxdaxue.com/，快速定位把</a></p>
-<h1 id="3-Nginx学习"><a href="#3-Nginx学习" class="headerlink" title="3.Nginx学习"></a>3.Nginx学习</h1><p>源码学习：</p>
+<h2><span id="13-java">1.3 Java</span></h2><h1><span id="2linux命令速查">2.Linux命令速查</span></h1><p><a href="https://blog.csdn.net/waitig1992/article/details/51884653" target="_blank" rel="noopener">https://blog.csdn.net/waitig1992/article/details/51884653</a> 描述：通过预览页快速定位到<a href="http://www.linuxdaxue.com/，快速定位把" target="_blank" rel="noopener">http://www.linuxdaxue.com/，快速定位把</a></p>
+<h1><span id="3nginx学习">3.Nginx学习</span></h1><p>源码学习：</p>
 <p><a href="https://www.kancloud.cn/digest/understandingnginx/202587" target="_blank" rel="noopener">https://www.kancloud.cn/digest/understandingnginx/202587</a> 章节式学习，有些枯燥</p>
 <p><a href="https://segmentfault.com/a/1190000016922188" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016922188</a> 单独对nginx配置文件解析过程进行的分析</p>
-<h1 id="4-算法"><a href="#4-算法" class="headerlink" title="4.算法"></a>4.算法</h1><p><a href="https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结" target="_blank" rel="noopener">https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结</a></p>
+<h1><span id="4算法">4.算法</span></h1><p><a href="https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结" target="_blank" rel="noopener">https://labuladong.gitbook.io/algo/内容生动，总结力强，是提升效率的好文章，主讲算法刷题套路、算法框架总结</a></p>
 
         </div>
         <!-- .entry-content -->
@@ -736,7 +736,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -748,10 +748,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -811,7 +811,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -840,7 +840,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

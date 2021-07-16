@@ -610,7 +610,7 @@ WIDGET = {
           <p>已有的游戏界面演示链接</p>
 <p><a href="https://dinoswords.gg/" target="_blank" rel="noopener">https://dinoswords.gg/</a></p>
 <p>我们要做的就是添加一个引用接口即可</p>
-<h2 id="1-新建游戏界面文件dinoswords"><a href="#1-新建游戏界面文件dinoswords" class="headerlink" title="1.新建游戏界面文件dinoswords"></a>1.新建游戏界面文件dinoswords</h2><pre><code> hexo new page dinoswords</code></pre><p>因为markdown支持html所以</p>
+<h2><span id="1新建游戏界面文件dinoswords">1.新建游戏界面文件dinoswords</span></h2><pre><code> hexo new page dinoswords</code></pre><p>因为markdown支持html所以</p>
 <p>在博客目录/source/dinoswords/index.md接着生成好的内容填上:</p>
 <pre><code>&lt;main class=&quot;content&quot;&gt;
     &lt;div class=&quot;container&quot;&gt;
@@ -751,7 +751,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -763,10 +763,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -826,7 +826,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -855,7 +855,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

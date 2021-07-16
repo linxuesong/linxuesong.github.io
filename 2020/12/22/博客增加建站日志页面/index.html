@@ -607,7 +607,7 @@ WIDGET = {
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="1-主题目录-layout-sitelog-ejs"><a href="#1-主题目录-layout-sitelog-ejs" class="headerlink" title="1.主题目录/layout/sitelog.ejs"></a>1.主题目录/layout/sitelog.ejs</h1><pre><code>&lt;div class=&quot;blank&quot; style=&quot;padding-top: 75px;&quot;&gt;
+          <h1><span id="1主题目录layoutsitelogejs">1.主题目录/layout/sitelog.ejs</span></h1><pre><code>&lt;div class=&quot;blank&quot; style=&quot;padding-top: 75px;&quot;&gt;
 &lt;/div&gt;
 &lt;div class=&quot;pattern-center &quot;&gt;
   &lt;div class=&quot;pattern-attachment-img&quot;&gt;
@@ -1422,8 +1422,8 @@ WIDGET = {
       &lt;/div&gt;   
   &lt;/div&gt;
 &lt;/div&gt;
-</code></pre><h1 id="2-新增页面"><a href="#2-新增页面" class="headerlink" title="2.新增页面"></a>2.新增页面</h1><pre><code>hexo new page &quot;sitelog&quot;</code></pre><p>生成的页面在/source/sitelog下将index.md的layout设置成sitelog</p>
-<h1 id="3-在主题的配置文件的导航栏路径加入该页面"><a href="#3-在主题的配置文件的导航栏路径加入该页面" class="headerlink" title="3.在主题的配置文件的导航栏路径加入该页面"></a>3.在主题的配置文件的导航栏路径加入该页面</h1>
+</code></pre><h1><span id="2新增页面">2.新增页面</span></h1><pre><code>hexo new page &quot;sitelog&quot;</code></pre><p>生成的页面在/source/sitelog下将index.md的layout设置成sitelog</p>
+<h1><span id="3在主题的配置文件的导航栏路径加入该页面">3.在主题的配置文件的导航栏路径加入该页面</span></h1>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -1542,7 +1542,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -1554,10 +1554,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -1617,7 +1617,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -1646,7 +1646,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

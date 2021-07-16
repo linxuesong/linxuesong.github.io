@@ -607,12 +607,12 @@ WIDGET = {
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="Typora插入Base64图片"><a href="#Typora插入Base64图片" class="headerlink" title="Typora插入Base64图片"></a>Typora插入Base64图片</h1><p>在Typora中插入图片常用的处理方法是：</p>
+          <h1><span id="typora插入base64图片">Typora插入Base64图片</span></h1><p>在Typora中插入图片常用的处理方法是：</p>
 <p>将本地的图片地址传入<br>将网络上的图片地址传入<br>这两种方式都存在一个问题：链接不可用时，图片就展示不出来了！</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>首先将图片通过在线转码工具转换成base64的编码，并用以下格式嵌入即可，格式如下：</p>
+<h2><span id="解决方法">解决方法</span></h2><h3><span id="方法一">方法一</span></h3><p>首先将图片通过在线转码工具转换成base64的编码，并用以下格式嵌入即可，格式如下：</p>
 <p>![image] (base64)<br>但是由于这base64编码往往都很长，很占篇幅，因此我们可以给图片编号，并将所有的图片base64编码放在文档的最后即可，格式如下：<br>在插入图片的地方使用：![image] [图片编号]<br>在文档最后使用：[图片编号]:base64编码<br>这样即可完成图片的永久插入！</p>
 <p>————————————————<br>版权声明：本文为CSDN博主「听雨眠_sun」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/baidu_31492511/java/article/details/90704123" target="_blank" rel="noopener">https://blog.csdn.net/baidu_31492511/java/article/details/90704123</a></p>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>图片素材按官方教程说法，可统一放置在source/images目录中，并以 <code>![](/images/image.jpg)</code> 方式引用</p>
+<h3><span id="方法二">方法二</span></h3><p>图片素材按官方教程说法，可统一放置在source/images目录中，并以 <code>![](/images/image.jpg)</code> 方式引用</p>
 <p>或者在 _config.yml 打开 post_asset_folder 功能，将当前文章所用的图片放置到source目录下的文章同名资源目录下，以 <code>![](image.jpg)</code> 方式引用</p>
 <p>————————————————</p>
 <p>作者：Wavky<br>链接：<a href="https://www.jianshu.com/p/925fa86ccc95" target="_blank" rel="noopener">https://www.jianshu.com/p/925fa86ccc95</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
@@ -735,7 +735,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -747,10 +747,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -810,7 +810,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -839,7 +839,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

@@ -607,7 +607,7 @@ WIDGET = {
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="1-第三方日志库的对比"><a href="#1-第三方日志库的对比" class="headerlink" title="1.第三方日志库的对比"></a>1.第三方日志库的对比</h1><h1 id="2-Zap"><a href="#2-Zap" class="headerlink" title="2.Zap"></a>2.Zap</h1><h2 id="2-1简单实例-会把日志打印到控制台"><a href="#2-1简单实例-会把日志打印到控制台" class="headerlink" title="2.1简单实例-会把日志打印到控制台"></a>2.1简单实例-会把日志打印到控制台</h2><pre><code>//1.快速创建Zap.logger的方法，使用预先写好的配置创建日志变量
+          <h1><span id="1第三方日志库的对比">1.第三方日志库的对比</span></h1><h1><span id="2zap">2.Zap</span></h1><h2><span id="21简单实例-会把日志打印到控制台">2.1简单实例-会把日志打印到控制台</span></h2><pre><code>//1.快速创建Zap.logger的方法，使用预先写好的配置创建日志变量
 //NewExample(Option...)
 //NewDevelopment(Option...)
 //NewProduction
@@ -632,7 +632,7 @@ logger.Info(&quot;failed to fetch URL&quot;,
   zap.Int(&quot;attempt&quot;, 3),
   zap.Duration(&quot;backoff&quot;, time.Second),
 )
-</code></pre><h2 id="2-2定义自己的logger-打印到指定文件"><a href="#2-2定义自己的logger-打印到指定文件" class="headerlink" title="2.2定义自己的logger-打印到指定文件"></a>2.2定义自己的logger-打印到指定文件</h2><pre><code>//使用zap.New创建自定义的日志变量
+</code></pre><h2><span id="22定义自己的logger-打印到指定文件">2.2定义自己的logger-打印到指定文件</span></h2><pre><code>//使用zap.New创建自定义的日志变量
 //func New(core zapcore.Core, options ...Option) *Logger
 
 
@@ -680,7 +680,7 @@ logger.Info(&quot;failed to fetch URL&quot;,
     //   zapcore.NewCore(encoder2, writer2, level2)
     // )
 // 创建logger，可以加入可选项
-    logger = zap.New(core, zap.AddCaller()) // 需要传入 zap.AddCaller() 才会显示打日志点的文件名和行数</code></pre><h1 id="3-文件日志切割第三方库"><a href="#3-文件日志切割第三方库" class="headerlink" title="3.文件日志切割第三方库"></a>3.文件日志切割第三方库</h1><table>
+    logger = zap.New(core, zap.AddCaller()) // 需要传入 zap.AddCaller() 才会显示打日志点的文件名和行数</code></pre><h1><span id="3文件日志切割第三方库">3.文件日志切割第三方库</span></h1><table>
 <thead>
 <tr>
 <th>仓库</th>
@@ -848,7 +848,7 @@ logger.Info(&quot;failed to fetch URL&quot;,
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -860,10 +860,10 @@ logger.Info(&quot;failed to fetch URL&quot;,
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -923,7 +923,7 @@ logger.Info(&quot;failed to fetch URL&quot;,
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -952,7 +952,16 @@ logger.Info(&quot;failed to fetch URL&quot;,
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

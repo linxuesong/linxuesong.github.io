@@ -609,7 +609,7 @@ WIDGET = {
         <div class="entry-content">
           <p>参考</p>
 <p><a href="https://blog.csdn.net/qq_44846853/article/details/104563887" target="_blank" rel="noopener">https://blog.csdn.net/qq_44846853/article/details/104563887</a></p>
-<h1 id="0-准备安装hexo-douban插件"><a href="#0-准备安装hexo-douban插件" class="headerlink" title="0.准备安装hexo-douban插件"></a>0.准备安装hexo-douban插件</h1><pre><code>npm install hexo-douban --save    </code></pre><h1 id="1-修改主站目录-非主题目录-的-config-yml"><a href="#1-修改主站目录-非主题目录-的-config-yml" class="headerlink" title="1.修改主站目录(非主题目录)的_config.yml"></a>1.修改主站目录(非主题目录)的_config.yml</h1><p>博客目录/_config.yml下新建books.ejs</p>
+<h1><span id="0准备安装hexo-douban插件">0.准备安装hexo-douban插件</span></h1><pre><code>npm install hexo-douban --save    </code></pre><h1><span id="1修改主站目录非主题目录的_configyml">1.修改主站目录(非主题目录)的_config.yml</span></h1><p>博客目录/_config.yml下新建books.ejs</p>
 <p>内容如下</p>
 <pre><code>douban: 
   user: 252345665    #这个需要修改为你个人的id  
@@ -631,7 +631,7 @@ WIDGET = {
 <li><strong>quote</strong>： 写在页面开头的一段话,支持html语法。</li>
 <li><strong>timeout</strong>： 爬取数据的超时时间，默认是 10000ms，如果在使用时发现报了超时的错(ETIMEOUT)可以把这个数据设置的大一点。</li>
 </ul>
-<h1 id="2-在导航处增加入口"><a href="#2-在导航处增加入口" class="headerlink" title="2.在导航处增加入口"></a>2.在导航处增加入口</h1><p>博客目录/themes/sakura/_config.yml中加入书单、电影的入口   /books    /movies</p>
+<h1><span id="2在导航处增加入口">2.在导航处增加入口</span></h1><p>博客目录/themes/sakura/_config.yml中加入书单、电影的入口   /books    /movies</p>
 <pre><code>  清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
     书单: {path: /books/, fa: fa-th-list faa-bounce }, 
     番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
@@ -640,7 +640,7 @@ WIDGET = {
     图集: {path: /tags/图集/, fa: fa-photo },
     娱乐: {path: /dinoswords, fa: fa-gamepad }
   } }</code></pre><p>这个时候已经可以进入第5步验证，不过如果想自定义书单页面样式的话要3、4步</p>
-<h1 id="3-适配sakura主题"><a href="#3-适配sakura主题" class="headerlink" title="3.适配sakura主题"></a>3.适配sakura主题</h1><p>博客目录/themes/sakura/layout/下  增加文件 douban.ejs</p>
+<h1><span id="3适配sakura主题">3.适配sakura主题</span></h1><p>博客目录/themes/sakura/layout/下  增加文件 douban.ejs</p>
 <pre><code>&lt;div class=&quot;blank&quot; style=&quot;padding-top: 75px;&quot;&gt;
 &lt;/div&gt;
 &lt;div class=&quot;pattern-center &quot;&gt;
@@ -681,10 +681,10 @@ WIDGET = {
         &lt;/section&gt;
       &lt;/div&gt;   
   &lt;/div&gt;
-&lt;/div&gt;</code></pre><h1 id="4-修改插件默认应用的模板"><a href="#4-修改插件默认应用的模板" class="headerlink" title="4.修改插件默认应用的模板"></a>4.修改插件默认应用的模板</h1><p>然后在博客站点目录下的<code>node_modules</code>文件夹下找到<code>hexo-douban/lib</code>，文件夹下有三个js文件，分别为：<code>books-generator.js</code> 、<code>games-generator.js</code> 、<code>movies-generator.js</code>，用文本编辑器打开这三个文件，并将其文件内容末尾的代码修改为一下内容：</p>
+&lt;/div&gt;</code></pre><h1><span id="4修改插件默认应用的模板">4.修改插件默认应用的模板</span></h1><p>然后在博客站点目录下的<code>node_modules</code>文件夹下找到<code>hexo-douban/lib</code>，文件夹下有三个js文件，分别为：<code>books-generator.js</code> 、<code>games-generator.js</code> 、<code>movies-generator.js</code>，用文本编辑器打开这三个文件，并将其文件内容末尾的代码修改为一下内容：</p>
 <pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/* 原文件内容为 layout: [`page`, `post`] ，将其修改为下面的内容*/</span>
 layout<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token template-string"><span class="token string">`douban`</span></span><span class="token punctuation">]</span></code></pre>
-<h1 id="5-运行插件生成相应界面"><a href="#5-运行插件生成相应界面" class="headerlink" title="5.运行插件生成相应界面"></a>5.运行插件生成相应界面</h1><pre class=" language-bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo douban -bgm <span class="token operator">&amp;&amp;</span> hexo g <span class="token operator">&amp;&amp;</span> hexo s</code></pre>
+<h1><span id="5运行插件生成相应界面">5.运行插件生成相应界面</span></h1><pre class=" language-bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo douban -bgm <span class="token operator">&amp;&amp;</span> hexo g <span class="token operator">&amp;&amp;</span> hexo s</code></pre>
 <p>这时页面localhost:4000/books   或   localhost:4000/movies 可以看到界面了</p>
 <p><strong>PS:以下是可选的命令参数：</strong></p>
 <pre class=" language-bash"><code class="language-bash">-h, --help    <span class="token comment" spellcheck="true"># 帮助页面</span>
@@ -810,7 +810,7 @@ layout<span class="token punctuation">:</span> <span class="token punctuation">[
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -822,10 +822,10 @@ layout<span class="token punctuation">:</span> <span class="token punctuation">[
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -885,7 +885,7 @@ layout<span class="token punctuation">:</span> <span class="token punctuation">[
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -914,7 +914,16 @@ layout<span class="token punctuation">:</span> <span class="token punctuation">[
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

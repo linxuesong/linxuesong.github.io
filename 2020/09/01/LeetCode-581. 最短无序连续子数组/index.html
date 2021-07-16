@@ -608,7 +608,7 @@ WIDGET = {
         
         <div class="entry-content">
           <p><a href="https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray/" target="_blank" rel="noopener">581. 最短无序连续子数组</a></p>
-<h1 id="1-0题目描述"><a href="#1-0题目描述" class="headerlink" title="1.0题目描述"></a>1.0题目描述</h1><p>给定一个整数数组，你需要寻找一个<strong>连续的子数组</strong>，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。</p>
+<h1><span id="10题目描述">1.0题目描述</span></h1><p>给定一个整数数组，你需要寻找一个<strong>连续的子数组</strong>，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。</p>
 <p>你找到的子数组应是<strong>最短</strong>的，请输出它的长度。</p>
 <p><strong>示例 1:</strong></p>
 <pre><code>输入: [2, 6, 4, 8, 10, 9, 15]
@@ -618,21 +618,21 @@ WIDGET = {
 <li>输入的数组长度范围在 [1, 10,000]。</li>
 <li>输入的数组可能包含<strong>重复</strong>元素 ，所以<strong>升序</strong>的意思是<strong>&lt;=。</strong></li>
 </ol>
-<h1 id="2-0解题思路"><a href="#2-0解题思路" class="headerlink" title="2.0解题思路"></a>2.0解题思路</h1><p>最短无序数组的特征:</p>
+<h1><span id="20解题思路">2.0解题思路</span></h1><p>最短无序数组的特征:</p>
 <p>①数组为nums[0:i-1]     nums[i:j]   nums[j+1:n-1]</p>
 <p>②子序列 nums[0:i-1] 和 nums[j+1:n-1]升序</p>
 <p>③假设nums[i:j]中的最大最小值为max min，则nums[0:i-1]小于min  并且 nums[j+1:n]大于max</p>
-<h2 id="2-1思路一：暴力搜索i，j"><a href="#2-1思路一：暴力搜索i，j" class="headerlink" title="2.1思路一：暴力搜索i，j"></a>2.1思路一：暴力搜索i，j</h2><p>①i从0到n-1   j从0到n-1，   </p>
+<h2><span id="21思路一暴力搜索ij">2.1思路一：暴力搜索i，j</span></h2><p>①i从0到n-1   j从0到n-1，   </p>
 <p>②i，j固定时判断是否满足上面条件(需要遍历整个n才能判断2.0中③)</p>
-<h2 id="2-2思路二：数组排序"><a href="#2-2思路二：数组排序" class="headerlink" title="2.2思路二：数组排序"></a>2.2思路二：数组排序</h2><p>我们将数组 numsnums 进行排序，记为 nums_sortednums_sorted 。然后我们比较 numsnums 和 nums_sortednums_sorted 的元素来决定最左边和最右边不匹配的元素。它们之间的子数组就是要求的最短无序子数组。</p>
-<h2 id="2-3思路三：对于第一个乱序不是左边界的优化"><a href="#2-3思路三：对于第一个乱序不是左边界的优化" class="headerlink" title="2.3思路三：对于第一个乱序不是左边界的优化"></a>2.3思路三：对于第一个乱序不是左边界的优化</h2><p>一句话概括：第一个乱序不是逆序</p>
+<h2><span id="22思路二数组排序">2.2思路二：数组排序</span></h2><p>我们将数组 numsnums 进行排序，记为 nums_sortednums_sorted 。然后我们比较 numsnums 和 nums_sortednums_sorted 的元素来决定最左边和最右边不匹配的元素。它们之间的子数组就是要求的最短无序子数组。</p>
+<h2><span id="23思路三对于第一个乱序不是左边界的优化">2.3思路三：对于第一个乱序不是左边界的优化</span></h2><p>一句话概括：第一个乱序不是逆序</p>
 <p>一开始的错误思路：正向找左边界</p>
 <p>左边界：认为第一个乱序的位置如：1230， 0即左边界</p>
 <p>但对于1230   -1    0之前 (1,-1)为逆序 所以   1为左边界</p>
 <p>错误原因在于正向第一个乱序   i后面的元素和前面元素有可能逆序</p>
 <p>第一个乱序不是第一个逆序</p>
 <p>两种解决方法</p>
-<h3 id="2-3-1反向查找解决-巧妙但不好想"><a href="#2-3-1反向查找解决-巧妙但不好想" class="headerlink" title="2.3.1反向查找解决  巧妙但不好想"></a>2.3.1反向查找解决  巧妙但不好想</h3><p>反向查找最后一个逆序对即可避免</p>
+<h3><span id="231反向查找解决-巧妙但不好想">2.3.1反向查找解决  巧妙但不好想</span></h3><p>反向查找最后一个逆序对即可避免</p>
 <p>j    &lt;     所有j之前的数;   如果j比之前的数大就逆序</p>
 <p>我们找到一个逆序后会找下一个逆序，知道最后一个，这样保证了所有的逆序都找了</p>
 <p>举例：1 2 3  0    -1</p>
@@ -646,7 +646,7 @@ WIDGET = {
 <p>1&gt;-1 (1,-1)逆序，最小值-1</p>
 <p>-2 &lt; -1     最后一个还是（1，-1）逆序，最小值-2</p>
 <p>最后逆序的 位置是1所在的位置</p>
-<h3 id="2-3-2用第一个乱序定大致范围，再-扩大定最后范围"><a href="#2-3-2用第一个乱序定大致范围，再-扩大定最后范围" class="headerlink" title="2.3.2用第一个乱序定大致范围，再 扩大定最后范围"></a>2.3.2用第一个乱序定大致范围，再 扩大定最后范围</h3><p>什么意思呢？</p>
+<h3><span id="232用第一个乱序定大致范围再-扩大定最后范围">2.3.2用第一个乱序定大致范围，再 扩大定最后范围</span></h3><p>什么意思呢？</p>
 <p>一句话：乱序夹的区间的最大元素，最小元素其排序后的位置即为左右边界</p>
 <p>例：123    0   0.5   -1</p>
 <p>乱序夹的区间  0    0.5 最大值0.5  最小值0</p>
@@ -656,8 +656,8 @@ WIDGET = {
 <p>另一种解释方式</p>
 <p>乱序夹的范围是首尾第一个逆势拐点，范围内最大最小为a，b</p>
 <p>a,b延申找到最后左右边界 </p>
-<p><img src="https://pic.leetcode-cn.com/5c6b77b2f1cf11fbd4607ed0b407d25e1fb76eaef1486fd3cd3292ced9829e6e-image.png" alt=""></p>
-<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><p>仅实现2.3.2思路代码</p>
+<p><img src="https://pic.leetcode-cn.com/5c6b77b2f1cf11fbd4607ed0b407d25e1fb76eaef1486fd3cd3292ced9829e6e-image.png" alt></p>
+<h1><span id="实现代码">实现代码</span></h1><p>仅实现2.3.2思路代码</p>
 <pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">findUnsortedSubarray</span><span class="token punctuation">(</span>nums <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
     low <span class="token operator">:=</span> <span class="token number">0</span>
     high <span class="token operator">:=</span> <span class="token function">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span>
@@ -698,7 +698,7 @@ WIDGET = {
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> right <span class="token operator">-</span>left<span class="token operator">+</span><span class="token number">1</span>
 <span class="token punctuation">}</span></code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>把问题先直接想问题答案的样子，暴力搜索怎么做，慢在哪</p>
+<h1><span id="总结">总结</span></h1><p>把问题先直接想问题答案的样子，暴力搜索怎么做，慢在哪</p>
 <p>然后在想其他方法，这道题我不会做，感觉很难，时间就画在正向遍历找边界然后一直是错误的思路，想不通。知道是错误思路却没有想到出错误痛点，一直在用不同的测试用例试找规律。</p>
 <p>另外画图 把数组画出来，如2.3.2解释时用折线图表示趋势画出最一般的情况这样可以更清晰的思考。</p>
 <p>收获吧？不想为了总结整理而整理</p>
@@ -822,7 +822,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -834,10 +834,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -897,7 +897,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -926,7 +926,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

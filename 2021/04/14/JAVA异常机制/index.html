@@ -607,9 +607,9 @@ WIDGET = {
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="一、异常"><a href="#一、异常" class="headerlink" title="一、异常"></a>一、异常</h1><p>异常有两种选择：throws和catch，一种是抛给调用者，另一种是在本方法中捕获处理。</p>
+          <h1><span id="一-异常">一、异常</span></h1><p>异常有两种选择：throws和catch，一种是抛给调用者，另一种是在本方法中捕获处理。</p>
 <p>选择标准：如果知道如何处理就catch，不知道如何处理就throws</p>
-<p>异常种类：Throwable是父类，                   <br/>                    1⃣️Error子类是系统错误不可控，所以不用抛出、不用处理<br/>                    2⃣️Exception/RuntimeException是可控的要被控制,我们的代码不应有数组越界等错误<br>                    3⃣️Exception/IOException是文件读写错误，类加载错误<br/></p>
+<p>异常种类：Throwable是父类，                   <br>                    1⃣️Error子类是系统错误不可控，所以不用抛出、不用处理<br>                    2⃣️Exception/RuntimeException是可控的要被控制,我们的代码不应有数组越界等错误<br>                    3⃣️Exception/IOException是文件读写错误，类加载错误<br></p>
 <p>1⃣️2⃣️是不需要throws和catech的，3⃣️是需要throws或catch的,并且如果throws要列出所有可能抛出的IOException</p>
 <pre><code>public static void func1() throws IOException {//列出所有可能抛出的的IOException
   try{
@@ -620,8 +620,8 @@ WIDGET = {
   }finally {
       //最后一定执行的代码，常做一些关闭文件，释放资源的事情， 对于close也可能爆出异常，对此可以用带资源的try语句，保证最后关闭资源
   }
-}</code></pre><h1 id="二、日志"><a href="#二、日志" class="headerlink" title="二、日志"></a>二、日志</h1><p>将提示信息按照不同级别打印到指定文件中</p>
-<h2 id="1-JDK的Logging"><a href="#1-JDK的Logging" class="headerlink" title="1.JDK的Logging"></a>1.JDK的Logging</h2><pre><code>import java.io.UnsupportedEncodingException;
+}</code></pre><h1><span id="二-日志">二、日志</span></h1><p>将提示信息按照不同级别打印到指定文件中</p>
+<h2><span id="1jdk的logging">1.JDK的Logging</span></h2><pre><code>import java.io.UnsupportedEncodingException;
 import java.util.logging.Logger;
 public class Main {
     public static void main(String[] args) 
@@ -635,8 +635,8 @@ public class Main {
         logger.info(&quot;Process end.&quot;);
     }
 }</code></pre><p>如果要打印到指定文件需要修改配置文件，JVM启动时传递的参数-Djava.util.logging.config.file=config-file-name</p>
-<h2 id="2-Commons-Logging和Log4j"><a href="#2-Commons-Logging和Log4j" class="headerlink" title="2.Commons Logging和Log4j"></a>2.Commons Logging和Log4j</h2><p>参考<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264739436350112" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1264739436350112</a></p>
-<h2 id="3-SLF4J和Logback"><a href="#3-SLF4J和Logback" class="headerlink" title="3.SLF4J和Logback"></a>3.SLF4J和Logback</h2><p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176</a></p>
+<h2><span id="2commons-logging和log4j">2.Commons Logging和Log4j</span></h2><p>参考<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264739436350112" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1264739436350112</a></p>
+<h2><span id="3slf4j和logback">3.SLF4J和Logback</span></h2><p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176</a></p>
 
         </div>
         <!-- .entry-content -->
@@ -756,7 +756,7 @@ public class Main {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -768,10 +768,10 @@ public class Main {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -831,7 +831,7 @@ public class Main {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -860,7 +860,16 @@ public class Main {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

@@ -608,7 +608,7 @@ WIDGET = {
         
         <div class="entry-content">
           <p><a href="https://leetcode-cn.com/problems/search-insert-position/" target="_blank" rel="noopener">Leetcode-35搜索插入位置</a></p>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<h1><span id="题目描述">题目描述</span></h1><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
 <p>你可以假设数组中无重复元素。</p>
 <p>示例 1:</p>
 <p>输入: [1,3,5,6], 5<br>输出: 2<br>示例 2:</p>
@@ -616,7 +616,7 @@ WIDGET = {
 <p>输入: [1,3,5,6], 7<br>输出: 4<br>示例 4:</p>
 <p>输入: [1,3,5,6], 0<br>输出: 0</p>
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/search-insert-position" target="_blank" rel="noopener">https://leetcode-cn.com/problems/search-insert-position</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>二分法很容易想到，但问题是怎么用，查找目标值是等于target，当low&gt;high还未找到就没有</p>
+<h1><span id="解题思路">解题思路</span></h1><p>二分法很容易想到，但问题是怎么用，查找目标值是等于target，当low&gt;high还未找到就没有</p>
 <p>类推插入位置或匹配位置就是找顺序第一个 &gt;=tartget 元素的位置</p>
 <p>二分查找最后一定是left=right+1</p>
 <p>如果left左开区间的值一直保持小于target，right右开区间一直保持大于等于target，</p>
@@ -625,7 +625,7 @@ WIDGET = {
 <p>[left….length-1]大于等于target</p>
 <p>即使边界时也一样</p>
 <p>如果硬用二分查找值 &lt; == &gt; 三个分支匹配可看总结处理起来会很麻烦</p>
-<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><pre><code>func searchInsert(nums []int, target int) int {
+<h1><span id="实现代码">实现代码</span></h1><pre><code>func searchInsert(nums []int, target int) int {
     length := len(nums)
     high := length-1
     low := 0
@@ -638,7 +638,7 @@ WIDGET = {
         }
     }
     return low
-}</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这个题感觉跳出了二分查找的套路，用left、right分别表示数组不同两集合比较合适，集合交汇处就是我们要找的值</p>
+}</code></pre><h1><span id="总结">总结</span></h1><p>这个题感觉跳出了二分查找的套路，用left、right分别表示数组不同两集合比较合适，集合交汇处就是我们要找的值</p>
 <p>二分查找时其实也差不多</p>
 <p>个人初始代码想到了二分但是没有想到插入位置和target的数学关系，直接用的二分查找的代码，最后把所有的可能全部考虑</p>
 <p>代码为</p>
@@ -790,7 +790,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -802,10 +802,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -865,7 +865,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -894,7 +894,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

@@ -607,10 +607,10 @@ WIDGET = {
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="一、ProtoBuf简介"><a href="#一、ProtoBuf简介" class="headerlink" title="一、ProtoBuf简介"></a>一、ProtoBuf简介</h1><p>语言平台无关的、灵活、高效、自动化的序列化机制</p>
+          <h1><span id="一-protobuf简介">一、ProtoBuf简介</span></h1><p>语言平台无关的、灵活、高效、自动化的序列化机制</p>
 <p>类似协议：XML、JSON</p>
 <p>区别点：<u>XML、JSON关注人类可读性，通常用于双方交互的协议；ProtoBuf更关注压缩效率、传输速度，人类可读性差(指序列化之后的文件)</u></p>
-<h1 id="二、如何用？"><a href="#二、如何用？" class="headerlink" title="二、如何用？"></a>二、如何用？</h1><h2 id="2-1golang语言"><a href="#2-1golang语言" class="headerlink" title="2.1golang语言"></a>2.1golang语言</h2><h3 id="2-1-0环境准备"><a href="#2-1-0环境准备" class="headerlink" title="2.1.0环境准备"></a>2.1.0环境准备</h3><p>需要如下两个工具</p>
+<h1><span id="二-如何用">二、如何用？</span></h1><h2><span id="21golang语言">2.1golang语言</span></h2><h3><span id="210环境准备">2.1.0环境准备</span></h3><p>需要如下两个工具</p>
 <p>1.<strong>protoc</strong>:可以执行不同语言的api，生成不同语言版本的结构体文件</p>
 <p>2.<strong>protoc-gen-go</strong>:go版本的生成程序可以生成go语言的结构体</p>
 <p>以上工具不同版本生成的文件是不一样的，所以安需要下载指定版本</p>
@@ -627,7 +627,7 @@ git -C &quot;$(go env GOPATH)&quot;/src/github.com/golang/protobuf
 checkout $GIT_TAG
 go install github.com/golang/protobuf/protoc-gen-go
 2.安装之前版本的protobuf
-https://github.com/protocolbuffers/protobuf/releases</code></pre><h3 id="2-2-1准备原协议-proto文件"><a href="#2-2-1准备原协议-proto文件" class="headerlink" title="2.2.1准备原协议.proto文件"></a>2.2.1准备原协议.proto文件</h3><pre><code>message xxx {
+https://github.com/protocolbuffers/protobuf/releases</code></pre><h3><span id="221准备原协议proto文件">2.2.1准备原协议.proto文件</span></h3><pre><code>message xxx {
   // 字段规则：required -&gt; 字段只能也必须出现 1 次
   // 字段规则：optional -&gt; 字段可出现 0 次或1次
   // 字段规则：repeated -&gt; 字段可出现任意多次（包括 0）
@@ -646,7 +646,7 @@ message Example1 {
     optional EmbeddedMessage embeddedExample1 = 3;
     repeated int32 repeatedInt32Val = 4;
     repeated string repeatedStringVal = 5;
-}</code></pre><h3 id="2-2-3生成proto-go文件"><a href="#2-2-3生成proto-go文件" class="headerlink" title="2.2.3生成proto.go文件"></a>2.2.3生成proto.go文件</h3><pre><code>protoc --go_out={输出位置} {.proto文件路径}
+}</code></pre><h3><span id="223生成protogo文件">2.2.3生成proto.go文件</span></h3><pre><code>protoc --go_out={输出位置} {.proto文件路径}
 // 例如  protobuf包解压路径/src/protoc --go_out=. msg.proto
 //protoc如果没有加入到/usr/local/bin</code></pre>
         </div>
@@ -767,7 +767,7 @@ message Example1 {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -779,10 +779,10 @@ message Example1 {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -842,7 +842,7 @@ message Example1 {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -871,7 +871,16 @@ message Example1 {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

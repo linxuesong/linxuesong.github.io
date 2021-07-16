@@ -607,8 +607,8 @@ WIDGET = {
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="Hexo增加RSS订阅"><a href="#Hexo增加RSS订阅" class="headerlink" title="Hexo增加RSS订阅"></a>Hexo增加RSS订阅</h1><h2 id="RSS介绍"><a href="#RSS介绍" class="headerlink" title="RSS介绍"></a>RSS介绍</h2><p>生成自己网站的聚合信息，让别人去订阅供其收获你自己的最新消息 ——有了RSS后别人可以关注了你的最新博客动态了</p>
-<h2 id="向自己主题中添加RSS功能步骤"><a href="#向自己主题中添加RSS功能步骤" class="headerlink" title="向自己主题中添加RSS功能步骤"></a>向自己主题中添加RSS功能步骤</h2><h3 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="1.安装插件"></a>1.安装插件</h3><pre><code>npm install hexo-generator-feed</code></pre><h3 id="2-主题配置文件中增加"><a href="#2-主题配置文件中增加" class="headerlink" title="2.主题配置文件中增加"></a>2.主题配置文件中增加</h3><pre><code># Extensions
+          <h1><span id="hexo增加rss订阅">Hexo增加RSS订阅</span></h1><h2><span id="rss介绍">RSS介绍</span></h2><p>生成自己网站的聚合信息，让别人去订阅供其收获你自己的最新消息 ——有了RSS后别人可以关注了你的最新博客动态了</p>
+<h2><span id="向自己主题中添加rss功能步骤">向自己主题中添加RSS功能步骤</span></h2><h3><span id="1安装插件">1.安装插件</span></h3><pre><code>npm install hexo-generator-feed</code></pre><h3><span id="2主题配置文件中增加">2.主题配置文件中增加</span></h3><pre><code># Extensions
 ## Plugins: http://hexo.io/plugins/
 #RSS订阅
 plugin:
@@ -623,7 +623,7 @@ feed:
   content_limit: 140 #指定内容的长度作为摘要,仅仅在上面content设置为false和没有自定义的描述出现
   content_limit_delim: &#39; &#39; #上面截取描述的分隔符,截取内容是以指定的这个分隔符作为截取结束的标志.在达到规定的内容长度之前最后出现的这个分隔符之前的内容,，防止从中间截断.
   order_by: -date
-  icon: #icon.png</code></pre><h3 id="3-themes-sakura-config-yml"><a href="#3-themes-sakura-config-yml" class="headerlink" title="3.themes\sakura_config.yml"></a>3.themes\sakura_config.yml</h3><pre><code># 简易信息聚合,站点共享
+  icon: #icon.png</code></pre><h3><span id="3themessakura_configyml">3.themes\sakura_config.yml</span></h3><pre><code># 简易信息聚合,站点共享
 rss: /atom.xml</code></pre>
         </div>
         <!-- .entry-content -->
@@ -743,7 +743,7 @@ rss: /atom.xml</code></pre>
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -755,10 +755,10 @@ rss: /atom.xml</code></pre>
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -818,7 +818,7 @@ rss: /atom.xml</code></pre>
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -847,7 +847,16 @@ rss: /atom.xml</code></pre>
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

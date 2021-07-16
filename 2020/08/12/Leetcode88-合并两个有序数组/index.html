@@ -608,19 +608,19 @@ WIDGET = {
         
         <div class="entry-content">
           <p><a href="https://leetcode-cn.com/problems/merge-sorted-array/" target="_blank" rel="noopener">Leetcode-88. 合并两个有序数组</a></p>
-<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。</p>
+<h1><span id="1问题描述">1.问题描述</span></h1><p>给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。</p>
 <p>说明:</p>
 <p>初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。<br>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。</p>
 <p>示例:</p>
 <p>输入:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3</p>
 <p>输出: [1,2,2,3,5,6]</p>
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/merge-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-sorted-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>注：直接写最优思路了，想看思考过程的可以看最后的总结部分</p>
+<h1><span id="2解题思路">2.解题思路</span></h1><p>注：直接写最优思路了，想看思考过程的可以看最后的总结部分</p>
 <p>数组一nums1有最后n个空余位置，利用这点</p>
 <p>三个变量</p>
 <p>cur1 = m-1 数组一数字的尾部<br>cur2 = n-1 数组二的尾部<br>maxV_site = m+n-1 数组一最后的尾部，存放cur1、cur2较大者</p>
 <p>依次比较，逐个放入</p>
-<h1 id="3-实现代码"><a href="#3-实现代码" class="headerlink" title="3.实现代码"></a>3.实现代码</h1><pre><code>func merge(nums1 []int, m int, nums2 []int, n int)  {
+<h1><span id="3实现代码">3.实现代码</span></h1><pre><code>func merge(nums1 []int, m int, nums2 []int, n int)  {
     var(
         cur1 = m-1
         cur2 = n-1
@@ -641,7 +641,7 @@ WIDGET = {
     for ; cur2 &gt;=0; cur2-- {
         nums1[cur2] = nums2[cur2]
     }
-}</code></pre><h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h1><p>一开始想到从头遍历，比较后要插入数组二元素则让数组一的每个元素后移一位  复杂度为O(n²)</p>
+}</code></pre><h1><span id="4总结">4.总结</span></h1><p>一开始想到从头遍历，比较后要插入数组二元素则让数组一的每个元素后移一位  复杂度为O(n²)</p>
 <p>进一步想问题在要移动每一位，如果要是不移动的话直接放要把数组一的元素替代，可以把被替代的数组一元素临时暂存起来，我们想是不是只用保存一次数组一的元素就可以了呢</p>
 <p>最终从尾部遍历，省去了进步临时保存变量的问题</p>
 <p>题外话：思想一开始还有一个往归并排序申请O(n)空间的方式，但一想都给了空间了就没再深想下去。有了一个思路后大致想一下时间复杂度，不可取后立即斩断，集中精神想其他方法</p>
@@ -764,7 +764,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -776,10 +776,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -839,7 +839,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -868,7 +868,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

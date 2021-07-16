@@ -607,9 +607,9 @@ WIDGET = {
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="0-前言及Redis的链接"><a href="#0-前言及Redis的链接" class="headerlink" title="0.前言及Redis的链接"></a>0.前言及Redis的链接</h1><p>redis缓存数据库，主要存放key-value键值对，其中key为字符串，value可为多种类型<strong>字符串</strong>、<strong>列表</strong>、<strong>集合</strong>、<strong>字典</strong></p>
-<h1 id="1-设置字符串"><a href="#1-设置字符串" class="headerlink" title="1.设置字符串"></a>1.设置字符串</h1><pre><code>set key value
-get key value</code></pre><h1 id="2-设置列表"><a href="#2-设置列表" class="headerlink" title="2.设置列表"></a>2.设置列表</h1><pre><code>lpsuh key childElement // 头部插入
+          <h1><span id="0前言及redis的链接">0.前言及Redis的链接</span></h1><p>redis缓存数据库，主要存放key-value键值对，其中key为字符串，value可为多种类型<strong>字符串</strong>、<strong>列表</strong>、<strong>集合</strong>、<strong>字典</strong></p>
+<h1><span id="1设置字符串">1.设置字符串</span></h1><pre><code>set key value
+get key value</code></pre><h1><span id="2设置列表">2.设置列表</span></h1><pre><code>lpsuh key childElement // 头部插入
 lpop  key // 头部删除
 lrang key 0 10 // 从头部开始查询到10
 
@@ -617,7 +617,7 @@ lrang key 0 10 // 从头部开始查询到10
 // 头部插入的下表说明，头部入A、B、C
 下标:  0、  1、   2
 元素:  A、  B、   C
-下标:  -3、 -2、  -1</code></pre><h1 id="3-设置集合"><a href="#3-设置集合" class="headerlink" title="3.设置集合"></a>3.设置集合</h1><p>集合分为无序集合和有序集合(元素含权重)，集合元素个数为2的32次方-1个</p>
+下标:  -3、 -2、  -1</code></pre><h1><span id="3设置集合">3.设置集合</span></h1><p>集合分为无序集合和有序集合(元素含权重)，集合元素个数为2的32次方-1个</p>
 <p>无序集合</p>
 <pre><code>sadd key member  // 添加元素
 smemebers key    // 查询所有元素
@@ -626,12 +626,12 @@ sdiff key1 key2  // 差集
 sinter key1 key2 // 集合的交集运算
 sunion key1 key2 // 集合的补集</code></pre><p>有序集合（元素含权重）</p>
 <pre><code>将sadd改为zadd极为有序集合
-zadd key score member // 添加元素，score为元素权重</code></pre><h1 id="4-key的其他操作（移除、过期时间、检测）"><a href="#4-key的其他操作（移除、过期时间、检测）" class="headerlink" title="4.key的其他操作（移除、过期时间、检测）"></a>4.key的其他操作（移除、过期时间、检测）</h1><pre><code>del key   // 删除key
+zadd key score member // 添加元素，score为元素权重</code></pre><h1><span id="4key的其他操作移除-过期时间-检测">4.key的其他操作（移除、过期时间、检测）</span></h1><pre><code>del key   // 删除key
 exist key // 检测key是否存在
 type key // 查看key类型
 expire   // 设置过期时间
 persist key // 持久化key，移除key过期时间
-ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和订阅"><a href="#5-Redis发布和订阅" class="headerlink" title="5.Redis发布和订阅"></a>5.Redis发布和订阅</h1><h1 id="6-Redis事务"><a href="#6-Redis事务" class="headerlink" title="6.Redis事务"></a>6.Redis事务</h1><h1 id="7-Redis脚本"><a href="#7-Redis脚本" class="headerlink" title="7.Redis脚本"></a>7.Redis脚本</h1>
+ttl key   // 查寻key的剩余过期时间</code></pre><h1><span id="5redis发布和订阅">5.Redis发布和订阅</span></h1><h1><span id="6redis事务">6.Redis事务</span></h1><h1><span id="7redis脚本">7.Redis脚本</span></h1>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -750,7 +750,7 @@ ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -762,10 +762,10 @@ ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -825,7 +825,7 @@ ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -854,7 +854,16 @@ ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

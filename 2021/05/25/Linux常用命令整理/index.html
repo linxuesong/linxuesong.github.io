@@ -607,12 +607,12 @@ WIDGET = {
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="Linux常用命令整理"><a href="#Linux常用命令整理" class="headerlink" title="Linux常用命令整理"></a>Linux常用命令整理</h1><h1 id="一、文件操作"><a href="#一、文件操作" class="headerlink" title="一、文件操作"></a>一、文件操作</h1><p>移动:mv</p>
+          <h1><span id="linux常用命令整理">Linux常用命令整理</span></h1><h1><span id="一-文件操作">一、文件操作</span></h1><p>移动:mv</p>
 <p>复制:cp</p>
 <p>删除:rm</p>
 <p>创建文件夹:mkdir -p参数是即使父目录不存在，递归创建出来文件夹</p>
 <p>查找: find 路径 -name  文件名 </p>
-<h1 id="二、进程管理"><a href="#二、进程管理" class="headerlink" title="二、进程管理"></a>二、进程管理</h1><h2 id="1-ps命令"><a href="#1-ps命令" class="headerlink" title="1.ps命令"></a>1.ps命令</h2><p>ps - aux|(grep 命令名) 显示所有进程信息，连同命令行</p>
+<h1><span id="二-进程管理">二、进程管理</span></h1><h2><span id="1ps命令">1.ps命令</span></h2><p>ps - aux|(grep 命令名) 显示所有进程信息，连同命令行</p>
 <p>显示结果说明:</p>
 <p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210120163959.png" alt="image-20210120163951774"></p>
 <p>主要参数:</p>
@@ -649,7 +649,7 @@ WIDGET = {
 </tr>
 <tr>
 <td>STAT</td>
-<td>进程状态<br />R运行、S睡眠、T停止、Z僵尸</td>
+<td>进程状态<br>R运行、S睡眠、T停止、Z僵尸</td>
 </tr>
 <tr>
 <td>START</td>
@@ -664,31 +664,31 @@ WIDGET = {
 <td>该程序的实际命令</td>
 </tr>
 </tbody></table>
-<h1 id="三、文件内容查看及操作"><a href="#三、文件内容查看及操作" class="headerlink" title="三、文件内容查看及操作"></a>三、文件内容查看及操作</h1><p>tail  -fn100   文件  |grep 内容    循环查看日志文件某内容最新消息</p>
+<h1><span id="三-文件内容查看及操作">三、文件内容查看及操作</span></h1><p>tail  -fn100   文件  |grep 内容    循环查看日志文件某内容最新消息</p>
 <p>快速查找匹配文本grep -Frn 匹配内容   文件名 </p>
 <p>快速编辑匹配文本sed</p>
 <p>格式化文本awk:  如快速输出每一行的第1个和第4个单词</p>
 <p>awk ‘{if($6==”42030”) {print} }’ hdp_teu_spat_im_php_access_info.2021042017.*|grep 23653471544838</p>
-<h2 id="1-awk"><a href="#1-awk" class="headerlink" title="1.awk"></a>1.awk</h2><h3 id="1-1通用格式"><a href="#1-1通用格式" class="headerlink" title="1.1通用格式"></a>1.1通用格式</h3><p> awk’{pattern+action}’   filename</p>
+<h2><span id="1awk">1.awk</span></h2><h3><span id="11通用格式">1.1通用格式</span></h3><p> awk’{pattern+action}’   filename</p>
 <p> (其操作为每读取一行执行action一次)</p>
-<h3 id="1-2参数详情"><a href="#1-2参数详情" class="headerlink" title="1.2参数详情"></a>1.2参数详情</h3><h3 id="1-3举例："><a href="#1-3举例：" class="headerlink" title="1.3举例："></a>1.3举例：</h3><h4 id="1-3-1打印每一行的第一个文本"><a href="#1-3-1打印每一行的第一个文本" class="headerlink" title="1.3.1打印每一行的第一个文本"></a>1.3.1打印每一行的第一个文本</h4><p>awk ‘{print $1}’  file1  </p>
-<h4 id="1-3-2加入初始和结尾的执行语句"><a href="#1-3-2加入初始和结尾的执行语句" class="headerlink" title="1.3.2加入初始和结尾的执行语句"></a>1.3.2加入初始和结尾的执行语句</h4><p>awk  ‘BGGEIN{print “我是开头”}    {print $1}    END{print “结尾”}’</p>
+<h3><span id="12参数详情">1.2参数详情</span></h3><h3><span id="13举例">1.3举例：</span></h3><h4><span id="131打印每一行的第一个文本">1.3.1打印每一行的第一个文本</span></h4><p>awk ‘{print $1}’  file1  </p>
+<h4><span id="132加入初始和结尾的执行语句">1.3.2加入初始和结尾的执行语句</span></h4><p>awk  ‘BGGEIN{print “我是开头”}    {print $1}    END{print “结尾”}’</p>
 <p>BEGIN、END后面的语句仅执行一次，中间的语句则每读取一次执行一次</p>
-<h4 id="1-3-3加入条件语句if"><a href="#1-3-3加入条件语句if" class="headerlink" title="1.3.3加入条件语句if"></a>1.3.3加入条件语句if</h4><p>awk {   if($5!=’”lin”)  {print $5}   }</p>
+<h4><span id="133加入条件语句if">1.3.3加入条件语句if</span></h4><p>awk {   if($5!=’”lin”)  {print $5}   }</p>
 <p>过滤每行第5个参数为lin的行，打出其他第5行的参数</p>
-<h2 id="2-Sed匹配删除替换指定文本"><a href="#2-Sed匹配删除替换指定文本" class="headerlink" title="2.Sed匹配删除替换指定文本"></a>2.Sed匹配删除替换指定文本</h2><h3 id="2-1通用格式"><a href="#2-1通用格式" class="headerlink" title="2.1通用格式"></a>2.1通用格式</h3><p> sed     -nefri  ‘command’   文件内容</p>
+<h2><span id="2sed匹配删除替换指定文本">2.Sed匹配删除替换指定文本</span></h2><h3><span id="21通用格式">2.1通用格式</span></h3><p> sed     -nefri  ‘command’   文件内容</p>
 <p> (其操作为每读取一行执行action一次)</p>
-<h3 id="2-2参数详情"><a href="#2-2参数详情" class="headerlink" title="2.2参数详情"></a>2.2参数详情</h3><p>　<strong>常用选项：</strong><br>　　  -n∶使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN的资料一般都会被列出到萤幕上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。<br>    -e∶直接在指令列模式上进行 sed 的动作编辑；<br>    -f∶直接将 sed 的动作写在一个档案内， -f filename 则可以执行 filename 内的sed 动作；<br>    -r∶sed 的动作支援的是延伸型正规表示法的语法。(预设是基础正规表示法语法)<br>    -i∶直接修改读取的档案内容，而不是由萤幕输出。    </p>
+<h3><span id="22参数详情">2.2参数详情</span></h3><p>　<strong>常用选项：</strong><br>　　  -n∶使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN的资料一般都会被列出到萤幕上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。<br>    -e∶直接在指令列模式上进行 sed 的动作编辑；<br>    -f∶直接将 sed 的动作写在一个档案内， -f filename 则可以执行 filename 内的sed 动作；<br>    -r∶sed 的动作支援的是延伸型正规表示法的语法。(预设是基础正规表示法语法)<br>    -i∶直接修改读取的档案内容，而不是由萤幕输出。    </p>
 <p>　　<strong>常用命令：</strong><br>    a  ∶新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～<br>    c  ∶取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！<br>    d  ∶删除，因为是删除啊，所以 d 后面通常不接任何咚咚；<br>　　  i  ∶插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；<br>　　  p ∶列印，亦即将某个选择的资料印出。通常 p 会与参数 sed -n 一起运作～<br>　　  s ∶取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦！</p>
-<h3 id="2-3举例"><a href="#2-3举例" class="headerlink" title="2.3举例"></a>2.3举例</h3><p>　　假设我们有一文件名为ab。</p>
-<h4 id="2-3-1删除某行："><a href="#2-3-1删除某行：" class="headerlink" title="2.3.1删除某行："></a>2.3.1删除某行：</h4><pre><code># sed &#39;1d&#39; ab              #删除第一行 
+<h3><span id="23举例">2.3举例</span></h3><p>　　假设我们有一文件名为ab。</p>
+<h4><span id="231删除某行">2.3.1删除某行：</span></h4><pre><code># sed &#39;1d&#39; ab              #删除第一行 
 # sed &#39;$d&#39; ab              #删除最后一行
 # sed &#39;1,2d&#39; ab           #删除第一行到第二行
-# sed &#39;2,$d&#39; ab           #删除第二行到最后一行</code></pre><h4 id="2-3-2显示某行："><a href="#2-3-2显示某行：" class="headerlink" title="2.3.2显示某行："></a>2.3.2显示某行：</h4><pre><code># sed -n &#39;1p&#39; ab           #显示第一行 
+# sed &#39;2,$d&#39; ab           #删除第二行到最后一行</code></pre><h4><span id="232显示某行">2.3.2显示某行：</span></h4><pre><code># sed -n &#39;1p&#39; ab           #显示第一行 
 # sed -n &#39;$p&#39; ab           #显示最后一行
 # sed -n &#39;1,2p&#39; ab        #显示第一行到第二行
-# sed -n &#39;2,$p&#39; ab        #显示第二行到最后一行</code></pre><h4 id="2-3-3使用模式进行查询："><a href="#2-3-3使用模式进行查询：" class="headerlink" title="2.3.3使用模式进行查询："></a>2.3.3使用模式进行查询：</h4><pre><code># sed -n &#39;/ruby/p&#39; ab    #查询包括关键字ruby所在所有行
-# sed -n &#39;/\$/p&#39; ab        #查询包括关键字$所在所有行，使用反斜线\屏蔽特殊含义</code></pre><h4 id="2-3-4增加一行或多行字符串："><a href="#2-3-4增加一行或多行字符串：" class="headerlink" title="2.3.4增加一行或多行字符串："></a>2.3.4增加一行或多行字符串：</h4><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+# sed -n &#39;2,$p&#39; ab        #显示第二行到最后一行</code></pre><h4><span id="233使用模式进行查询">2.3.3使用模式进行查询：</span></h4><pre><code># sed -n &#39;/ruby/p&#39; ab    #查询包括关键字ruby所在所有行
+# sed -n &#39;/\$/p&#39; ab        #查询包括关键字$所在所有行，使用反斜线\屏蔽特殊含义</code></pre><h4><span id="234增加一行或多行字符串">2.3.4增加一行或多行字符串：</span></h4><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
 <pre><code># cat ab
      Hello!
      ruby is me,welcome to my blog.
@@ -710,7 +710,7 @@ WIDGET = {
      drink tea
      or coffee
      ruby is me,welcome to my blog.
-     end</code></pre><h4 id="2-3-5代替一行或多行："><a href="#2-3-5代替一行或多行：" class="headerlink" title="2.3.5代替一行或多行："></a>2.3.5代替一行或多行：</h4><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+     end</code></pre><h4><span id="235代替一行或多行">2.3.5代替一行或多行：</span></h4><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
 <pre><code># sed &#39;1c Hi&#39; ab                #第一行代替为Hi
      Hi
      ruby is me,welcome to my blog.
@@ -718,34 +718,34 @@ WIDGET = {
 # sed &#39;1,2c Hi&#39; ab             #第一行到第二行代替为Hi
      Hi
      end</code></pre><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
-<h4 id="2-3-6替换一行中的某部分"><a href="#2-3-6替换一行中的某部分" class="headerlink" title="2.3.6替换一行中的某部分"></a>2.3.6替换一行中的某部分</h4><p>　　格式：sed ‘s/要替换的字符串/新的字符串/g’  （要替换的字符串可以用正则表达式）</p>
+<h4><span id="236替换一行中的某部分">2.3.6替换一行中的某部分</span></h4><p>　　格式：sed ‘s/要替换的字符串/新的字符串/g’  （要替换的字符串可以用正则表达式）</p>
 <pre><code># sed -n &#39;/ruby/p&#39; ab | sed &#39;s/ruby/bird/g&#39;    #替换ruby为bird
-# sed -n &#39;/ruby/p&#39; ab | sed &#39;s/ruby//g&#39;        #删除ruby</code></pre><h4 id="2-3-7插入："><a href="#2-3-7插入：" class="headerlink" title="2.3.7插入："></a>2.3.7插入：</h4><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+# sed -n &#39;/ruby/p&#39; ab | sed &#39;s/ruby//g&#39;        #删除ruby</code></pre><h4><span id="237插入">2.3.7插入：</span></h4><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
 <pre><code># sed -i &#39;$a bye&#39; ab         #在文件ab中最后一行直接输入&quot;bye&quot;
 # cat ab　　Hello!　　ruby is me,welcome to my blog.　　end　　bye</code></pre><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
-<h4 id="2-3-8删除匹配行："><a href="#2-3-8删除匹配行：" class="headerlink" title="2.3.8删除匹配行："></a>2.3.8删除匹配行：</h4><pre><code>sed -i &#39;/匹配字符串/d&#39;  filename  （注：若匹配字符串是变量，则需要“”，而不是‘’。记得好像是）</code></pre><h4 id="2-3-9替换匹配行中的某个字符串："><a href="#2-3-9替换匹配行中的某个字符串：" class="headerlink" title="2.3.9替换匹配行中的某个字符串："></a>2.3.9替换匹配行中的某个字符串：</h4><pre><code>sed -i &#39;/匹配字符串/s/替换源字符串/替换目标字符串/g&#39; filename</code></pre><h2 id="3-grep匹配文本"><a href="#3-grep匹配文本" class="headerlink" title="3.grep匹配文本"></a>3.grep匹配文本</h2><p>　Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。</p>
+<h4><span id="238删除匹配行">2.3.8删除匹配行：</span></h4><pre><code>sed -i &#39;/匹配字符串/d&#39;  filename  （注：若匹配字符串是变量，则需要“”，而不是‘’。记得好像是）</code></pre><h4><span id="239替换匹配行中的某个字符串">2.3.9替换匹配行中的某个字符串：</span></h4><pre><code>sed -i &#39;/匹配字符串/s/替换源字符串/替换目标字符串/g&#39; filename</code></pre><h2><span id="3grep匹配文本">3.grep匹配文本</span></h2><p>　Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。</p>
 <pre><code>grep [options]</code></pre><p>　　<strong>主要参数</strong><br>　　<strong>[options]主要参数：</strong></p>
 <span style="background:yellow">
 
 <p>　　－c：只输出匹配行的计数。</p>
-</sapn>
+
 
 <p>　　－I：不区分大 小写(只适用于单字符)。<br>　　－h：查询多文件时不显示文件名。<br>　　－l：查询多文件时只输出包含匹配字符的文件名。<br>　　－n：显示匹配行及 行号。<br>　　－s：不显示不存在或无匹配文本的错误信息。<br>　　－v：显示不包含匹配文本的所有行。<br>　　<strong>pattern正则表达式主要参数：</strong><br>　　\： 忽略正则表达式中特殊字符的原有含义。<br>　　^：匹配正则表达式的开始行。<br>　　$: 匹配正则表达式的结束行。<br>　　&lt;：从匹配正则表达 式的行开始。<br>　　&gt;：到匹配正则表达式的行结束。<br>　　[ ]：单个字符，如[A]即A符合要求 。<br>　　[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。<br>　　。：所有的单个字符。</p>
 <ul>
 <li>：有字符，长度可以为0。</li>
 </ul>
-<h4 id="5-2-grep简单使用"><a href="#5-2-grep简单使用" class="headerlink" title="5.2 grep简单使用"></a>5.2 grep简单使用</h4><p>　　显示所有以d开头的文件中包含 test的行:</p>
+<h4><span id="52-grep简单使用">5.2 grep简单使用</span></h4><p>　　显示所有以d开头的文件中包含 test的行:</p>
 <pre><code>$ grep &#39;test&#39; d*</code></pre><p>　　显示在aa，bb，cc文件中匹配test的行:</p>
 <pre><code>$ grep &#39;test&#39; aa bb cc</code></pre><p>　　输出匹配行的计数:</p>
 <pre><code> grep -c &quot;48&quot; data.doc   #输出文档中含有48字符的行数</code></pre><p>　　显示匹配行和行数:</p>
 <pre><code>grep -n &quot;48&quot; data.doc       #显示所有匹配48的行和行号</code></pre><p>　　显示非匹配的行:</p>
 <pre><code>grep -vn &quot;48&quot; data.doc      #输出所有不包含48的行</code></pre><p>　　显示非匹配的行:</p>
 <pre><code>grep -vn &quot;48&quot; data.doc      #输出所有不包含48的行</code></pre><p>　　大小写敏感:</p>
-<pre><code>grep -i &quot;ab&quot; data.doc       #输出所有含有ab或Ab的字符串的行</code></pre><h4 id="5-3-grep正则表达式的应用-注意：最好把正则表达式用单引号括起来"><a href="#5-3-grep正则表达式的应用-注意：最好把正则表达式用单引号括起来" class="headerlink" title="5.3 grep正则表达式的应用 (注意：最好把正则表达式用单引号括起来)"></a>5.3 grep正则表达式的应用 (注意：最好把正则表达式用单引号括起来)</h4><pre><code>grep &#39;[239].&#39; data.doc      #输出所有含有以2,3或9开头的，并且是两个数字的行</code></pre><p>　　不匹配测试：</p>
+<pre><code>grep -i &quot;ab&quot; data.doc       #输出所有含有ab或Ab的字符串的行</code></pre><h4><span id="53-grep正则表达式的应用-注意最好把正则表达式用单引号括起来">5.3 grep正则表达式的应用 (注意：最好把正则表达式用单引号括起来)</span></h4><pre><code>grep &#39;[239].&#39; data.doc      #输出所有含有以2,3或9开头的，并且是两个数字的行</code></pre><p>　　不匹配测试：</p>
 <pre><code>grep &#39;^[^48]&#39; data.doc      #不匹配行首是48的行</code></pre><p>　　使用扩展模式匹配：</p>
 <pre><code>grep -E &#39;219|216&#39; data.doc</code></pre><p>　　显示所有包含每个字符串至少有5个连续小写字符的字符串的行:</p>
 <pre><code>$ grep &#39;[a-z]\{5\}&#39; aa</code></pre><p>　　如果west被匹配，则es就被存储到内存中，并标记为1，然后搜索任意个字符(.<em>)，这些字符后面紧跟着 另外一个es(\1)，找到就显示该行。如果用egrep或grep -E，就不用”\”号进行转义，直接写成’w(es)t.</em>\1′就可以了:</p>
-<pre><code>$ grep &#39;w\(es\)t.*\1&#39; aa</code></pre><h1 id="四、解压文件"><a href="#四、解压文件" class="headerlink" title="四、解压文件"></a>四、解压文件</h1><table>
+<pre><code>$ grep &#39;w\(es\)t.*\1&#39; aa</code></pre><h1><span id="四-解压文件">四、解压文件</span></h1><table>
 <thead>
 <tr>
 <th>文件格式</th>
@@ -762,32 +762,32 @@ WIDGET = {
 </tr>
 <tr>
 <td>zip</td>
-<td>解压zip  压缩后文件名    压缩unzip<br />需要下载zip</td>
+<td>解压zip  压缩后文件名    压缩unzip<br>需要下载zip</td>
 </tr>
 <tr>
 <td>rar</td>
-<td>解压rar  a  [压缩后文件名]  [被压缩文件]   压缩unrar e<br />需要下载rar</td>
+<td>解压rar  a  [压缩后文件名]  [被压缩文件]   压缩unrar e<br>需要下载rar</td>
 </tr>
 </tbody></table>
-<h1 id="五、检测网络"><a href="#五、检测网络" class="headerlink" title="五、检测网络"></a>五、检测网络</h1><p>netstat -ant        n表示以ip的形势显示而非域名    a显示所有socket默认只显示connected状态的  t监听tcp端口</p>
-<h1 id="六、查看磁盘使用情况"><a href="#六、查看磁盘使用情况" class="headerlink" title="六、查看磁盘使用情况"></a>六、查看磁盘使用情况</h1><h2 id="1-统计磁盘整体情况"><a href="#1-统计磁盘整体情况" class="headerlink" title="1.统计磁盘整体情况"></a>1.统计磁盘整体情况</h2><p>df -h</p>
-<h2 id="2-统计具体文件夹的磁盘使用情况"><a href="#2-统计具体文件夹的磁盘使用情况" class="headerlink" title="2.统计具体文件夹的磁盘使用情况"></a>2.统计具体文件夹的磁盘使用情况</h2><p>du –max-depth=1 -h查看当前目录下的每个文件夹的使用情况</p>
+<h1><span id="五-检测网络">五、检测网络</span></h1><p>netstat -ant        n表示以ip的形势显示而非域名    a显示所有socket默认只显示connected状态的  t监听tcp端口</p>
+<h1><span id="六-查看磁盘使用情况">六、查看磁盘使用情况</span></h1><h2><span id="1统计磁盘整体情况">1.统计磁盘整体情况</span></h2><p>df -h</p>
+<h2><span id="2统计具体文件夹的磁盘使用情况">2.统计具体文件夹的磁盘使用情况</span></h2><p>du –max-depth=1 -h查看当前目录下的每个文件夹的使用情况</p>
 <p>du -sh显示当前目录整体占用情况</p>
-<h1 id="七、本机和服务器之间的操作"><a href="#七、本机和服务器之间的操作" class="headerlink" title="七、本机和服务器之间的操作"></a>七、本机和服务器之间的操作</h1><p>​    1.nc</p>
+<h1><span id="七-本机和服务器之间的操作">七、本机和服务器之间的操作</span></h1><p>​    1.nc</p>
 <pre><code>目的主机监听端口  nc -l 监听端口&lt;未使用端口&gt;  &gt; 要接收的文件名      举例： nc -l 4444 &gt; cache.tar.gz源主机发起请求   nc  目的主机ip    目的端口 &lt; 要发送的文件         举例： nc  192.168.0.85  4444 &lt; /root/cache.tar.gz</code></pre><p>传输过程是 目的主机接受文件完成后回自动关闭监听链接</p>
-<h1 id="八、linux输出重定向"><a href="#八、linux输出重定向" class="headerlink" title="八、linux输出重定向"></a>八、linux输出重定向</h1><p>关于shell中：&gt;/dev/null 2&gt;&amp;1 详解</p>
+<h1><span id="八-linux输出重定向">八、linux输出重定向</span></h1><p>关于shell中：&gt;/dev/null 2&gt;&amp;1 详解</p>
 <p>​    shell中可能经常能看到：&gt;/dev/null 2&gt;&amp;1 。命令的结果可以通过%&gt;的形式来定义输出</p>
 <p>​    分解这个组合：“&gt;/dev/null 2&gt;&amp;1” 为五部分。</p>
 <p>​        1：&gt; 代表重定向到哪里，例如：echo “123” &gt; /home/123.txt<br>​        2：/dev/null 代表空设备文件<br>​        3：2&gt; 表示stderr标准错误<br>​        4：&amp; 表示等同于的意思，2&gt;&amp;1，表示 2 的输出重定向等同于 1<br>​        5：1 表示stdout标准输出，系统默认值是1，<strong>所以”&gt;/dev/null”等同于 “1&gt;/dev/null”</strong></p>
 <p>​    因此，<strong>&gt;/dev/null 2&gt;&amp;1也可以写成 “ 1&gt; /dev/null 2&gt; &amp;1 ”</strong></p>
 <p>那么 <strong><em>&amp;&gt;/dev/null</em></strong> 语句执行过程为：<br>1&gt;/dev/null ：首先表示标准输出重定向到空设备文件，也就是不输出任何信息到终端，说白了就是不显示任何信息。<br>2&gt;&amp;1 ：接着，标准错误输出重定向 到标准输出，因为之前标准输出已经重定向到了空设备文件，所以标准错误输出也重定向到空设备文件。</p>
-<h1 id="九、系统资源统计"><a href="#九、系统资源统计" class="headerlink" title="九、系统资源统计"></a>九、系统资源统计</h1><p>磁盘使用比例<strong>iostat -x</strong>  svctm  %util</p>
+<h1><span id="九-系统资源统计">九、系统资源统计</span></h1><p>磁盘使用比例<strong>iostat -x</strong>  svctm  %util</p>
 <p>cpu:可以使用综合</p>
 <p>网卡流量: <strong>nload</strong>  <a href="https://www.jb51.net/LINUXjishu/593625.html" target="_blank" rel="noopener">https://www.jb51.net/LINUXjishu/593625.html</a></p>
 <p>综合:<strong>top</strong>、<strong>vmstat</strong>、<strong>dstat</strong></p>
-<h1 id="十、其他"><a href="#十、其他" class="headerlink" title="十、其他"></a>十、其他</h1><p>1.在终端开发应用程序，如使用文本编辑器打开文本文件  open -a  &lt;应用程序&gt;  &lt;文件名&gt;</p>
+<h1><span id="十-其他">十、其他</span></h1><p>1.在终端开发应用程序，如使用文本编辑器打开文本文件  open -a  &lt;应用程序&gt;  &lt;文件名&gt;</p>
 <p>2.打印文件树 方法一：find . -print | sed -e ‘s;[^/]*/;|<strong><strong>;g;s;</strong></strong>|; |;g’    方法二：下载tree命令</p>
-
+</span>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -906,7 +906,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -918,10 +918,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -981,7 +981,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -1010,7 +1010,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

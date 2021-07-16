@@ -609,15 +609,15 @@ WIDGET = {
         <div class="entry-content">
           <p>参考博客</p>
 <p>Go管理工具的使用</p>
-<h1 id="0-没有包管理工具的情况"><a href="#0-没有包管理工具的情况" class="headerlink" title="0.没有包管理工具的情况"></a>0.没有包管理工具的情况</h1><h2 id="0-1寻找依赖的路径："><a href="#0-1寻找依赖的路径：" class="headerlink" title="0.1寻找依赖的路径："></a>0.1寻找依赖的路径：</h2><p>1⃣️在GOROOT目录下查找</p>
+<h1><span id="0没有包管理工具的情况">0.没有包管理工具的情况</span></h1><h2><span id="01寻找依赖的路径">0.1寻找依赖的路径：</span></h2><p>1⃣️在GOROOT目录下查找</p>
 <p>2⃣️在GOPATH/src下面查找包</p>
-<h2 id="0-2获取依赖"><a href="#0-2获取依赖" class="headerlink" title="0.2获取依赖"></a>0.2获取依赖</h2><pre><code>go get 依赖地址 // 依赖包会存放到gopath下面两个位置，pkg里面.a文件和src下面的.go文件</code></pre><h1 id="1-govendor"><a href="#1-govendor" class="headerlink" title="1.govendor"></a>1.govendor</h1><h2 id="1-1管理方式"><a href="#1-1管理方式" class="headerlink" title="1.1管理方式"></a>1.1管理方式</h2><p>寻找依赖的路径：</p>
+<h2><span id="02获取依赖">0.2获取依赖</span></h2><pre><code>go get 依赖地址 // 依赖包会存放到gopath下面两个位置，pkg里面.a文件和src下面的.go文件</code></pre><h1><span id="1govendor">1.govendor</span></h1><h2><span id="11管理方式">1.1管理方式</span></h2><p>寻找依赖的路径：</p>
 <p>1⃣️在$GOPATH/src/当前包文件/vendor目录</p>
 <p>2⃣️向当前包目录的上级目录查找知道找到src下的vendor</p>
 <p>3⃣️在GOROOT目录下查找</p>
 <p>4⃣️在GOPATH下面查找包</p>
-<h2 id="1-2安装"><a href="#1-2安装" class="headerlink" title="1.2安装"></a>1.2安装</h2><pre><code>go get -u github.com/kardianos/govendor</code></pre><p>安装完成后为方便使用加入到环境变量</p>
-<pre><code>export PATH=&quot;$GOPATH/bin:$PATH&quot;</code></pre><h2 id="1-3使用"><a href="#1-3使用" class="headerlink" title="1.3使用"></a>1.3使用</h2><p>0⃣️如果不是从git上拉取已有vendor.json的项目，而是<strong>本地新建项目</strong>，则要初始化本地项目</p>
+<h2><span id="12安装">1.2安装</span></h2><pre><code>go get -u github.com/kardianos/govendor</code></pre><p>安装完成后为方便使用加入到环境变量</p>
+<pre><code>export PATH=&quot;$GOPATH/bin:$PATH&quot;</code></pre><h2><span id="13使用">1.3使用</span></h2><p>0⃣️如果不是从git上拉取已有vendor.json的项目，而是<strong>本地新建项目</strong>，则要初始化本地项目</p>
 <p>初始化项目目录，生成vendor目录和vendor.json文件</p>
 <pre><code>govendor init</code></pre><p>1⃣️下载项目依赖，这里以引入</p>
 <p>依赖为例</p>
@@ -626,7 +626,7 @@ WIDGET = {
 // 举例：govendor fetch &quot;github.com/labstack/echo/...&quot;  //这里三个点表示文件夹下的所有文件，或者echo后面不要有斜杠，标识拉取项目</code></pre><p>🐻踩坑：i.对于无法从网上下载下里的包，只能从git上自己手动下载，放到vendor下面 ii.有时需要加上三个点标识所有文件，不然会下载下一个空文件夹</p>
 <p>2⃣️提交到<strong>git上只需要提交vendor.json</strong>即可,不需要把所有的vendor依赖文件夹提交上去</p>
 <p>从git上拉起他人项目，项目中含有vendor.json文件，通过如下命令安装依赖包</p>
-<pre><code>govendor sync</code></pre><h2 id="1-4其他"><a href="#1-4其他" class="headerlink" title="1.4其他"></a>1.4其他</h2><p>常用命令</p>
+<pre><code>govendor sync</code></pre><h2><span id="14其他">1.4其他</span></h2><p>常用命令</p>
 <pre><code>govendor list // 列出代码中所有被引用到的包及其状态</code></pre><pre><code>govendor fetch // 从远程仓库添加或更新某个包</code></pre><table>
 <thead>
 <tr>
@@ -744,20 +744,20 @@ WIDGET = {
 </tr>
 </tbody></table>
 <p>支持状态参数的子命令有：<code>list</code>、<code>add</code>、<code>update</code>、<code>remove</code>、<code>fetch</code></p>
-<h1 id="2-gomod"><a href="#2-gomod" class="headerlink" title="2.gomod"></a>2.gomod</h1><p>前沿:go1.13版本会默认开启mod，1.11版本后才支持mod</p>
-<h2 id="2-0前期准备-设置go环境参数使其支持mod"><a href="#2-0前期准备-设置go环境参数使其支持mod" class="headerlink" title="2.0前期准备,设置go环境参数使其支持mod"></a>2.0前期准备,设置go环境参数使其支持mod</h2><pre><code>go env -w GO111MODULE=on // 启用go mod，之后可以用go env 命令展示一下go的配置</code></pre><h2 id="2-1管理方式"><a href="#2-1管理方式" class="headerlink" title="2.1管理方式"></a>2.1管理方式</h2><p>模块:多个包package的集合</p>
+<h1><span id="2gomod">2.gomod</span></h1><p>前沿:go1.13版本会默认开启mod，1.11版本后才支持mod</p>
+<h2><span id="20前期准备设置go环境参数使其支持mod">2.0前期准备,设置go环境参数使其支持mod</span></h2><pre><code>go env -w GO111MODULE=on // 启用go mod，之后可以用go env 命令展示一下go的配置</code></pre><h2><span id="21管理方式">2.1管理方式</span></h2><p>模块:多个包package的集合</p>
 <p>当<code>GO111MODULE</code>=<code>on</code>时，那么就会使用<code>modules</code>功能:这种模式下，<code>$GOPATH</code>不再作为build时导入的角色，依赖包会存放在<code>$GOPATH/pkg/mod</code>目录下。工程中的依赖包也会从此目录下查找.</p>
-<h2 id="2-2初始化一个新项目"><a href="#2-2初始化一个新项目" class="headerlink" title="2.2初始化一个新项目"></a>2.2初始化一个新项目</h2><pre><code>go mod init &lt;项目名&gt; //项目名不填写则是gopath/src后的相对路径名，填的话一般为github.com/your name/project name</code></pre><h2 id="2-3添加依赖"><a href="#2-3添加依赖" class="headerlink" title="2.3添加依赖"></a>2.3添加依赖</h2><h3 id="a-先编写程序improt依赖包"><a href="#a-先编写程序improt依赖包" class="headerlink" title="a.先编写程序improt依赖包"></a>a.先编写程序improt依赖包</h3><p>其实当go run执行时会自动下载依赖包，当然也可以不运行而是只去下载依赖包</p>
-<h3 id="b-下载依赖包"><a href="#b-下载依赖包" class="headerlink" title="b.下载依赖包"></a>b.下载依赖包</h3><pre><code>go mod tidy     // 检测并下载本项目的module所依赖的文件，同时会移除不需要的模块</code></pre><p>依赖包的存放位置是$GoPath/pkg/mod/</p>
-<h3 id="C-修改go-mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝"><a href="#C-修改go-mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝" class="headerlink" title="C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝"></a>C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝</h3><p>例如go.mod的内容乳腺癌</p>
-<pre><code>replace example.com/project/foo =&gt; ../foo</code></pre><h3 id="d-go-mod文件的介绍"><a href="#d-go-mod文件的介绍" class="headerlink" title="d.go.mod文件的介绍"></a>d.go.mod文件的介绍</h3><p>go.mod 提供了module, require、replace和exclude 四个命令</p>
+<h2><span id="22初始化一个新项目">2.2初始化一个新项目</span></h2><pre><code>go mod init &lt;项目名&gt; //项目名不填写则是gopath/src后的相对路径名，填的话一般为github.com/your name/project name</code></pre><h2><span id="23添加依赖">2.3添加依赖</span></h2><h3><span id="a先编写程序improt依赖包">a.先编写程序improt依赖包</span></h3><p>其实当go run执行时会自动下载依赖包，当然也可以不运行而是只去下载依赖包</p>
+<h3><span id="b下载依赖包">b.下载依赖包</span></h3><pre><code>go mod tidy     // 检测并下载本项目的module所依赖的文件，同时会移除不需要的模块</code></pre><p>依赖包的存放位置是$GoPath/pkg/mod/</p>
+<h3><span id="c修改gomod文件可以使用其他依赖路径如for的仓库-本地的拷贝">C.修改go.mod文件可以使用其他依赖路径如：for的仓库、本地的拷贝</span></h3><p>例如go.mod的内容乳腺癌</p>
+<pre><code>replace example.com/project/foo =&gt; ../foo</code></pre><h3><span id="dgomod文件的介绍">d.go.mod文件的介绍</span></h3><p>go.mod 提供了module, require、replace和exclude 四个命令</p>
 <ul>
 <li><code>module</code> 语句指定包的名字（路径）</li>
 <li><code>require</code> 语句指定的依赖项模块</li>
 <li><code>replace</code> 语句可以替换依赖项模块</li>
 <li><code>exclude</code> 语句可以忽略依赖项模块</li>
 </ul>
-<h2 id="2-4其他命令"><a href="#2-4其他命令" class="headerlink" title="2.4其他命令"></a>2.4其他命令</h2><table>
+<h2><span id="24其他命令">2.4其他命令</span></h2><table>
 <thead>
 <tr>
 <th>命令</th>
@@ -909,7 +909,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -921,10 +921,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -984,7 +984,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -1013,7 +1013,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>

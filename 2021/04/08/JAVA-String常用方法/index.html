@@ -607,12 +607,12 @@ WIDGET = {
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="一、String不可变字符串"><a href="#一、String不可变字符串" class="headerlink" title="一、String不可变字符串"></a>一、String不可变字符串</h1><h2 id="1-int-compareTo-String-other-比较两字符串大小"><a href="#1-int-compareTo-String-other-比较两字符串大小" class="headerlink" title="1.int compareTo(String other) 比较两字符串大小"></a>1.int compareTo(String other) 比较两字符串大小</h2><h2 id="2-boolean-equals-Object-object-比较两字符串是否其内容一致"><a href="#2-boolean-equals-Object-object-比较两字符串是否其内容一致" class="headerlink" title="2.boolean equals(Object object)比较两字符串是否其内容一致"></a>2.boolean equals(Object object)比较两字符串是否其内容一致</h2><p>==比较运算符比较的是引用位置是否相等，而非其内容</p>
-<h2 id="3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true"><a href="#3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true" class="headerlink" title="3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true"></a>3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true</h2><h2 id="4-int-indexOf-String-str-返回与指定字符串匹配的首个位置"><a href="#4-int-indexOf-String-str-返回与指定字符串匹配的首个位置" class="headerlink" title="4.int indexOf(String str)返回与指定字符串匹配的首个位置"></a>4.int indexOf(String str)返回与指定字符串匹配的首个位置</h2><p>如果还要其他要求，是有函数重载的</p>
-<h2 id="5-int-length-字符串长度"><a href="#5-int-length-字符串长度" class="headerlink" title="5.int length()字符串长度"></a>5.int length()字符串长度</h2><h2 id="6-String-toLowerCase-和String-toUpperCase-大小写转换"><a href="#6-String-toLowerCase-和String-toUpperCase-大小写转换" class="headerlink" title="6.String toLowerCase()和String toUpperCase()大小写转换"></a>6.String toLowerCase()和String toUpperCase()大小写转换</h2><h2 id="7-String-trim-删除原始字符串头部和尾部的空格"><a href="#7-String-trim-删除原始字符串头部和尾部的空格" class="headerlink" title="7.String trim()删除原始字符串头部和尾部的空格"></a>7.String trim()删除原始字符串头部和尾部的空格</h2><p>更多方法可以参考Java的官网api文档</p>
-<h1 id="二、StringBuilder"><a href="#二、StringBuilder" class="headerlink" title="二、StringBuilder"></a>二、StringBuilder</h1><p>string问题是每次做字符串拼接都会产生一个新的String对象，这样既耗时又费空间</p>
+          <h1><span id="一-string不可变字符串">一、String不可变字符串</span></h1><h2><span id="1int-comparetostring-other-比较两字符串大小">1.int compareTo(String other) 比较两字符串大小</span></h2><h2><span id="2boolean-equalsobject-object比较两字符串是否其内容一致">2.boolean equals(Object object)比较两字符串是否其内容一致</span></h2><p>==比较运算符比较的是引用位置是否相等，而非其内容</p>
+<h2><span id="3boolean-endswithstring-suffix和boolean-startswithstring-prefix以指定字符串开始或结尾返回true">3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true</span></h2><h2><span id="4int-indexofstring-str返回与指定字符串匹配的首个位置">4.int indexOf(String str)返回与指定字符串匹配的首个位置</span></h2><p>如果还要其他要求，是有函数重载的</p>
+<h2><span id="5int-length字符串长度">5.int length()字符串长度</span></h2><h2><span id="6string-tolowercase和string-touppercase大小写转换">6.String toLowerCase()和String toUpperCase()大小写转换</span></h2><h2><span id="7string-trim删除原始字符串头部和尾部的空格">7.String trim()删除原始字符串头部和尾部的空格</span></h2><p>更多方法可以参考Java的官网api文档</p>
+<h1><span id="二-stringbuilder">二、StringBuilder</span></h1><p>string问题是每次做字符串拼接都会产生一个新的String对象，这样既耗时又费空间</p>
 <p>使用StringBuilder则可以避免这个问题发生</p>
-<h2 id="1-String-toString-转为字符串"><a href="#1-String-toString-转为字符串" class="headerlink" title="1.String toString()转为字符串"></a>1.String toString()转为字符串</h2><h2 id="2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传"><a href="#2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传" class="headerlink" title="2.StringBuilder insert(int offset， String str) 指定位置插入自负传"></a>2.StringBuilder insert(int offset， String str) 指定位置插入自负传</h2><h2 id="3-void-setCharAt-int-i，-char-c-设置指定位置字符"><a href="#3-void-setCharAt-int-i，-char-c-设置指定位置字符" class="headerlink" title="3.void setCharAt(int i， char c)设置指定位置字符"></a>3.void setCharAt(int i， char c)设置指定位置字符</h2><h2 id="4-StringBuilder-append（String-str）追加字符串在尾部"><a href="#4-StringBuilder-append（String-str）追加字符串在尾部" class="headerlink" title="4.StringBuilder append（String str）追加字符串在尾部"></a>4.StringBuilder append（String str）追加字符串在尾部</h2>
+<h2><span id="1string-tostring转为字符串">1.String toString()转为字符串</span></h2><h2><span id="2stringbuilder-insertint-offset-string-str-指定位置插入自负传">2.StringBuilder insert(int offset， String str) 指定位置插入自负传</span></h2><h2><span id="3void-setcharatint-i-char-c设置指定位置字符">3.void setCharAt(int i， char c)设置指定位置字符</span></h2><h2><span id="4stringbuilder-appendstring-str追加字符串在尾部">4.StringBuilder append（String str）追加字符串在尾部</span></h2>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -731,7 +731,7 @@ WIDGET = {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -743,10 +743,10 @@ WIDGET = {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -806,7 +806,7 @@ WIDGET = {
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">56.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">57.8k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -835,7 +835,16 @@ WIDGET = {
   </div><!-- .site-info -->
 </footer>
 
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<script>
+    var url = document.location.toString();
+    var reg = /sourceshare/;
+    var ret = reg.test(url);
+    if(ret) {
+        var obj = document.getElementById("colophon");
+        obj.remove();
+    }    
+</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>
