@@ -352,9 +352,9 @@
     <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="JAVA" scheme="http://linxuesong.github.io/tags/JAVA/"/>
-    
     <category term="数组" scheme="http://linxuesong.github.io/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="JAVA" scheme="http://linxuesong.github.io/tags/JAVA/"/>
     
   </entry>
   
@@ -491,21 +491,18 @@
   </entry>
   
   <entry>
-    <title>hexo+valine搭建博客评论系统</title>
-    <link href="http://linxuesong.github.io/2021/03/19/hexo+valine%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/"/>
-    <id>http://linxuesong.github.io/2021/03/19/hexo+valine%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</id>
+    <title>Hello World</title>
+    <link href="http://linxuesong.github.io/2021/03/19/hello-world/"/>
+    <id>http://linxuesong.github.io/2021/03/19/hello-world/</id>
     <published>2021-03-19T12:49:38.727Z</published>
     <updated>2021-03-19T12:49:38.727Z</updated>
     
-    <content type="html"><![CDATA[<h1><span id="hexovaline搭建博客评论系统">hexo+valine搭建博客评论系统</span></h1><p>1.注册LeanCloud</p><p>2.在leanCloud中创建应用</p><p>3.拿到appid和appkey</p><p>然后 <strong>进入应用-&gt;设置-&gt;应用key</strong></p><p>拿到你的appid和appkey之后，打开<strong>主题配置文件</strong> 搜索 <strong>valine</strong>，填入appid 和 appkey</p><p>4.修改hexo博客主题目录themes/Skaura/_config.yml配置文件中的valine部分内容</p><pre><code># Valinevaline: truev_appId: GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHszv_appKey: mgOpfzbkHYqU92CV4IDlAUHQ</code></pre><p>5.记得在Leancloud -&gt; 设置 -&gt; 安全中心 -&gt; Web 安全域名 把你的域名加进去</p><p>最后当我们发送一条评论后可以在leanCloud中的   存储/结构化数据/comment看到评论信息</p><p>PS:valine还可以美化评论背景样式、增加评论邮件通知等等的功能</p><p>参考博客:<a href="https://blog.csdn.net/cungudafa/article/details/104281764" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/104281764</a></p><p>PS:可以在<a href="https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了" target="_blank" rel="noopener">https://en.gravatar.com/网站上注册头像呦，这样就可以在评论时显示自己邮箱绑定的头像了</a></p>]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3><span id="run-server">Run server</span></h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3><span id="generate-static-files">Generate static files</span></h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;hexovaline搭建博客评论系统&quot;&gt;hexo+valine搭建博客评论系统&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;1.注册LeanCloud&lt;/p&gt;
-&lt;p&gt;2.在leanCloud中创建应用&lt;/p&gt;
-&lt;p&gt;3.拿到appid和appkey&lt;/p&gt;
-&lt;p&gt;然后</summary>
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.</summary>
       
     
     
