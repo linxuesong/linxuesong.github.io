@@ -126,6 +126,19 @@ search:
   format: html
   limit: 10000  
   
+###已弃用，原因Sakura使用了tocbot.js自动生成目录
+###已弃用，原因二hexo已内置了toc插件，可以通过修改ejs样式增加，参考https://hexo.io/zh-cn/docs/helpers.html#toc
+###toc目录导航插件
+#toc:
+#  maxdepth: 3
+#  class: toc
+#  slugify: transliteration
+#  decodeEntities: false
+#  anchor:
+#    position: after
+#    symbol: '#'
+#    style: header-anchor
+
   
   #豆瓣账号绑定
 douban:

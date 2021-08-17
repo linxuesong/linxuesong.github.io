@@ -1,4 +1,4 @@
-﻿.aplayer-container {
+.aplayer-container {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -8080,6 +8080,18 @@ body.dark .aplayer{background: #2f3742!important;} body.dark img, body.dark stro
 /*æ˜¥èŠ‚*/
 .caishenxianleft {
     left: 16%!important;
+    position: absolute;
+    top: 0px;
+    width: 2px;
+    height: 20px;
+    background: #dc8f03;
+    transform-origin: 50% -100px;
+    animation: swing 3.5s infinite ease-in-out;
+    -webkit-transform-origin: 50% -100px;
+    -webkit-animation: swing 3.5s infinite ease-in-out;
+}
+/*自定义位置，只需在小挂件div中加入style="left:百分比"*/
+.caishenxiancustom {
     position: absolute;
     top: 0px;
     width: 2px;

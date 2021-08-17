@@ -7,6 +7,10 @@ description: date日期;anchor_point引用位置;title此次改动的摘要；de
 photos:
 layout: sitelog
 sitelog:
+  - date: 2021-07-09 19:26:00
+    anchor_point: /sourceshare
+    title: 网站导航
+    detail: 增加资源分享页面，用于分享自己收藏的网页，引用了itNekoDeng的博客
   - date: 2021-01-22 12:00:00
     anchor_point: /sitelog
     title: 相册

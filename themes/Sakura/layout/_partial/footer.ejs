@@ -18,11 +18,7 @@
       </div>
       <p style="color: #666666;">&copy 2018</p>
     </div>
-
-	
-	
-
-	 <!-- 网站数据统计 -->
+	<!-- 网站数据统计 -->
         <div class="footer-device">
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #ff9999;padding-left: 20px;">
@@ -64,13 +60,6 @@
             </span>
           </p>
         </div>
-	
-	
-	
-	
-	
-	
-	
     <div class="footer-device">
     <p style="font-family: 'Ubuntu', sans-serif;">
         <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
@@ -80,8 +69,20 @@
   </div><!-- .site-info -->
 </footer>
 
-
-
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<!--  切换页面后需要再显示出来 -->
+<!--
+<script>
+    var url = document.URL.toString();
+    var reg = new RegExp("sourceshare");
+    var obj = document.getElementById("colophon");
+    if(url.match(reg)){
+        obj.style.display="none";
+    }else {
+        obj.style.display="block";
+    }
+</script>
+-->
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>

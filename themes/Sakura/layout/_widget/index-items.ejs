@@ -1,6 +1,41 @@
 <% var external_link = config.external_link ? '_blank' : '_self'; %>
 <article <% if (index%2 == 0){ %> class="post post-list-thumb post-list-thumb-left" <% } %> class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
 
+<% if (index%2 == 0) { %>
+   <!--圣诞主题小挂件-->
+	<div class="caishendengsd" style="height:0px">        
+		<div class="caishenxiancustom" style="left:70%">
+			<img class="caishenpicsd" src="https://hesifan.top/medias/christmas-img/2.png">
+		</div>              
+	</div>
+    <!-圣诞主题小挂件结束-->
+	<!--春节主题小挂件-->
+	<div class="caishendeng">        
+		<div class="caishenxiancustom" style="left:70%">
+			<img class="caishenpic fudai" src="https://hesifan.top/medias/spring-img/3.png">
+		</div>            
+	</div>
+	<!-春节主题小挂件结束-->
+
+           <% } else { %>
+
+     <!--圣诞主题小挂件-->
+	<div class="caishendengsd" style="height:0px">        
+		<div class="caishenxiansd" style="left:30%">
+			<img class="caishenpicsd" src="https://hesifan.top/medias/christmas-img/2.png">
+		</div>              
+	</div>
+    <!-圣诞主题小挂件结束-->
+	<!--春节主题小挂件-->
+	<div class="caishendeng">        
+		<div class="caishenxiancustom" style="left:30%">
+			<img class="caishenpic fudai" src="https://hesifan.top/medias/spring-img/3.png">
+		</div>            
+	</div>
+	<!-春节主题小挂件结束-->
+           <% } %>
+
+
   <div class="post-thumb">
     <a href="<%- url_for(post.path) %>">
       <img class="lazyload" onerror="imgError(this,3)" src="<%- theme.lazyloadImg%>" data-src="<%= post.photos[0] || 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/image-404.png' %>">
