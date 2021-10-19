@@ -347,6 +347,20 @@ $ grep '[a-z]\{5\}' aa
 $ grep 'w\(es\)t.*\1' aa
 ```
 
+#### 5.4 正则表达式 符号表示
+
+![image-20211018131111242](/Users/linxuesong/Library/Application Support/typora-user-images/image-20211018131111242.png)
+
+
+
+a
+
+![image-20211018131127344](/Users/linxuesong/Library/Application Support/typora-user-images/image-20211018131127344.png)
+
+
+
+
+
 # 四、解压文件
 
 | 文件格式 | 命令                                                         |
@@ -406,13 +420,195 @@ du -sh显示当前目录整体占用情况
 
 # 九、系统资源统计
 
-磁盘使用比例**iostat -x**  svctm  %util
+## 9.0综合
 
-cpu:可以使用综合
+### 9.0.1 top
 
-网卡流量: **nload**  https://www.jb51.net/LINUXjishu/593625.html
+```
+top
+接收参数
+-p 指定要观察的pid
 
-综合:**top**、**vmstat**、**dstat**
+交互命令
+在 top 执行过程当中可以使用的按键指令:
+数字1 显示所有核的情况
+? :显示在 top 当中可以输入的按键指令;
+P :以 CPU 的使用资源排序显示;
+M :以 Memory 的使用资源排序显示;
+N :以 PID 来排序喔!
+T :由该 Process 使用的 CPU 时间累积 (TIME+) 排序。
+k :给予某个 PID 一个讯号 (signal)
+r :给予某个 PID 重新制订一个 nice 值。
+q :离开 top 软件的按键
+H :显示线程
+```
+
+参数含义
+
+第一行
+
+![image-20211019195146022](https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201914.png)
+
+目前时间、运行时间、登录人数
+
+1，5，15分钟每个cpu运行的进程数
+
+第二行
+
+![image-20211019202130125](https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019202131.png)
+
+程序运行总量和个别程序运行状态
+
+第三行
+
+![image-20211019202149878](https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019202151.png)
+
+cpu负载情况, wa表示等待I/O wait比例
+
+第四五行
+
+![image-20211019202205354](https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019202206.png)
+
+swap要尽量少，buffer/cached是 读写磁盘用作缓冲的内存，当内存实在不够用时会释放该部分的内存
+
+所以实际可用内存= free+buffer+cached
+
+top下半部分
+
+![image-20211019202702503](https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019202704.png)
+
+```
+PID :每个 process 的 ID 啦!
+USER:该 process 所属的使用者;
+PR :Priority 的简写，程序的优先执行顺序，越小越早被执行; NI :Nice 的简写，与 Priority 有关，也是越小越早被执行; %CPU:CPU 的使用率;
+%MEM:内存的使用率;
+TIME+:CPU 使用时间的累加
+```
+
+
+
+### 9.0.2 dstat
+
+```
+//实时的监控cpu、磁盘、网络、IO、内存，甚至还有socket等情况，生成csv表格
+dstat
+-c：显示CPU系统占用，用户占用，空闲，等待，中断，软件中断等信息。
+-C：当有多个CPU时候，此参数可按需分别显示cpu状态，例：-C 0,1 是显示cpu0和cpu1的信息。
+-d：显示磁盘读写数据大小。
+-D hda,total：include hda and total。
+-n：显示网络状态。
+-N eth1,total：有多块网卡时，指定要显示的网卡。
+-l：显示系统负载情况。
+-m：显示内存使用情况。
+-g：显示页面使用情况。
+-p：显示进程状态。
+-s：显示交换分区使用情况。
+-S：类似D/N。
+-r：I/O请求情况。
+-y：系统状态。
+--ipc：显示ipc消息队列，信号等信息。
+--socket：用来显示tcp udp端口状态。
+-a：此为默认选项，等同于-cdngy。
+-v：等同于 -pmgdsc -D total。
+--output 文件：此选项也比较有用，可以把状态信息以csv的格式重定向到指定的文件中，以便日后查看。例：dstat --output /root/dstat.csv & 此时让程序默默的在后台运行并把结果输出到/root/dstat.csv文件中。
+
+```
+
+![image-20211019175009173](https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201904.png)
+
+## 9.1磁盘
+
+```
+iostat 
+[-k -m]显示读写单位
+[-d] 2 每2秒1次
+[-x]可以显示更详细信息
+```
+
+| 选项    | 说明                                                         |
+| :------ | :----------------------------------------------------------- |
+| %user   | CPU在用户态执行进程的时间百分比。                            |
+| %nice   | CPU在用户态模式下，用于nice操作，所占用CPU总时间的百分比     |
+| %system | CPU处在内核态执行进程的时间百分比                            |
+| %iowait | CPU用于等待I/O操作占用CPU总时间的百分比                      |
+| %steal  | 管理程序(hypervisor)为另一个虚拟进程提供服务而等待虚拟CPU的百分比 |
+| %idle   | CPU空闲时间百分比                                            |
+
+1. 若 %iowait 的值过高，表示硬盘存在I/O瓶颈 
+2. 若 %idle 的值高但系统响应慢时，有可能是CPU等待分配内存，此时应加大内存容量 
+3. 若 %idle 的值持续低于1，则系统的CPU处理能力相对较低，表明系统中最需要解决的资源是 CPU使用比例**iostat -x**  svctm  %util
+
+![image-20211019173631243](https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201918.png)
+
+## 9.2cpu
+
+## 9.3网卡流量
+
+```
+// 实时显示网卡流量信息
+nload 
+```
+
+![image-20211019173936279](https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201924.png)
+
+## 9.4内存
+
+```
+vmstat
+vmstat 3 10 每3秒1次，一共10次，没10不会停
+-S k｜m 以kb、mb单位显示内存
+```
+
+![image-20211019174435977](https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201924.png)
+
+```
+字段说明：
+
+Procs（进程）
+
+r: 运行队列中进程数量，这个值也可以判断是否需要增加CPU。（长期大于1）
+b: 等待IO的进程数量。
+Memory（内存）
+
+swpd: 使用虚拟内存大小，如果swpd的值不为0，但是SI，SO的值长期为0，这种情况不会影响系统性能。
+free: 空闲物理内存大小。
+buff: 用作缓冲的内存大小。
+cache: 用作缓存的内存大小，如果cache的值大的时候，说明cache处的文件数多，如果频繁访问到的文件都能被cache处，那么磁盘的读IO bi会非常小。
+Swap
+
+si: 每秒从交换区写到内存的大小，由磁盘调入内存。
+so: 每秒写入交换区的内存大小，由内存调入磁盘。
+注意：内存够用的时候，这2个值都是0，如果这2个值长期大于0时，系统性能会受到影响，磁盘IO和CPU资源都会被消耗。有些朋友看到空闲内存（free）很少的或接近于0时，就认为内存不够用了，不能光看这一点，还要结合si和so，如果free很少，但是si和so也很少（大多时候是0），那么不用担心，系统性能这时不会受到影响的。
+
+IO（现在的Linux版本块的大小为1kb）
+
+bi: 每秒读取的块数
+bo: 每秒写入的块数
+注意：随机磁盘读写的时候，这2个值越大（如超出1024k)，能看到CPU在IO等待的值也会越大。
+
+system（系统）
+
+in: 每秒中断数，包括时钟中断。
+cs: 每秒上下文切换数。
+注意：上面2个值越大，会看到由内核消耗的CPU时间会越大。
+
+CPU（以百分比表示）
+
+us: 用户进程执行时间百分比(user time)
+us的值比较高时，说明用户进程消耗的CPU时间多，但是如果长期超50%的使用，那么我们就该考虑优化程序算法或者进行加速。
+
+sy: 内核系统进程执行时间百分比(system time)
+sy的值高时，说明系统内核消耗的CPU资源多，这并不是良性表现，我们应该检查原因。
+
+wa: IO等待时间百分比
+wa的值高时，说明IO等待比较严重，这可能由于磁盘大量作随机访问造成，也有可能磁盘出现瓶颈（块操作）。
+
+id: 空闲时间百分比
+```
+
+
+
+综合:**top**、、**dstat**
 
 
 

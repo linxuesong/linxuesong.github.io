@@ -1,3 +1,22 @@
+---
+title: hexo+valine搭建博客评论系统
+author: linxuesong
+avatar: 'https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/avatar.jpg'
+authorLink: linxuesong.github.io
+authorAbout: 一个好奇的人
+authorDesc: 一个好奇的人
+categories: 
+ - [技术]
+ - [主题]
+comments: true
+photos: >-
+  https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/犬夜叉/201204113622-2-lp.jpg
+date: 2020-12-26 10:26:53
+tags: 
+ - [主题美化]
+description:
+keywords:
+---
 # hexo+valine搭建博客评论系统
 
 1.注册LeanCloud
