@@ -71,3 +71,12 @@ npm install hexo-douban --save
 /* 原文件内容为 layout: [`page`, `post`] ，将其修改为下面的内容*/
 layout: [`douban`]
 ```
+
+5.添加sitemap站点地图生成插件
+
+用于谷歌、百度收录本网站
+
+```
+npm install hexo-generator-sitemap --save
+```
+
