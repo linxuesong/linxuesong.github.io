@@ -35,6 +35,7 @@ menus:
   清单: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: { 
     书单: {path: /books/, fa: fa-th-list faa-bounce }, 
     番组: {path: /bangumi/, fa: fa-film faa-vertical }, 
+    哔哩: {path: /bangumi-bilibili/, fa: fa-film faa-vertical },
     歌单: {path: /music/, fa: fa-headphones },
     电影: {path: /movies/, fa: fa-video-camera },
     游戏: {path: /games/, fa: fa-gamepad },
@@ -57,6 +58,7 @@ menus:
     Lab: {path: /lab/, fa: fa-cogs },
     娱乐: {path: /dinoswords, fa: fa-coffee },
     客户端: { path: /client/, fa: fa-android faa-vertical },
+    说说: { path: /shuoshuo/, fa: fa-coffee faa-vertical },
   } }
   RSS: { path: /atom.xml, fa: fa-rss faa-pulse }
 
@@ -141,10 +143,11 @@ movies:
 
 # Valine
 valine: true
-v_appId: RmgA0rMeKIWWIkhSTpqhV4oG-gzGzoHsz
-v_appKey: iwivlkfT6bGJRQS74SaKYjal
-
-
+#v_appId: RmgA0rMeKIWWIkhSTpqhV4oG-gzGzoHsz
+#v_appKey: iwivlkfT6bGJRQS74SaKYjal
+#Valine 国际版 https://console.leancloud.app/apps/bkFHdpuMwcpRg1jNPFwvMLnX-MdYXbMMI/settings/key
+v_appId: bkFHdpuMwcpRg1jNPFwvMLnX-MdYXbMMI
+v_appKey: xaCmLIX4oe2AbcinUwoMVbMz
 
 # Local search
 # Dependencies: https://github.com/flashlab/hexo-generator-search

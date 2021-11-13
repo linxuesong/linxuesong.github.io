@@ -79,4 +79,21 @@ layout: [`douban`]
 ```
 npm install hexo-generator-sitemap --save
 ```
+6.添加哔哩哔哩追番页
+在hexo generate或hexo deploy之前使用hexo bangumi -u命令更新追番数据，使用hexo cinema -u命令更新追剧数据！
+删除数据命令:hexo bangumi -d/hexo cinema -d
+```
+npm install hexo-bilibili-bangumi --save6.添加哔哩哔哩追番页
+```
+7.安装文章样式插件
+参考：
+https://akilar.top/posts/615e2dec/
+```
+npm install hexo-butterfly-tag-plugins-plus --save
+```
 
+```
+// 更换渲染工具
+npm uninstall hexo-renderer-marked --save
+npm install hexo-renderer-kramed --save
+```

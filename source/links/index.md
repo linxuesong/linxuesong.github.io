@@ -33,4 +33,8 @@ links:
       img: https://fp1.fghrsh.net/2017/10/11/d383a9ad4318c5b4332fe02845f5323a.jpg
       name: fghrsh
       desc: fghrsh的博客
+    - url: https://akilar.top/
+      img: https://akilar.top/img/siteicon/favicon.png
+      name: Akilarの糖果屋
+      desc: 期待您的光临！
 ---

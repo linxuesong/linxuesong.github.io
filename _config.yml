@@ -173,3 +173,46 @@ douban:
  #SiteMap 百度谷歌收录
 sitemap:
   path: sitemap.xml
+
+
+bangumi: # 追番设置
+  enable: true
+  path: bangumi-bilibili/index.html
+  vmid: 396134239
+  title: '追番列表'
+  quote: '生命不息，追番不止！'
+  show: 1
+  loading:
+  metaColor:
+  color:
+  webp:
+  progress:
+  extra_options:
+    key: value
+cinema: # 追剧设置
+  enable: true
+  path:
+  vmid:
+  title: '追番列表'
+  quote: '生命不息，追番不止！'
+  show: 1
+  loading:
+  metaColor:
+  color:
+  webp:
+  progress:
+  extra_options:
+    key: value
+
+# tag-plugins-plus
+# see https://akilar.top/posts/615e2dec/
+tag_plugins:
+  enable: true # 开关
+  priority: 5 #过滤器优先权
+  issues: false #issues标签依赖注入开关
+  CDN:
+    anima: https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css #动画标签anima的依赖
+    jquery: https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js #issues标签依赖
+    issues: https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js #issues标签依赖
+    iconfont: //at.alicdn.com/t/font_2032782_8d5kxvn09md.js #参看https://akilar.top/posts/d2ebecef/
+    carousel: https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/carousel-touch.min.js
