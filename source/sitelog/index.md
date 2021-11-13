@@ -7,6 +7,18 @@ description: date日期;anchor_point引用位置;title此次改动的摘要；de
 photos:
 layout: sitelog
 sitelog:
+  - date: 2021-11-13 14:13:00
+    anchor_point: /https://linxuesong.github.io/2020/08/11/Hexo-Sakura%E5%A6%82%E4%BD%95%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E4%B8%8D%E5%90%8C%E7%94%B5%E8%84%91/
+    title: 文章样式魔改
+    detail:  hexo-butterfly-tag-plugins-plus插件支持更丰富文章样式
+  - date: 2021-11-13 14:13:00
+    anchor_point: /bangumi-bilibili/
+    title: B站追番网页
+    detail:  hexo-bilibili-bangumi插件引入B站追番网页
+  - date: 2021-11-13 14:13:00
+    anchor_point: /shuoshuo
+    title: 说说
+    detail: 通过Artitalk项目引入说说页面
   - date: 2021-07-09 19:26:00
     anchor_point: /sourceshare
     title: 网站导航
