@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>楓の葉小窝</title>
+  
+  
+  <link href="http://linxuesong.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://linxuesong.github.io/"/>
+  <updated>2022-12-05T05:59:27.666Z</updated>
+  <id>http://linxuesong.github.io/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://linxuesong.github.io/2021/11/12/hello-world/"/>
+    <id>http://linxuesong.github.io/2021/11/12/hello-world/</id>
+    <published>2021-11-12T14:20:40.000Z</published>
+    <updated>2022-12-05T05:59:27.666Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-lang-bash"><code class="language-lang-bash">$ hexo new "My New Post"</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-lang-bash"><code class="language-lang-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-lang-bash"><code class="language-lang-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-lang-bash"><code class="language-lang-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hexo-butterfly-tag-plugins-plus插件样式测试文章</title>
+    <link href="http://linxuesong.github.io/2021/11/11/hexo-butterfly-tag-plugins-plus%E6%8F%92%E4%BB%B6%E6%A0%B7%E5%BC%8F%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    <id>http://linxuesong.github.io/2021/11/11/hexo-butterfly-tag-plugins-plus%E6%8F%92%E4%BB%B6%E6%A0%B7%E5%BC%8F%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</id>
+    <published>2021-11-11T11:38:04.000Z</published>
+    <updated>2022-12-05T05:59:19.916Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考文章<a href="https://akilar.top/posts/615e2dec/">https://akilar.top/posts/615e2dec/</a></p><h1 id="行内文本text"><a href="#行内文本text" class="headerlink" title="行内文本text"></a>行内文本text</h1><u>文本内容</u><emp>文本内容</emp><wavy>文本内容</wavy><del>文本内容</del><kbd>文本内容</kbd><psw>文本内容</psw><h1 id="行内文本span"><a href="#行内文本span" class="headerlink" title="行内文本span"></a>行内文本span</h1><ul><li>彩色文字<br>在一段话中方便插入各种颜色的标签，包括：<span class='p red'>红色</span>、<span class='p yellow'>黄色</span>、<span class='p green'>绿色</span>、<span class='p cyan'>青色</span>、<span class='p blue'>蓝色</span>、<span class='p gray'>灰色</span>。</li><li>超大号文字<br>文档「开始」页面中的标题部分就是超大号文字。<span class='p center logo large'>Volantis</span><span class='p center small'>A Wonderful Theme for Hexo</span><h1 id="段落文本p"><a href="#段落文本p" class="headerlink" title="段落文本p"></a>段落文本p</h1></li><li>彩色文字<br>在一段话中方便插入各种颜色的标签，包括：<p class='p red'>红色</p>、<p class='p yellow'>黄色</p>、<p class='p green'>绿色</p>、<p class='p cyan'>青色</p>、<p class='p blue'>蓝色</p>、<p class='p gray'>灰色</p>。</li><li>超大号文字<br>文档「开始」页面中的标题部分就是超大号文字。<p class='p center logo large'>Volantis</p><p class='p center small'>A Wonderful Theme for Hexo</p><h1 id="提示块"><a href="#提示块" class="headerlink" title="提示块"></a>提示块</h1><h1 id="动态标签"><a href="#动态标签" class="headerlink" title="动态标签"></a>动态标签</h1></li></ul><div class="tip warning faa-horizontal animated"><p>warning</p></div><div class="tip ban faa-flash animated"><p>ban</p></div><h1 id="复选列表"><a href="#复选列表" class="headerlink" title="复选列表"></a>复选列表</h1><div class='checkbox'><input type="checkbox" />            <p>纯文本测试</p>            </div><div class='checkbox checked'><input type="checkbox" checked="checked"/>            <p>支持简单的 <a href="https://guides.github.com/features/mastering-markdown/">markdown</a> 语法</p>            </div><div class='checkbox red'><input type="checkbox" />            <p>支持自定义颜色</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>绿色 + 默认选中</p>            </div><div class='checkbox yellow checked'><input type="checkbox" checked="checked"/>            <p>黄色 + 默认选中</p>            </div><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>青色 + 默认选中</p>            </div><div class='checkbox blue checked'><input type="checkbox" checked="checked"/>            <p>蓝色 + 默认选中</p>            </div><div class='checkbox plus green checked'><input type="checkbox" checked="checked"/>            <p>增加</p>            </div><div class='checkbox minus yellow checked'><input type="checkbox" checked="checked"/>            <p>减少</p>            </div><div class='checkbox times red checked'><input type="checkbox" checked="checked"/>            <p>叉</p>            </div><h1 id="链接卡片"><a href="#链接卡片" class="headerlink" title="链接卡片"></a>链接卡片</h1><div class="tag link"><a class="link-card" title="糖果屋教程贴" href="https://akilar.top/posts/615e2dec/"><div class="left"><img src="https://cdn.jsdelivr.net/gh/Akilarlxh/akilarlxh.github.io/img/siteicon/favicon.ico"/></div><div class="right"><p class="text">糖果屋教程贴</p><p class="url">https://akilar.top/posts/615e2dec/</p></div></a></div>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;参考文章&lt;a href=&quot;https://akilar.top/posts/615e2dec/&quot;&gt;https://akilar.top/posts/615e2dec/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;行内文本text&quot;&gt;&lt;a href=&quot;#行内文本text&quot; class=&quot;</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="数组" scheme="http://linxuesong.github.io/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="LeetCode" scheme="http://linxuesong.github.io/tags/LeetCode/"/>
+    
+    <category term="简单" scheme="http://linxuesong.github.io/tags/%E7%AE%80%E5%8D%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gson的常规使用</title>
+    <link href="http://linxuesong.github.io/2021/09/03/gson%E7%9A%84%E5%B8%B8%E8%A7%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://linxuesong.github.io/2021/09/03/gson%E7%9A%84%E5%B8%B8%E8%A7%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2021-09-02T16:17:28.000Z</published>
+    <updated>2022-12-05T05:59:19.885Z</updated>
+    
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="数组" scheme="http://linxuesong.github.io/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="LeetCode" scheme="http://linxuesong.github.io/tags/LeetCode/"/>
+    
+    <category term="简单" scheme="http://linxuesong.github.io/tags/%E7%AE%80%E5%8D%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 字符串常见处理</title>
+    <link href="http://linxuesong.github.io/2021/07/23/golang-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E8%A7%81%E5%A4%84%E7%90%86/"/>
+    <id>http://linxuesong.github.io/2021/07/23/golang-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E8%A7%81%E5%A4%84%E7%90%86/</id>
+    <published>2021-07-23T03:20:04.000Z</published>
+    <updated>2022-12-05T05:59:19.853Z</updated>
+    
+    <content type="html"><![CDATA[<p>一、截取子串</p><pre><code></code></pre>]]></content>
+    
+    
+    <summary type="html">常见golang字符串处理整理</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="golang" scheme="http://linxuesong.github.io/tags/golang/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文章样式测试</title>
+    <link href="http://linxuesong.github.io/2021/07/12/%E6%96%87%E7%AB%A0%E6%A0%B7%E5%BC%8F%E6%B5%8B%E8%AF%95/"/>
+    <id>http://linxuesong.github.io/2021/07/12/%E6%96%87%E7%AB%A0%E6%A0%B7%E5%BC%8F%E6%B5%8B%E8%AF%95/</id>
+    <published>2021-07-12T07:02:36.000Z</published>
+    <updated>2022-12-05T05:59:20.421Z</updated>
+    
+    <content type="html"><![CDATA[<style>.output_wrapper/*此属性为全局*/{     font-size: 16px;     color: #3e3e3e;     line-height: 1.6;     word-spacing:0px;      letter-spacing:0px;     font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;   }.output_wrapper *{  font-size: inherit  ;  color: inherit;  line-height: inherit;  margin:0px;  padding:0px;}p {/*段落*/  margin: 1.5em 0px;}h1,h2,h3,h4,h5,h6 {  margin: 1.5em 0px;  font-weight:bold;}h1 {  font-size: 1.6em  ;}h2 {  font-size: 1.4em;}h3 {  font-size: 1.3em;}h4 {  font-size: 1.2em;}h5 {  font-size: 1em;}h6 {  font-size: 1em;}h1{/*增加对h3标题的修改*/  border-bottom:2px  solid   #EC4444;}h1 span{/*增加对h1标题字体的修改*/  display:inline-block;  font-weight:normal;  background: #EC4444;  color:#ffffff;  padding:3px 10px 0px;  border-top-right-radius: 3px;   border-top-left-radius: 3px;   margin-right:3px;}h1:after{/*增加对h3标题后面的修饰*/  display: inline-block;   content:" ";   vertical-align: bottom;  border-bottom: 36px solid #EFEBE9;  border-right: 20px solid transparent; }ul, ol {  padding-left: 32px;}ul{ /*无序列表*/    list-style-type: disc;}ol { /*有序列表*/  list-style-type: decimal;}li *  { /* color: #3e3e3e;*/} li{  /*在公众号下，改变不了li符号的属性（如颜色），并会影响其子元素的属性;而在其它博客平台中，则能正常使用*/     margin-bottom: 0.5em;/*  color:#159957; */    }.code_size_default  /*代码块默认size*/{  line-height: 18px;  font-size: 14px;   font-weight:normal;  word-spacing:0px;   letter-spacing:0px; }.code_size_tight /*代码块紧凑size*/{   line-height: 15px;    font-size: 11px;    font-weight:normal;   word-spacing:-3px;    letter-spacing:0px; }pre code /*代码块*/{                font-family: Consolas, Inconsolata, Courier, monospace;      border-radius: 0px;}blockquote { /*引用块*/  display: block;  padding: 15px 1rem;  font-size: 0.9em;  padding-right: 15px;  margin: 1em 0;  color: #819198;  border-left: 6px solid #dce6f0;  background: #f2f7fb;  overflow: auto;  overflow-scrolling: touch;   word-wrap: normal;  word-break: normal;  }blockquote p {    margin: 0px;}a { /*超链接*/  text-decoration: none;  color: #1e6bb8;  word-wrap:break-word;}strong  /*强调*/{  font-weight: bold;}em /*斜体*/{ font-style:italic;}del /*删除线*/{ font-style:italic;}strong em/*强调的斜体*/{font-weight: bold;}hr {  /*分隔线*/  height: 1px;  margin: 1.5rem 0px;  border: none;  border-top: 1px dashed #A5A5A5;}code /*行内代码*/{    word-wrap: break-word;    padding: 2px 4px;    border-radius: 4px;    margin:0 2px;    color:#e96900;    background:#f8f8f8;}img{  display: block;  margin:0 auto;  /*图片水平居中*/  /* margin:0 0;  */ /*图片水平居左，如需要请打开*/  max-width:100%;}figcaption/*图片描述文字*/{  margin-top:10px;  text-align:center;   /* text-align:left;  */ /*当图片水平居左时，请打开*/  color:#999;  font-size: 0.7em;}/*================表格开始================*/table{ display:table; width: 100% ; text-align: left;}tbody {  border: 0;}table tr {  border: 0;  border-top: 1px solid #CCC;  background-color: white;}/*隔行改变行的背景色，如需要请打开*//*table tr:nth-child(2n) {  background-color: #F8F8F8;}*/table tr th, table tr td {  font-size: 1em;  border: 1px solid #CCC;  padding: 0.5em 1em;  text-align: left;}/*表头的属性*/table tr th { font-weight: bold;  background-color: #F0F0F0;}/*================表格结束================*//*================数学公式开始================*/.katex-display {/*块公式*/  font-size:1.22em; }.katex{/*行内公式*/  padding:8px 3px;}.katex-display > .katex{/*块公式*/   display:inline-block;   text-align:center;   padding:3px;}.katex img{/*行内公式对应的图片*/  display:inline-block;  vertical-align:middle;}/*================数学公式结束================*/a[href^="#"] sup{/*注脚*/  vertical-align:super;  margin:0 2px;    padding:1px 3px;   color: #ffffff;  background:#666666;  font-size:0.7em;}/*================任务列表开始================*/.task-list-list {  list-style-type: none;}.task-list-list.checked {/*已完成*/  color: #3e3e3e;}.task-list-list.uncheck {/*未完成*/  color: #bfc1bf;}.task-list-list .icon_uncheck, .task-list-list .icon_check {  display: inline-block;  vertical-align: middle;  margin-right: 10px;}.task-list-list .icon_check:before{/*已完成*/    content: "√";    border: 2px solid #3e3e3e;    color:red;}.task-list-list .icon_uncheck:before{/*未完成*/   content: "x";   border: 2px solid #bfc1bf;    color: #bfc1bf;}.task-list-list .icon_check:before, .task-list-list .icon_uncheck:before{/*标志框*/  padding:2px;  padding-left: 5px;  padding-right: 8px;  border-radius:5px;}/*================任务列表结束================*/.toc{/*总目录*/  margin-left:25px;}.toc_item{/*每条目录*/  display:block;}.toc_left{/*每级目录的缩进*/  margin-left:25px;}</style><p>[toc]</p><h1 id="基本快捷键"><a href="#基本快捷键" class="headerlink" title="基本快捷键"></a>基本快捷键</h1><h2 id="1、通用操作"><a href="#1、通用操作" class="headerlink" title="1、通用操作"></a>1、通用操作</h2><p>Command是Mac里最重要的修饰键，在大多数情况下相当于Windows下的Ctrl。所以以下最基本操作很好理解：</p><p>Command-Z 撤销　<br>Command-X 剪切　　<br>Command-C 拷贝（Copy）　　<br>Command-V 粘贴　　<br>Command-A 全选（All）　　<br>Command-S 保存（Save)　　<br>Command-F 查找（Find）</p><h2 id="2-截图"><a href="#2-截图" class="headerlink" title="2.截图"></a>2.截图</h2><p>Command-Shift-4 截取所选屏幕区域到一个文件　　<br>Command-Shift-3 截取全部屏幕到文件　　<br>Command-Shift-Control-3 截取全部屏幕到剪贴板　　<br>Command-Shift-4 截取所选屏幕区域到一个文件，或追加按空格键仅捕捉一个窗口　　<br>Command-Shift-Control-4 截取所选屏幕区域到剪贴板，或按空格键仅捕捉一个窗</p><h2 id="3、在应用程序中："><a href="#3、在应用程序中：" class="headerlink" title="3、在应用程序中："></a>3、在应用程序中：</h2><p>Command-Option-esc 打开强制退出窗口　　<br>Command-H 隐藏（Hide）当前正在运行的应用程序窗口　　<br>Command-Option-H 隐藏（Hide）其他应用程序窗口　　<br>Command-Q 退出（Quit）最前面的应用程序　　<br>Command-Shift-Z 重做，也就是撤销的逆向操作　　<br>Command-Tab 在打开的应用程序列表中转到下一个最近使用的应用程序，相当于Windows中（Alt+Tab）　　<br>Command-Option-esc 打开“强制退出”窗口，如果有应用程序无响应，可在窗口列表中选择强制退出</p><h2 id="4、文本处理："><a href="#4、文本处理：" class="headerlink" title="4、文本处理："></a>4、文本处理：</h2><p>Command-右箭头 将光标移至当前行的行尾　　<br>Command-B 切换所选文字粗体（Bold）显示　　<br>fn-Delete 相当于PC全尺寸键盘上的Delete，也就是向后删除　　<br>fn-上箭头 向上滚动一页（Page Up）　　<br>fn-下箭头 向下滚动一页（Page Down）　　<br>fn-左箭头 滚动至文稿开头（Home）　　<br>fn-右箭头 滚动至文稿末尾（End）　　<br>Command-右箭头 将光标移至当前行的行尾　　<br>Command-左箭头 将光标移至当前行的行首　　<br>Command-下箭头 将光标移至文稿末尾　　<br>Command-上箭头 将光标移至文稿开头　　<br>Option-右箭头 将光标移至下一个单词的末尾　　<br>Option-左箭头 将光标移至上一个单词的开头　　<br>Control-A 移至行或段落的开头</p><h2 id="5、在Finder中："><a href="#5、在Finder中：" class="headerlink" title="5、在Finder中："></a>5、在Finder中：</h2><p>Command-Option-V 剪切文件　　<br>Command-Shift-N 新建文件夹（New）　　<br>Command-Shift-G 调出窗口，可输入绝对路径直达文件夹（Go）　　<br>return 这个其实不算快捷键，点击文件，按下可重命名文件　　<br>Command-O 打开所选项。在Mac里打开文件不像Windows里直接按Enter　　<br>Command-Option-V 作用相当于Windows里的文件剪切。在其它位置上对文件复制（Command-C），在目的位置按下这个快捷键，文件将被剪切到此位置　　<br>Command-上箭头 打开包含当前文件夹的文件夹，相当于Windows里的“向上”　　<br>Command-Delete 将文件移至废纸篓　　<br>Command-Shift-Delete 清倒废纸篓　　<br>空格键 快速查看选中的文件，也就是预览功能</p><h2 id="6、在浏览器中："><a href="#6、在浏览器中：" class="headerlink" title="6、在浏览器中："></a>6、在浏览器中：</h2><p>Control-Tab 转向下一个标签页　　<br>Command-L 光标直接跳至地址栏　　<br>Control-Tab 转向下一个标签页　　<br>Control-Shift-Tab 转向上一个标签页　　<br>Command-加号或等号 放大页面　　<br>Command-减号 缩小页面</p><h2 id="7-Mac启动与关机时的快捷键："><a href="#7-Mac启动与关机时的快捷键：" class="headerlink" title="7.Mac启动与关机时的快捷键："></a>7.Mac启动与关机时的快捷键：</h2><p>Command-Option-P-R 重置NVRAM　　<br>Option 开机后立即按下，将显示启动管理器，如果Mac装有双系统或者插有启动U盘，可在启动管理器中选择启动盘　　<br>Command-R 开机后立即按下，可打开OS X的恢复功能（Recovery）　　<br>Command-Option-P-R 开机后立即按下，重置NVRAM。有些时候电脑会出现些小问题，重置NVRAM是你除了重新启动，尝试修复的第一选择。　　<br>Command-Option-Control-电源按钮 退出所有应用程序，允许你进行文稿储存，然后关机　　<br>按住电源按钮5秒 强制Mac关机</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;style&gt;
+
+.output_wrapper/*此属性为全局*/
+{
+     font-size: 16px;
+     color: #3e3e3e;
+     line-height: 1.6;
+     word-spacing:0px; 
+     letter-s</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="数组" scheme="http://linxuesong.github.io/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="LeetCode" scheme="http://linxuesong.github.io/tags/LeetCode/"/>
+    
+    <category term="简单" scheme="http://linxuesong.github.io/tags/%E7%AE%80%E5%8D%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo博客推广计划，如何让更多人知道</title>
+    <link href="http://linxuesong.github.io/2021/07/06/hexo%E5%8D%9A%E5%AE%A2%E6%8E%A8%E5%B9%BF%E8%AE%A1%E5%88%92%EF%BC%8C%E5%A6%82%E4%BD%95%E8%AE%A9%E6%9B%B4%E5%A4%9A%E4%BA%BA%E7%9F%A5%E9%81%93/"/>
+    <id>http://linxuesong.github.io/2021/07/06/hexo%E5%8D%9A%E5%AE%A2%E6%8E%A8%E5%B9%BF%E8%AE%A1%E5%88%92%EF%BC%8C%E5%A6%82%E4%BD%95%E8%AE%A9%E6%9B%B4%E5%A4%9A%E4%BA%BA%E7%9F%A5%E9%81%93/</id>
+    <published>2021-07-06T13:08:12.000Z</published>
+    <updated>2022-12-05T05:59:19.931Z</updated>
+    
+    <content type="html"><![CDATA[<p>搜索如何将自己的站点加入到百度、谷歌等搜索引擎，让更多的人发现你</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;搜索如何将自己的站点加入到百度、谷歌等搜索引擎，让更多的人发现你&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="hexo" scheme="http://linxuesong.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Go性能分析工具</title>
+    <link href="http://linxuesong.github.io/2021/06/17/Go%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/"/>
+    <id>http://linxuesong.github.io/2021/06/17/Go%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/</id>
+    <published>2021-06-17T12:42:37.000Z</published>
+    <updated>2022-12-05T05:59:19.322Z</updated>
+    
+    <content type="html"><![CDATA[<p>一、GODEBUG参数<br>特别方便，无需下载第三方工具，无需修改程序 代码</p><p>分析协程调度情况</p><p><a href="https://segmentfault.com/a/1190000020108079">https://segmentfault.com/a/1190000020108079</a></p><h1 id="二、Trace"><a href="#二、Trace" class="headerlink" title="二、Trace"></a>二、Trace</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>无需下载第三方工具，需要修改程序代码</p><p><a href="https://segmentfault.com/a/1190000019736288">https://segmentfault.com/a/1190000019736288</a></p><h2 id="如何用"><a href="#如何用" class="headerlink" title="如何用"></a>如何用</h2><p>修改代码,加入trace</p><pre><code>import (    &quot;os&quot;    &quot;runtime/trace&quot;)func main() &#123;    trace.Start(os.Stderr)    defer trace.Stop() //一定要这一行执行后才会有trace文件    ch := make(chan string)    go func() &#123;        ch &lt;- &quot;EDDYCJY&quot;    &#125;()    &lt;-ch&#125;</code></pre><p>生成跟踪文件：</p><pre class=" language-lang-go"><code class="language-lang-go">$ go run main.go 2> trace.out //     运行生成追踪文件</code></pre><p>分析追踪文件</p><pre><code>$ go tool trace trace.out //     会启动浏览器，展示网页版分析报告</code></pre><p>分析结果说明</p><p><img src="/Users/linxuesong/Library/Application Support/typora-user-images/image-20210621110611559.png" alt="image-20210621110611559"></p><h2 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h2><p>分析结果</p><h4 id="实例1-如何分析程序耗时时间长—-Scheduler-latency-profile-调度延迟概况"><a href="#实例1-如何分析程序耗时时间长—-Scheduler-latency-profile-调度延迟概况" class="headerlink" title="实例1: 如何分析程序耗时时间长—-Scheduler latency profile-调度延迟概况"></a>实例1: 如何分析程序耗时时间长—-Scheduler latency profile-调度延迟概况</h4><p>多协程生成随机数据，随机数据做参数访问</p><pre><code>var wg sync.WaitGroup // main等待所有goroutine结束func CallGetUserInfoDbatchGoVersion() &#123;    rand.Seed(time.Now().UnixNano()) // 使用rand生成随机种子，**之后性能分析我们会发现这个地方有问题**    uidcnt := rand.Intn(50)  // 使用随机种子生成50以内随机数   **之后性能分析我们会发现这个地方有问题**  SCFCALL(uidcnt) // 使用生成的随机数做参数远程调用，具体处理逻辑忽略&#125;func main() &#123;        for j:=0;j&lt;100;j++ &#123;            wg.Add(1)            go CallGetUserInfoDbatchGoVersion() // 开启多goroutine        &#125;        wg.Wait()    log.Println(&quot;执行完毕&quot;)&#125;</code></pre><p>对上面代码加上trace的分析</p><pre><code>import &quot;runtime/trace&quot;var wg sync.WaitGroup // main等待所有goroutine结束func CallGetUserInfoDbatchGoVersion() &#123;    rand.Seed(time.Now().UnixNano()) // 使用rand生成随机种子，**之后性能分析我们会发现这个地方有问题**    uidcnt := rand.Intn(50)  // 使用随机种子生成50以内随机数  SCFCALL(uidcnt) // 使用生成的随机数做参数远程调用，具体处理逻辑忽略&#125;func main() &#123;    trace.Start(f)    defer trace.Stop() // 注意一定要执行了trace.Stop之后才会生成分析报告        for j:=0;j&lt;100;j++ &#123;            wg.Add(1)            go CallGetUserInfoDbatchGoVersion() // 开启多goroutine        &#125;        wg.Wait()    log.Println(&quot;执行完毕&quot;)&#125;</code></pre><p>结果报告中“Scheduler latency profile-调度延迟概况”如下</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/image-20210621110812103.png" alt="image-20210621110812103"></p><p>可以看到锁耗时占用到了77%，看调用来自Seed(*Rand),定位到耗时函数的位置后，分析这个函数</p><pre><code>func Seed(seed int64) &#123; globalRand.Seed(seed) &#125; // 使用了全局对象globalRand，这个对象是lockedSource，每次使用前会加锁，导致每个go routin竞争锁func Intn(n int) int &#123; return globalRand.Intn(n) &#125; // 使用全局对象，多routine会有所得竞争</code></pre><p>解决方案:正对每个go routine生成单独的Rand对象rngSource</p><pre><code>func CallGetUserInfoDbatchGoVersion() &#123;    r := rand.New(rand.NewSource(time.Now().UnixNano()))     //   全局对象替换成创建本地对象    uidcnt := r.Intn(50)  // 使用随机种子生成50以内随机数      //   全局对象替换成本地对象  SCFCALL(uidcnt) // 使用生成的随机数做参数远程调用，具体处理逻辑忽略&#125;</code></pre><p>修改后的性能分析截图—整体耗时缩短，而且不会在随机数这里有长耗时：</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/image-20210621142726349.png" alt="image-20210621142726349"></p><h1 id="三、PProf"><a href="#三、PProf" class="headerlink" title="三、PProf"></a>三、PProf</h1><p>需要下载第三方工具，需要修改程序代码</p><p><a href="https://segmentfault.com/a/1190000016412013">https://segmentfault.com/a/1190000016412013</a></p><p>使用举例</p><pre><code></code></pre><p>分析结果</p>]]></content>
+    
+    
+    <summary type="html">本片文章介绍如何对go程序进行分析，如程序长耗时所在位置、程序协程调度信息、内存使用情况、火焰图等等，主要介绍两个工具trace和pprof</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Golang" scheme="http://linxuesong.github.io/tags/Golang/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>主题优化增加网页百度统计功能</title>
+    <link href="http://linxuesong.github.io/2021/06/04/%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E5%A2%9E%E5%8A%A0%E7%BD%91%E9%A1%B5%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD/"/>
+    <id>http://linxuesong.github.io/2021/06/04/%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E5%A2%9E%E5%8A%A0%E7%BD%91%E9%A1%B5%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD/</id>
+    <published>2021-06-04T11:56:09.000Z</published>
+    <updated>2022-12-05T05:59:20.108Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.开通百度统计账号</p><p>2.获取跟踪代码</p><p>3.将跟踪代码放到head末尾位置<br>本主题的head路径为themes/Sakura/layout/_partial/head.ejs</p><p>TODO: 继续优化将其变成一个站点配置功能，使用指定的百度提供代码中的key作为区分不同的统计</p><pre><code># Baidu Analytics IDbaidu_analytics: 上面步骤中记录的百度统计里用户的key值。</code></pre><p>4.效果截图</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/image-20210604200116710.png" alt="image-20210604200116710"></p><p>参考代码<a href="http://www.jcsama.com/2016/01/25/hexo-baido-analytics/">http://www.jcsama.com/2016/01/25/hexo-baido-analytics/</a></p>]]></content>
+    
+    
+    <summary type="html">描述如何给hexo博客增加百度统计数据</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="主题美化" scheme="http://linxuesong.github.io/tags/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>protobuf学习整理</title>
+    <link href="http://linxuesong.github.io/2021/06/03/protobuf%E5%AD%A6%E4%B9%A0%E6%95%B4%E7%90%86/"/>
+    <id>http://linxuesong.github.io/2021/06/03/protobuf%E5%AD%A6%E4%B9%A0%E6%95%B4%E7%90%86/</id>
+    <published>2021-06-03T11:53:54.000Z</published>
+    <updated>2022-12-05T05:59:20.062Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、ProtoBuf简介"><a href="#一、ProtoBuf简介" class="headerlink" title="一、ProtoBuf简介"></a>一、ProtoBuf简介</h1><p>语言平台无关的、灵活、高效、自动化的序列化机制</p><p>类似协议：XML、JSON</p><p>区别点：<u>XML、JSON关注人类可读性，通常用于双方交互的协议；ProtoBuf更关注压缩效率、传输速度，人类可读性差(指序列化之后的文件)</u></p><h1 id="二、如何用？"><a href="#二、如何用？" class="headerlink" title="二、如何用？"></a>二、如何用？</h1><h2 id="2-1golang语言"><a href="#2-1golang语言" class="headerlink" title="2.1golang语言"></a>2.1golang语言</h2><h3 id="2-1-0环境准备"><a href="#2-1-0环境准备" class="headerlink" title="2.1.0环境准备"></a>2.1.0环境准备</h3><p>需要如下两个工具</p><p>1.<strong>protoc</strong>:可以执行不同语言的api，生成不同语言版本的结构体文件</p><p>2.<strong>protoc-gen-go</strong>:go版本的生成程序可以生成go语言的结构体</p><p>以上工具不同版本生成的文件是不一样的，所以安需要下载指定版本</p><p>安装最新版本</p><pre><code>1.安装最新的protoc-gen-go, 在gopath路径下执行如下命令go get github.com/golang/protobuf/protoc-gen-go // protoc-gen-go会安到$gopath/bin下,如果自己下载编译，也要放到这个路径下2.安装最新的protobufhttps://github.com/protocolbuffers/protobuf/releases //下载后解压，可以做其他的部分</code></pre><hr><p>安装之前的版本</p><pre><code>1.安装之前版本的protoc-gen-go, 在gopath路径下执行如下命令GIT_TAG=&quot;v1.2.0&quot;go get -d -u github.com/golang/protobuf/protoc-gen-gogit -C &quot;$(go env GOPATH)&quot;/src/github.com/golang/protobufcheckout $GIT_TAGgo install github.com/golang/protobuf/protoc-gen-go2.安装之前版本的protobufhttps://github.com/protocolbuffers/protobuf/releases</code></pre><h3 id="2-2-1准备原协议-proto文件"><a href="#2-2-1准备原协议-proto文件" class="headerlink" title="2.2.1准备原协议.proto文件"></a>2.2.1准备原协议.proto文件</h3><pre><code>message xxx &#123;  // 字段规则：required -&gt; 字段只能也必须出现 1 次  // 字段规则：optional -&gt; 字段可出现 0 次或1次  // 字段规则：repeated -&gt; 字段可出现任意多次（包括 0）  // 类型：int32、int64、sint32、sint64、string、32-bit ....  // 字段编号：0 ~ 536870911（除去 19000 到 19999 之间的数字）  字段规则 类型 名称 = 字段编号;&#125;</code></pre><pre class=" language-lang-protobuf"><code class="language-lang-protobuf">// 例1: 在 xxx.proto 文件中定义 Example1 message  // 包含五个字段，依次为string,bytes,EmbeddedMessage自定义结构体,repeatedInt32Val,repeatedStringValsyntax = "proto3";  // protobuf版本package user;  // 声明protobuf文件所在包，方便被其他protobuf文件导入结构体，一般放到proto/自定义包名路径下option go_package = "github.com/xvrzhao/pb-demo/proto/user";  // 声明生成的go文件所属的包import "proto/user/message.proto";  // 导入同包内的其他 proto 文件import "proto/article/message.proto";  // 导入其他包的 proto 文件message Example1 &#123;    optional string stringVal = 1;    optional bytes bytesVal = 2;    message EmbeddedMessage &#123;        int32 int32Val = 1;        string stringVal = 2;    &#125;    optional EmbeddedMessage embeddedExample1 = 3;    repeated int32 repeatedInt32Val = 4;    repeated string repeatedStringVal = 5;&#125;</code></pre><h3 id="2-2-3生成proto-go文件"><a href="#2-2-3生成proto-go文件" class="headerlink" title="2.2.3生成proto.go文件"></a>2.2.3生成proto.go文件</h3><pre><code>protoc --go_out=&#123;输出位置&#125; &#123;.proto文件路径&#125;// 例如  protobuf包解压路径/src/protoc --go_out=. msg.proto//protoc如果没有加入到/usr/local/bin</code></pre><h2 id="2-2-JAVA语言"><a href="#2-2-JAVA语言" class="headerlink" title="2.2 JAVA语言"></a>2.2 JAVA语言</h2><h3 id="2-2-3编译命令"><a href="#2-2-3编译命令" class="headerlink" title="2.2.3编译命令"></a>2.2.3编译命令</h3><ul><li>-I 后面是 proto 文件所在目录</li><li>—java_out 后面是 java 文件存放地址</li><li>最后一行是 proto 文件名称</li></ul><pre><code>protoc -I=src/main/resource/proto --java_out=src/main/java gps_data.proto</code></pre><pre><code>public class Main &#123;    public static void main(String[] args) &#123;        System.out.println(&quot;===== 构建一个GPS模型开始 =====&quot;);        GpsDataProto.gps_data.Builder gps_builder = GpsDataProto.gps_data.newBuilder();        gps_builder.setAltitude(1);        gps_builder.setDataTime(&quot;2017-12-17 16:21:44&quot;);        gps_builder.setGpsStatus(1);        gps_builder.setLat(39.123);        gps_builder.setLon(120.112);        gps_builder.setDirection(30.2F);        gps_builder.setId(100L);        GpsDataProto.gps_data gps_data = gps_builder.build();        System.out.println(gps_data.toString());        System.out.println(&quot;===== 构建GPS模型结束 =====&quot;);        System.out.println(&quot;===== gps Byte 开始=====&quot;);        for (byte b : gps_data.toByteArray()) &#123;            System.out.print(b);        &#125;        System.out.println(&quot;\n&quot; + &quot;bytes长度&quot; + gps_data.toByteString().size());        System.out.println(&quot;===== gps Byte 结束 =====&quot;);        System.out.println(&quot;===== 使用gps 反序列化生成对象开始 =====&quot;);        GpsDataProto.gps_data gd = null;        try &#123;            gd = GpsDataProto.gps_data.parseFrom(gps_data.toByteArray());        &#125; catch (InvalidProtocolBufferException e) &#123;            e.printStackTrace();        &#125;        System.out.print(gd.toString());        System.out.println(&quot;===== 使用gps 反序列化生成对象结束 =====&quot;);    &#125;&#125;</code></pre><h3 id="2-2-4常见问题"><a href="#2-2-4常见问题" class="headerlink" title="2.2.4常见问题"></a>2.2.4常见问题</h3><pre><code>&lt;dependency&gt;    &lt;groupId&gt;com.google.protobuf&lt;/groupId&gt;    &lt;artifactId&gt;protobuf-java&lt;/artifactId&gt;    &lt;version&gt;3.8.0&lt;/version&gt;&lt;/dependency&gt;</code></pre><pre><code>Send Encrypt Format:https://im.58.com/msg/sendmsg?params=KpGqIsMkjMQ-hlsc9cr2AwXdcBcQVFgKzupEoQ9nubVvlaSyJ7hQLMsdh2CTBRoNCN2KAjsd9TY04YrxQr246CdFY3ynkdh15qSM9Msyu1o_9NmhvStJo8Ib9MGIsvpSMVTnut9W1M_D5gRidqBhMSRRWQPS_9OXZr0GUPYL6H8OU7EBnqW0vc6YOoVQAVOtrSJE0sP4gaXrHtWD09QvUnr8xcyO5blJQz5NCgRcTSEtCQl9geBnKSc5XTqSDDwyBQ5eXwOtq-ge_H-ZlGyuUgo_u-jcRIy63d7-OaZgoPrFBYztNEsZyYAE7yNn5jdOJu2T7Oazz92i5YB5x4e_O7pZv4Erm-tsoQaN10t59g4jSZr2WciigoaHnng0woIlGKHSJtleql-EKfKaW3nIePaPQWuA6H0iDFHMA_HB7IuMN_HkZ1g3o1BovuU-YvvTJwi_cVpOM6VauqAGIBtf5VEXKevq2vjfeeU7I_e1-HwZcULA2TmlC-nYNmVvchFvevOGL9bUEqHydbaEkTfVAw9hPFLQTBiTJeyjrz0r-M_TkbZlPkNeZkbhnQAktHaYN5gtMQYzRXSI7JNWNJwsjFKLHuUa9Ut0YBPFjYlpjcmd2_AiIcWGhs6JaHZMP6K2zzgI2qcxxw9Z1YMwYjmezaoLOsB6Yf5jg4UIrKHLzy70pdu-_CVi5tjKoPrVrGDnOOoTKJhpi3Ny-NztIPlwPYjJtZtZU8Y9HPHHqoRdvmk3eAKTLOLyk1u65p-4YkNCl2QksptlYVCAvrtbS94l35gRQ-lEMs4fUGgIP-jir4QjLBD101IRVg96X7e6XszNCkX_RpONx_Uh51ZaxlJ5iNG8_TCZLyuCD7EgQyPcFTmaubHmsm0HmzespMIsmkUOrEvvMbh-2wqCdV5EAJP-NjKY_HQ16DiC0u4xkV111eaAwc1HkrBlrAy7XECAa5lM1ln3fDj25gThpGpthQKVKjs39dQqC5Yc93m6tYpsZTg%3D&amp;version=a1.0</code></pre>]]></content>
+    
+    
+    <summary type="html">protobuf学习整理归纳</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="protobuf" scheme="http://linxuesong.github.io/tags/protobuf/"/>
+    
+    <category term="go" scheme="http://linxuesong.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac快捷键整理</title>
+    <link href="http://linxuesong.github.io/2021/05/25/mac%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/"/>
+    <id>http://linxuesong.github.io/2021/05/25/mac%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/</id>
+    <published>2021-05-25T06:14:02.000Z</published>
+    <updated>2022-12-05T05:59:19.963Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="基本快捷键"><a href="#基本快捷键" class="headerlink" title="基本快捷键"></a>基本快捷键</h1><h2 id="1、通用操作"><a href="#1、通用操作" class="headerlink" title="1、通用操作"></a>1、通用操作</h2><p>Command是Mac里最重要的修饰键，在大多数情况下相当于Windows下的Ctrl。所以以下最基本操作很好理解：</p><p>Command-Z 撤销　<br>Command-X 剪切　　<br>Command-C 拷贝（Copy）　　<br>Command-V 粘贴　　<br>Command-A 全选（All）　　<br>Command-S 保存（Save)　　<br>Command-F 查找（Find）</p><h2 id="2-截图"><a href="#2-截图" class="headerlink" title="2.截图"></a>2.截图</h2><p>Command-Shift-4 截取所选屏幕区域到一个文件　　<br>Command-Shift-3 截取全部屏幕到文件　　<br>Command-Shift-Control-3 截取全部屏幕到剪贴板　　<br>Command-Shift-4 截取所选屏幕区域到一个文件，或追加按空格键仅捕捉一个窗口　　<br>Command-Shift-Control-4 截取所选屏幕区域到剪贴板，或按空格键仅捕捉一个窗</p><h2 id="3、在应用程序中："><a href="#3、在应用程序中：" class="headerlink" title="3、在应用程序中："></a>3、在应用程序中：</h2><p>Command-Option-esc 打开强制退出窗口　　<br>Command-H 隐藏（Hide）当前正在运行的应用程序窗口　　<br>Command-Option-H 隐藏（Hide）其他应用程序窗口　　<br>Command-Q 退出（Quit）最前面的应用程序　　<br>Command-Shift-Z 重做，也就是撤销的逆向操作　　<br>Command-Tab 在打开的应用程序列表中转到下一个最近使用的应用程序，相当于Windows中（Alt+Tab）　　<br>Command-Option-esc 打开“强制退出”窗口，如果有应用程序无响应，可在窗口列表中选择强制退出</p><h2 id="4、文本处理："><a href="#4、文本处理：" class="headerlink" title="4、文本处理："></a>4、文本处理：</h2><p>Command-右箭头 将光标移至当前行的行尾　　<br>Command-B 切换所选文字粗体（Bold）显示　　<br>fn-Delete 相当于PC全尺寸键盘上的Delete，也就是向后删除　　<br>fn-上箭头 向上滚动一页（Page Up）　　<br>fn-下箭头 向下滚动一页（Page Down）　　<br>fn-左箭头 滚动至文稿开头（Home）　　<br>fn-右箭头 滚动至文稿末尾（End）　　<br>Command-右箭头 将光标移至当前行的行尾　　<br>Command-左箭头 将光标移至当前行的行首　　<br>Command-下箭头 将光标移至文稿末尾　　<br>Command-上箭头 将光标移至文稿开头　　<br>Option-右箭头 将光标移至下一个单词的末尾　　<br>Option-左箭头 将光标移至上一个单词的开头　　<br>Control-A 移至行或段落的开头</p><h2 id="5、在Finder中："><a href="#5、在Finder中：" class="headerlink" title="5、在Finder中："></a>5、在Finder中：</h2><p>Command-Option-V 剪切文件　　<br>Command-Shift-N 新建文件夹（New）　　<br>Command-Shift-G 调出窗口，可输入绝对路径直达文件夹（Go）　　<br>return 这个其实不算快捷键，点击文件，按下可重命名文件　　<br>Command-O 打开所选项。在Mac里打开文件不像Windows里直接按Enter　　<br>Command-Option-V 作用相当于Windows里的文件剪切。在其它位置上对文件复制（Command-C），在目的位置按下这个快捷键，文件将被剪切到此位置　　<br>Command-上箭头 打开包含当前文件夹的文件夹，相当于Windows里的“向上”　　<br>Command-Delete 将文件移至废纸篓　　<br>Command-Shift-Delete 清倒废纸篓　　<br>空格键 快速查看选中的文件，也就是预览功能</p><h2 id="6、在浏览器中："><a href="#6、在浏览器中：" class="headerlink" title="6、在浏览器中："></a>6、在浏览器中：</h2><p>Control-Tab 转向下一个标签页　　<br>Command-L 光标直接跳至地址栏　　<br>Control-Tab 转向下一个标签页　　<br>Control-Shift-Tab 转向上一个标签页　　<br>Command-加号或等号 放大页面　　<br>Command-减号 缩小页面</p><h2 id="7-Mac启动与关机时的快捷键："><a href="#7-Mac启动与关机时的快捷键：" class="headerlink" title="7.Mac启动与关机时的快捷键："></a>7.Mac启动与关机时的快捷键：</h2><p>Command-Option-P-R 重置NVRAM　　<br>Option 开机后立即按下，将显示启动管理器，如果Mac装有双系统或者插有启动U盘，可在启动管理器中选择启动盘　　<br>Command-R 开机后立即按下，可打开OS X的恢复功能（Recovery）　　<br>Command-Option-P-R 开机后立即按下，重置NVRAM。有些时候电脑会出现些小问题，重置NVRAM是你除了重新启动，尝试修复的第一选择。　　<br>Command-Option-Control-电源按钮 退出所有应用程序，允许你进行文稿储存，然后关机　　<br>按住电源按钮5秒 强制Mac关机</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;基本快捷键&quot;&gt;&lt;a href=&quot;#基本快捷键&quot; class=&quot;headerlink&quot; title=&quot;基本快捷键&quot;&gt;&lt;/a&gt;基本快捷键&lt;/h1&gt;&lt;h2 id=&quot;1、通用操作&quot;&gt;&lt;a href=&quot;#1、通用操作&quot; class=&quot;headerlink&quot; title=&quot;1</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="资料整理" scheme="http://linxuesong.github.io/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MarkDown快速查询转移字符</title>
+    <link href="http://linxuesong.github.io/2021/05/25/MarkDown%E5%BF%AB%E9%80%9F%E6%9F%A5%E8%AF%A2%E8%BD%AC%E7%A7%BB%E5%AD%97%E7%AC%A6/"/>
+    <id>http://linxuesong.github.io/2021/05/25/MarkDown%E5%BF%AB%E9%80%9F%E6%9F%A5%E8%AF%A2%E8%BD%AC%E7%A7%BB%E5%AD%97%E7%AC%A6/</id>
+    <published>2021-05-25T06:13:33.000Z</published>
+    <updated>2022-12-05T05:59:19.775Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="MarkDown快速查询转移字符"><a href="#MarkDown快速查询转移字符" class="headerlink" title="MarkDown快速查询转移字符"></a>MarkDown快速查询转移字符</h1><h1 id="公式块部分"><a href="#公式块部分" class="headerlink" title="公式块部分"></a>公式块部分</h1><p>举例</p><pre><code>$$dp[i]=\begin&#123;cases&#125;    计算式1     &amp;计算式条件  \\换行    计算式2    &amp;计算式条件  \\换行\end&#123;cases&#125;$$</code></pre><p>详细表格</p><div class="table-container"><table><thead><tr><th style="text-align:left">公式块</th><th style="text-align:left">\begin{cases}     内容    \end{cases}</th><th style="text-align:left">大公式表达式</th></tr></thead><tbody><tr><td style="text-align:left"></td><td style="text-align:left">\big</td><td style="text-align:left">[ //比较大的左中括号</td></tr><tr><td style="text-align:left"></td><td style="text-align:left">\bigg[</td><td style="text-align:left">//再大一点</td></tr><tr><td style="text-align:left"></td><td style="text-align:left">\Big[</td><td style="text-align:left">//比big大一点</td></tr><tr><td style="text-align:left"></td><td style="text-align:left">\Bigg[</td><td style="text-align:left">//比bigg大一点</td></tr><tr><td style="text-align:left"></td><td style="text-align:left">a_2  a下标2            a^3 a上标3</td><td style="text-align:left">上标下标</td></tr><tr><td style="text-align:left"></td><td style="text-align:left">\sum ：∑  \int ：∫  \oint ：∮  \prod：∏</td><td style="text-align:left">求和、求导</td></tr><tr><td style="text-align:left"></td><td style="text-align:left">\alpha： α  \beta： β  \gamma：γ  \Phi ： Φ  \Omega：Ω  \Delta： Δ  \delta： δ</td><td style="text-align:left">希腊字母</td></tr></tbody></table></div><h1 id="代码块部分"><a href="#代码块部分" class="headerlink" title="代码块部分"></a>代码块部分</h1><h1 id="文本部分"><a href="#文本部分" class="headerlink" title="文本部分"></a>文本部分</h1><p><br/></p><table border="1">  <caption>MarkDown文本转移</caption>  <tr>    <th style="text-align:center;">输入文本</th>    <th style="text-align:center;">显示内容</th>  </tr>  <tr>    <td style="text-align:center;">&amp;nbsp;   或者    键盘全角模式空格键</td>    <td style="text-align:center;">空格</td>  </tr>  <tr>    <td style="text-align:center;">&lt;sup&gt;xxx&lt;/sup&gt;</td>    <td style="text-align:center;">上标</td>  </tr>    <tr>    <td style="text-align:center;">&lt;sub&gt;xxx&lt;/sub&gt;</td>    <td style="text-align:center;">下标</td>  </tr>    <tr>    <td style="text-align:center;">30&amp;deg;</td>    <td style="text-align:center;">角度符号30&deg;</td>  </tr></table><p><br/></p><h1 id="表格部分"><a href="#表格部分" class="headerlink" title="表格部分"></a>表格部分</h1><p>如果markdown语法对应的表格在hexo上无法显示可以直接插入html代码</p><pre class=" language-lang-html"><code class="language-lang-html"><table border="1">  <caption>MarkDown文本转移</caption>  <tr>    <th>标题1</th>    <th>标题2</th>  </tr>  <tr>    <td>行1列1</td>    <td>行1列2</td>  </tr>  <tr>    <td>行2列1</td>    <td>行2列2</td>  </tr>、</table></code></pre><p><strong>1.如何表格中要加入需要转移的内容可以访问<a href="https://www.sojson.com/rehtml">https://www.sojson.com/rehtml</a></strong></p><p><strong>2.style=”text-align:center;” 在tb、th标签中加入样式控制对齐方式</strong></p>]]></content>
+    
+    
+    <summary type="html">markdown常用转移字符，方便书写博客文档</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="资料整理" scheme="http://linxuesong.github.io/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux常用命令整理</title>
+    <link href="http://linxuesong.github.io/2021/05/25/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/"/>
+    <id>http://linxuesong.github.io/2021/05/25/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</id>
+    <published>2021-05-25T06:12:56.000Z</published>
+    <updated>2022-12-05T05:59:19.760Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Linux常用命令整理"><a href="#Linux常用命令整理" class="headerlink" title="Linux常用命令整理"></a>Linux常用命令整理</h1><h1 id="一、文件操作"><a href="#一、文件操作" class="headerlink" title="一、文件操作"></a>一、文件操作</h1><p>移动:mv</p><p>复制:cp</p><p>删除:rm</p><p>创建文件夹:mkdir -p参数是即使父目录不存在，递归创建出来文件夹</p><p>查找: find 路径 -name  文件名 </p><h1 id="二、进程管理"><a href="#二、进程管理" class="headerlink" title="二、进程管理"></a>二、进程管理</h1><h2 id="1-ps命令"><a href="#1-ps命令" class="headerlink" title="1.ps命令"></a>1.ps命令</h2><p>ps - aux|(grep 命令名) 显示所有进程信息，连同命令行</p><p>显示结果说明:</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210120163959.png" alt="image-20210120163951774"></p><p>主要参数:</p><div class="table-container"><table><thead><tr><th>USER</th><th>用户账号</th></tr></thead><tbody><tr><td>PID</td><td>当前进程ID</td></tr><tr><td>CPU</td><td>进程占用CPU</td></tr><tr><td>MEM</td><td>进程占用内存</td></tr><tr><td>VSZ</td><td>虚拟内存量Kbytes</td></tr><tr><td>RSS</td><td>物理内存量KBytes</td></tr><tr><td>TTY</td><td>于哪一终端运作,如果与终端机无关显示?</td></tr><tr><td>STAT</td><td>进程状态<br />R运行、S睡眠、T停止、Z僵尸</td></tr><tr><td>START</td><td>启动时间</td></tr><tr><td>TIME</td><td>实际占用CPU运行时间</td></tr><tr><td>COMMAND</td><td>该程序的实际命令</td></tr></tbody></table></div><h1 id="三、文件内容查看及操作"><a href="#三、文件内容查看及操作" class="headerlink" title="三、文件内容查看及操作"></a>三、文件内容查看及操作</h1><p>tail  -fn100   文件  |grep 内容    循环查看日志文件某内容最新消息</p><p>快速查找匹配文本grep -Frn 匹配内容   文件名 </p><p>快速编辑匹配文本sed</p><p>格式化文本awk:  如快速输出每一行的第1个和第4个单词</p><p>awk ‘{if($6==”42030”) {print} }’ hdp_teu_spat_im_php_access_info.2021042017.*|grep 23653471544838</p><h2 id="1-awk"><a href="#1-awk" class="headerlink" title="1.awk"></a>1.awk</h2><h3 id="1-1通用格式"><a href="#1-1通用格式" class="headerlink" title="1.1通用格式"></a>1.1通用格式</h3><p> awk’{pattern+action}’   filename</p><p> (其操作为每读取一行执行action一次)</p><h3 id="1-2参数详情"><a href="#1-2参数详情" class="headerlink" title="1.2参数详情"></a>1.2参数详情</h3><h3 id="1-3举例："><a href="#1-3举例：" class="headerlink" title="1.3举例："></a>1.3举例：</h3><h4 id="1-3-1打印每一行的第一个文本"><a href="#1-3-1打印每一行的第一个文本" class="headerlink" title="1.3.1打印每一行的第一个文本"></a>1.3.1打印每一行的第一个文本</h4><p>awk ‘{print $1}’  file1  </p><h4 id="1-3-2加入初始和结尾的执行语句"><a href="#1-3-2加入初始和结尾的执行语句" class="headerlink" title="1.3.2加入初始和结尾的执行语句"></a>1.3.2加入初始和结尾的执行语句</h4><p>awk  ‘BGGEIN{print “我是开头”}    {print $1}    END{print “结尾”}’</p><p>BEGIN、END后面的语句仅执行一次，中间的语句则每读取一次执行一次</p><h4 id="1-3-3加入条件语句if"><a href="#1-3-3加入条件语句if" class="headerlink" title="1.3.3加入条件语句if"></a>1.3.3加入条件语句if</h4><p>awk {   if($5!=’”lin”)  {print $5}   }</p><p>过滤每行第5个参数为lin的行，打出其他第5行的参数</p><h2 id="2-Sed匹配删除替换指定文本"><a href="#2-Sed匹配删除替换指定文本" class="headerlink" title="2.Sed匹配删除替换指定文本"></a>2.Sed匹配删除替换指定文本</h2><h3 id="2-1通用格式"><a href="#2-1通用格式" class="headerlink" title="2.1通用格式"></a>2.1通用格式</h3><p> sed     -nefri  ‘command’   文件内容</p><p> (其操作为每读取一行执行action一次)</p><h3 id="2-2参数详情"><a href="#2-2参数详情" class="headerlink" title="2.2参数详情"></a>2.2参数详情</h3><p>　<strong>常用选项：</strong><br>　　  -n∶使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN的资料一般都会被列出到萤幕上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。<br>    -e∶直接在指令列模式上进行 sed 的动作编辑；<br>    -f∶直接将 sed 的动作写在一个档案内， -f filename 则可以执行 filename 内的sed 动作；<br>    -r∶sed 的动作支援的是延伸型正规表示法的语法。(预设是基础正规表示法语法)<br>    -i∶直接修改读取的档案内容，而不是由萤幕输出。    </p><p>　　<strong>常用命令：</strong><br>    a  ∶新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～<br>    c  ∶取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！<br>    d  ∶删除，因为是删除啊，所以 d 后面通常不接任何咚咚；<br>　　  i  ∶插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；<br>　　  p ∶列印，亦即将某个选择的资料印出。通常 p 会与参数 sed -n 一起运作～<br>　　  s ∶取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦！</p><h3 id="2-3举例"><a href="#2-3举例" class="headerlink" title="2.3举例"></a>2.3举例</h3><p>　　假设我们有一文件名为ab。</p><h4 id="2-3-1删除某行："><a href="#2-3-1删除某行：" class="headerlink" title="2.3.1删除某行："></a>2.3.1删除某行：</h4><pre><code># sed &#39;1d&#39; ab              #删除第一行 # sed &#39;$d&#39; ab              #删除最后一行# sed &#39;1,2d&#39; ab           #删除第一行到第二行# sed &#39;2,$d&#39; ab           #删除第二行到最后一行</code></pre><h4 id="2-3-2显示某行："><a href="#2-3-2显示某行：" class="headerlink" title="2.3.2显示某行："></a>2.3.2显示某行：</h4><pre><code># sed -n &#39;1p&#39; ab           #显示第一行 # sed -n &#39;$p&#39; ab           #显示最后一行# sed -n &#39;1,2p&#39; ab        #显示第一行到第二行# sed -n &#39;2,$p&#39; ab        #显示第二行到最后一行</code></pre><h4 id="2-3-3使用模式进行查询："><a href="#2-3-3使用模式进行查询：" class="headerlink" title="2.3.3使用模式进行查询："></a>2.3.3使用模式进行查询：</h4><pre><code># sed -n &#39;/ruby/p&#39; ab    #查询包括关键字ruby所在所有行# sed -n &#39;/\$/p&#39; ab        #查询包括关键字$所在所有行，使用反斜线\屏蔽特殊含义</code></pre><h4 id="2-3-4增加一行或多行字符串："><a href="#2-3-4增加一行或多行字符串：" class="headerlink" title="2.3.4增加一行或多行字符串："></a>2.3.4增加一行或多行字符串：</h4><p><a href="javascript:void(0"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p><pre><code># cat ab     Hello!     ruby is me,welcome to my blog.     end# sed &#39;1a drink tea&#39; ab  #第一行后增加字符串&quot;drink tea&quot;     Hello!     drink tea     ruby is me,welcome to my blog.      end# sed &#39;1,3a drink tea&#39; ab #第一行到第三行后增加字符串&quot;drink tea&quot;     Hello!     drink tea     ruby is me,welcome to my blog.     drink tea     end     drink tea# sed &#39;1a drink tea\nor coffee&#39; ab   #第一行后增加多行，使用换行符\n     Hello!     drink tea     or coffee     ruby is me,welcome to my blog.     end</code></pre><h4 id="2-3-5代替一行或多行："><a href="#2-3-5代替一行或多行：" class="headerlink" title="2.3.5代替一行或多行："></a>2.3.5代替一行或多行：</h4><p><a href="javascript:void(0"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p><pre><code># sed &#39;1c Hi&#39; ab                #第一行代替为Hi     Hi     ruby is me,welcome to my blog.     end# sed &#39;1,2c Hi&#39; ab             #第一行到第二行代替为Hi     Hi     end</code></pre><p><a href="javascript:void(0"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p><h4 id="2-3-6替换一行中的某部分"><a href="#2-3-6替换一行中的某部分" class="headerlink" title="2.3.6替换一行中的某部分"></a>2.3.6替换一行中的某部分</h4><p>　　格式：sed ‘s/要替换的字符串/新的字符串/g’  （要替换的字符串可以用正则表达式）</p><pre><code># sed -n &#39;/ruby/p&#39; ab | sed &#39;s/ruby/bird/g&#39;    #替换ruby为bird# sed -n &#39;/ruby/p&#39; ab | sed &#39;s/ruby//g&#39;        #删除ruby</code></pre><h4 id="2-3-7插入："><a href="#2-3-7插入：" class="headerlink" title="2.3.7插入："></a>2.3.7插入：</h4><p><a href="javascript:void(0"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p><pre><code># sed -i &#39;$a bye&#39; ab         #在文件ab中最后一行直接输入&quot;bye&quot;# cat ab　　Hello!　　ruby is me,welcome to my blog.　　end　　bye</code></pre><p><a href="javascript:void(0"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p><h4 id="2-3-8删除匹配行："><a href="#2-3-8删除匹配行：" class="headerlink" title="2.3.8删除匹配行："></a>2.3.8删除匹配行：</h4><pre><code>sed -i &#39;/匹配字符串/d&#39;  filename  （注：若匹配字符串是变量，则需要“”，而不是‘’。记得好像是）</code></pre><h4 id="2-3-9替换匹配行中的某个字符串："><a href="#2-3-9替换匹配行中的某个字符串：" class="headerlink" title="2.3.9替换匹配行中的某个字符串："></a>2.3.9替换匹配行中的某个字符串：</h4><pre><code>sed -i &#39;/匹配字符串/s/替换源字符串/替换目标字符串/g&#39; filename</code></pre><h2 id="3-grep匹配文本"><a href="#3-grep匹配文本" class="headerlink" title="3.grep匹配文本"></a>3.grep匹配文本</h2><p>　Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。</p><pre><code>grep [options]</code></pre><p>　　<strong>主要参数</strong><br>　　<strong>[options]主要参数：</strong></p><p><span style="background:yellow"></p><p>　　－c：只输出匹配行的计数。</p><p>&lt;/sapn&gt;</p><p>　　－I：不区分大 小写(只适用于单字符)。<br>　　－h：查询多文件时不显示文件名。<br>　　－l：查询多文件时只输出包含匹配字符的文件名。<br>　　－n：显示匹配行及 行号。<br>　　－s：不显示不存在或无匹配文本的错误信息。<br>　　－v：显示不包含匹配文本的所有行。<br>　　<strong>pattern正则表达式主要参数：</strong><br>　　\： 忽略正则表达式中特殊字符的原有含义。<br>　　^：匹配正则表达式的开始行。<br>　　$: 匹配正则表达式的结束行。<br>　　\&lt;：从匹配正则表达 式的行开始。<br>　　>：到匹配正则表达式的行结束。<br>　　[ ]：单个字符，如[A]即A符合要求 。<br>　　[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。<br>　　。：所有的单个字符。</p><ul><li>：有字符，长度可以为0。</li></ul><h4 id="5-2-grep简单使用"><a href="#5-2-grep简单使用" class="headerlink" title="5.2 grep简单使用"></a>5.2 grep简单使用</h4><p>　　显示所有以d开头的文件中包含 test的行:</p><pre><code>$ grep &#39;test&#39; d*</code></pre><p>　　显示在aa，bb，cc文件中匹配test的行:</p><pre><code>$ grep &#39;test&#39; aa bb cc</code></pre><p>　　输出匹配行的计数:</p><pre><code> grep -c &quot;48&quot; data.doc   #输出文档中含有48字符的行数</code></pre><p>　　显示匹配行和行数:</p><pre><code>grep -n &quot;48&quot; data.doc       #显示所有匹配48的行和行号</code></pre><p>　　显示非匹配的行:</p><pre><code>grep -vn &quot;48&quot; data.doc      #输出所有不包含48的行</code></pre><p>　　显示非匹配的行:</p><pre><code>grep -vn &quot;48&quot; data.doc      #输出所有不包含48的行</code></pre><p>　　大小写敏感:</p><pre><code>grep -i &quot;ab&quot; data.doc       #输出所有含有ab或Ab的字符串的行</code></pre><h4 id="5-3-grep正则表达式的应用-注意：最好把正则表达式用单引号括起来"><a href="#5-3-grep正则表达式的应用-注意：最好把正则表达式用单引号括起来" class="headerlink" title="5.3 grep正则表达式的应用 (注意：最好把正则表达式用单引号括起来)"></a>5.3 grep正则表达式的应用 (注意：最好把正则表达式用单引号括起来)</h4><pre><code>grep &#39;[239].&#39; data.doc      #输出所有含有以2,3或9开头的，并且是两个数字的行</code></pre><p>　　不匹配测试：</p><pre><code>grep &#39;^[^48]&#39; data.doc      #不匹配行首是48的行</code></pre><p>　　使用扩展模式匹配：</p><pre><code>grep -E &#39;219|216&#39; data.doc</code></pre><p>　　显示所有包含每个字符串至少有5个连续小写字符的字符串的行:</p><pre><code>$ grep &#39;[a-z]\&#123;5\&#125;&#39; aa</code></pre><p>　　如果west被匹配，则es就被存储到内存中，并标记为1，然后搜索任意个字符(.<em>)，这些字符后面紧跟着 另外一个es(\1)，找到就显示该行。如果用egrep或grep -E，就不用”\”号进行转义，直接写成’w(es)t.</em>\1′就可以了:</p><pre><code>$ grep &#39;w\(es\)t.*\1&#39; aa</code></pre><h4 id="5-4-正则表达式-符号表示"><a href="#5-4-正则表达式-符号表示" class="headerlink" title="5.4 正则表达式 符号表示"></a>5.4 正则表达式 符号表示</h4><p><img src="/Users/linxuesong/Library/Application Support/typora-user-images/image-20211018131111242.png" alt="image-20211018131111242"></p><p>a</p><p><img src="/Users/linxuesong/Library/Application Support/typora-user-images/image-20211018131127344.png" alt="image-20211018131127344"></p><h1 id="四、解压文件"><a href="#四、解压文件" class="headerlink" title="四、解压文件"></a>四、解压文件</h1><div class="table-container"><table><thead><tr><th>文件格式</th><th>命令</th></tr></thead><tbody><tr><td>tar</td><td>解压tar - xvf       压缩tar - cvf 压缩目标文件  压缩文件</td></tr><tr><td>tar.gz</td><td>解压tar -zxvf      压缩tar  -czf</td></tr><tr><td>zip</td><td>解压zip  压缩后文件名    压缩unzip<br />需要下载zip</td></tr><tr><td>rar</td><td>解压rar  a  [压缩后文件名]  [被压缩文件]   压缩unrar e<br />需要下载rar</td></tr></tbody></table></div><h1 id="五、检测网络"><a href="#五、检测网络" class="headerlink" title="五、检测网络"></a>五、检测网络</h1><p>netstat -ant        n表示以ip的形势显示而非域名    a显示所有socket默认只显示connected状态的  t监听tcp端口</p><h1 id="六、查看磁盘使用情况"><a href="#六、查看磁盘使用情况" class="headerlink" title="六、查看磁盘使用情况"></a>六、查看磁盘使用情况</h1><h2 id="1-统计磁盘整体情况"><a href="#1-统计磁盘整体情况" class="headerlink" title="1.统计磁盘整体情况"></a>1.统计磁盘整体情况</h2><p>df -h</p><h2 id="2-统计具体文件夹的磁盘使用情况"><a href="#2-统计具体文件夹的磁盘使用情况" class="headerlink" title="2.统计具体文件夹的磁盘使用情况"></a>2.统计具体文件夹的磁盘使用情况</h2><p>du —max-depth=1 -h查看当前目录下的每个文件夹的使用情况</p><p>du -sh显示当前目录整体占用情况</p><h1 id="七、本机和服务器之间的操作"><a href="#七、本机和服务器之间的操作" class="headerlink" title="七、本机和服务器之间的操作"></a>七、本机和服务器之间的操作</h1><p>​    1.nc</p><pre><code>目的主机监听端口  nc -l 监听端口&lt;未使用端口&gt;  &gt; 要接收的文件名      举例： nc -l 4444 &gt; cache.tar.gz源主机发起请求   nc  目的主机ip    目的端口 &lt; 要发送的文件         举例： nc  192.168.0.85  4444 &lt; /root/cache.tar.gz</code></pre><p>传输过程是 目的主机接受文件完成后回自动关闭监听链接</p><h1 id="八、linux输出重定向"><a href="#八、linux输出重定向" class="headerlink" title="八、linux输出重定向"></a>八、linux输出重定向</h1><p>关于shell中：&gt;/dev/null 2&gt;&amp;1 详解</p><p>​    shell中可能经常能看到：&gt;/dev/null 2&gt;&amp;1 。命令的结果可以通过%&gt;的形式来定义输出</p><p>​    分解这个组合：“&gt;/dev/null 2&gt;&amp;1” 为五部分。</p><p>​        1：&gt; 代表重定向到哪里，例如：echo “123” &gt; /home/123.txt<br>​        2：/dev/null 代表空设备文件<br>​        3：2&gt; 表示stderr标准错误<br>​        4：&amp; 表示等同于的意思，2&gt;&amp;1，表示 2 的输出重定向等同于 1<br>​        5：1 表示stdout标准输出，系统默认值是1，<strong>所以”&gt;/dev/null”等同于 “1&gt;/dev/null”</strong></p><p>​    因此，<strong>&gt;/dev/null 2&gt;&amp;1也可以写成 “ 1&gt; /dev/null 2&gt; &amp;1 ”</strong></p><p>那么 <strong><em>&amp;&gt;/dev/null</em></strong> 语句执行过程为：<br>1&gt;/dev/null ：首先表示标准输出重定向到空设备文件，也就是不输出任何信息到终端，说白了就是不显示任何信息。<br>2&gt;&amp;1 ：接着，标准错误输出重定向 到标准输出，因为之前标准输出已经重定向到了空设备文件，所以标准错误输出也重定向到空设备文件。</p><h1 id="九、系统资源统计"><a href="#九、系统资源统计" class="headerlink" title="九、系统资源统计"></a>九、系统资源统计</h1><h2 id="9-0综合"><a href="#9-0综合" class="headerlink" title="9.0综合"></a>9.0综合</h2><h3 id="9-0-1-top"><a href="#9-0-1-top" class="headerlink" title="9.0.1 top"></a>9.0.1 top</h3><pre><code>top接收参数-p 指定要观察的pid交互命令在 top 执行过程当中可以使用的按键指令:数字1 显示所有核的情况? :显示在 top 当中可以输入的按键指令;P :以 CPU 的使用资源排序显示;M :以 Memory 的使用资源排序显示;N :以 PID 来排序喔!T :由该 Process 使用的 CPU 时间累积 (TIME+) 排序。k :给予某个 PID 一个讯号 (signal)r :给予某个 PID 重新制订一个 nice 值。q :离开 top 软件的按键H :显示线程</code></pre><p>参数含义</p><p>第一行</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201914.png" alt="image-20211019195146022"></p><p>目前时间、运行时间、登录人数</p><p>1，5，15分钟每个cpu运行的进程数</p><p>第二行</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019202131.png" alt="image-20211019202130125"></p><p>程序运行总量和个别程序运行状态</p><p>第三行</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019202151.png" alt="image-20211019202149878"></p><p>cpu负载情况, wa表示等待I/O wait比例</p><p>第四五行</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019202206.png" alt="image-20211019202205354"></p><p>swap要尽量少，buffer/cached是 读写磁盘用作缓冲的内存，当内存实在不够用时会释放该部分的内存</p><p>所以实际可用内存= free+buffer+cached</p><p>top下半部分</p><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019202704.png" alt="image-20211019202702503"></p><pre><code>PID :每个 process 的 ID 啦!USER:该 process 所属的使用者;PR :Priority 的简写，程序的优先执行顺序，越小越早被执行; NI :Nice 的简写，与 Priority 有关，也是越小越早被执行; %CPU:CPU 的使用率;%MEM:内存的使用率;TIME+:CPU 使用时间的累加</code></pre><h3 id="9-0-2-dstat"><a href="#9-0-2-dstat" class="headerlink" title="9.0.2 dstat"></a>9.0.2 dstat</h3><pre><code>//实时的监控cpu、磁盘、网络、IO、内存，甚至还有socket等情况，生成csv表格dstat-c：显示CPU系统占用，用户占用，空闲，等待，中断，软件中断等信息。-C：当有多个CPU时候，此参数可按需分别显示cpu状态，例：-C 0,1 是显示cpu0和cpu1的信息。-d：显示磁盘读写数据大小。-D hda,total：include hda and total。-n：显示网络状态。-N eth1,total：有多块网卡时，指定要显示的网卡。-l：显示系统负载情况。-m：显示内存使用情况。-g：显示页面使用情况。-p：显示进程状态。-s：显示交换分区使用情况。-S：类似D/N。-r：I/O请求情况。-y：系统状态。--ipc：显示ipc消息队列，信号等信息。--socket：用来显示tcp udp端口状态。-a：此为默认选项，等同于-cdngy。-v：等同于 -pmgdsc -D total。--output 文件：此选项也比较有用，可以把状态信息以csv的格式重定向到指定的文件中，以便日后查看。例：dstat --output /root/dstat.csv &amp; 此时让程序默默的在后台运行并把结果输出到/root/dstat.csv文件中。</code></pre><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201904.png" alt="image-20211019175009173"></p><h2 id="9-1磁盘"><a href="#9-1磁盘" class="headerlink" title="9.1磁盘"></a>9.1磁盘</h2><pre><code>iostat [-k -m]显示读写单位[-d] 2 每2秒1次[-x]可以显示更详细信息</code></pre><div class="table-container"><table><thead><tr><th style="text-align:left">选项</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">%user</td><td style="text-align:left">CPU在用户态执行进程的时间百分比。</td></tr><tr><td style="text-align:left">%nice</td><td style="text-align:left">CPU在用户态模式下，用于nice操作，所占用CPU总时间的百分比</td></tr><tr><td style="text-align:left">%system</td><td style="text-align:left">CPU处在内核态执行进程的时间百分比</td></tr><tr><td style="text-align:left">%iowait</td><td style="text-align:left">CPU用于等待I/O操作占用CPU总时间的百分比</td></tr><tr><td style="text-align:left">%steal</td><td style="text-align:left">管理程序(hypervisor)为另一个虚拟进程提供服务而等待虚拟CPU的百分比</td></tr><tr><td style="text-align:left">%idle</td><td style="text-align:left">CPU空闲时间百分比</td></tr></tbody></table></div><ol><li>若 %iowait 的值过高，表示硬盘存在I/O瓶颈 </li><li>若 %idle 的值高但系统响应慢时，有可能是CPU等待分配内存，此时应加大内存容量 </li><li>若 %idle 的值持续低于1，则系统的CPU处理能力相对较低，表明系统中最需要解决的资源是 CPU使用比例<strong>iostat -x</strong>  svctm  %util</li></ol><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201918.png" alt="image-20211019173631243"></p><h2 id="9-2cpu"><a href="#9-2cpu" class="headerlink" title="9.2cpu"></a>9.2cpu</h2><h2 id="9-3网卡流量"><a href="#9-3网卡流量" class="headerlink" title="9.3网卡流量"></a>9.3网卡流量</h2><pre><code>// 实时显示网卡流量信息nload</code></pre><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201924.png" alt="image-20211019173936279"></p><h2 id="9-4内存"><a href="#9-4内存" class="headerlink" title="9.4内存"></a>9.4内存</h2><pre><code>vmstatvmstat 3 10 每3秒1次，一共10次，没10不会停-S k｜m 以kb、mb单位显示内存</code></pre><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201924.png" alt="image-20211019174435977"></p><pre><code>字段说明：Procs（进程）r: 运行队列中进程数量，这个值也可以判断是否需要增加CPU。（长期大于1）b: 等待IO的进程数量。Memory（内存）swpd: 使用虚拟内存大小，如果swpd的值不为0，但是SI，SO的值长期为0，这种情况不会影响系统性能。free: 空闲物理内存大小。buff: 用作缓冲的内存大小。cache: 用作缓存的内存大小，如果cache的值大的时候，说明cache处的文件数多，如果频繁访问到的文件都能被cache处，那么磁盘的读IO bi会非常小。Swapsi: 每秒从交换区写到内存的大小，由磁盘调入内存。so: 每秒写入交换区的内存大小，由内存调入磁盘。注意：内存够用的时候，这2个值都是0，如果这2个值长期大于0时，系统性能会受到影响，磁盘IO和CPU资源都会被消耗。有些朋友看到空闲内存（free）很少的或接近于0时，就认为内存不够用了，不能光看这一点，还要结合si和so，如果free很少，但是si和so也很少（大多时候是0），那么不用担心，系统性能这时不会受到影响的。IO（现在的Linux版本块的大小为1kb）bi: 每秒读取的块数bo: 每秒写入的块数注意：随机磁盘读写的时候，这2个值越大（如超出1024k)，能看到CPU在IO等待的值也会越大。system（系统）in: 每秒中断数，包括时钟中断。cs: 每秒上下文切换数。注意：上面2个值越大，会看到由内核消耗的CPU时间会越大。CPU（以百分比表示）us: 用户进程执行时间百分比(user time)us的值比较高时，说明用户进程消耗的CPU时间多，但是如果长期超50%的使用，那么我们就该考虑优化程序算法或者进行加速。sy: 内核系统进程执行时间百分比(system time)sy的值高时，说明系统内核消耗的CPU资源多，这并不是良性表现，我们应该检查原因。wa: IO等待时间百分比wa的值高时，说明IO等待比较严重，这可能由于磁盘大量作随机访问造成，也有可能磁盘出现瓶颈（块操作）。id: 空闲时间百分比</code></pre><p>综合:<strong>top</strong>、、<strong>dstat</strong></p><h1 id="十、其他"><a href="#十、其他" class="headerlink" title="十、其他"></a>十、其他</h1><p>1.在终端开发应用程序，如使用文本编辑器打开文本文件  open -a  &lt;应用程序&gt;  &lt;文件名&gt;</p><p>2.打印文件树 方法一：find . -print | sed -e ‘s;<sup><a href="#fn_/" id="reffn_/">/</a></sup>*/;|<strong><strong>;g;s;</strong></strong>|; |;g’    方法二：下载tree命令</p>]]></content>
+    
+    
+    <summary type="html">linux常用命令归纳，如果有补充，欢迎留言</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="资料整理" scheme="http://linxuesong.github.io/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+    
+    <category term="linux" scheme="http://linxuesong.github.io/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>个人博客的分类和标签</title>
+    <link href="http://linxuesong.github.io/2021/05/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/"/>
+    <id>http://linxuesong.github.io/2021/05/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/</id>
+    <published>2021-05-25T06:12:31.000Z</published>
+    <updated>2022-12-05T05:59:20.093Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="分类和标签"><a href="#分类和标签" class="headerlink" title="分类和标签"></a>分类和标签</h2><p>只有文章支持分类和标签，您可以在 Front-matter 中设置。在其他系统中，分类和标签听起来很接近，但是在 Hexo 中两者有着明显的差别：分类具有顺序性和层次性，也就是说 <code>Foo, Bar</code> 不等于 <code>Bar, Foo</code>；而标签没有顺序和层次。</p><pre><code>categories:- Diarytags:- PS3- Games</code></pre><blockquote><p>分类方法的分歧</p><p>如果您有过使用 WordPress 的经验，就很容易误解 Hexo 的分类方式。WordPress 支持对一篇文章设置多个分类，而且这些分类可以是同级的，也可以是父子分类。但是 Hexo 不支持指定多个同级分类。下面的指定方法：</p><pre><code>categories:  - Diary  - Life</code></pre><p>会使分类<code>Life</code>成为<code>Diary</code>的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。</p><p>如果你需要为文章添加多个分类，可以尝试以下 list 中的方法。</p><pre><code>categories:- [Diary, PlayStation]- [Diary, Games]- [Life]</code></pre><p>此时这篇文章同时包括三个分类： <code>PlayStation</code> 和 <code>Games</code> 分别都是父分类 <code>Diary</code> 的子分类，同时 <code>Life</code> 是一个没有子分类的分类。</p></blockquote><h2 id="1-当前博客的分类"><a href="#1-当前博客的分类" class="headerlink" title="1.当前博客的分类"></a>1.当前博客的分类</h2><p>技术、生活、才艺、期望、纪念</p><h2 id="2-当前博客的标签"><a href="#2-当前博客的标签" class="headerlink" title="2.当前博客的标签"></a>2.当前博客的标签</h2><p><br/>主题相关</br><br>主题美化<br><br/>写作相关</br></p><p><br/><br/><br> <br/>算法相关<br/><br>动态规划、BFS、DFS、回溯、LeetCode<br><br/>golang<br/><br>golang、golang语法基础、golang源码解读、golang第三方包、golang文件读取<br><br/>java<br/><br><br/>趣物发现<br/><br>实物开箱、有趣软件<br><br/>linux<br/><br><br/>操作系统<br/></p><p>悦读、主题美化、LeetCode、MarkDown、Sakura、nginx、web、linux、多线程、感悟、数组、文件读取、简单、算法、黑科技、博客归类、资料整理、动态规划</p>]]></content>
+    
+    
+    <summary type="html">目前博客文章的分类、标签的汇总，方便之后创建文件填写类别</summary>
+    
+    
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="博客归类" scheme="http://linxuesong.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%BD%92%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Golang日志第三方库的使用</title>
+    <link href="http://linxuesong.github.io/2021/05/20/Golang%E6%97%A5%E5%BF%97%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://linxuesong.github.io/2021/05/20/Golang%E6%97%A5%E5%BF%97%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2021-05-20T02:44:05.000Z</published>
+    <updated>2022-12-05T05:59:19.306Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-第三方日志库的对比"><a href="#1-第三方日志库的对比" class="headerlink" title="1.第三方日志库的对比"></a>1.第三方日志库的对比</h1><h1 id="2-Zap"><a href="#2-Zap" class="headerlink" title="2.Zap"></a>2.Zap</h1><h2 id="2-1简单实例-会把日志打印到控制台"><a href="#2-1简单实例-会把日志打印到控制台" class="headerlink" title="2.1简单实例-会把日志打印到控制台"></a>2.1简单实例-会把日志打印到控制台</h2><pre><code>//1.快速创建Zap.logger的方法，使用预先写好的配置创建日志变量//NewExample(Option...)//NewDevelopment(Option...)//NewProductionlogger, _ := zap.NewProduction() defer logger.Sync() // flushes buffer, if any//2.创建日志对象后可以打印日志了，有两种打印日志的方式//2.1效率低一点，但自由度更高sugar := logger.Sugar()sugar.Infow(&quot;failed to fetch URL&quot;,  // Structured context as loosely typed key-value pairs.  &quot;url&quot;, url,  &quot;attempt&quot;, 3,  &quot;backoff&quot;, time.Second,)sugar.Infof(&quot;Failed to fetch URL: %s&quot;, url)//2.2效率高一点，要指定类型defer logger.Sync()logger.Info(&quot;failed to fetch URL&quot;,  // Structured context as strongly typed Field values.  zap.String(&quot;url&quot;, url),  zap.Int(&quot;attempt&quot;, 3),  zap.Duration(&quot;backoff&quot;, time.Second),)</code></pre><h2 id="2-2定义自己的logger-打印到指定文件"><a href="#2-2定义自己的logger-打印到指定文件" class="headerlink" title="2.2定义自己的logger-打印到指定文件"></a>2.2定义自己的logger-打印到指定文件</h2><pre><code>//使用zap.New创建自定义的日志变量//func New(core zapcore.Core, options ...Option) *Logger//zapcore.Core可以使用zapcore.NewCore，如果需要不同级别日志输出到不同文件使用zapcore.NewTee(Core...)放入多个core需要需要三个配置//  Encoder编码器(日志格式)：可以使用预先设置的配置  zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig()),除此之外还有zapcore.NewConsoleEncoder(EncoderConfig)等配置//  WriterSyncer(日志输出位置):zapcore.AddSync(io.Writer)将打开的文件传入//  LogLevel(哪些日志级别的日志将被打印): 可以直接使用提供好的日志级别，也可以定制zap.LevelEnablerFunc(func(lvl zapcore.Level) bool) 传入一个函数返回bool用于判断日志级别是否需要被打印//1.创建Encode日志格式    encoder := zapcore.NewConsoleEncoder(zapcore.EncoderConfig&#123;        MessageKey:  &quot;msg&quot;,        LevelKey:    &quot;level&quot;,        EncodeLevel: zapcore.CapitalLevelEncoder,        TimeKey:     &quot;ts&quot;,        EncodeTime: func(t time.Time, enc zapcore.PrimitiveArrayEncoder) &#123;            enc.AppendString(fmt.Sprintf(&quot;%d%02d%02d_%02d%02d%02d&quot;, t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second()))        &#125;,        CallerKey:    &quot;file&quot;,        EncodeCaller: zapcore.ShortCallerEncoder,        EncodeDuration: func(d time.Duration, enc zapcore.PrimitiveArrayEncoder) &#123;            enc.AppendInt64(int64(d) / 1000000)        &#125;,    &#125;)//2.创建writer日志输出位置      file, err := os.OpenFile(logPath, os.O_CREATE|os.O_APPEND|os.O_RDWR, 0744)      if err != nil &#123;          return     fmt.Errorf(&quot;log file open file ,err:%v&quot;, err)      &#125;    writer := apcore.AddSync(writer)//3.创建logLevel日志输出范围    // 实现判断日志等级的interface (其实 zapcore.*Level 自身就是 interface)，创建出的level等价于zapcore.InfoLevel    level := zap.LevelEnablerFunc(func(lvl zapcore.Level) bool &#123;        return lvl &gt;= zapcore.InfoLevel    &#125;)    // 4.创建具体core        zapcore.NewCore(encoder, writer, level)        // 如果要是不同级别日志放到不同文件，用NewTee    // core := zapcore.NewTee(    //   zapcore.NewCore(encoder, writer, level),    //   zapcore.NewCore(encoder2, writer2, level2)    // )// 创建logger，可以加入可选项    logger = zap.New(core, zap.AddCaller()) // 需要传入 zap.AddCaller() 才会显示打日志点的文件名和行数</code></pre><h1 id="3-文件日志切割第三方库"><a href="#3-文件日志切割第三方库" class="headerlink" title="3.文件日志切割第三方库"></a>3.文件日志切割第三方库</h1><div class="table-container"><table><thead><tr><th>仓库</th><th></th><th></th></tr></thead><tbody><tr><td><a href="https://github.com/natefinch">natefinch</a>/<strong><a href="https://github.com/natefinch/lumberjack">lumberjack</a></strong></td><td>按文件大小自动切割</td><td></td></tr><tr><td><a href="https://github.com/lestrrat-go">lestrrat-go</a>/<strong><a href="https://github.com/lestrrat-go/file-rotatelogs">file-rotatelogs</a></strong></td><td>按找时间自动切割</td><td></td></tr><tr><td></td><td></td></tr></tbody></table></div><pre><code>    /* 日志轮转相关函数    Filename: 日志文件的位置    MaxSize：在进行切割之前，日志文件的最大大小（以MB为单位）    MaxBackups：保留旧文件的最大个数    MaxAges：保留旧文件的最大天数    Compress：是否压缩/归档旧文件    */    writer := &amp;lumberjack.Logger&#123;        Filename:   logPath,        MaxSize:    100,        MaxBackups: 5,        MaxAge:     5,        Compress:   false,    &#125;</code></pre><pre><code>    /* 日志轮转相关函数    `WithLinkName` 为最新的日志建立软连接    `WithRotationTime` 设置日志分割的时间，隔多久分割一次    WithMaxAge 和 WithRotationCount二者只能设置一个    `WithMaxAge` 设置文件清理前的最长保存时间    `WithRotationCount` 设置文件清理前最多保存的个数    */    writer, err := rotatelogs.New(        logPath+&quot;.%Y-%m-%d-%H:%M&quot;,        rotatelogs.WithLinkName(logPath),        rotatelogs.WithMaxAge(time.Duration(24)*time.Hour),        rotatelogs.WithRotationTime(time.Duration(60)*time.Hour),    )</code></pre>]]></content>
+    
+    
+    <summary type="html">介绍go的第三方日志库，包括使用推荐和介绍以及简单的使用实例</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Golang" scheme="http://linxuesong.github.io/tags/Golang/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JAVA异常机制</title>
+    <link href="http://linxuesong.github.io/2021/04/14/JAVA%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6/"/>
+    <id>http://linxuesong.github.io/2021/04/14/JAVA%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6/</id>
+    <published>2021-04-14T09:16:25.000Z</published>
+    <updated>2022-12-05T05:59:19.525Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、异常"><a href="#一、异常" class="headerlink" title="一、异常"></a>一、异常</h1><p>异常有两种选择：throws和catch，一种是抛给调用者，另一种是在本方法中捕获处理。</p><p>选择标准：如果知道如何处理就catch，不知道如何处理就throws</p><p>异常种类：Throwable是父类，                   <br/>                    1⃣️Error子类是系统错误不可控，所以不用抛出、不用处理<br/>                    2⃣️Exception/RuntimeException是可控的要被控制,我们的代码不应有数组越界等错误<br>                    3⃣️Exception/IOException是文件读写错误，类加载错误<br/></p><p>1⃣️2⃣️是不需要throws和catech的，3⃣️是需要throws或catch的,并且如果throws要列出所有可能抛出的IOException</p><pre><code>public static void func1() throws IOException &#123;//列出所有可能抛出的的IOException  try&#123;     //检测代码  &#125;catch(FileNotFoundException | UnKonwHostException) &#123;      // 处理捕获异常      throw new ServeletException(&quot;xx&quot;); //也可以再次抛出异常  &#125;finally &#123;      //最后一定执行的代码，常做一些关闭文件，释放资源的事情， 对于close也可能爆出异常，对此可以用带资源的try语句，保证最后关闭资源  &#125;&#125;</code></pre><h1 id="二、日志"><a href="#二、日志" class="headerlink" title="二、日志"></a>二、日志</h1><p>将提示信息按照不同级别打印到指定文件中</p><h2 id="1-JDK的Logging"><a href="#1-JDK的Logging" class="headerlink" title="1.JDK的Logging"></a>1.JDK的Logging</h2><pre><code>import java.io.UnsupportedEncodingException;import java.util.logging.Logger;public class Main &#123;    public static void main(String[] args)         Logger logger = Logger.getLogger(Main.class.getName());        logger.info(&quot;Start process...&quot;);        try &#123;            &quot;&quot;.getBytes(&quot;invalidCharsetName&quot;);        &#125; catch (UnsupportedEncodingException e) &#123;            // TODO: 使用logger.severe()打印异常        &#125;        logger.info(&quot;Process end.&quot;);    &#125;&#125;</code></pre><p>如果要打印到指定文件需要修改配置文件，JVM启动时传递的参数-Djava.util.logging.config.file=config-file-name</p><h2 id="2-Commons-Logging和Log4j"><a href="#2-Commons-Logging和Log4j" class="headerlink" title="2.Commons Logging和Log4j"></a>2.Commons Logging和Log4j</h2><p>参考<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264739436350112">https://www.liaoxuefeng.com/wiki/1252599548343744/1264739436350112</a></p><h2 id="3-SLF4J和Logback"><a href="#3-SLF4J和Logback" class="headerlink" title="3.SLF4J和Logback"></a>3.SLF4J和Logback</h2><p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176">https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176</a></p>]]></content>
+    
+    
+    <summary type="html">Java语法异常机制的说明及规范</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="异常" scheme="http://linxuesong.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
+    
+    <category term="java" scheme="http://linxuesong.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java中祖先类Object提供的基础方法</title>
+    <link href="http://linxuesong.github.io/2021/04/09/Java%E4%B8%AD%E7%A5%96%E5%85%88%E7%B1%BBObject%E6%8F%90%E4%BE%9B%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/"/>
+    <id>http://linxuesong.github.io/2021/04/09/Java%E4%B8%AD%E7%A5%96%E5%85%88%E7%B1%BBObject%E6%8F%90%E4%BE%9B%E7%9A%84%E5%9F%BA%E7%A1%80%E6%96%B9%E6%B3%95/</id>
+    <published>2021-04-09T07:28:30.000Z</published>
+    <updated>2022-12-05T05:59:19.541Z</updated>
+    
+    <content type="html"><![CDATA[<div class="table-container"><table><thead><tr><th>函数声明</th><th>Object中作用</th><th>子类重写作用</th></tr></thead><tbody><tr><td>boolean <strong>equals</strong> (Object other)</td><td>两个对象的引用是否相等，而非其实例域</td><td>比较子类的两个对象其内容是否相等</td></tr><tr><td>String hashCode()</td><td>由对象导出的散列码</td><td></td></tr><tr><td>String <strong>toString</strong> ()</td><td>返回对象类名和散列码</td><td>方便打印对象变量的实际内容，在JAVA语句中+x或x可以自动转为x.toString()</td></tr><tr><td>Class getClass ()</td><td>返回包含对象信息的类对象</td><td></td></tr><tr><td>String getName()</td><td>获取类名字</td></tr></tbody></table></div>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;table-container&quot;&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;函数声明&lt;/th&gt;
+&lt;th&gt;Object中作用&lt;/th&gt;
+&lt;th&gt;子类重写作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;boolean </summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JAVA" scheme="http://linxuesong.github.io/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java重写完美的equals方法</title>
+    <link href="http://linxuesong.github.io/2021/04/09/Java%E9%87%8D%E5%86%99%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95/"/>
+    <id>http://linxuesong.github.io/2021/04/09/Java%E9%87%8D%E5%86%99%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95/</id>
+    <published>2021-04-09T07:08:57.000Z</published>
+    <updated>2022-12-05T05:59:19.556Z</updated>
+    
+    <content type="html"><![CDATA[<p>示例代码：</p><pre><code>    @Override    public boolean equals(Object otherObject) &#123;        // 1.判断是否引用自身，小优化可以提前避免后面的实例比较        if(this == otherObject) &#123;            return true;        &#125;        // 2.比较this和otherObject是否为同一个类,此处有两种选择：        //   a. this.getClass()==otherObject.getClass(),各个子类中的语义不一致        //   b. otherObject instanceof ClassName,各个子类中的语义一致        if (this.getClass() != otherObject.getClass()) &#123;            return false;        &#125;        // 如果步骤2中按b分支，既比较双方可以转为通用父类，则多下面一步转换        // 按照a分支则无需此步骤        // ClassName other = (ClassName) otherObject;        Father other = (Father) otherObject;        // 3.比较this，other的内部实例, 基本类型用==，其他类型用Objects.equals(a,b)        return Objects.equals(this.a, other.a) &amp;&amp; this.b == other.b;    &#125;</code></pre>]]></content>
+    
+    
+    <summary type="html">如何编写java类中equals方法</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JAVA" scheme="http://linxuesong.github.io/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JAVA中数组的常见操作</title>
+    <link href="http://linxuesong.github.io/2021/04/08/JAVA%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/"/>
+    <id>http://linxuesong.github.io/2021/04/08/JAVA%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/</id>
+    <published>2021-04-08T08:34:03.000Z</published>
+    <updated>2022-12-05T05:59:19.510Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、普通数组int"><a href="#一、普通数组int" class="headerlink" title="一、普通数组int[]"></a>一、普通数组int[]</h1><h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>类似C++中的数组指针，使用等号赋值只是浅拷贝，深拷贝需要用Arrays类的如下方法</p><pre><code>Static type copyOf(type a[], int length) // 深拷贝出一个新的数组Static type copyOfRange(type a[], int start, int end)</code></pre><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><pre><code>int[] a = new int[1000];Arrays.sort(a); // 使用优化后的快速排序方法对数组进行排序</code></pre><h2 id="判断是否相等"><a href="#判断是否相等" class="headerlink" title="判断是否相等"></a>判断是否相等</h2><p>直接用等号判断是判断引用是否为同一处，如果要判断具体值要用Arrays类的如下方法</p><pre><code>static boolean equals(type[] a, type[] b)</code></pre><h1 id="二、泛型数组列表ArrayList"><a href="#二、泛型数组列表ArrayList" class="headerlink" title="二、泛型数组列表ArrayList\"></a>二、泛型数组列表ArrayList\<type></h1><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre class=" language-lang-java"><code class="language-lang-java">// 构建ArrayList<Empolyee> staff = new ArrayList<Employee>(); // 声明并构造// 增删改查staff.add(new Emplyee("xxx")); // 尾部添加元素,也可以指定位置Employee e = staff.remove(index);// 删除下标为index的元素，之后所有元素前一staff.set(index, e); // 将index位置元素赋值Employee e = staff.get(index); // 取指定位置元素// 遍历for(Employee e : staff) &#123;&#125;</code></pre><p>使用ArrayList存放基本类型数据需要装箱和拆箱</p><pre><code>ArrayList&lt;Integer&gt; lst = new ArrayList&lt;Integer&gt;();lst.add(3); //等价于Integer.valueOf(3)int a = lst.get(0); //等价于lst.get(0).intValue()</code></pre>]]></content>
+    
+    
+    <summary type="html">包含JAVA中的数组、Array、List等常用操作</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JAVA" scheme="http://linxuesong.github.io/tags/JAVA/"/>
+    
+    <category term="数组" scheme="http://linxuesong.github.io/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JAVA String和StringBuilder常用方法</title>
+    <link href="http://linxuesong.github.io/2021/04/08/JAVA-String%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    <id>http://linxuesong.github.io/2021/04/08/JAVA-String%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</id>
+    <published>2021-04-08T08:02:34.000Z</published>
+    <updated>2022-12-05T05:59:19.494Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、String不可变字符串"><a href="#一、String不可变字符串" class="headerlink" title="一、String不可变字符串"></a>一、String不可变字符串</h1><h2 id="1-int-compareTo-String-other-比较两字符串大小"><a href="#1-int-compareTo-String-other-比较两字符串大小" class="headerlink" title="1.int compareTo(String other) 比较两字符串大小"></a>1.int compareTo(String other) 比较两字符串大小</h2><h2 id="2-boolean-equals-Object-object-比较两字符串是否其内容一致"><a href="#2-boolean-equals-Object-object-比较两字符串是否其内容一致" class="headerlink" title="2.boolean equals(Object object)比较两字符串是否其内容一致"></a>2.boolean equals(Object object)比较两字符串是否其内容一致</h2><p>==比较运算符比较的是引用位置是否相等，而非其内容</p><h2 id="3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true"><a href="#3-boolean-endsWith-String-suffix-和Boolean-startsWith-String-prefix-以指定字符串开始或结尾返回true" class="headerlink" title="3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true"></a>3.boolean endsWith(String suffix)和Boolean startsWith(String prefix)以指定字符串开始或结尾返回true</h2><h2 id="4-int-indexOf-String-str-返回与指定字符串匹配的首个位置"><a href="#4-int-indexOf-String-str-返回与指定字符串匹配的首个位置" class="headerlink" title="4.int indexOf(String str)返回与指定字符串匹配的首个位置"></a>4.int indexOf(String str)返回与指定字符串匹配的首个位置</h2><p>如果还要其他要求，是有函数重载的</p><h2 id="5-int-length-字符串长度"><a href="#5-int-length-字符串长度" class="headerlink" title="5.int length()字符串长度"></a>5.int length()字符串长度</h2><h2 id="6-String-toLowerCase-和String-toUpperCase-大小写转换"><a href="#6-String-toLowerCase-和String-toUpperCase-大小写转换" class="headerlink" title="6.String toLowerCase()和String toUpperCase()大小写转换"></a>6.String toLowerCase()和String toUpperCase()大小写转换</h2><h2 id="7-String-trim-删除原始字符串头部和尾部的空格"><a href="#7-String-trim-删除原始字符串头部和尾部的空格" class="headerlink" title="7.String trim()删除原始字符串头部和尾部的空格"></a>7.String trim()删除原始字符串头部和尾部的空格</h2><p>更多方法可以参考Java的官网api文档</p><h1 id="二、StringBuilder"><a href="#二、StringBuilder" class="headerlink" title="二、StringBuilder"></a>二、StringBuilder</h1><p>string问题是每次做字符串拼接都会产生一个新的String对象，这样既耗时又费空间</p><p>使用StringBuilder则可以避免这个问题发生</p><h2 id="1-String-toString-转为字符串"><a href="#1-String-toString-转为字符串" class="headerlink" title="1.String toString()转为字符串"></a>1.String toString()转为字符串</h2><h2 id="2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传"><a href="#2-StringBuilder-insert-int-offset，-String-str-指定位置插入自负传" class="headerlink" title="2.StringBuilder insert(int offset， String str) 指定位置插入自负传"></a>2.StringBuilder insert(int offset， String str) 指定位置插入自负传</h2><h2 id="3-void-setCharAt-int-i，-char-c-设置指定位置字符"><a href="#3-void-setCharAt-int-i，-char-c-设置指定位置字符" class="headerlink" title="3.void setCharAt(int i， char c)设置指定位置字符"></a>3.void setCharAt(int i， char c)设置指定位置字符</h2><h2 id="4-StringBuilder-append（String-str）追加字符串在尾部"><a href="#4-StringBuilder-append（String-str）追加字符串在尾部" class="headerlink" title="4.StringBuilder append（String str）追加字符串在尾部"></a>4.StringBuilder append（String str）追加字符串在尾部</h2>]]></content>
+    
+    
+    <summary type="html">介绍JAVA不可变字符串常用方法</summary>
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="JAVA" scheme="http://linxuesong.github.io/tags/JAVA/"/>
+    
+    <category term="String" scheme="http://linxuesong.github.io/tags/String/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis常用命令整理</title>
+    <link href="http://linxuesong.github.io/2021/04/01/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/"/>
+    <id>http://linxuesong.github.io/2021/04/01/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</id>
+    <published>2021-04-01T06:59:02.000Z</published>
+    <updated>2022-12-05T05:59:19.791Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="0-前言及Redis的链接"><a href="#0-前言及Redis的链接" class="headerlink" title="0.前言及Redis的链接"></a>0.前言及Redis的链接</h1><p>redis缓存数据库，主要存放key-value键值对，其中key为字符串，value可为多种类型<strong>字符串</strong>、<strong>列表</strong>、<strong>集合</strong>、<strong>字典</strong></p><h1 id="1-设置字符串"><a href="#1-设置字符串" class="headerlink" title="1.设置字符串"></a>1.设置字符串</h1><pre><code>set key valueget key value</code></pre><h1 id="2-设置列表"><a href="#2-设置列表" class="headerlink" title="2.设置列表"></a>2.设置列表</h1><pre><code>lpsuh key childElement // 头部插入lpop  key // 头部删除lrang key 0 10 // 从头部开始查询到10// 注：尾部操作则将lpush替换成rpush// 头部插入的下表说明，头部入A、B、C下标:  0、  1、   2元素:  A、  B、   C下标:  -3、 -2、  -1</code></pre><h1 id="3-设置集合"><a href="#3-设置集合" class="headerlink" title="3.设置集合"></a>3.设置集合</h1><p>集合分为无序集合和有序集合(元素含权重)，集合元素个数为2的32次方-1个</p><p>无序集合</p><pre><code>sadd key member  // 添加元素smemebers key    // 查询所有元素scard key        // 获取集合中元素个数sdiff key1 key2  // 差集sinter key1 key2 // 集合的交集运算sunion key1 key2 // 集合的补集</code></pre><p>有序集合（元素含权重）</p><pre><code>将sadd改为zadd极为有序集合zadd key score member // 添加元素，score为元素权重</code></pre><h1 id="4-key的其他操作（移除、过期时间、检测）"><a href="#4-key的其他操作（移除、过期时间、检测）" class="headerlink" title="4.key的其他操作（移除、过期时间、检测）"></a>4.key的其他操作（移除、过期时间、检测）</h1><pre><code>del key   // 删除keyexist key // 检测key是否存在type key // 查看key类型expire   // 设置过期时间persist key // 持久化key，移除key过期时间ttl key   // 查寻key的剩余过期时间</code></pre><h1 id="5-Redis发布和订阅"><a href="#5-Redis发布和订阅" class="headerlink" title="5.Redis发布和订阅"></a>5.Redis发布和订阅</h1><h1 id="6-Redis事务"><a href="#6-Redis事务" class="headerlink" title="6.Redis事务"></a>6.Redis事务</h1><h1 id="7-Redis脚本"><a href="#7-Redis脚本" class="headerlink" title="7.Redis脚本"></a>7.Redis脚本</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;0-前言及Redis的链接&quot;&gt;&lt;a href=&quot;#0-前言及Redis的链接&quot; class=&quot;headerlink&quot; title=&quot;0.前言及Redis的链接&quot;&gt;&lt;/a&gt;0.前言及Redis的链接&lt;/h1&gt;&lt;p&gt;redis缓存数据库，主要存放key-value键值</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="主题" scheme="http://linxuesong.github.io/categories/%E6%8A%80%E6%9C%AF/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="Reids" scheme="http://linxuesong.github.io/tags/Reids/"/>
+    
+  </entry>
+  
+</feed>

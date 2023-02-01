@@ -1,0 +1,2219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- 百度收录 由于github拒绝百度脚本访问，所以失效  -->
+  <meta name="baidu-site-verification" content="code-Mh5omtSUnt" />
+  <!-- 百度收录end  -->
+
+  <!-- google收录 -->
+  <meta name="google-site-verification" content="-b5rAEo2_d1dn4CdJ27sSIEfxMSzkUiRaDuNU2phVn8" />
+  <!-- google收录end  -->
+   
+  <title itemprop="name">Linux常用命令整理 | 楓の葉小窝</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "楓の葉lean";
+  mashiro_option.author_name = "lean";
+  mashiro_option.site_url = "https://linxuesong.github.io";
+  mashiro_option.v_appId = "bkFHdpuMwcpRg1jNPFwvMLnX-MdYXbMMI";
+  mashiro_option.v_appKey = "xaCmLIX4oe2AbcinUwoMVbMz";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/backgroundCover/cover(1).jpg,https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/backgroundCover/cover(2).jpg,https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/backgroundCover/cover(3).jpg,https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/backgroundCover/cover(4).jpg,https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/backgroundCover/cover(5).jpg,https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/backgroundCover/cover(1).jpg,https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/backgroundCover/cover(2).jpg,https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/backgroundCover/cover(3).jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+  
+  
+  <!--标签统计样式-->
+  <link rel="stylesheet" href="/css/tags.css" media="all">
+
+  <!--百度访问数据统计-->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?d67a00154871861401ec8c26b0bdaf5d";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.min.css" media="defer" onload="this.media='all'"><script async src="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/carousel-touch.min.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="楓の葉小窝" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://linxuesong.github.io">
+          <img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>Live your life with passion! With some drive!</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/linxuesong" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://blog.csdn.net/lsxa123" target="_blank" class="social-github" title="csdn">
+                    <img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/social/csdn.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.cnblogs.com/linxuesong/" target="_blank" class="social-github" title="cnblog">
+                    <img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/social/cnblog.jpg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://wuzhi.me/" target="_blank" class="social-github" title="wuzhi">
+                    <img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/social/wuzhi.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://space.bilibili.com/396134239/video" target="_blank" class="social-github" title="bilibili">
+                    <img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/social/bilibili.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://photo.weibo.com/6504280642/wbphotos/large/mid/4519020298017277/pid/0076biwily1gg2bf3v9wvj30f00kk75n" target="_blank" class="social-github" title="qq">
+                    <img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/social/qq.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://photo.weibo.com/6504280642/wbphotos/large/mid/4519020298017277/pid/0076biwily1gg2bf3v9wvj30f00kk75n" target="_blank" class="social-github" title="wechat">
+                    <img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/social/wechat.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">楓の葉</span>
+            <span class="shironeko">lean</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-laptop" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%B5%84%E6%BA%90/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-area-chart faa-vertical" aria-hidden="true"></i>
+                    文章统计
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/analytics/">
+                          <i class="fa fa-area-chart" aria-hidden="true"></i>
+                          统计
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/archives/">
+                          <i class="fa fa-calendar" aria-hidden="true"></i>
+                          日历
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/">
+                          <i class="fa fa-tag" aria-hidden="true"></i>
+                          标签
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/">
+                          <i class="fa fa-bookmark" aria-hidden="true"></i>
+                          分类
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/books/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi-bilibili/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          哔哩
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/movies/">
+                          <i class="fa fa-video-camera" aria-hidden="true"></i>
+                          电影
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/games/">
+                          <i class="fa fa-gamepad" aria-hidden="true"></i>
+                          游戏
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/gallery/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/links/">
+                          <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                          小伙伴
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/friendlink_status/">
+                          <i class="fa fa-heartbeat faa-shake" aria-hidden="true"></i>
+                          健康值
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/sourceshare/">
+                          <i class="fa fa-share-alt faa-vertical" aria-hidden="true"></i>
+                          分享
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/sitelog/">
+                          <i class="fa fa-calculator" aria-hidden="true"></i>
+                          建站史
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/todolist">
+                          <i class="fa fa-tasks" aria-hidden="true"></i>
+                          任务书
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/dinoswords">
+                          <i class="fa fa-coffee" aria-hidden="true"></i>
+                          娱乐
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/client/">
+                          <i class="fa fa-android faa-vertical" aria-hidden="true"></i>
+                          客户端
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/shuoshuo/">
+                          <i class="fa fa-coffee faa-vertical" aria-hidden="true"></i>
+                          说说
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            	
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+<!-- 和风天气-->
+<div id="he-plugin-simple"></div>
+<script>
+WIDGET = {
+  CONFIG: {
+    "modules": "30124",
+    "background": 4,
+    "backgroundColor": "F5A623",
+    "tmpColor": "FFFFFF",
+    "tmpSize": 16,
+    "cityColor": "FFFFFF",
+    "citySize": 16,
+    "aqiSize": 16,
+    "weatherIconSize": "6",
+    "alertIconSize": 18,
+    "padding": "10px 10px 10px 10px",
+    "shadow": "1",
+    "language": "auto",
+    "borderRadius": 5,
+    "fixed": "true",
+    "vertical": "bottom",
+    "horizontal": "right",
+    "right": "0",
+    "top": "80",
+    "key": "7438089786be4f2984b268f575a35fa8"
+  }
+}
+</script>
+<script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
+	<!-- 和风天气-->
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <img class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/动漫风景/apic-in 色彩绚丽的风景动漫图片 (12).jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@2.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/动漫风景/apic-in 色彩绚丽的风景动漫图片 (12).jpg">
+    </img>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Linux常用命令整理</h1>
+      <p class="entry-census">
+        <span>
+          <a href="linxuesong.github.io">
+            <img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="linxuesong.github.io">linxuesong</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-5-25<span class="bull">
+        ·</span>
+      
+         	  
+	        <!-- 安装插件npm install hexo-wordcount --save -->
+			<!--本篇文章浏览访客人数统计 -->   
+            <span class="post-meta-item" >
+                <span class="post-meta-item-icon">
+                    <i class="iconfont icon-attention"></i>
+                </span>
+			        <span id="busuanzi_value_page_pv"></span>
+				<span class="post-meta-item-text">次阅读</span>	
+			
+            <span class="bull">·</span>
+			
+			<!--本篇文章文字数统计 -->
+            <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-book"></i>
+                <span class="post-count">4.4k字</span>
+              </span>
+            </span>
+            
+			<span class="bull">·</span>
+            
+            <!-本篇文章预计阅读时间-->			
+            <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-coffee"></i>
+                <span class="post-meta-item-text">预计</span>
+                <span class="post-count">17分钟</span>
+              </span>
+            </span>
+            
+		 
+			
+			
+	  
+	  
+	  
+	  
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="Linux常用命令整理"><a href="#Linux常用命令整理" class="headerlink" title="Linux常用命令整理"></a>Linux常用命令整理</h1><h1 id="一、文件操作"><a href="#一、文件操作" class="headerlink" title="一、文件操作"></a>一、文件操作</h1><p>移动:mv</p>
+<p>复制:cp</p>
+<p>删除:rm</p>
+<p>创建文件夹:mkdir -p参数是即使父目录不存在，递归创建出来文件夹</p>
+<p>查找: find 路径 -name  文件名 </p>
+<h1 id="二、进程管理"><a href="#二、进程管理" class="headerlink" title="二、进程管理"></a>二、进程管理</h1><h2 id="1-ps命令"><a href="#1-ps命令" class="headerlink" title="1.ps命令"></a>1.ps命令</h2><p>ps - aux|(grep 命令名) 显示所有进程信息，连同命令行</p>
+<p>显示结果说明:</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img/20210120163959.png" alt="image-20210120163951774"></p>
+<p>主要参数:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>USER</th>
+<th>用户账号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PID</td>
+<td>当前进程ID</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>进程占用CPU</td>
+</tr>
+<tr>
+<td>MEM</td>
+<td>进程占用内存</td>
+</tr>
+<tr>
+<td>VSZ</td>
+<td>虚拟内存量Kbytes</td>
+</tr>
+<tr>
+<td>RSS</td>
+<td>物理内存量KBytes</td>
+</tr>
+<tr>
+<td>TTY</td>
+<td>于哪一终端运作,如果与终端机无关显示?</td>
+</tr>
+<tr>
+<td>STAT</td>
+<td>进程状态<br />R运行、S睡眠、T停止、Z僵尸</td>
+</tr>
+<tr>
+<td>START</td>
+<td>启动时间</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>实际占用CPU运行时间</td>
+</tr>
+<tr>
+<td>COMMAND</td>
+<td>该程序的实际命令</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="三、文件内容查看及操作"><a href="#三、文件内容查看及操作" class="headerlink" title="三、文件内容查看及操作"></a>三、文件内容查看及操作</h1><p>tail  -fn100   文件  |grep 内容    循环查看日志文件某内容最新消息</p>
+<p>快速查找匹配文本grep -Frn 匹配内容   文件名 </p>
+<p>快速编辑匹配文本sed</p>
+<p>格式化文本awk:  如快速输出每一行的第1个和第4个单词</p>
+<p>awk ‘{if($6==”42030”) {print} }’ hdp_teu_spat_im_php_access_info.2021042017.*|grep 23653471544838</p>
+<h2 id="1-awk"><a href="#1-awk" class="headerlink" title="1.awk"></a>1.awk</h2><h3 id="1-1通用格式"><a href="#1-1通用格式" class="headerlink" title="1.1通用格式"></a>1.1通用格式</h3><p> awk’{pattern+action}’   filename</p>
+<p> (其操作为每读取一行执行action一次)</p>
+<h3 id="1-2参数详情"><a href="#1-2参数详情" class="headerlink" title="1.2参数详情"></a>1.2参数详情</h3><h3 id="1-3举例："><a href="#1-3举例：" class="headerlink" title="1.3举例："></a>1.3举例：</h3><h4 id="1-3-1打印每一行的第一个文本"><a href="#1-3-1打印每一行的第一个文本" class="headerlink" title="1.3.1打印每一行的第一个文本"></a>1.3.1打印每一行的第一个文本</h4><p>awk ‘{print $1}’  file1  </p>
+<h4 id="1-3-2加入初始和结尾的执行语句"><a href="#1-3-2加入初始和结尾的执行语句" class="headerlink" title="1.3.2加入初始和结尾的执行语句"></a>1.3.2加入初始和结尾的执行语句</h4><p>awk  ‘BGGEIN{print “我是开头”}    {print $1}    END{print “结尾”}’</p>
+<p>BEGIN、END后面的语句仅执行一次，中间的语句则每读取一次执行一次</p>
+<h4 id="1-3-3加入条件语句if"><a href="#1-3-3加入条件语句if" class="headerlink" title="1.3.3加入条件语句if"></a>1.3.3加入条件语句if</h4><p>awk {   if($5!=’”lin”)  {print $5}   }</p>
+<p>过滤每行第5个参数为lin的行，打出其他第5行的参数</p>
+<h2 id="2-Sed匹配删除替换指定文本"><a href="#2-Sed匹配删除替换指定文本" class="headerlink" title="2.Sed匹配删除替换指定文本"></a>2.Sed匹配删除替换指定文本</h2><h3 id="2-1通用格式"><a href="#2-1通用格式" class="headerlink" title="2.1通用格式"></a>2.1通用格式</h3><p> sed     -nefri  ‘command’   文件内容</p>
+<p> (其操作为每读取一行执行action一次)</p>
+<h3 id="2-2参数详情"><a href="#2-2参数详情" class="headerlink" title="2.2参数详情"></a>2.2参数详情</h3><p>　<strong>常用选项：</strong><br>　　  -n∶使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN的资料一般都会被列出到萤幕上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。<br>    -e∶直接在指令列模式上进行 sed 的动作编辑；<br>    -f∶直接将 sed 的动作写在一个档案内， -f filename 则可以执行 filename 内的sed 动作；<br>    -r∶sed 的动作支援的是延伸型正规表示法的语法。(预设是基础正规表示法语法)<br>    -i∶直接修改读取的档案内容，而不是由萤幕输出。    </p>
+<p>　　<strong>常用命令：</strong><br>    a  ∶新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～<br>    c  ∶取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！<br>    d  ∶删除，因为是删除啊，所以 d 后面通常不接任何咚咚；<br>　　  i  ∶插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；<br>　　  p ∶列印，亦即将某个选择的资料印出。通常 p 会与参数 sed -n 一起运作～<br>　　  s ∶取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦！</p>
+<h3 id="2-3举例"><a href="#2-3举例" class="headerlink" title="2.3举例"></a>2.3举例</h3><p>　　假设我们有一文件名为ab。</p>
+<h4 id="2-3-1删除某行："><a href="#2-3-1删除某行：" class="headerlink" title="2.3.1删除某行："></a>2.3.1删除某行：</h4><pre><code># sed &#39;1d&#39; ab              #删除第一行 
+# sed &#39;$d&#39; ab              #删除最后一行
+# sed &#39;1,2d&#39; ab           #删除第一行到第二行
+# sed &#39;2,$d&#39; ab           #删除第二行到最后一行
+</code></pre><h4 id="2-3-2显示某行："><a href="#2-3-2显示某行：" class="headerlink" title="2.3.2显示某行："></a>2.3.2显示某行：</h4><pre><code># sed -n &#39;1p&#39; ab           #显示第一行 
+# sed -n &#39;$p&#39; ab           #显示最后一行
+# sed -n &#39;1,2p&#39; ab        #显示第一行到第二行
+# sed -n &#39;2,$p&#39; ab        #显示第二行到最后一行
+</code></pre><h4 id="2-3-3使用模式进行查询："><a href="#2-3-3使用模式进行查询：" class="headerlink" title="2.3.3使用模式进行查询："></a>2.3.3使用模式进行查询：</h4><pre><code># sed -n &#39;/ruby/p&#39; ab    #查询包括关键字ruby所在所有行
+# sed -n &#39;/\$/p&#39; ab        #查询包括关键字$所在所有行，使用反斜线\屏蔽特殊含义
+</code></pre><h4 id="2-3-4增加一行或多行字符串："><a href="#2-3-4增加一行或多行字符串：" class="headerlink" title="2.3.4增加一行或多行字符串："></a>2.3.4增加一行或多行字符串：</h4><p><a href="javascript:void(0"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<pre><code># cat ab
+     Hello!
+     ruby is me,welcome to my blog.
+     end
+# sed &#39;1a drink tea&#39; ab  #第一行后增加字符串&quot;drink tea&quot;
+     Hello!
+     drink tea
+     ruby is me,welcome to my blog. 
+     end
+# sed &#39;1,3a drink tea&#39; ab #第一行到第三行后增加字符串&quot;drink tea&quot;
+     Hello!
+     drink tea
+     ruby is me,welcome to my blog.
+     drink tea
+     end
+     drink tea
+# sed &#39;1a drink tea\nor coffee&#39; ab   #第一行后增加多行，使用换行符\n
+     Hello!
+     drink tea
+     or coffee
+     ruby is me,welcome to my blog.
+     end
+</code></pre><h4 id="2-3-5代替一行或多行："><a href="#2-3-5代替一行或多行：" class="headerlink" title="2.3.5代替一行或多行："></a>2.3.5代替一行或多行：</h4><p><a href="javascript:void(0"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<pre><code># sed &#39;1c Hi&#39; ab                #第一行代替为Hi
+     Hi
+     ruby is me,welcome to my blog.
+     end
+# sed &#39;1,2c Hi&#39; ab             #第一行到第二行代替为Hi
+     Hi
+     end
+</code></pre><p><a href="javascript:void(0"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<h4 id="2-3-6替换一行中的某部分"><a href="#2-3-6替换一行中的某部分" class="headerlink" title="2.3.6替换一行中的某部分"></a>2.3.6替换一行中的某部分</h4><p>　　格式：sed ‘s/要替换的字符串/新的字符串/g’  （要替换的字符串可以用正则表达式）</p>
+<pre><code># sed -n &#39;/ruby/p&#39; ab | sed &#39;s/ruby/bird/g&#39;    #替换ruby为bird
+# sed -n &#39;/ruby/p&#39; ab | sed &#39;s/ruby//g&#39;        #删除ruby
+</code></pre><h4 id="2-3-7插入："><a href="#2-3-7插入：" class="headerlink" title="2.3.7插入："></a>2.3.7插入：</h4><p><a href="javascript:void(0"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<pre><code># sed -i &#39;$a bye&#39; ab         #在文件ab中最后一行直接输入&quot;bye&quot;
+# cat ab　　Hello!　　ruby is me,welcome to my blog.　　end　　bye
+</code></pre><p><a href="javascript:void(0"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<h4 id="2-3-8删除匹配行："><a href="#2-3-8删除匹配行：" class="headerlink" title="2.3.8删除匹配行："></a>2.3.8删除匹配行：</h4><pre><code>sed -i &#39;/匹配字符串/d&#39;  filename  （注：若匹配字符串是变量，则需要“”，而不是‘’。记得好像是）
+</code></pre><h4 id="2-3-9替换匹配行中的某个字符串："><a href="#2-3-9替换匹配行中的某个字符串：" class="headerlink" title="2.3.9替换匹配行中的某个字符串："></a>2.3.9替换匹配行中的某个字符串：</h4><pre><code>sed -i &#39;/匹配字符串/s/替换源字符串/替换目标字符串/g&#39; filename
+</code></pre><h2 id="3-grep匹配文本"><a href="#3-grep匹配文本" class="headerlink" title="3.grep匹配文本"></a>3.grep匹配文本</h2><p>　Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。</p>
+<pre><code>grep [options]
+</code></pre><p>　　<strong>主要参数</strong><br>　　<strong>[options]主要参数：</strong></p>
+<p><span style="background:yellow"></p>
+<p>　　－c：只输出匹配行的计数。</p>
+<p>&lt;/sapn&gt;</p>
+<p>　　－I：不区分大 小写(只适用于单字符)。<br>　　－h：查询多文件时不显示文件名。<br>　　－l：查询多文件时只输出包含匹配字符的文件名。<br>　　－n：显示匹配行及 行号。<br>　　－s：不显示不存在或无匹配文本的错误信息。<br>　　－v：显示不包含匹配文本的所有行。<br>　　<strong>pattern正则表达式主要参数：</strong><br>　　\： 忽略正则表达式中特殊字符的原有含义。<br>　　^：匹配正则表达式的开始行。<br>　　$: 匹配正则表达式的结束行。<br>　　\&lt;：从匹配正则表达 式的行开始。<br>　　>：到匹配正则表达式的行结束。<br>　　[ ]：单个字符，如[A]即A符合要求 。<br>　　[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。<br>　　。：所有的单个字符。</p>
+<ul>
+<li>：有字符，长度可以为0。</li>
+</ul>
+<h4 id="5-2-grep简单使用"><a href="#5-2-grep简单使用" class="headerlink" title="5.2 grep简单使用"></a>5.2 grep简单使用</h4><p>　　显示所有以d开头的文件中包含 test的行:</p>
+<pre><code>$ grep &#39;test&#39; d*
+</code></pre><p>　　显示在aa，bb，cc文件中匹配test的行:</p>
+<pre><code>$ grep &#39;test&#39; aa bb cc
+</code></pre><p>　　输出匹配行的计数:</p>
+<pre><code> grep -c &quot;48&quot; data.doc   #输出文档中含有48字符的行数
+</code></pre><p>　　显示匹配行和行数:</p>
+<pre><code>grep -n &quot;48&quot; data.doc       #显示所有匹配48的行和行号
+</code></pre><p>　　显示非匹配的行:</p>
+<pre><code>grep -vn &quot;48&quot; data.doc      #输出所有不包含48的行
+</code></pre><p>　　显示非匹配的行:</p>
+<pre><code>grep -vn &quot;48&quot; data.doc      #输出所有不包含48的行
+</code></pre><p>　　大小写敏感:</p>
+<pre><code>grep -i &quot;ab&quot; data.doc       #输出所有含有ab或Ab的字符串的行
+</code></pre><h4 id="5-3-grep正则表达式的应用-注意：最好把正则表达式用单引号括起来"><a href="#5-3-grep正则表达式的应用-注意：最好把正则表达式用单引号括起来" class="headerlink" title="5.3 grep正则表达式的应用 (注意：最好把正则表达式用单引号括起来)"></a>5.3 grep正则表达式的应用 (注意：最好把正则表达式用单引号括起来)</h4><pre><code>grep &#39;[239].&#39; data.doc      #输出所有含有以2,3或9开头的，并且是两个数字的行
+</code></pre><p>　　不匹配测试：</p>
+<pre><code>grep &#39;^[^48]&#39; data.doc      #不匹配行首是48的行
+</code></pre><p>　　使用扩展模式匹配：</p>
+<pre><code>grep -E &#39;219|216&#39; data.doc
+</code></pre><p>　　显示所有包含每个字符串至少有5个连续小写字符的字符串的行:</p>
+<pre><code>$ grep &#39;[a-z]\&#123;5\&#125;&#39; aa
+</code></pre><p>　　如果west被匹配，则es就被存储到内存中，并标记为1，然后搜索任意个字符(.<em>)，这些字符后面紧跟着 另外一个es(\1)，找到就显示该行。如果用egrep或grep -E，就不用”\”号进行转义，直接写成’w(es)t.</em>\1′就可以了:</p>
+<pre><code>$ grep &#39;w\(es\)t.*\1&#39; aa
+</code></pre><h4 id="5-4-正则表达式-符号表示"><a href="#5-4-正则表达式-符号表示" class="headerlink" title="5.4 正则表达式 符号表示"></a>5.4 正则表达式 符号表示</h4><p><img src="/Users/linxuesong/Library/Application Support/typora-user-images/image-20211018131111242.png" alt="image-20211018131111242"></p>
+<p>a</p>
+<p><img src="/Users/linxuesong/Library/Application Support/typora-user-images/image-20211018131127344.png" alt="image-20211018131127344"></p>
+<h1 id="四、解压文件"><a href="#四、解压文件" class="headerlink" title="四、解压文件"></a>四、解压文件</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>文件格式</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tar</td>
+<td>解压tar - xvf       压缩tar - cvf 压缩目标文件  压缩文件</td>
+</tr>
+<tr>
+<td>tar.gz</td>
+<td>解压tar -zxvf      压缩tar  -czf</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>解压zip  压缩后文件名    压缩unzip<br />需要下载zip</td>
+</tr>
+<tr>
+<td>rar</td>
+<td>解压rar  a  [压缩后文件名]  [被压缩文件]   压缩unrar e<br />需要下载rar</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="五、检测网络"><a href="#五、检测网络" class="headerlink" title="五、检测网络"></a>五、检测网络</h1><p>netstat -ant        n表示以ip的形势显示而非域名    a显示所有socket默认只显示connected状态的  t监听tcp端口</p>
+<h1 id="六、查看磁盘使用情况"><a href="#六、查看磁盘使用情况" class="headerlink" title="六、查看磁盘使用情况"></a>六、查看磁盘使用情况</h1><h2 id="1-统计磁盘整体情况"><a href="#1-统计磁盘整体情况" class="headerlink" title="1.统计磁盘整体情况"></a>1.统计磁盘整体情况</h2><p>df -h</p>
+<h2 id="2-统计具体文件夹的磁盘使用情况"><a href="#2-统计具体文件夹的磁盘使用情况" class="headerlink" title="2.统计具体文件夹的磁盘使用情况"></a>2.统计具体文件夹的磁盘使用情况</h2><p>du —max-depth=1 -h查看当前目录下的每个文件夹的使用情况</p>
+<p>du -sh显示当前目录整体占用情况</p>
+<h1 id="七、本机和服务器之间的操作"><a href="#七、本机和服务器之间的操作" class="headerlink" title="七、本机和服务器之间的操作"></a>七、本机和服务器之间的操作</h1><p>​    1.nc</p>
+<pre><code>目的主机监听端口  nc -l 监听端口&lt;未使用端口&gt;  &gt; 要接收的文件名      举例： nc -l 4444 &gt; cache.tar.gz源主机发起请求   nc  目的主机ip    目的端口 &lt; 要发送的文件         举例： nc  192.168.0.85  4444 &lt; /root/cache.tar.gz
+</code></pre><p>传输过程是 目的主机接受文件完成后回自动关闭监听链接</p>
+<h1 id="八、linux输出重定向"><a href="#八、linux输出重定向" class="headerlink" title="八、linux输出重定向"></a>八、linux输出重定向</h1><p>关于shell中：&gt;/dev/null 2&gt;&amp;1 详解</p>
+<p>​    shell中可能经常能看到：&gt;/dev/null 2&gt;&amp;1 。命令的结果可以通过%&gt;的形式来定义输出</p>
+<p>​    分解这个组合：“&gt;/dev/null 2&gt;&amp;1” 为五部分。</p>
+<p>​        1：&gt; 代表重定向到哪里，例如：echo “123” &gt; /home/123.txt<br>​        2：/dev/null 代表空设备文件<br>​        3：2&gt; 表示stderr标准错误<br>​        4：&amp; 表示等同于的意思，2&gt;&amp;1，表示 2 的输出重定向等同于 1<br>​        5：1 表示stdout标准输出，系统默认值是1，<strong>所以”&gt;/dev/null”等同于 “1&gt;/dev/null”</strong></p>
+<p>​    因此，<strong>&gt;/dev/null 2&gt;&amp;1也可以写成 “ 1&gt; /dev/null 2&gt; &amp;1 ”</strong></p>
+<p>那么 <strong><em>&amp;&gt;/dev/null</em></strong> 语句执行过程为：<br>1&gt;/dev/null ：首先表示标准输出重定向到空设备文件，也就是不输出任何信息到终端，说白了就是不显示任何信息。<br>2&gt;&amp;1 ：接着，标准错误输出重定向 到标准输出，因为之前标准输出已经重定向到了空设备文件，所以标准错误输出也重定向到空设备文件。</p>
+<h1 id="九、系统资源统计"><a href="#九、系统资源统计" class="headerlink" title="九、系统资源统计"></a>九、系统资源统计</h1><h2 id="9-0综合"><a href="#9-0综合" class="headerlink" title="9.0综合"></a>9.0综合</h2><h3 id="9-0-1-top"><a href="#9-0-1-top" class="headerlink" title="9.0.1 top"></a>9.0.1 top</h3><pre><code>top
+接收参数
+-p 指定要观察的pid
+
+交互命令
+在 top 执行过程当中可以使用的按键指令:
+数字1 显示所有核的情况
+? :显示在 top 当中可以输入的按键指令;
+P :以 CPU 的使用资源排序显示;
+M :以 Memory 的使用资源排序显示;
+N :以 PID 来排序喔!
+T :由该 Process 使用的 CPU 时间累积 (TIME+) 排序。
+k :给予某个 PID 一个讯号 (signal)
+r :给予某个 PID 重新制订一个 nice 值。
+q :离开 top 软件的按键
+H :显示线程
+</code></pre><p>参数含义</p>
+<p>第一行</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201914.png" alt="image-20211019195146022"></p>
+<p>目前时间、运行时间、登录人数</p>
+<p>1，5，15分钟每个cpu运行的进程数</p>
+<p>第二行</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019202131.png" alt="image-20211019202130125"></p>
+<p>程序运行总量和个别程序运行状态</p>
+<p>第三行</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019202151.png" alt="image-20211019202149878"></p>
+<p>cpu负载情况, wa表示等待I/O wait比例</p>
+<p>第四五行</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019202206.png" alt="image-20211019202205354"></p>
+<p>swap要尽量少，buffer/cached是 读写磁盘用作缓冲的内存，当内存实在不够用时会释放该部分的内存</p>
+<p>所以实际可用内存= free+buffer+cached</p>
+<p>top下半部分</p>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019202704.png" alt="image-20211019202702503"></p>
+<pre><code>PID :每个 process 的 ID 啦!
+USER:该 process 所属的使用者;
+PR :Priority 的简写，程序的优先执行顺序，越小越早被执行; NI :Nice 的简写，与 Priority 有关，也是越小越早被执行; %CPU:CPU 的使用率;
+%MEM:内存的使用率;
+TIME+:CPU 使用时间的累加
+</code></pre><h3 id="9-0-2-dstat"><a href="#9-0-2-dstat" class="headerlink" title="9.0.2 dstat"></a>9.0.2 dstat</h3><pre><code>//实时的监控cpu、磁盘、网络、IO、内存，甚至还有socket等情况，生成csv表格
+dstat
+-c：显示CPU系统占用，用户占用，空闲，等待，中断，软件中断等信息。
+-C：当有多个CPU时候，此参数可按需分别显示cpu状态，例：-C 0,1 是显示cpu0和cpu1的信息。
+-d：显示磁盘读写数据大小。
+-D hda,total：include hda and total。
+-n：显示网络状态。
+-N eth1,total：有多块网卡时，指定要显示的网卡。
+-l：显示系统负载情况。
+-m：显示内存使用情况。
+-g：显示页面使用情况。
+-p：显示进程状态。
+-s：显示交换分区使用情况。
+-S：类似D/N。
+-r：I/O请求情况。
+-y：系统状态。
+--ipc：显示ipc消息队列，信号等信息。
+--socket：用来显示tcp udp端口状态。
+-a：此为默认选项，等同于-cdngy。
+-v：等同于 -pmgdsc -D total。
+--output 文件：此选项也比较有用，可以把状态信息以csv的格式重定向到指定的文件中，以便日后查看。例：dstat --output /root/dstat.csv &amp; 此时让程序默默的在后台运行并把结果输出到/root/dstat.csv文件中。
+</code></pre><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201904.png" alt="image-20211019175009173"></p>
+<h2 id="9-1磁盘"><a href="#9-1磁盘" class="headerlink" title="9.1磁盘"></a>9.1磁盘</h2><pre><code>iostat 
+[-k -m]显示读写单位
+[-d] 2 每2秒1次
+[-x]可以显示更详细信息
+</code></pre><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">%user</td>
+<td style="text-align:left">CPU在用户态执行进程的时间百分比。</td>
+</tr>
+<tr>
+<td style="text-align:left">%nice</td>
+<td style="text-align:left">CPU在用户态模式下，用于nice操作，所占用CPU总时间的百分比</td>
+</tr>
+<tr>
+<td style="text-align:left">%system</td>
+<td style="text-align:left">CPU处在内核态执行进程的时间百分比</td>
+</tr>
+<tr>
+<td style="text-align:left">%iowait</td>
+<td style="text-align:left">CPU用于等待I/O操作占用CPU总时间的百分比</td>
+</tr>
+<tr>
+<td style="text-align:left">%steal</td>
+<td style="text-align:left">管理程序(hypervisor)为另一个虚拟进程提供服务而等待虚拟CPU的百分比</td>
+</tr>
+<tr>
+<td style="text-align:left">%idle</td>
+<td style="text-align:left">CPU空闲时间百分比</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+<li>若 %iowait 的值过高，表示硬盘存在I/O瓶颈 </li>
+<li>若 %idle 的值高但系统响应慢时，有可能是CPU等待分配内存，此时应加大内存容量 </li>
+<li>若 %idle 的值持续低于1，则系统的CPU处理能力相对较低，表明系统中最需要解决的资源是 CPU使用比例<strong>iostat -x</strong>  svctm  %util</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201918.png" alt="image-20211019173631243"></p>
+<h2 id="9-2cpu"><a href="#9-2cpu" class="headerlink" title="9.2cpu"></a>9.2cpu</h2><h2 id="9-3网卡流量"><a href="#9-3网卡流量" class="headerlink" title="9.3网卡流量"></a>9.3网卡流量</h2><pre><code>// 实时显示网卡流量信息
+nload
+</code></pre><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201924.png" alt="image-20211019173936279"></p>
+<h2 id="9-4内存"><a href="#9-4内存" class="headerlink" title="9.4内存"></a>9.4内存</h2><pre><code>vmstat
+vmstat 3 10 每3秒1次，一共10次，没10不会停
+-S k｜m 以kb、mb单位显示内存
+</code></pre><p><img src="https://raw.githubusercontent.com/linxuesong/TyporaPictures/master/img20211019201924.png" alt="image-20211019174435977"></p>
+<pre><code>字段说明：
+
+Procs（进程）
+
+r: 运行队列中进程数量，这个值也可以判断是否需要增加CPU。（长期大于1）
+b: 等待IO的进程数量。
+Memory（内存）
+
+swpd: 使用虚拟内存大小，如果swpd的值不为0，但是SI，SO的值长期为0，这种情况不会影响系统性能。
+free: 空闲物理内存大小。
+buff: 用作缓冲的内存大小。
+cache: 用作缓存的内存大小，如果cache的值大的时候，说明cache处的文件数多，如果频繁访问到的文件都能被cache处，那么磁盘的读IO bi会非常小。
+Swap
+
+si: 每秒从交换区写到内存的大小，由磁盘调入内存。
+so: 每秒写入交换区的内存大小，由内存调入磁盘。
+注意：内存够用的时候，这2个值都是0，如果这2个值长期大于0时，系统性能会受到影响，磁盘IO和CPU资源都会被消耗。有些朋友看到空闲内存（free）很少的或接近于0时，就认为内存不够用了，不能光看这一点，还要结合si和so，如果free很少，但是si和so也很少（大多时候是0），那么不用担心，系统性能这时不会受到影响的。
+
+IO（现在的Linux版本块的大小为1kb）
+
+bi: 每秒读取的块数
+bo: 每秒写入的块数
+注意：随机磁盘读写的时候，这2个值越大（如超出1024k)，能看到CPU在IO等待的值也会越大。
+
+system（系统）
+
+in: 每秒中断数，包括时钟中断。
+cs: 每秒上下文切换数。
+注意：上面2个值越大，会看到由内核消耗的CPU时间会越大。
+
+CPU（以百分比表示）
+
+us: 用户进程执行时间百分比(user time)
+us的值比较高时，说明用户进程消耗的CPU时间多，但是如果长期超50%的使用，那么我们就该考虑优化程序算法或者进行加速。
+
+sy: 内核系统进程执行时间百分比(system time)
+sy的值高时，说明系统内核消耗的CPU资源多，这并不是良性表现，我们应该检查原因。
+
+wa: IO等待时间百分比
+wa的值高时，说明IO等待比较严重，这可能由于磁盘大量作随机访问造成，也有可能磁盘出现瓶颈（块操作）。
+
+id: 空闲时间百分比
+</code></pre><p>综合:<strong>top</strong>、、<strong>dstat</strong></p>
+<h1 id="十、其他"><a href="#十、其他" class="headerlink" title="十、其他"></a>十、其他</h1><p>1.在终端开发应用程序，如使用文本编辑器打开文本文件  open -a  &lt;应用程序&gt;  &lt;文件名&gt;</p>
+<p>2.打印文件树 方法一：find . -print | sed -e ‘s;<sup><a href="#fn_/" id="reffn_/">/</a></sup>*/;|<strong><strong>;g;s;</strong></strong>|; |;g’    方法二：下载tree命令</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/donate/WeChanSQ.jpg"></li>
+		<>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+
+<!--对于每一篇发布文章添加标签统计展示-->
+          <div class="post-tags">
+
+
+	<div class="tag-cloud">
+                  <div class="tag-cloud-title">
+                  </div>
+                  <div class="tag-cloud-tags">
+                  <a href="/tags/C/" style="font-size: 10px; color: #f38181">C++</a> <a href="/tags/Go/" style="font-size: 10px; color: #f38181">Go</a> <a href="/tags/Golang/" style="font-size: 11.67px; color: #e3918f">Golang</a> <a href="/tags/JAVA/" style="font-size: 15px; color: #c4b1aa">JAVA</a> <a href="/tags/LeetCode/" style="font-size: 16.67px; color: #b4c1b8">LeetCode</a> <a href="/tags/MarkDown/" style="font-size: 10px; color: #f38181">MarkDown</a> <a href="/tags/Reids/" style="font-size: 10px; color: #f38181">Reids</a> <a href="/tags/Sakura/" style="font-size: 13.33px; color: #d4a19c">Sakura</a> <a href="/tags/String/" style="font-size: 10px; color: #f38181">String</a> <a href="/tags/go/" style="font-size: 10px; color: #f38181">go</a> <a href="/tags/golang/" style="font-size: 10px; color: #f38181">golang</a> <a href="/tags/hexo/" style="font-size: 10px; color: #f38181">hexo</a> <a href="/tags/java/" style="font-size: 10px; color: #f38181">java</a> <a href="/tags/linux/" style="font-size: 11.67px; color: #e3918f">linux</a> <a href="/tags/mac%E8%BD%AF%E4%BB%B6/" style="font-size: 10px; color: #f38181">mac软件</a> <a href="/tags/nginx/" style="font-size: 13.33px; color: #d4a19c">nginx</a> <a href="/tags/protobuf/" style="font-size: 10px; color: #f38181">protobuf</a> <a href="/tags/sakura/" style="font-size: 10px; color: #f38181">sakura</a> <a href="/tags/web/" style="font-size: 10px; color: #f38181">web</a> <a href="/tags/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/" style="font-size: 20px; color: #95e1d3">主题美化</a> <a href="/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px; color: #f38181">包管理工具</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BD%92%E7%B1%BB/" style="font-size: 10px; color: #f38181">博客归类</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px; color: #f38181">多线程</a> <a href="/tags/%E5%B0%8F%E7%9B%AE%E6%A0%87/" style="font-size: 10px; color: #f38181">小目标</a> <a href="/tags/%E5%BC%82%E5%B8%B8/" style="font-size: 10px; color: #f38181">异常</a> <a href="/tags/%E6%82%A6%E8%AF%BB/" style="font-size: 10px; color: #f38181">悦读</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 10px; color: #f38181">感悟</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 18.33px; color: #a5d1c5">数组</a> <a href="/tags/%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/" style="font-size: 10px; color: #f38181">文件读取</a> <a href="/tags/%E7%AE%80%E5%8D%95/" style="font-size: 16.67px; color: #b4c1b8">简单</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 11.67px; color: #e3918f">算法</a> <a href="/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/" style="font-size: 13.33px; color: #d4a19c">资料整理</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" style="font-size: 10px; color: #f38181">软件安装</a> <a href="/tags/%E9%BB%91%E7%A7%91%E6%8A%80/" style="font-size: 10px; color: #f38181">黑科技</a>
+                  </div>
+
+                </div>
+
+          </div>
+<!--对于每一篇发布文章添加标签统计展示-->
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2021/05/25/MarkDown%E5%BF%AB%E9%80%9F%E6%9F%A5%E8%AF%A2%E8%BD%AC%E7%A7%BB%E5%AD%97%E7%AC%A6/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@2.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/动漫风景/apic-in 色彩绚丽的风景动漫图片 (16).jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/动漫风景/apic-in 色彩绚丽的风景动漫图片 (16).jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                MarkDown快速查询转移字符</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2021/05/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@2.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/动漫风景/apic-in 色彩绚丽的风景动漫图片 (9).jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/articleCover/动漫风景/apic-in 色彩绚丽的风景动漫图片 (9).jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                个人博客的分类和标签</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "bkFHdpuMwcpRg1jNPFwvMLnX-MdYXbMMI",
+        appKey: "xaCmLIX4oe2AbcinUwoMVbMz",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="linxuesong.github.io" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/avatar.jpg" itemprop="image" alt="linxuesong" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="linxuesong.github.io" itemprop="url" rel="author">linxuesong</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一个好奇的人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>
+
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+	<!-- 网站数据统计 -->
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+            <span style="color: #ff9999;padding-left: 20px;">
+                <!-- 网站运行时间统计 -->
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <span id="time" align="center">载入时间中...</span>
+                <script>
+                var now = new Date(); 
+                function createtime() { 
+                      var grt= new Date("12/12/2018");//在此处修改你的建站时间
+                      now.setTime(now.getTime()+250); 
+                      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                      if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                      document.getElementById("time").innerHTML = "小破站在各种灾难中苟活了 "+ dnum +" 天 "+hnum + " 小时 " + mnum + " 分 " + snum + " 秒";      
+                  } 
+                  setInterval("createtime()",250);
+                </script>
+            </span> 
+          </p>
+        </div>
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+            <span style="color: #b9b9b9;padding-left: 20px;">
+              <!-- 全网站字数统计wordcount -->
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">52.2k</span>字</span>
+              <!-- 不蒜子网页计数器 -->
+              
+              <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
+              </span>
+              
+              
+              <span style="padding-left: 20px;"><i class="fa fa-user" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_uv">总访问人数： <span id="busuanzi_value_site_uv" style="color:#ff9999;"></span>人</span>
+              </span>
+              
+            </span>
+          </p>
+        </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+<!-- 指定网页去除网页底部footer的网站信息 -->
+<!--  切换页面后需要再显示出来 -->
+<!--
+<script>
+    var url = document.URL.toString();
+    var reg = new RegExp("sourceshare");
+    var obj = document.getElementById("colophon");
+    if(url.match(reg)){
+        obj.style.display="none";
+    }else {
+        obj.style.display="block";
+    }
+</script>
+-->
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/7e5676fe.js","daovoice");
+    daovoice('init', {
+      app_id: "7e5676fe"
+    });
+    daovoice('update');
+  </script>
+ 
+
+
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">楓の葉lean</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/honjun" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-laptop" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%B5%84%E6%BA%90/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-area-chart faa-vertical" aria-hidden="true"></i>
+            文章统计
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/analytics/">
+                  <i class="fa fa-area-chart" aria-hidden="true"></i>
+                  统计
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives/">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                  日历
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/">
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                  标签
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/">
+                  <i class="fa fa-bookmark" aria-hidden="true"></i>
+                  分类
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/books/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi-bilibili/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  哔哩
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/movies/">
+                  <i class="fa fa-video-camera" aria-hidden="true"></i>
+                  电影
+                </a>
+              </li>
+            
+              <li>
+                <a href="/games/">
+                  <i class="fa fa-gamepad" aria-hidden="true"></i>
+                  游戏
+                </a>
+              </li>
+            
+              <li>
+                <a href="/gallery/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/links/">
+                  <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                  小伙伴
+                </a>
+              </li>
+            
+              <li>
+                <a href="/friendlink_status/">
+                  <i class="fa fa-heartbeat faa-shake" aria-hidden="true"></i>
+                  健康值
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/sourceshare/">
+                  <i class="fa fa-share-alt faa-vertical" aria-hidden="true"></i>
+                  分享
+                </a>
+              </li>
+            
+              <li>
+                <a href="/sitelog/">
+                  <i class="fa fa-calculator" aria-hidden="true"></i>
+                  建站史
+                </a>
+              </li>
+            
+              <li>
+                <a href="/todolist">
+                  <i class="fa fa-tasks" aria-hidden="true"></i>
+                  任务书
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+              <li>
+                <a href="/dinoswords">
+                  <i class="fa fa-coffee" aria-hidden="true"></i>
+                  娱乐
+                </a>
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <i class="fa fa-android faa-vertical" aria-hidden="true"></i>
+                  客户端
+                </a>
+              </li>
+            
+              <li>
+                <a href="/shuoshuo/">
+                  <i class="fa fa-coffee faa-vertical" aria-hidden="true"></i>
+                  说说
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+  
+    <!--1.界面画板娘-->
+    <!-- github仓库链接:https://github.com/stevenjoezhang/live2d-widget-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"> 
+    <!-- 这条在sakura中已有，可不添加 -->
+    <script src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/live2d_qianduan/live2d-widget-master/autoload.js"></script>
+    <!--2.樱花飘落背景-->
+    <!--
+    <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>  
+    -->
+    <!--3.鼠标移动特效（暂时关闭）-->
+    <!--
+    <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/xuehua.js"></script>
+    -->
+    <!--4.图片预加载-->
+    <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    <!--5.鼠标点击爆炸特效-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/js/鼠标特效/鼠标点击爆炸烟花特效JS/meme.js"></script>
+    <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/js/鼠标特效/鼠标点击爆炸烟花特效JS/anime.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/js/鼠标特效/鼠标点击爆炸烟花特效JS/fireworks.js"></script> 
+    <!--6.明月浩空音乐播放器插件   下面是盗版(歌单比较全)    还有  正版体验版(只有一个歌单加广告)  也可以用注册版(有后台查看系统) 已绑定qq账号1011572950-->
+    <!--这个是盗版的-->
+    <!--<script src="https://player.lmih.cn/player/js/player.js" id="myhk" key="demo" m="1"></script>-->
+    <!--这个是正版的-->
+    <script src="https://myhkw.cn/player/js/player.js" id="myhk" key="160897544983" m="1"></script>
+    <!-- 7.主题背景换肤功能 -->
+    <div class="skin-menu no-select" id="mainskin" style="position: fixed">
+ <div class="theme-controls row-container">
+  <ul class="menu-list">
+   <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
+   <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
+   <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
+   <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
+   <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
+   <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
+   <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
+   <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
+  </ul>
+ </div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+ 
+    <div class="changeSkin-gear no-select">
+  <div class="keys" id="setbtn"> 
+   <span id="open-skinMenu"> 点我试试 | SCHEME TOOL  
+     <i class="iconfont icon-gear inline-block rotating"></i> 
+   </span>
+  </div>
+</div>
+
+    <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/linxuesong/cdn/img/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">楓の葉lean</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/honjun" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-laptop" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%B5%84%E6%BA%90/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-area-chart faa-vertical" aria-hidden="true"></i>
+            文章统计
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/analytics/">
+                  <i class="fa fa-area-chart" aria-hidden="true"></i>
+                  统计
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives/">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                  日历
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/">
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                  标签
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/">
+                  <i class="fa fa-bookmark" aria-hidden="true"></i>
+                  分类
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/books/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi-bilibili/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  哔哩
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/movies/">
+                  <i class="fa fa-video-camera" aria-hidden="true"></i>
+                  电影
+                </a>
+              </li>
+            
+              <li>
+                <a href="/games/">
+                  <i class="fa fa-gamepad" aria-hidden="true"></i>
+                  游戏
+                </a>
+              </li>
+            
+              <li>
+                <a href="/gallery/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/links/">
+                  <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                  小伙伴
+                </a>
+              </li>
+            
+              <li>
+                <a href="/friendlink_status/">
+                  <i class="fa fa-heartbeat faa-shake" aria-hidden="true"></i>
+                  健康值
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/sourceshare/">
+                  <i class="fa fa-share-alt faa-vertical" aria-hidden="true"></i>
+                  分享
+                </a>
+              </li>
+            
+              <li>
+                <a href="/sitelog/">
+                  <i class="fa fa-calculator" aria-hidden="true"></i>
+                  建站史
+                </a>
+              </li>
+            
+              <li>
+                <a href="/todolist">
+                  <i class="fa fa-tasks" aria-hidden="true"></i>
+                  任务书
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+              <li>
+                <a href="/dinoswords">
+                  <i class="fa fa-coffee" aria-hidden="true"></i>
+                  娱乐
+                </a>
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <i class="fa fa-android faa-vertical" aria-hidden="true"></i>
+                  客户端
+                </a>
+              </li>
+            
+              <li>
+                <a href="/shuoshuo/">
+                  <i class="fa fa-coffee faa-vertical" aria-hidden="true"></i>
+                  说说
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script> 
+
+	
+    <!-- 8.增加红灯笼按钮-->
+    <!--深夜模式按钮-->
+	<a onclick="switchNightMode()" id="sma"> 
+		<i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> 
+	</a>
+    <!--圣诞模式按钮-->  
+	<script>
+		if (localStorage.getItem('themechris') === '1') {
+			document.body.classList.add('themechris');
+		}
+		else if (matchMedia('(prefers-color-scheme: themechris)').matches) {
+			document.body.classList.add('themechris');
+		}
+	</script>
+	<a onclick="switchChrisThemes()" id="switchchristmas">
+		<img class="theme-buttonchrismas" src="https://hesifan.top/medias/christmas-img/ball.jpg" title="圣诞模式">
+	</a>
+    <!--春节模式按钮-->  
+	<script>
+		if (localStorage.getItem('themespring') === '1') {
+			document.body.classList.add('themespring');
+		}
+		else if (matchMedia('(prefers-color-scheme: themespring)').matches) {
+			document.body.classList.add('themespring');
+		}
+	</script>
+    <div onclick="switchSpringThemes()" id="switchspring">
+        <img class="theme-button" src="https://hesifan.top/medias/spring-img/denglong.png" title="春节模式">
+    </div>
+  
+    <!--春节主题的大红灯笼-->
+        <div class="denglong">
+        <div class="deng-box">
+            <div class="deng">
+                <div class="xian"></div>
+                <div class="deng-a">
+                    <div class="deng-b"><div class="deng-t">喜迎</div></div>
+                </div>
+                <div class="shui shui-a"><div class="shui-c"></div><div class="shui-b"></div></div>
+            </div>
+        </div>
+        <div class="deng-box1">
+            <div class="deng">
+                <div class="xian"></div>
+                <div class="deng-a">
+                    <div class="deng-b"><div class="deng-t">元旦</div></div>
+                </div>
+                <div class="shui shui-a"><div class="shui-c"></div><div class="shui-b"></div></div>
+            </div>
+        </div>
+    </div>
+	<!--春节主题大红灯笼-->
+    <!--可以在你想要展示小挂件的地方加上这个挂件，还没有完善等之后再进行吧-->
+    <!--圣诞主题小挂件-->
+	<div class="caishendengsd">        
+		<div class="caishenxiansd">
+			<img class="caishenpicsd" src="https://hesifan.top/medias/christmas-img/2.png">
+		</div>              
+	</div>
+    <!-圣诞主题小挂件结束-->
+	<!--春节主题小挂件-->
+	<div class="caishendeng">        
+		<div class="caishenxianleft">
+			<img class="caishenpic fudai" src="https://hesifan.top/medias/spring-img/3.png">
+		</div>            
+	</div>
+	<!-春节主题小挂件结束-->
+       <script>
+	   // 切换深色模式JS
+	   function switchNightMode() {
+			var body = document.body; 
+			if(body.classList.contains('dark')){ 
+				document.body.classList.remove('dark'); 
+				localStorage.setItem('dark','0'); 
+				$('#nightMode').removeClass("fa-lightbulb-o").addClass("fa-moon-o"); 
+				return; 
+			} else {
+				document.body.classList.add('dark'); 
+				localStorage.setItem('dark','1'); 
+				$('#nightMode').removeClass("fa-moon-o").addClass("fa-lightbulb-o"); 
+				return; 
+			} 
+	   }
+	       // 中国节日按钮切换
+	
+    function switchSpringThemes() {
+        var body = document.body;
+        if(body.classList.contains('themechris')){
+            document.body.classList.remove('themechris');
+            localStorage.setItem('themechris','0');
+            document.body.classList.add('themespring');
+            localStorage.setItem('themespring','1');
+            return;
+        }
+        if(body.classList.contains('themespring')){
+        document.body.classList.remove('themespring');
+        localStorage.setItem('themespring','0');
+        return;
+        } else {
+        document.body.classList.add('themespring');
+        localStorage.setItem('themespring','1');
+		
+        return;
+        }
+    };
+
+    // 圣诞节按钮切换
+    function switchChrisThemes() {
+        var body = document.body;
+        if(body.classList.contains('themespring')){
+            document.body.classList.remove('themespring');
+            localStorage.setItem('themespring','0');
+            document.body.classList.add('themechris');
+            localStorage.setItem('themechris','1');
+            return;
+        }
+        if(body.classList.contains('themechris')){
+        document.body.classList.remove('themechris');
+        localStorage.setItem('themechris','0');
+        return;
+        } else {
+        document.body.classList.add('themechris');
+        localStorage.setItem('themechris','1');
+        return;
+        }
+    };
+	</script>
+<!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body>
+</html>
